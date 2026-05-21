@@ -1,0 +1,326 @@
+[
+  {
+    "title": "Synthetic materials trained tactile sensing enables quantitative perception of Young’s modulus and Poisson’s ratio",
+    "authors": [
+      "Jiasen Xie",
+      "Xingyue Liu",
+      "Yongming Wang",
+      "Ying Yang",
+      "Mingwei Gu",
+      "Xingyu Ma",
+      "Lin Zheng",
+      "Yunjie Lu",
+      "Jin-Hui Gu",
+      "Junshuai Chen",
+      "Guoyong Mao",
+      "Jin Ge"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2026-05-16",
+    "paper_type": "transferable",
+    "robot_type_tags": [],
+    "score": 0.5175,
+    "url": "https://doi.org/10.1038/s41467-026-73216-8",
+    "pdf_url": "",
+    "analysis": {
+      "core_insight": "这篇论文的核心价值看起来不是“再做一个触觉传感器”，而是把材料参数识别从分类问题推进到连续物性估计。",
+      "problem_frame": "机器人触觉常能判断“像不像某类材料”，却很难直接估计 Young’s modulus 与 Poisson’s ratio 这类对交互控制更有用的连续参数。",
+      "first_principles": "若触觉形变场对材料本构参数存在可观测映射，那么传感系统理论上可以从接触响应反推出材料力学属性。",
+      "mechanism": "由于当前没有可用全文和摘要，尚无法确认作者是依靠合成数据覆盖参数空间、还是通过特定接触特征实现反演。",
+      "boundary_advanced": "题目显示它可能把触觉从“识别是什么”推进到“定量知道有多硬、怎样变形”，但没有全文前不能负责任地下结论。",
+      "old_problem": "触觉研究长期偏向类别识别，缺少对连续力学属性的可解释估计。",
+      "why_it_works": "原则上成立的前提，是训练分布能覆盖材料参数变化，且观测到的形变特征对这些参数足够敏感。",
+      "true_novelty": "潜在新意在于把 synthetic-material training 用于连续本构参数估计，而非仅做材料分类。",
+      "evidence_summary": "当前缺少摘要与全文，证据不足。",
+      "email_summary": "题目指向一个值得关注的方向：把触觉从材料分类推进到 Young’s modulus 与 Poisson’s ratio 的连续估计；但本期尚无足够材料支撑深入判断。",
+      "importance_reason": "如果成立，这类工作会让机器人从“感觉到接触”走向“理解接触对象的力学性质”，对操作与安全交互都很关键。"
+    }
+  },
+  {
+    "title": "Soft tactile chip with in-situ sensing for haptic rendering and reverse feedback enhanced gross to fine teleoperation",
+    "authors": [
+      "Minglu Zhu",
+      "Hao Ling",
+      "Rui Wang",
+      "Zhanpeng Du",
+      "Qi Sun",
+      "Kuihan Chen",
+      "Ke Chen",
+      "Lining Sun",
+      "Cheng Fan",
+      "Chengkuo Lee",
+      "Xuan Li",
+      "Tao Chen"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2026-05-11",
+    "paper_type": "transferable",
+    "robot_type_tags": [],
+    "score": 0.5175,
+    "url": "https://doi.org/10.1038/s41467-026-73000-8",
+    "pdf_url": "",
+    "analysis": {
+      "core_insight": "它把触觉反馈器与触觉传感器合成同一个器件，试图消除远程操作里“反馈执行”和“状态测量”之间的时空错位。",
+      "problem_frame": "遥操作的粗操作阶段需要反馈，精操作阶段又需要微动作映射；若传感和执行分离，系统会天然带来同步误差与控制割裂。",
+      "first_principles": "同位 sensing-actuation 的优势在于，测量与施加作用发生在同一物理位置，减少了估计与控制之间的隐藏状态。",
+      "mechanism": "作者把液态金属微通道传感器直接嵌入气动软执行器，并加入温度传感，使同一芯片既能感知、又能反馈；随后通过“reverse haptic feedback”把操作者微动作映射到从端。",
+      "boundary_advanced": "从摘要看，它把软触觉从单向反馈推进到双向触觉接口，但缺少全文，尚无法判断闭环带宽、时延和精细操作增益。",
+      "old_problem": "现有遥操作系统往往把反馈和测量拆开，粗操作与精操作也常被分成两套逻辑。",
+      "why_it_works": "因为同位集成减少了感知—执行之间的对齐问题，逆向映射则把人的细微控制直接投影到机器人端。",
+      "true_novelty": "真正值得看的不是“软芯片”本身，而是把 gross-to-fine teleoperation 统一进一块可自监测的触觉器件。",
+      "evidence_summary": "摘要称可实现自适应气动反馈与反向触觉微操作，但缺少全文，无法核查任务设计和量化增益。",
+      "email_summary": "它把传感与反馈压进同一块软触觉芯片，目标不是单纯“摸到”，而是让遥操作从粗动作到细动作都走在同一条闭环里。",
+      "importance_reason": "这类同位 sensing-actuation 架构对高自由度、难布设的平台很有启发，因为它减少了模块割裂。"
+    }
+  },
+  {
+    "title": "TactiVerse: Generalizing Multi-Point Tactile Sensing in Soft Robotics Using Single-Point Data",
+    "authors": [
+      "Junhui Lee",
+      "Hyosung Kim",
+      "Saekwang Nam"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-02-23",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "soft_robot"
+    ],
+    "score": 0.4725,
+    "url": "http://arxiv.org/abs/2602.19850v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.19850v1",
+    "analysis": {
+      "core_insight": "TactiVerse 抓住了一个很漂亮的结构事实：多点接触不是“全新的问题”，而是局部接触场在空间上的组合，因此应该让模型输出空间热图，而不是一次性回归几个坐标。",
+      "problem_frame": "软体触觉的瓶颈不只是传感，而是训练数据爆炸：若每一种多点接触都要单独采样，组合数会迅速失控。",
+      "first_principles": "如果接触信息在空间上具有局部性与可组合性，那么学习对象就该是“场”，而不是单个全局标量；这样模型才有机会从单点经验外推到多点场景。",
+      "mechanism": "作者把接触几何估计改写为空间 heatmap prediction，用 U-Net 保留空间结构；单点训练先学到局部响应原语，再用少量多点样本校正组合关系。",
+      "boundary_advanced": "它把训练范式从“为每类复杂接触重新采数据”往“由基础交互外推复杂几何”推进了一步；两点区分的平均 MAE 由 1.214 mm 降到 0.383 mm，说明少量多点数据能显著补上组合误差。",
+      "old_problem": "传统回归 CNN 对多点接触泛化差，导致大面积软传感器很难扩展。",
+      "why_it_works": "因为 heatmap 让模型保留了空间拓扑，避免把多个局部接触压缩成一个不可分解的向量。",
+      "true_novelty": "新意不只是 U-Net，而是把“多点触觉泛化”重新表述成空间场学习问题。",
+      "evidence_summary": "单点任务上 U-Net 的平均 MAE 为 0.0589 mm，优于 CNN 的 0.0612 mm；加入多点数据后，两点区分 MAE 从 1.214 mm 降到 0.383 mm。",
+      "email_summary": "它真正解决的是数据规模问题：把触觉估计从坐标回归改成空间热图学习，使模型先学单点原语，再组合到多点接触。",
+      "importance_reason": "这对软体机器人尤其重要，因为软材料的可感知表面一旦扩大，训练组合空间会先于硬件本身失控。"
+    }
+  },
+  {
+    "title": "Zero Shot Deformation Reconstruction for Soft Robots Using a Flexible Sensor Array and Cage Based 3D Gaussian Modeling",
+    "authors": [
+      "Linrui Shou",
+      "Zilang Chen",
+      "Wenjia Xu",
+      "Yiyue Luo",
+      "Tingyu Cheng"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-03-20",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "soft_robot"
+    ],
+    "score": 0.455,
+    "url": "http://arxiv.org/abs/2603.19543v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.19543v1",
+    "analysis": {
+      "core_insight": "这篇论文的关键洞见是：软体机器人全局形变并不一定需要“看见整个身体”，只要用几何先验把稀疏触觉约束传播到全局，就能在无视觉监督下重建整体状态。",
+      "problem_frame": "软体机器人需要全身状态，但传感器只能稀疏铺设；“局部观测”与“全局形变”之间存在天然欠定性。",
+      "first_principles": "欠定问题要被解开，必须引入强结构先验。这里的先验不是黑箱网络，而是 cage-based 几何表示：少量控制点决定大范围形变。",
+      "mechanism": "柔性压阻阵列先给出局部触觉，图注意力网络把局部信号回归成 cage displacement，再由 cage 驱动稠密 3D Gaussian primitives，因而把稀疏观测传播成几何一致的全局形变。",
+      "boundary_advanced": "它把软体机器人数字孪生从“依赖相机或对象专属训练”推进到“只需静态几何代理 + 触觉即可零样本重建”；全文报告平均 0.67 IoU、0.65 SSIM、3.48 mm Chamfer。",
+      "old_problem": "现有方法常依赖外部视觉、对象专属数据或部署时重训，难以在遮挡、狭窄和新机器人上使用。",
+      "why_it_works": "因为 cage 把高维形变压缩到低维结构变量，使局部触觉不必直接预测每个点的位置，只需预测足以决定整体几何的控制自由度。",
+      "true_novelty": "真正的新意是把“触觉 sensing”与“结构化形变表示”显式耦合，而不是用触觉直接回归点云。",
+      "evidence_summary": "全文在未见软体机器人上报告 bending / twisting 零样本重建，平均 full-shape IoU 0.67、SSIM 0.65、Chamfer 3.48 mm；扭转仍是较难情形。",
+      "email_summary": "它没有试图用密集传感器“看全身”，而是用 cage 几何先验把局部触觉放大成全局形变估计，因而实现无相机、零样本的软体机器人重建。",
+      "importance_reason": "这正中你关心的问题：特殊平台上最稀缺的往往不是算法，而是可安装的传感通道。"
+    }
+  },
+  {
+    "title": "Sound of Touch: Active Acoustic Tactile Sensing via String Vibrations",
+    "authors": [
+      "Xili Yi",
+      "Ying Xing",
+      "Zachary Manchester",
+      "Nima Fazeli"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-02-18",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "micro_robot"
+    ],
+    "score": 0.3925,
+    "url": "http://arxiv.org/abs/2602.16846v1",
+    "pdf_url": "https://arxiv.org/pdf/2602.16846v1",
+    "analysis": {
+      "core_insight": "它把大面积触觉从“铺更多传感器”改写成“设计一个会说话的物理介质”：被连续激励的弦本身就是分布式传感器。",
+      "problem_frame": "大面积触觉面临经典 trade-off：覆盖面越大，布线、成本、脆弱性越高；但减传感器又会丢掉位置、力和快速滑移信息。",
+      "first_principles": "接触会改变弦的边界条件与振动模态，因此位置、法向力和滑移会在频谱/时序中留下不同指纹。",
+      "mechanism": "系统用电磁方式持续激励张紧弦，接触把一根弦分成不同有效长度的段；双 EBow + 双拾音器提供互补观测，使位置和力的谱变化更可分，而时间建模捕捉滑移的瞬态。",
+      "boundary_advanced": "它把触觉从离散阵列推进到轻量、可替换、长条覆盖的声学传感；论文还指出其局限：当前主要是一维、单主接触，且受张力漂移和强阻尼物体影响。",
+      "old_problem": "密集阵列难扩展到大面积，视觉触觉又容易受遮挡和表面污染影响。",
+      "why_it_works": "因为作者没有试图“复制皮肤像素”，而是利用振动系统天然的全局耦合，让单个机械元件携带空间信息。",
+      "true_novelty": "新意是把连续振动体作为主动触觉介质，而非把声音仅当成附属信号。",
+      "evidence_summary": "全文展示接触位置、法向力和 slip 的联合推断；作者说明 transformer 对 slip 优于静态 FFT，因为滑移依赖时间动态。",
+      "email_summary": "它不是往表面上加更多 sensing points，而是让一根持续振动的弦自己承担分布式触觉：位置、力与滑移被编码进频谱和时间结构。",
+      "importance_reason": "对微型、轻量和难布线平台，这类“物理本体即传感器”的思路比继续堆模块更值得关注。"
+    }
+  },
+  {
+    "title": "Caterpillar-Inspired Spring-Based Compressive Continuum Robot for Bristle-based Exploration",
+    "authors": [
+      "Zhixian Hu",
+      "Yu She",
+      "Juan Wachs"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-03-10",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "continuum"
+    ],
+    "score": 0.33,
+    "url": "http://arxiv.org/abs/2603.09745v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.09745v1",
+    "analysis": {
+      "core_insight": "这篇更像系统整合而非感知突破：作者把连续体机构、压缩运动和刷毛接触传感拼成一个能进入狭小空间的 inspection tool。",
+      "problem_frame": "狭窄管道里同时需要可达性、柔顺性与表面感知，传统刚性末端执行器三者很难兼得。",
+      "first_principles": "若机构本体具备轴向压缩与弯曲自由度，便能在狭小空间中调整构型；再通过刷毛把接触事件机械放大为可读信号，就能完成粗粒度环境感知。",
+      "mechanism": "弹簧式连续体由腱驱动产生耦合弯曲与轴向伸缩，常曲率模型负责位置控制；人工刷毛传感器把表面接触转为检测信号，用于 confined-space exploration。",
+      "boundary_advanced": "它把“商用机械臂 + 柔性末端”推进到可做狭窄空间检查的组合方案，定位平均误差 4.32 mm；但感知层仍较原型化。",
+      "old_problem": "刚性机器人在管道和风道内难以进入、贴合并获取接触信息。",
+      "why_it_works": "因为机构设计先解决了到达问题，刷毛再以极低复杂度提供接触反馈。",
+      "true_novelty": "新意主要在仿生形态与应用集成，不在高阶感知算法。",
+      "evidence_summary": "论文报告平均位置误差 4.32 mm，并展示了刷毛接触传感用于表面感知与狭小空间探索。",
+      "email_summary": "这是一个偏系统型工作：用可压缩连续体结构解决“进得去”，再用刷毛接触传感解决“摸得到”。",
+      "importance_reason": "它对你有价值，不是因为算法强，而是因为它提醒我们：特殊平台上的感知设计常常要和机构一起定义。"
+    }
+  },
+  {
+    "title": "A Soft Robotic Interface for Chick-Robot Affective Interactions",
+    "authors": [
+      "Jue Chen",
+      "Alexander Mielke",
+      "Kaspar Althoefer",
+      "Elisabetta Versace"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-04-09",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "soft_robot"
+    ],
+    "score": 0.305,
+    "url": "http://arxiv.org/abs/2604.08443v1",
+    "pdf_url": "https://arxiv.org/pdf/2604.08443v1",
+    "analysis": {
+      "core_insight": "它真正研究的不是“机器人怎么感知环境”，而是“动物如何把机器人感知为可接受对象”；感知对象从外部世界转成了生物主体。",
+      "problem_frame": "动物—机器人交互里的瓶颈不是检测精度，而是机器人提供的 cues 是否落在动物可接受的感知空间里。",
+      "first_principles": "如果行为是对可感知线索的函数，那么 warmth、节律形变和脸样视觉刺激会改变动物对代理的接近概率。",
+      "mechanism": "软接口同时输出温度、呼吸样形变和脸样视觉线索，再以 chick 的接近和触碰行为测量接受度。",
+      "boundary_advanced": "它推进的是 affective interface design，而不是具身感知本身；对你的主线启发有限。",
+      "old_problem": "ARI 设备往往先从机器人功能出发，而不是从动物可接受的感觉线索出发。",
+      "why_it_works": "因为它把接口设计直接对齐到 chick 可感知且有行为意义的 cue。",
+      "true_novelty": "新意是 animal-centered 的软接口设计，而非感知系统方法。",
+      "evidence_summary": "全文显示 chicks 更偏好 warmth，脸样视觉线索可加快初始接近；breathing cue 未体现同等效果。",
+      "email_summary": "它研究的是另一种“感知赋能”：不是机器人感知世界，而是让动物把机器人感知成可接受对象。",
+      "importance_reason": "这篇可留作跨界灵感，但不应在你的雷达里长期高排。"
+    }
+  },
+  {
+    "title": "Contact Status Recognition and Slip Detection with a Bio-inspired Tactile Hand",
+    "authors": [
+      "Chengxiao He",
+      "Wenhui Yang",
+      "Hongliang Zhao",
+      "Jiacheng Lv",
+      "Yuzhe Shao",
+      "Longhui Qin"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-03-19",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "bioinspired"
+    ],
+    "score": 0.305,
+    "url": "http://arxiv.org/abs/2603.18370v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.18370v1",
+    "analysis": {
+      "core_insight": "这篇论文的基本判断是：滑移不是一个孤立瞬间，而是接触状态演化的一部分；先识别接触状态，再判断 slip，比直接阈值检测更稳。",
+      "problem_frame": "抓取脆弱物体时，过大力会损伤，过小力会滑落；系统需要在“接触—压紧—滑移”连续过程中辨认状态，而不是只盯一个阈值。",
+      "first_principles": "不同接触状态会在多通道触觉的时频结构中留下不同模式，因此 slip 可以被视为状态迁移问题。",
+      "mechanism": "作者对 24 路触觉信号做离散小波变换，提取多时频特征，经筛选得到 120 个特征做状态识别，再以状态变化定位 slip onset。",
+      "boundary_advanced": "它把滑移检测从经验阈值推进到多模态时频状态识别；在训练材料上准确率 96.39%，4 种未见材料上仍有 91.95%。",
+      "old_problem": "阈值法对材料和工况变化敏感，泛化差。",
+      "why_it_works": "因为小波特征同时保留快适应与慢适应成分，能把不同触觉机制的信息拆开。",
+      "true_novelty": "亮点在于把仿生手的多通道 tactile stream 组织成 contact-state inference，而非单一滑移分类。",
+      "evidence_summary": "全文报告 24 通道、17 类特征、最优 120 特征；训练材料 96.39%，未见材料 91.95%，并优于阈值法。",
+      "email_summary": "它把 slip detection 重新定义成接触状态识别问题，用多通道时频特征而不是单阈值来判断何时开始失稳。",
+      "importance_reason": "如果你关注“有限传感下如何获得更可靠状态估计”，这篇比表面题目看起来更值得读。"
+    }
+  },
+  {
+    "title": "RealVLG-R1: A Large-Scale Real-World Visual-Language Grounding Benchmark for Robotic Perception and Manipulation",
+    "authors": [
+      "Linfei Li",
+      "Lin Zhang",
+      "Ying Shen"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-03-16",
+    "paper_type": "transferable",
+    "robot_type_tags": [],
+    "score": 0.59,
+    "url": "http://arxiv.org/abs/2603.14880v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.14880v1",
+    "analysis": {
+      "core_insight": "RealVLG-R1 的真正贡献不是再做一个 VLM，而是把“语言理解—目标定位—抓取作用点”拉到同一个监督空间里，缩短语义与动作之间的断层。",
+      "problem_frame": "传统 VLG 只回答“你说的是哪个物体”，传统抓取又只回答“哪里能抓”；机器人真正需要的是语言条件下可执行的感知。",
+      "first_principles": "若语义 grounding 与 grasp affordance 不共享表示，系统就会在“看懂”与“能做”之间累积误差。",
+      "mechanism": "作者构建 RealVLG-11B，把 bbox、mask、grasp rectangle 和 contact point 放入统一标注体系，再训练 RealVLG-R1 同时输出多粒度 grounding 与 grasp 结果。",
+      "boundary_advanced": "它把 zero-shot robotic grounding 从对象级定位推进到与 grasp 直接相连的 action-aware perception，但仍主要是视觉—语言路线，和特殊机器人感知不是同一核心问题。",
+      "old_problem": "现有 VLG 偏粗粒度，抓取数据集又缺少语言和语义关系，导致机器人难以从自然语言直接过渡到动作。",
+      "why_it_works": "因为统一监督让模型从一开始就学习“语义对象”和“可执行接触点”的对应，而非后续拼接两个模块。",
+      "true_novelty": "真正新意在数据与任务统一，而不是模型名字。",
+      "evidence_summary": "全文称 RealVLG-11B 在可比数据集指标上全面领先，RealVLG-R1 支持 bbox、mask、grasp pose、contact point 的零样本预测。",
+      "email_summary": "它把“听懂你说哪个物体”和“知道该从哪里抓”合成一个任务，解决的是语言感知到操作之间的断层。",
+      "importance_reason": "这类工作适合作为可迁移方法关注，但在你的主线里应低于软体/微型平台上的原生感知工作。"
+    }
+  },
+  {
+    "title": "Model-Free Co-Optimization of Manufacturable Sensor Layouts and Deformation Proprioception",
+    "authors": [
+      "Yingjun Tian",
+      "Guoxin Fang",
+      "Aoran Lyu",
+      "Xilong Wang",
+      "Zikang Shi",
+      "Yuhu Guo",
+      "Weiming Wang",
+      "Charlie C.L. Wang"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-03-09",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "soft_robot"
+    ],
+    "score": 0.61,
+    "url": "https://arxiv.org/abs/2603.10059",
+    "pdf_url": "https://arxiv.org/pdf/2603.10059",
+    "analysis": {
+      "core_insight": "这篇工作的核心洞见是：软体/可变形平台的本体感知误差，很多时候不是网络不够强，而是传感器几何布设本身决定了可观测性上限。",
+      "problem_frame": "问题可以重述为一个联合设计约束：在传感器数量、总长度、间距、不可重叠和可制造性的限制下，怎样让少量柔性长度信号最大程度覆盖自由曲面形变的可观测模式。",
+      "first_principles": "从第一性原理看，形变重建是一个由传感器测量矩阵决定的反问题；如果传感路径只覆盖低信息量区域，再好的预测网络也只能拟合欠观测数据。作者把传感器位置/长度和预测网络参数放进同一个优化问题，本质上是在同时优化“信息采样方式”和“解码器”。",
+      "mechanism": "方法成立的因果链是：先用形变数据集描述目标平台可能出现的自由曲面状态，再把每条柔性传感器视为曲面上可制造的长度测量路径；优化器在满足间距、长度、无交叠等制造约束的同时，寻找能让网络重建误差下降的路径集合。因此性能提升不是来自单纯加模型容量，而是来自更高信息量的传感几何。",
+      "boundary_advanced": "它把软体机器人本体感知从“传感器怎么贴靠经验”推进到“传感器布局与感知模型共同设计”。这对传统相机、刚性编码器难以安装的平台很关键，因为感知模块必须嵌进材料和结构本身。",
+      "old_problem": "老问题是软体机器人自由形变大、状态维度高、外部视觉不总可用，而柔性传感器的布设长期依赖启发式和试错；一旦布局差，后端学习器会被不可观测性卡住。",
+      "why_it_works": "它之所以有效，是因为长度型柔性传感器对曲面不同区域的形变敏感性不同；把布局作为可优化变量后，系统能主动选择对目标形变分布最敏感、同时又能制造的传感路径，降低反演问题的不适定性。",
+      "true_novelty": "真正新意不在“用神经网络做形变重建”，而在把可制造传感器布局、传感器数量/长度和重建网络参数做模型无关的联合优化，并在软体机器人/可穿戴硬件上展示同一框架的迁移性。",
+      "evidence_summary": "论文给出了数值实验和物理硬件验证；关键图显示同样面向软体变形体，co-optimized layout 相比 expert-selected layout 在最大误差和平均误差分布上明显收缩，并展示了真实传感器贴附与形变数据采集流程。",
+      "email_summary": "这篇适合作为“给特殊机器人做感知赋能”的方法论文：它不把感知当作后装模块，而是把传感器布设本身作为可优化的信息采样层，与形变重建网络一起训练，目标是在可制造约束下提升软体平台本体感知。",
+      "importance_reason": "它直接击中你的研究画像：面向软体/难布设平台，不是做机器人本体，而是决定怎样把感知能力嵌入特殊机器人结构。"
+    }
+  }
+]
