@@ -5,121 +5,223 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Paper Radar · 历史推荐</title>
   <style>
-    :root { color-scheme: light; }
+    :root {
+      color-scheme: light;
+      --paper:#f4f1e8;
+      --paper-strong:#fbfaf4;
+      --ink:#181410;
+      --ink-soft:#4a4037;
+      --muted:#73695f;
+      --line:#2a2119;
+      --line-soft:rgba(42,33,25,.24);
+      --rule:rgba(42,33,25,.44);
+      --accent:#a93522;
+      --accent-dark:#401d15;
+      --signal:#2d6d65;
+    }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f6f8fb; color: #101828; }
-    header { background: #0f172a; color: #f8fafc; padding: 32px 20px 28px; }
-    .wrap { width: min(1080px, calc(100vw - 32px)); margin: 0 auto; }
-    .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #93c5fd; margin-bottom: 8px; }
-    h1 { margin: 0; font-size: clamp(30px, 4vw, 48px); line-height: 1.1; font-weight: 700; }
-    .sub { margin: 12px 0 0; max-width: 760px; color: #cbd5e1; line-height: 1.7; }
-    nav { margin-top: 20px; display: flex; gap: 14px; flex-wrap: wrap; }
-    nav a { color: #dbeafe; text-decoration: none; border-bottom: 1px solid rgba(219,234,254,.45); padding-bottom: 2px; }
-    main { padding: 28px 0 48px; }
-    .issue { background: #fff; border: 1px solid #e4e7ec; border-radius: 8px; margin-bottom: 18px; overflow: hidden; }
-    .issue-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 18px 20px; border-bottom: 1px solid #eef2f7; }
-    .issue-title { margin: 0; font-size: 20px; line-height: 1.3; }
-    .issue-title a { color: #0f172a; text-decoration: none; }
-    .stats { color: #667085; font-size: 13px; white-space: nowrap; }
-    ol { margin: 0; padding: 8px 20px 16px 42px; }
-    li { padding: 9px 0; line-height: 1.55; }
-    li + li { border-top: 1px solid #f2f4f7; }
-    .paper a { color: #155eef; text-decoration: none; }
-    .meta { color: #667085; font-size: 13px; margin-top: 2px; }
-    .empty { background: #fff; border: 1px solid #e4e7ec; border-radius: 8px; padding: 24px; color: #667085; }
+    body {
+      margin: 0;
+      background:
+        linear-gradient(90deg, var(--accent) 0 18px, transparent 18px),
+        repeating-linear-gradient(0deg, rgba(42,33,25,.026), rgba(42,33,25,.026) 1px, transparent 1px, transparent 8px),
+        var(--paper);
+      color: var(--ink);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
+    }
+    .wrap { width: min(1150px, calc(100vw - 40px)); margin: 0 auto; }
+    header { padding: 44px 0 26px; }
+    .masthead {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(280px, .96fr);
+      gap: 42px;
+      padding-bottom: 26px;
+      border-bottom: 2px solid var(--line);
+    }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0 0 16px;
+      font-family: "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif;
+      font-size: 74px;
+      line-height: .93;
+      letter-spacing: 0;
+    }
+    .sub { margin: 0; max-width: 680px; color: var(--ink-soft); line-height: 1.8; font-size: 19px; }
+    .archive-stats {
+      align-self: end;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .stat { min-height: 104px; border: 1px solid var(--line); background: rgba(255,255,255,.22); padding: 18px 15px; }
+    .stat strong { display: block; font-size: 34px; line-height: 1; font-weight: 800; }
+    .stat span { display: block; margin-top: 14px; color: var(--muted); font-size: 12px; letter-spacing: 0; text-transform: uppercase; }
+    nav { margin-top: 18px; display: flex; gap: 8px; flex-wrap: wrap; }
+    nav a { color: var(--ink); text-decoration: none; border: 1px solid var(--line-soft); background: rgba(255,255,255,.24); padding: 8px 10px; font-size: 13px; }
+    nav a.primary { background: var(--ink); border-color: var(--ink); color: var(--paper-strong); }
+    main { padding: 0 0 58px; }
+    .archive-layout { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 28px; align-items: start; margin-top: 26px; }
+    .issue { border-top: 1px solid var(--rule); padding: 18px 0 20px; }
+    .issue-head { display: grid; grid-template-columns: 72px minmax(0, 1fr) 170px; gap: 16px; align-items: start; }
+    .issue-date { color: var(--accent); font-family: "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif; font-size: 28px; line-height: 1; }
+    .issue-title { margin: 0; font-family: "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif; font-size: 28px; line-height: 1.16; }
+    .issue-title a { color: var(--ink); text-decoration: none; }
+    .issue-title a:hover { color: var(--accent); }
+    .stats { justify-self: end; border: 1px solid var(--accent); color: var(--accent); padding: 8px 10px; font-size: 12px; line-height: 1.5; text-align: right; }
+    ol { list-style: none; margin: 14px 0 0 88px; padding: 0; border-top: 1px solid var(--line-soft); }
+    li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; padding: 10px 0; line-height: 1.55; border-bottom: 1px solid rgba(42,33,25,.14); }
+    .paper-index { color: var(--accent); font-family: "SF Mono", "Menlo", monospace; font-size: 12px; padding-top: 2px; }
+    .paper a { color: var(--ink); text-decoration: none; }
+    .paper a:hover { color: var(--accent); }
+    .meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
+    .archive-panel {
+      position: sticky;
+      top: 18px;
+      min-height: 430px;
+      background: linear-gradient(180deg, var(--accent-dark), #17130f);
+      color: var(--paper-strong);
+      padding: 26px;
+      overflow: hidden;
+    }
+    .archive-panel::before { content: ""; position: absolute; inset: 0; background: linear-gradient(145deg, rgba(169,53,34,.5), transparent 38%); pointer-events: none; }
+    .archive-panel > * { position: relative; }
+    .panel-label { color: #d2c5b4; font-size: 12px; letter-spacing: 0; text-transform: uppercase; }
+    .panel-title { margin: 10px 0 24px; font-family: "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif; font-size: 38px; line-height: 1; }
+    .panel-stat { border-top: 1px solid rgba(244,241,232,.26); padding: 14px 0; }
+    .panel-stat strong { display: block; font-size: 30px; line-height: 1; }
+    .panel-stat span { display: block; margin-top: 6px; color: #d2c5b4; font-size: 13px; }
+    .panel-note { position: absolute; left: 26px; right: 26px; bottom: 24px; color: #d2c5b4; font-size: 13px; line-height: 1.7; }
+    .empty { border: 1px solid var(--line-soft); padding: 24px; color: var(--muted); background: rgba(255,255,255,.18); }
     @media (max-width: 680px) {
-      .issue-head { display: block; }
-      .stats { display: block; margin-top: 6px; white-space: normal; }
-      ol { padding-left: 32px; }
+      .wrap { width: auto; margin: 0 24px 0 42px; }
+      header { padding-top: 28px; }
+      .masthead { grid-template-columns: 1fr; gap: 20px; }
+      h1 { font-size: 40px; line-height: 1; }
+      .sub { font-size: 16px; }
+      .archive-stats { grid-template-columns: repeat(3, 1fr); }
+      .stat { min-height: 82px; padding: 12px 10px; }
+      .archive-layout { grid-template-columns: 1fr; }
+      .archive-panel { display: none; }
+      .issue-head { grid-template-columns: 54px minmax(0, 1fr); }
+      .stats { grid-column: 1 / 3; justify-self: start; text-align: left; margin-left: 70px; }
+      ol { margin-left: 70px; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap">
-      <div class="eyebrow">Paper Radar Archive</div>
-      <h1>历史推荐</h1>
-      <p class="sub">按期汇总已发布的 Paper Radar 永久链接和每期推荐论文，方便回看、检索和避免重复阅读。</p>
+      <section class="masthead">
+        <div>
+          <div class="eyebrow">Paper Radar · Archive</div>
+          <h1>历史推荐<br>归档</h1>
+          <p class="sub">按期汇总已发布的 Paper Radar 永久链接和每期推荐论文，方便回看、检索和避免重复阅读。</p>
+        </div>
+        <div class="archive-stats">
+          <div class="stat"><strong>4</strong><span>issues</span></div>
+          <div class="stat"><strong>40</strong><span>papers</span></div>
+          <div class="stat"><strong>40</strong><span>figures</span></div>
+        </div>
+      </section>
       <nav>
-        <a href="../latest/">最新一期</a>
+        <a class="primary" href="../latest/">最新一期</a>
         <a href="../">首页</a>
       </nav>
     </div>
   </header>
   <main>
-    <div class="wrap">
-      <section class="issue">
+    <div class="wrap archive-layout">
+      <div><section class="issue">
   <div class="issue-head">
+    <div class="issue-date">05-26</div>
     <h2 class="issue-title"><a href="2026-05-26/">Paper Radar · 2026-05-26</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 8</div>
   </div>
   <ol>
-    <li><div class="paper"><a href="http://arxiv.org/abs/2605.22812v1">GesVLA: Gesture-Aware Vision-Language-Action Model Embedded Representations</a></div><div class="meta">arXiv · 2026-05-21</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2605.21976v1">TacO: Benchmarking Tactile Sensors for Object Manipulation</a></div><div class="meta">arXiv · 2026-05-21</div></li>
-<li><div class="paper"><a href="https://openalex.org/W4412743782">Slip-actuated bionic tactile sensing system with dynamic DC generator integrated E-textile for dexterous robotic manipulation</a></div><div class="meta">Nature Communications · 2025-07-30</div></li>
-<li><div class="paper"><a href="https://openalex.org/W4412488871">A collective intelligence model for swarm robotics applications</a></div><div class="meta">Nature Communications · 2025-07-17</div></li>
-<li><div class="paper"><a href="https://doi.org/10.1038/s42256-025-01054-2">Model-based reinforcement learning for ultrasound-driven autonomous microrobots</a></div><div class="meta">Nature Machine Intelligence · 2025-06-26</div></li>
-<li><div class="paper"><a href="https://doi.org/10.1038/s41467-025-57871-x">Light-driven plasmonic microrobot for nanoparticle manipulation</a></div><div class="meta">Nature Communications · 2025-03-15</div></li>
-<li><div class="paper"><a href="https://openalex.org/W4407163958">Preserving and combining knowledge in robotic lifelong reinforcement learning</a></div><div class="meta">Nature Machine Intelligence · 2025-02-05</div></li>
-<li><div class="paper"><a href="https://openalex.org/W4404462437">Sensing expectation enables simultaneous proprioception and contact detection in an intelligent soft continuum robot</a></div><div class="meta">Nature Communications · 2024-11-18</div></li>
-<li><div class="paper"><a href="https://doi.org/10.1038/s42256-024-00893-9">Wing-strain-based flight control of flapping-wing drones through reinforcement learning</a></div><div class="meta">Nature Machine Intelligence · 2024-09-20</div></li>
-<li><div class="paper"><a href="https://openalex.org/W4402372172">Electrohydraulic musculoskeletal robotic leg for agile, adaptive, yet energy-efficient locomotion</a></div><div class="meta">Nature Communications · 2024-09-09</div></li>
+    <li><div class="paper-index">01</div><div><div class="paper"><a href="http://arxiv.org/abs/2605.22812v1">GesVLA: Gesture-Aware Vision-Language-Action Model Embedded Representations</a></div><div class="meta">arXiv · 2026-05-21</div></div></li>
+<li><div class="paper-index">02</div><div><div class="paper"><a href="http://arxiv.org/abs/2605.21976v1">TacO: Benchmarking Tactile Sensors for Object Manipulation</a></div><div class="meta">arXiv · 2026-05-21</div></div></li>
+<li><div class="paper-index">03</div><div><div class="paper"><a href="https://openalex.org/W4412743782">Slip-actuated bionic tactile sensing system with dynamic DC generator integrated E-textile for dexterous robotic manipulation</a></div><div class="meta">Nature Communications · 2025-07-30</div></div></li>
+<li><div class="paper-index">04</div><div><div class="paper"><a href="https://openalex.org/W4412488871">A collective intelligence model for swarm robotics applications</a></div><div class="meta">Nature Communications · 2025-07-17</div></div></li>
+<li><div class="paper-index">05</div><div><div class="paper"><a href="https://doi.org/10.1038/s42256-025-01054-2">Model-based reinforcement learning for ultrasound-driven autonomous microrobots</a></div><div class="meta">Nature Machine Intelligence · 2025-06-26</div></div></li>
+<li><div class="paper-index">06</div><div><div class="paper"><a href="https://doi.org/10.1038/s41467-025-57871-x">Light-driven plasmonic microrobot for nanoparticle manipulation</a></div><div class="meta">Nature Communications · 2025-03-15</div></div></li>
+<li><div class="paper-index">07</div><div><div class="paper"><a href="https://openalex.org/W4407163958">Preserving and combining knowledge in robotic lifelong reinforcement learning</a></div><div class="meta">Nature Machine Intelligence · 2025-02-05</div></div></li>
+<li><div class="paper-index">08</div><div><div class="paper"><a href="https://openalex.org/W4404462437">Sensing expectation enables simultaneous proprioception and contact detection in an intelligent soft continuum robot</a></div><div class="meta">Nature Communications · 2024-11-18</div></div></li>
+<li><div class="paper-index">09</div><div><div class="paper"><a href="https://doi.org/10.1038/s42256-024-00893-9">Wing-strain-based flight control of flapping-wing drones through reinforcement learning</a></div><div class="meta">Nature Machine Intelligence · 2024-09-20</div></div></li>
+<li><div class="paper-index">10</div><div><div class="paper"><a href="https://openalex.org/W4402372172">Electrohydraulic musculoskeletal robotic leg for agile, adaptive, yet energy-efficient locomotion</a></div><div class="meta">Nature Communications · 2024-09-09</div></div></li>
   </ol>
 </section>
 <section class="issue">
   <div class="issue-head">
+    <div class="issue-date">05-23</div>
     <h2 class="issue-title"><a href="2026-05-23/">Paper Radar · 2026-05-23</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 7</div>
   </div>
   <ol>
-    <li><div class="paper"><a href="https://doi.org/10.1038/s44460-025-00006-y">Biomimetic multimodal tactile sensing enables human-like robotic perception</a></div><div class="meta">Nature Sensors · 2026-01-15</div></li>
-<li><div class="paper"><a href="https://openalex.org/W4404347492">Mormyroidea-inspired electronic skin for active non-contact three-dimensional tracking and sensing</a></div><div class="meta">Nature Communications · 2024-11-14</div></li>
-<li><div class="paper"><a href="https://openalex.org/W4403645542">Avian-inspired embodied perception in biohybrid flapping-wing robotics</a></div><div class="meta">Nature Communications · 2024-10-22</div></li>
-<li><div class="paper"><a href="https://openalex.org/W4406028065">Triboelectric tactile sensor for pressure and temperature sensing in high-temperature applications</a></div><div class="meta">Nature Communications · 2025-01-03</div></li>
-<li><div class="paper"><a href="https://openalex.org/W4392588729">Ultrafast underwater self-healing piezo-ionic elastomer via dynamic hydrophobic-hydrolytic domains</a></div><div class="meta">Nature Communications · 2024-03-08</div></li>
-<li><div class="paper"><a href="https://openalex.org/W4409738056">An interpretable approach to estimate the self-motion in fish-like robots using mode decomposition analysis</a></div><div class="meta">Nature Communications · 2025-04-24</div></li>
-<li><div class="paper"><a href="https://openalex.org/W4386285856">Champion-level drone racing using deep reinforcement learning</a></div><div class="meta">Nature · 2023-08-30</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2602.16915v1">StereoAdapter-2: Globally Structure-Consistent Underwater Stereo Depth Estimation</a></div><div class="meta">arXiv · 2026-02-18</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2512.12377v1">INDOOR-LiDAR: Bridging Simulation and Reality for Robot-Centric 360 degree Indoor LiDAR Perception -- A Robot-Centric Hybrid Dataset</a></div><div class="meta">arXiv · 2025-12-13</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2603.04531v2">PTLD: Sim-to-real Privileged Tactile Latent Distillation for Dexterous Manipulation</a></div><div class="meta">arXiv · 2026-03-04</div></li>
+    <li><div class="paper-index">01</div><div><div class="paper"><a href="https://doi.org/10.1038/s44460-025-00006-y">Biomimetic multimodal tactile sensing enables human-like robotic perception</a></div><div class="meta">Nature Sensors · 2026-01-15</div></div></li>
+<li><div class="paper-index">02</div><div><div class="paper"><a href="https://openalex.org/W4404347492">Mormyroidea-inspired electronic skin for active non-contact three-dimensional tracking and sensing</a></div><div class="meta">Nature Communications · 2024-11-14</div></div></li>
+<li><div class="paper-index">03</div><div><div class="paper"><a href="https://openalex.org/W4403645542">Avian-inspired embodied perception in biohybrid flapping-wing robotics</a></div><div class="meta">Nature Communications · 2024-10-22</div></div></li>
+<li><div class="paper-index">04</div><div><div class="paper"><a href="https://openalex.org/W4406028065">Triboelectric tactile sensor for pressure and temperature sensing in high-temperature applications</a></div><div class="meta">Nature Communications · 2025-01-03</div></div></li>
+<li><div class="paper-index">05</div><div><div class="paper"><a href="https://openalex.org/W4392588729">Ultrafast underwater self-healing piezo-ionic elastomer via dynamic hydrophobic-hydrolytic domains</a></div><div class="meta">Nature Communications · 2024-03-08</div></div></li>
+<li><div class="paper-index">06</div><div><div class="paper"><a href="https://openalex.org/W4409738056">An interpretable approach to estimate the self-motion in fish-like robots using mode decomposition analysis</a></div><div class="meta">Nature Communications · 2025-04-24</div></div></li>
+<li><div class="paper-index">07</div><div><div class="paper"><a href="https://openalex.org/W4386285856">Champion-level drone racing using deep reinforcement learning</a></div><div class="meta">Nature · 2023-08-30</div></div></li>
+<li><div class="paper-index">08</div><div><div class="paper"><a href="http://arxiv.org/abs/2602.16915v1">StereoAdapter-2: Globally Structure-Consistent Underwater Stereo Depth Estimation</a></div><div class="meta">arXiv · 2026-02-18</div></div></li>
+<li><div class="paper-index">09</div><div><div class="paper"><a href="http://arxiv.org/abs/2512.12377v1">INDOOR-LiDAR: Bridging Simulation and Reality for Robot-Centric 360 degree Indoor LiDAR Perception -- A Robot-Centric Hybrid Dataset</a></div><div class="meta">arXiv · 2025-12-13</div></div></li>
+<li><div class="paper-index">10</div><div><div class="paper"><a href="http://arxiv.org/abs/2603.04531v2">PTLD: Sim-to-real Privileged Tactile Latent Distillation for Dexterous Manipulation</a></div><div class="meta">arXiv · 2026-03-04</div></div></li>
   </ol>
 </section>
 <section class="issue">
   <div class="issue-head">
+    <div class="issue-date">05-22</div>
     <h2 class="issue-title"><a href="2026-05-22/">Paper Radar · 2026-05-22</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 4</div>
   </div>
   <ol>
-    <li><div class="paper"><a href="https://doi.org/10.1038/s41467-026-73216-8">Synthetic materials trained tactile sensing enables quantitative perception of Young’s modulus and Poisson’s ratio</a></div><div class="meta">Nature Communications · 2026-05-16</div></li>
-<li><div class="paper"><a href="https://doi.org/10.1038/s41598-026-53476-6">Soft microfingers with flexible tactile sensor using liquid metal for in situ evaluation of cellular spheroid stiffness</a></div><div class="meta">Scientific Reports · 2026-05-20</div></li>
-<li><div class="paper"><a href="https://doi.org/10.1038/s41598-026-49999-7">Role of interpersonal tactile and visual interaction in modulating postural sway and enhancing stability</a></div><div class="meta">Scientific Reports · 2026-05-14</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2602.19850v1">TactiVerse: Generalizing Multi-Point Tactile Sensing in Soft Robotics Using Single-Point Data</a></div><div class="meta">arXiv · 2026-02-23</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2603.19543v1">Zero Shot Deformation Reconstruction for Soft Robots Using a Flexible Sensor Array and Cage Based 3D Gaussian Modeling</a></div><div class="meta">arXiv · 2026-03-20</div></li>
-<li><div class="paper"><a href="https://doi.org/10.1038/s44182-026-00081-4">All eyes, no IMU: learning flight attitude from vision alone</a></div><div class="meta">npj Robotics · 2026-03-17</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2602.16846v1">Sound of Touch: Active Acoustic Tactile Sensing via String Vibrations</a></div><div class="meta">arXiv · 2026-02-18</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2603.14880v1">RealVLG-R1: A Large-Scale Real-World Visual-Language Grounding Benchmark for Robotic Perception and Manipulation</a></div><div class="meta">arXiv · 2026-03-16</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2602.16915v1">StereoAdapter-2: Globally Structure-Consistent Underwater Stereo Depth Estimation</a></div><div class="meta">arXiv · 2026-02-18</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2603.04531v2">PTLD: Sim-to-real Privileged Tactile Latent Distillation for Dexterous Manipulation</a></div><div class="meta">arXiv · 2026-03-04</div></li>
+    <li><div class="paper-index">01</div><div><div class="paper"><a href="https://doi.org/10.1038/s41467-026-73216-8">Synthetic materials trained tactile sensing enables quantitative perception of Young’s modulus and Poisson’s ratio</a></div><div class="meta">Nature Communications · 2026-05-16</div></div></li>
+<li><div class="paper-index">02</div><div><div class="paper"><a href="https://doi.org/10.1038/s41598-026-53476-6">Soft microfingers with flexible tactile sensor using liquid metal for in situ evaluation of cellular spheroid stiffness</a></div><div class="meta">Scientific Reports · 2026-05-20</div></div></li>
+<li><div class="paper-index">03</div><div><div class="paper"><a href="https://doi.org/10.1038/s41598-026-49999-7">Role of interpersonal tactile and visual interaction in modulating postural sway and enhancing stability</a></div><div class="meta">Scientific Reports · 2026-05-14</div></div></li>
+<li><div class="paper-index">04</div><div><div class="paper"><a href="http://arxiv.org/abs/2602.19850v1">TactiVerse: Generalizing Multi-Point Tactile Sensing in Soft Robotics Using Single-Point Data</a></div><div class="meta">arXiv · 2026-02-23</div></div></li>
+<li><div class="paper-index">05</div><div><div class="paper"><a href="http://arxiv.org/abs/2603.19543v1">Zero Shot Deformation Reconstruction for Soft Robots Using a Flexible Sensor Array and Cage Based 3D Gaussian Modeling</a></div><div class="meta">arXiv · 2026-03-20</div></div></li>
+<li><div class="paper-index">06</div><div><div class="paper"><a href="https://doi.org/10.1038/s44182-026-00081-4">All eyes, no IMU: learning flight attitude from vision alone</a></div><div class="meta">npj Robotics · 2026-03-17</div></div></li>
+<li><div class="paper-index">07</div><div><div class="paper"><a href="http://arxiv.org/abs/2602.16846v1">Sound of Touch: Active Acoustic Tactile Sensing via String Vibrations</a></div><div class="meta">arXiv · 2026-02-18</div></div></li>
+<li><div class="paper-index">08</div><div><div class="paper"><a href="http://arxiv.org/abs/2603.14880v1">RealVLG-R1: A Large-Scale Real-World Visual-Language Grounding Benchmark for Robotic Perception and Manipulation</a></div><div class="meta">arXiv · 2026-03-16</div></div></li>
+<li><div class="paper-index">09</div><div><div class="paper"><a href="http://arxiv.org/abs/2602.16915v1">StereoAdapter-2: Globally Structure-Consistent Underwater Stereo Depth Estimation</a></div><div class="meta">arXiv · 2026-02-18</div></div></li>
+<li><div class="paper-index">10</div><div><div class="paper"><a href="http://arxiv.org/abs/2603.04531v2">PTLD: Sim-to-real Privileged Tactile Latent Distillation for Dexterous Manipulation</a></div><div class="meta">arXiv · 2026-03-04</div></div></li>
   </ol>
 </section>
 <section class="issue">
   <div class="issue-head">
+    <div class="issue-date">05-20</div>
     <h2 class="issue-title"><a href="2026-05-20/">Paper Radar · 2026-05-20</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 2</div>
   </div>
   <ol>
-    <li><div class="paper"><a href="https://doi.org/10.1038/s41467-026-73216-8">Synthetic materials trained tactile sensing enables quantitative perception of Young’s modulus and Poisson’s ratio</a></div><div class="meta">Nature Communications · 2026-05-16</div></li>
-<li><div class="paper"><a href="https://doi.org/10.1038/s41467-026-73000-8">Soft tactile chip with in-situ sensing for haptic rendering and reverse feedback enhanced gross to fine teleoperation</a></div><div class="meta">Nature Communications · 2026-05-11</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2602.19850v1">TactiVerse: Generalizing Multi-Point Tactile Sensing in Soft Robotics Using Single-Point Data</a></div><div class="meta">arXiv · 2026-02-23</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2603.19543v1">Zero Shot Deformation Reconstruction for Soft Robots Using a Flexible Sensor Array and Cage Based 3D Gaussian Modeling</a></div><div class="meta">arXiv · 2026-03-20</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2602.16846v1">Sound of Touch: Active Acoustic Tactile Sensing via String Vibrations</a></div><div class="meta">arXiv · 2026-02-18</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2603.09745v1">Caterpillar-Inspired Spring-Based Compressive Continuum Robot for Bristle-based Exploration</a></div><div class="meta">arXiv · 2026-03-10</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2604.08443v1">A Soft Robotic Interface for Chick-Robot Affective Interactions</a></div><div class="meta">arXiv · 2026-04-09</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2603.18370v1">Contact Status Recognition and Slip Detection with a Bio-inspired Tactile Hand</a></div><div class="meta">arXiv · 2026-03-19</div></li>
-<li><div class="paper"><a href="http://arxiv.org/abs/2603.14880v1">RealVLG-R1: A Large-Scale Real-World Visual-Language Grounding Benchmark for Robotic Perception and Manipulation</a></div><div class="meta">arXiv · 2026-03-16</div></li>
-<li><div class="paper"><a href="https://arxiv.org/abs/2603.10059">Model-Free Co-Optimization of Manufacturable Sensor Layouts and Deformation Proprioception</a></div><div class="meta">arXiv · 2026-03-09</div></li>
+    <li><div class="paper-index">01</div><div><div class="paper"><a href="https://doi.org/10.1038/s41467-026-73216-8">Synthetic materials trained tactile sensing enables quantitative perception of Young’s modulus and Poisson’s ratio</a></div><div class="meta">Nature Communications · 2026-05-16</div></div></li>
+<li><div class="paper-index">02</div><div><div class="paper"><a href="https://doi.org/10.1038/s41467-026-73000-8">Soft tactile chip with in-situ sensing for haptic rendering and reverse feedback enhanced gross to fine teleoperation</a></div><div class="meta">Nature Communications · 2026-05-11</div></div></li>
+<li><div class="paper-index">03</div><div><div class="paper"><a href="http://arxiv.org/abs/2602.19850v1">TactiVerse: Generalizing Multi-Point Tactile Sensing in Soft Robotics Using Single-Point Data</a></div><div class="meta">arXiv · 2026-02-23</div></div></li>
+<li><div class="paper-index">04</div><div><div class="paper"><a href="http://arxiv.org/abs/2603.19543v1">Zero Shot Deformation Reconstruction for Soft Robots Using a Flexible Sensor Array and Cage Based 3D Gaussian Modeling</a></div><div class="meta">arXiv · 2026-03-20</div></div></li>
+<li><div class="paper-index">05</div><div><div class="paper"><a href="http://arxiv.org/abs/2602.16846v1">Sound of Touch: Active Acoustic Tactile Sensing via String Vibrations</a></div><div class="meta">arXiv · 2026-02-18</div></div></li>
+<li><div class="paper-index">06</div><div><div class="paper"><a href="http://arxiv.org/abs/2603.09745v1">Caterpillar-Inspired Spring-Based Compressive Continuum Robot for Bristle-based Exploration</a></div><div class="meta">arXiv · 2026-03-10</div></div></li>
+<li><div class="paper-index">07</div><div><div class="paper"><a href="http://arxiv.org/abs/2604.08443v1">A Soft Robotic Interface for Chick-Robot Affective Interactions</a></div><div class="meta">arXiv · 2026-04-09</div></div></li>
+<li><div class="paper-index">08</div><div><div class="paper"><a href="http://arxiv.org/abs/2603.18370v1">Contact Status Recognition and Slip Detection with a Bio-inspired Tactile Hand</a></div><div class="meta">arXiv · 2026-03-19</div></div></li>
+<li><div class="paper-index">09</div><div><div class="paper"><a href="http://arxiv.org/abs/2603.14880v1">RealVLG-R1: A Large-Scale Real-World Visual-Language Grounding Benchmark for Robotic Perception and Manipulation</a></div><div class="meta">arXiv · 2026-03-16</div></div></li>
+<li><div class="paper-index">10</div><div><div class="paper"><a href="https://arxiv.org/abs/2603.10059">Model-Free Co-Optimization of Manufacturable Sensor Layouts and Deformation Proprioception</a></div><div class="meta">arXiv · 2026-03-09</div></div></li>
   </ol>
-</section>
+</section></div>
+      <aside class="archive-panel">
+        <div class="panel-label">Paper Radar · Journal Archive</div>
+        <h2 class="panel-title">研究线索<br>时间轴</h2>
+        <div class="panel-stat"><strong>4</strong><span>已归档期数</span></div>
+        <div class="panel-stat"><strong>40</strong><span>累计推荐论文</span></div>
+        <div class="panel-stat"><strong>21</strong><span>正式来源论文</span></div>
+        <div class="panel-note">每一期都是独立永久链接，邮件中的旧链接不会被 latest 覆盖。</div>
+      </aside>
     </div>
   </main>
 </body>
