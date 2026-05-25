@@ -16,21 +16,21 @@
 - True novelty: 真正新意不是增加一个手势分类器，而是让手势直接进入 VLA 的表征和动作生成通路。
 - Evidence: arXiv 预印本；摘要给出 gesture-aware VLA、dual-VLM、手势数据生成和两阶段训练策略。
 
-## 2. TacO: Benchmarking Tactile Sensors for Object Manipulation
+## 2. Bidirectional Optical sensors for Actuation Tracking (BOAT) in soft lattice systems
 - Venue: arXiv
-- Published: 2026-05-21
+- Published: 2026-05-18
 - Type: direct
-- Tags: manipulation
-- Score: 0.505
-- Core insight: TacO 的价值在于把触觉传感器评价从器件指标转到操作任务表现，直接回答哪种触觉适合哪类操作。
-- Problem frame: 大家普遍认为触觉有用，但缺少跨传感模态、跨任务的系统实证，导致机器人触觉选型仍靠经验。
-- First principles: 触觉传感器的空间分辨率、剪切敏感性、摩擦和表示形式会改变策略可观测状态；任务不同，最优传感物理量也不同。
-- Mechanism: 论文比较视觉、声学、磁、阻式四类触觉，在未知质量抓放、重定向和插接任务中分别训练策略并分析传感属性对性能的作用。
-- Boundary advanced: 它把触觉研究从单点器件性能推进到策略层 benchmark，使传感器设计和机器人操作闭环可以同一尺度评估。
-- Old problem: 以往触觉论文常报告灵敏度、分辨率或单任务成功率，却很难说明跨任务泛化时传感器到底贡献什么。
-- Why it works: 以策略性能作为共同度量，可以把不同物理传感器映射到同一机器人任务空间，暴露任务-传感器匹配关系。
-- True novelty: 新意在于任务驱动的触觉传感器 benchmark，而不是提出又一个单独传感器或单任务策略。
-- Evidence: arXiv 预印本；摘要列出四类触觉传感器、三类操作任务和对分辨率、剪切、摩擦等因素的分析。
+- Tags: soft_robot
+- Score: 0.3625
+- Core insight: BOAT 的核心在于把双向光波导直接共打印进软体 lattice 单元，让结构在伸长和压缩时用相反的光强变化实现本体形变追踪。
+- Problem frame: 软体 lattice 结构形变分布复杂、缺少连续平面，传统贴片式应变/压力传感器很难稳定捕捉整体伸缩状态，也容易破坏结构柔顺性。
+- First principles: 光波导弯曲会改变传输损耗；若把两条经过图案化设计的波导放入可变形几何中，结构的压缩和伸长就会映射为可区分的光强变化。
+- Mechanism: 论文将两个椭圆几何 BOAT 波导与嵌入气动人工肌肉的 lattice 单元共打印。PAM 伸长或收缩时，波导弯曲程度改变，接收端光强随之变化，并可区分 compression 与 extension。
+- Boundary advanced: 它把软体 lattice 的传感从外贴局部应变推进到结构内嵌式双向本体感知，并进一步连接到 digital shadow 实时同步。
+- Old problem: 以往软体 lattice 机器人常依赖表面安装传感器或只检测单一弯曲/触觉信号，难以在三维格构内部可靠感知全局伸缩。
+- Why it works: lattice 的全局运动来自局部杆件弯曲与伸缩耦合；嵌入式波导处在结构变形路径中，光损耗自然成为整体形变的低维可读代理信号。
+- True novelty: 新意不是单纯使用光纤/波导传感，而是把可双向区分压缩与伸长的图案化光学传感器与软体 lattice 执行结构同体制造。
+- Evidence: arXiv 预印本；摘要报告数值仿真支持设计，并在 +50 kPa 到 -40 kPa 的 100 个连续压力循环中展示可重复校准和伸缩区分。
 
 ## 3. Slip-actuated bionic tactile sensing system with dynamic DC generator integrated E-textile for dexterous robotic manipulation
 - Venue: Nature Communications
