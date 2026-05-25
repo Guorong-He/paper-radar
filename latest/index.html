@@ -6,112 +6,223 @@
   <title>Paper Radar · 2026-05-26</title>
   <style>
     :root {
-      --bg:#08111f;
-      --panel:#0f1b2d;
-      --panel-2:#132238;
-      --text:#f8fafc;
-      --muted:#b6c2d1;
-      --line:rgba(255,255,255,.08);
-      --accent:#67e8f9;
-      --accent-2:#14b8a6;
+      color-scheme: light;
+      --paper:#f4f1e8;
+      --paper-strong:#fbfaf4;
+      --ink:#181410;
+      --ink-soft:#4a4037;
+      --muted:#73695f;
+      --line:#2a2119;
+      --line-soft:rgba(42,33,25,.24);
+      --rule:rgba(42,33,25,.44);
+      --accent:#a93522;
+      --accent-dark:#401d15;
+      --signal:#2d6d65;
     }
     * { box-sizing:border-box; }
     body {
       margin:0;
       background:
-        radial-gradient(circle at top right, rgba(103,232,249,.14), transparent 28%),
-        radial-gradient(circle at top left, rgba(20,184,166,.12), transparent 24%),
-        var(--bg);
-      color:var(--text);
-      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+        linear-gradient(90deg, var(--accent) 0 18px, transparent 18px),
+        repeating-linear-gradient(0deg, rgba(42,33,25,.026), rgba(42,33,25,.026) 1px, transparent 1px, transparent 8px),
+        var(--paper);
+      color:var(--ink);
+      font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",serif;
     }
-    main { max-width:1100px; margin:0 auto; padding:40px 20px 72px; }
-    .eyebrow { color:var(--accent); letter-spacing:.14em; text-transform:uppercase; font-size:12px; }
-    h1 { font-size:42px; line-height:1.1; margin:12px 0 14px; }
-    .lede { max-width:760px; color:var(--muted); line-height:1.8; font-size:17px; }
-    .meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
-    .pill {
+    main {
+      width:min(1150px, calc(100vw - 40px));
+      margin:0 auto;
+      padding:44px 0 78px;
+    }
+    .masthead {
+      display:grid;
+      grid-template-columns:minmax(0, 1.06fr) minmax(280px, .94fr);
+      gap:42px;
+      padding-bottom:26px;
+      border-bottom:2px solid var(--line);
+    }
+    .eyebrow {
+      color:var(--accent);
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:0;
+      text-transform:uppercase;
+    }
+    h1 {
+      max-width:620px;
+      margin:10px 0 16px;
+      font-family:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;
+      font-size:74px;
+      font-weight:700;
+      line-height:.93;
+      letter-spacing:0;
+    }
+    .lede {
+      max-width:680px;
+      color:var(--ink-soft);
+      line-height:1.8;
+      font-size:19px;
+    }
+    .issue-stats {
+      align-self:end;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:10px;
+    }
+    .stat {
+      min-height:104px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
+      background:rgba(255,255,255,.22);
+      padding:18px 15px;
+    }
+    .stat strong {
+      display:block;
+      font-size:34px;
+      line-height:1;
+      font-weight:800;
+    }
+    .stat span {
+      display:block;
+      margin-top:14px;
       color:var(--muted);
-      padding:8px 12px;
-      border-radius:999px;
+      font-size:12px;
+      letter-spacing:0;
+      text-transform:uppercase;
+    }
+    .issue-meta {
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.7;
+    }
+    .layout {
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) 360px;
+      gap:28px;
+      align-items:start;
+      margin-top:26px;
+    }
+    .filters {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:0 0 16px;
+      padding-bottom:14px;
+      border-bottom:1px solid var(--rule);
+    }
+    button.filter {
+      border:1px solid var(--line-soft);
+      background:rgba(255,255,255,.28);
+      color:var(--ink);
+      padding:8px 11px;
+      cursor:pointer;
       font-size:13px;
     }
-    .filters { display:flex; flex-wrap:wrap; gap:10px; margin:34px 0 22px; }
-    button.filter {
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      color:var(--text);
-      padding:10px 14px;
-      border-radius:999px;
-      cursor:pointer;
-    }
     button.filter.active {
-      background:linear-gradient(135deg,var(--accent-2),#0ea5e9);
-      border-color:transparent;
+      background:var(--ink);
+      border-color:var(--ink);
+      color:var(--paper-strong);
     }
-    .grid { display:grid; gap:16px; }
+    .grid { display:grid; gap:0; }
     .card {
       position:relative;
-      overflow:hidden;
-      background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.03));
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:20px;
-      transition:.18s ease;
-    }
-    .card::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background:linear-gradient(90deg, rgba(103,232,249,.12), transparent 38%);
-      opacity:.32;
+      display:grid;
+      grid-template-columns:48px minmax(0, 1fr) 70px;
+      gap:12px;
+      border-top:1px solid var(--rule);
+      padding:15px 0;
+      transition:background .16s ease;
     }
     .card:hover {
-      transform:translateY(-2px);
-      border-color:rgba(103,232,249,.35);
-      box-shadow:0 20px 55px rgba(0,0,0,.28);
+      background:rgba(255,255,255,.22);
     }
-    .card > * { position:relative; }
-    .topline { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
-    .venue { color:var(--muted); font-size:13px; margin-bottom:8px; }
-    h2 { font-size:22px; line-height:1.35; margin:0; }
-    .tags { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0; }
+    .rank {
+      color:var(--accent);
+      font-family:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;
+      font-size:26px;
+      line-height:1.05;
+    }
+    .paper-main { min-width:0; }
+    .venue {
+      color:var(--muted);
+      font-size:13px;
+      margin:0 0 7px;
+    }
+    h2 {
+      margin:0;
+      font-family:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;
+      font-size:23px;
+      line-height:1.25;
+      letter-spacing:0;
+    }
+    .score {
+      justify-self:end;
+      align-self:start;
+      border:1px solid var(--accent);
+      color:var(--accent);
+      min-width:44px;
+      padding:5px 7px;
+      text-align:center;
+      font-family:"SF Mono","Menlo",monospace;
+      font-size:12px;
+    }
+    .tags {
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin:12px 0;
+    }
     .tag {
       font-size:12px;
-      color:#cffafe;
-      background:rgba(103,232,249,.12);
-      border:1px solid rgba(103,232,249,.18);
-      padding:6px 10px;
-      border-radius:999px;
+      color:var(--accent-dark);
+      background:rgba(169,53,34,.08);
+      border:1px solid rgba(169,53,34,.2);
+      padding:5px 8px;
     }
-    .insight { color:#e2e8f0; line-height:1.75; }
-    .actions { display:flex; gap:10px; margin-top:16px; flex-wrap:wrap; }
+    .tag.source {
+      color:var(--signal);
+      background:rgba(45,109,101,.09);
+      border-color:rgba(45,109,101,.22);
+    }
+    .insight {
+      max-width:780px;
+      color:var(--ink-soft);
+      line-height:1.76;
+      font-size:16px;
+    }
+    .actions {
+      display:flex;
+      gap:8px;
+      margin-top:13px;
+      flex-wrap:wrap;
+    }
     .link, .toggle {
-      color:var(--text);
+      color:var(--ink);
       text-decoration:none;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      padding:9px 12px;
-      border-radius:999px;
+      border:1px solid var(--line-soft);
+      background:rgba(255,255,255,.24);
+      padding:8px 10px;
       cursor:pointer;
-      font-size:14px;
+      font-size:13px;
+    }
+    .toggle {
+      background:var(--ink);
+      border-color:var(--ink);
+      color:var(--paper-strong);
     }
     .details {
       display:none;
-      margin-top:18px;
-      padding-top:18px;
-      border-top:1px solid var(--line);
+      grid-column:2 / 4;
+      margin-top:16px;
+      padding:18px 0 2px;
+      border-top:1px solid var(--line-soft);
       color:var(--muted);
-      line-height:1.8;
     }
     .details.open { display:block; }
     .detail-layout {
       display:grid;
-      grid-template-columns:minmax(280px, .92fr) minmax(0, 1fr);
-      gap:18px;
+      grid-template-columns:minmax(260px, .78fr) minmax(0, 1fr);
+      gap:20px;
       align-items:start;
     }
     .figure-panel {
@@ -120,38 +231,43 @@
     }
     .analysis-panel {
       display:grid;
-      gap:10px;
+      gap:8px;
     }
     .detail-block {
-      padding:12px 14px;
-      border:1px solid rgba(255,255,255,.06);
-      background:rgba(255,255,255,.025);
-      border-radius:14px;
+      padding:12px 0;
+      border-top:1px solid rgba(42,33,25,.18);
+      color:var(--ink-soft);
+      line-height:1.74;
+      font-size:15px;
     }
-    .detail-block strong { color:var(--text); }
+    .detail-block:first-child { border-top:0; padding-top:0; }
+    .detail-block strong {
+      color:var(--ink);
+      font-weight:800;
+    }
     .key-figure {
       margin:0;
-      padding:14px;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
-      border:1px solid rgba(103,232,249,.18);
-      border-radius:20px;
-      box-shadow:0 18px 40px rgba(0,0,0,.22);
+      padding:12px;
+      background:#fff;
+      border:1px solid var(--line);
     }
     .figure-label {
       display:flex;
       justify-content:space-between;
       align-items:center;
       gap:12px;
-      color:#cffafe;
+      color:var(--accent);
       font-size:12px;
-      letter-spacing:.08em;
+      letter-spacing:0;
       text-transform:uppercase;
       margin-bottom:10px;
+      font-weight:800;
     }
     .figure-label span:last-child {
       color:var(--muted);
       letter-spacing:0;
       text-transform:none;
+      font-weight:400;
     }
     .key-figure img {
       display:block;
@@ -159,8 +275,7 @@
       max-height:520px;
       object-fit:contain;
       background:#ffffff;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.16);
+      border:1px solid rgba(42,33,25,.16);
     }
     .key-figure figcaption {
       margin-top:8px;
@@ -175,14 +290,79 @@
       place-items:center;
       text-align:center;
       color:var(--muted);
-      border:1px dashed rgba(255,255,255,.16);
-      border-radius:20px;
+      border:1px dashed var(--line-soft);
       padding:22px;
-      background:rgba(255,255,255,.025);
+      background:rgba(255,255,255,.18);
+    }
+    .editorial-panel {
+      position:sticky;
+      top:18px;
+      min-height:520px;
+      background:linear-gradient(180deg, var(--accent-dark), #17130f);
+      color:var(--paper-strong);
+      padding:26px;
+      overflow:hidden;
+    }
+    .editorial-panel::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(145deg, rgba(169,53,34,.5), transparent 38%);
+      pointer-events:none;
+    }
+    .editorial-panel > * { position:relative; }
+    .panel-label {
+      color:#d2c5b4;
+      font-size:12px;
+      letter-spacing:0;
+      text-transform:uppercase;
+    }
+    .panel-title {
+      margin:10px 0 18px;
+      font-family:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;
+      font-size:38px;
+      line-height:1;
+    }
+    .panel-tags {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:34px;
+    }
+    .panel-tag {
+      border:1px solid rgba(244,241,232,.38);
+      color:var(--paper-strong);
+      padding:7px 9px;
+      font-size:13px;
+    }
+    .panel-quote {
+      margin:0;
+      max-width:300px;
+      font-family:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;
+      font-size:20px;
+      line-height:1.7;
+    }
+    .panel-note {
+      position:absolute;
+      left:26px;
+      right:26px;
+      bottom:24px;
+      color:#d2c5b4;
+      font-size:13px;
+      line-height:1.7;
     }
     @media (max-width:700px) {
-      h1 { font-size:32px; }
-      .topline { display:block; }
+      main { width:auto; margin:0 24px 0 42px; padding-top:28px; }
+      .masthead { grid-template-columns:1fr; gap:20px; }
+      h1 { font-size:40px; line-height:1; }
+      .lede { font-size:16px; }
+      .issue-stats { grid-template-columns:repeat(3, 1fr); }
+      .stat { min-height:82px; padding:12px 10px; }
+      .layout { grid-template-columns:1fr; }
+      .editorial-panel { display:none; }
+      .card { grid-template-columns:40px minmax(0, 1fr); padding-right:54px; }
+      .score { position:absolute; right:0; top:16px; }
+      .details { grid-column:1 / 3; }
       .detail-layout { grid-template-columns:1fr; }
       .figure-panel { position:static; }
     }
@@ -190,22 +370,35 @@
 </head>
 <body>
   <main>
-    <section>
+    <section class="masthead">
+      <div>
       <div class="eyebrow">Paper Radar · Weekly Digest</div>
-      <h1>本周具身感知精选 10 篇</h1>
+      <h1>本周具身<br>感知精选</h1>
       <div class="lede">
         面向微型、仿生、软体与其他传统感知模块不易安装的平台，优先呈现真正值得继续读的工作。
       </div>
-      <div class="meta">
-        <span class="pill">2026-05-26</span>
-        <span class="pill">10 papers</span>
-        <span class="pill">8 direct</span>
-        <span class="pill">2 transferable</span>
+      <div class="issue-meta">Issue 2026-05-26 · Special platforms, embodied perception, tactile intelligence</div>
+      </div>
+      <div class="issue-stats">
+        <div class="stat"><strong>10</strong><span>papers</span></div>
+        <div class="stat"><strong>8</strong><span>direct</span></div>
+        <div class="stat"><strong>2</strong><span>transfer</span></div>
       </div>
     </section>
 
-    <section class="filters" id="filters"></section>
-    <section class="grid" id="paper-grid"></section>
+    <section class="layout">
+      <div>
+        <section class="filters" id="filters"></section>
+        <section class="grid" id="paper-grid"></section>
+      </div>
+      <aside class="editorial-panel">
+        <div class="panel-label">Paper Radar · Journal Edition</div>
+        <h2 class="panel-title">本期研究<br>线索</h2>
+        <div class="panel-tags" id="panel-tags"></div>
+        <p class="panel-quote">“结构即传感、触觉闭环、微型平台控制与多模态操作，是本期最密集的信号。”</p>
+        <div class="panel-note">10 篇论文 · 8 篇直接命中特殊机器人感知 · 2 篇可迁移前沿方法。</div>
+      </aside>
+    </section>
   </main>
 
   <script>
@@ -217,6 +410,10 @@
       micro_robot: "微型",
       bioinspired: "仿生",
       continuum: "连续体",
+      manipulation: "操作",
+      aquatic_robot: "水下",
+      swarm_robot: "群体",
+      locomotion: "运动",
       hard_to_instrument: "难布设",
       other: "其他"
     };
@@ -226,13 +423,24 @@
     };
     const filtersEl = document.getElementById("filters");
     const gridEl = document.getElementById("paper-grid");
+    const panelTagsEl = document.getElementById("panel-tags");
     const tags = ["all", ...new Set(papers.flatMap(p => p.robot_type_tags))];
     let active = "all";
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[char]));
+    }
 
     function renderFilters() {
       filtersEl.innerHTML = tags.map(tag => `
         <button class="filter ${tag === active ? "active" : ""}" data-tag="${tag}">
-          ${tagLabels[tag] || tag}
+          ${escapeHtml(tagLabels[tag] || tag)}
         </button>
       `).join("");
       filtersEl.querySelectorAll("button").forEach(btn => {
@@ -244,50 +452,58 @@
       });
     }
 
+    function renderPanelTags() {
+      panelTagsEl.innerHTML = tags
+        .filter(tag => tag !== "all")
+        .slice(0, 8)
+        .map(tag => `<span class="panel-tag">${escapeHtml(tagLabels[tag] || tag)}</span>`)
+        .join("");
+    }
+
     function renderCards() {
       const visible = papers
         .map((paper, originalIdx) => ({ ...paper, originalIdx }))
         .filter(p => active === "all" || p.robot_type_tags.includes(active));
       gridEl.innerHTML = visible.map((paper) => `
         <article class="card">
-          <div class="topline">
-            <div>
-              <div class="venue">#${String(paper.originalIdx + 1).padStart(2, "0")} · ${paper.venue} · ${paper.published_at}</div>
-              <h2>${paper.title}</h2>
+          <div class="rank">${String(paper.originalIdx + 1).padStart(2, "0")}</div>
+          <div class="paper-main">
+            <div class="venue">${escapeHtml(paper.venue)} · ${escapeHtml(paper.published_at)} · ${paper.paper_type === "direct" ? "直接命中" : "可迁移"}</div>
+            <h2>${escapeHtml(paper.title)}</h2>
+            <div class="tags">
+              <span class="tag source">${escapeHtml(sourceLabels[paper.source_kind] || paper.source_kind)}</span>
+              ${paper.robot_type_tags.map(tag => `<span class="tag">${escapeHtml(tagLabels[tag] || tag)}</span>`).join("")}
+            </div>
+            <div class="insight">${escapeHtml(paper.analysis.core_insight)}</div>
+            <div class="actions">
+              <button class="toggle">展开深读</button>
+              ${paper.url ? `<a class="link" href="${escapeHtml(paper.url)}" target="_blank" rel="noreferrer">原文</a>` : ""}
+              ${paper.pdf_url ? `<a class="link" href="${escapeHtml(paper.pdf_url)}" target="_blank" rel="noreferrer">PDF</a>` : ""}
             </div>
           </div>
-          <div class="tags">
-            <span class="tag">${sourceLabels[paper.source_kind]}</span>
-            ${paper.robot_type_tags.map(tag => `<span class="tag">${tagLabels[tag] || tag}</span>`).join("")}
-          </div>
-          <div class="insight">${paper.analysis.core_insight}</div>
-          <div class="actions">
-            <button class="toggle">展开深读</button>
-            ${paper.url ? `<a class="link" href="${paper.url}" target="_blank" rel="noreferrer">原文</a>` : ""}
-            ${paper.pdf_url ? `<a class="link" href="${paper.pdf_url}" target="_blank" rel="noreferrer">PDF</a>` : ""}
-          </div>
+          <div class="score">${Math.round(paper.score * 100)}</div>
           <div class="details">
             <div class="detail-layout">
               <aside class="figure-panel">
                 ${paper.key_figure_path ? `
                   <figure class="key-figure">
                     <div class="figure-label"><span>Key Figure</span><span>用于快速抓核心机制</span></div>
-                    <img src="${paper.key_figure_path}" alt="key figure">
-                    <figcaption>${paper.key_figure_caption || "关键图"}</figcaption>
+                    <img src="${escapeHtml(paper.key_figure_path)}" alt="key figure">
+                    <figcaption>${escapeHtml(paper.key_figure_caption || "关键图")}</figcaption>
                   </figure>
                 ` : `
                   <div class="no-figure">暂无可抽取关键图<br>通常是正式出版页面未开放 PDF 或文本层不可检索。</div>
                 `}
               </aside>
               <div class="analysis-panel">
-                <div class="detail-block"><strong>问题重述：</strong>${paper.analysis.problem_frame}</div>
-                <div class="detail-block"><strong>第一性原理：</strong>${paper.analysis.first_principles}</div>
-                <div class="detail-block"><strong>生效机制：</strong>${paper.analysis.mechanism}</div>
-                <div class="detail-block"><strong>推进的边界：</strong>${paper.analysis.boundary_advanced}</div>
-                <div class="detail-block"><strong>解决的老问题：</strong>${paper.analysis.old_problem}</div>
-                <div class="detail-block"><strong>为什么成立：</strong>${paper.analysis.why_it_works}</div>
-                <div class="detail-block"><strong>真正新意：</strong>${paper.analysis.true_novelty}</div>
-                <div class="detail-block"><strong>证据：</strong>${paper.analysis.evidence_summary}</div>
+                <div class="detail-block"><strong>问题重述：</strong>${escapeHtml(paper.analysis.problem_frame)}</div>
+                <div class="detail-block"><strong>第一性原理：</strong>${escapeHtml(paper.analysis.first_principles)}</div>
+                <div class="detail-block"><strong>生效机制：</strong>${escapeHtml(paper.analysis.mechanism)}</div>
+                <div class="detail-block"><strong>推进的边界：</strong>${escapeHtml(paper.analysis.boundary_advanced)}</div>
+                <div class="detail-block"><strong>解决的老问题：</strong>${escapeHtml(paper.analysis.old_problem)}</div>
+                <div class="detail-block"><strong>为什么成立：</strong>${escapeHtml(paper.analysis.why_it_works)}</div>
+                <div class="detail-block"><strong>真正新意：</strong>${escapeHtml(paper.analysis.true_novelty)}</div>
+                <div class="detail-block"><strong>证据：</strong>${escapeHtml(paper.analysis.evidence_summary)}</div>
               </div>
             </div>
           </div>
@@ -302,6 +518,7 @@
       });
     }
 
+    renderPanelTags();
     renderFilters();
     renderCards();
   </script>
