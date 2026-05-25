@@ -95,6 +95,25 @@
       font-size:13px;
       line-height:1.7;
     }
+    .issue-links {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:16px;
+    }
+    .issue-link {
+      color:var(--ink);
+      text-decoration:none;
+      border:1px solid var(--line-soft);
+      background:rgba(255,255,255,.24);
+      padding:8px 10px;
+      font-size:13px;
+    }
+    .issue-link.primary {
+      background:var(--ink);
+      border-color:var(--ink);
+      color:var(--paper-strong);
+    }
     .layout {
       display:grid;
       grid-template-columns:minmax(0, 1fr) 360px;
@@ -378,6 +397,9 @@
         面向微型、仿生、软体与其他传统感知模块不易安装的平台，优先呈现真正值得继续读的工作。
       </div>
       <div class="issue-meta">Issue 2026-05-26 · Special platforms, embodied perception, tactile intelligence</div>
+      <nav class="issue-links" aria-label="Paper Radar navigation">
+        <a class="issue-link primary" id="archive-link" href="../issues/">历史推荐</a>
+      </nav>
       </div>
       <div class="issue-stats">
         <div class="stat"><strong>10</strong><span>papers</span></div>
@@ -424,6 +446,7 @@
     const filtersEl = document.getElementById("filters");
     const gridEl = document.getElementById("paper-grid");
     const panelTagsEl = document.getElementById("panel-tags");
+    const archiveLink = document.getElementById("archive-link");
     const tags = ["all", ...new Set(papers.flatMap(p => p.robot_type_tags))];
     let active = "all";
 
@@ -450,6 +473,11 @@
           renderCards();
         });
       });
+    }
+
+    function configureNavigation() {
+      const isPermanentIssue = /\/issues\/\d{4}-\d{2}-\d{2}\/(?:index\.html)?$/.test(window.location.pathname);
+      archiveLink.href = isPermanentIssue ? "../" : "../issues/";
     }
 
     function renderPanelTags() {
@@ -518,6 +546,7 @@
       });
     }
 
+    configureNavigation();
     renderPanelTags();
     renderFilters();
     renderCards();
