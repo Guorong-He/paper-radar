@@ -1,161 +1,161 @@
 # Paper Radar Digest
 
-## 1. GesVLA: Gesture-Aware Vision-Language-Action Model Embedded Representations
+## 1. RDGen: Demonstration Generation for High-Quality Robot Learning via Reinforcement Learning
 - Venue: arXiv
-- Published: 2026-05-21
-- Type: direct
-- Tags: manipulation
-- Score: 0.7175
-- Core insight: GesVLA 的核心在于把手势从外部提示变成 VLA 模型潜空间中的并行指令模态，用来消解多物体场景里的空间歧义。
-- Problem frame: 通用机器人操作模型主要依赖文本指令，但文本很难精确指向相似物体或局部空间关系，导致感知-动作绑定不稳定。
-- First principles: 操作指令需要同时约束目标语义和空间指向；手势提供低歧义的空间先验，若进入动作生成潜空间，就能直接改变策略分布。
-- Mechanism: 论文将手势特征嵌入 VLA latent space，并用双 VLM 架构把手势表征、高层推理和低层动作生成耦合起来，同时用渲染手模型扩展数据。
-- Boundary advanced: 它把 VLA 从语言主导推进到语言-视觉-手势协同，使人类自然交互信号能参与机器人操作策略。
-- Old problem: 传统 VLA 在复杂桌面场景中常知道要做什么，却不知道用户具体指的是哪一个对象或哪一片区域。
-- Why it works: 手势是连续空间约束，文本是离散语义约束；二者在潜空间融合后，模型能同时利用语义类别和指向几何。
-- True novelty: 真正新意不是增加一个手势分类器，而是让手势直接进入 VLA 的表征和动作生成通路。
-- Evidence: arXiv 预印本；摘要给出 gesture-aware VLA、dual-VLM、手势数据生成和两阶段训练策略。
-
-## 2. Bidirectional Optical sensors for Actuation Tracking (BOAT) in soft lattice systems
-- Venue: arXiv
-- Published: 2026-05-18
-- Type: direct
-- Tags: soft_robot
-- Score: 0.3625
-- Core insight: BOAT 的核心在于把双向光波导直接共打印进软体 lattice 单元，让结构在伸长和压缩时用相反的光强变化实现本体形变追踪。
-- Problem frame: 软体 lattice 结构形变分布复杂、缺少连续平面，传统贴片式应变/压力传感器很难稳定捕捉整体伸缩状态，也容易破坏结构柔顺性。
-- First principles: 光波导弯曲会改变传输损耗；若把两条经过图案化设计的波导放入可变形几何中，结构的压缩和伸长就会映射为可区分的光强变化。
-- Mechanism: 论文将两个椭圆几何 BOAT 波导与嵌入气动人工肌肉的 lattice 单元共打印。PAM 伸长或收缩时，波导弯曲程度改变，接收端光强随之变化，并可区分 compression 与 extension。
-- Boundary advanced: 它把软体 lattice 的传感从外贴局部应变推进到结构内嵌式双向本体感知，并进一步连接到 digital shadow 实时同步。
-- Old problem: 以往软体 lattice 机器人常依赖表面安装传感器或只检测单一弯曲/触觉信号，难以在三维格构内部可靠感知全局伸缩。
-- Why it works: lattice 的全局运动来自局部杆件弯曲与伸缩耦合；嵌入式波导处在结构变形路径中，光损耗自然成为整体形变的低维可读代理信号。
-- True novelty: 新意不是单纯使用光纤/波导传感，而是把可双向区分压缩与伸长的图案化光学传感器与软体 lattice 执行结构同体制造。
-- Evidence: arXiv 预印本；摘要报告数值仿真支持设计，并在 +50 kPa 到 -40 kPa 的 100 个连续压力循环中展示可重复校准和伸缩区分。
-
-## 3. Slip-actuated bionic tactile sensing system with dynamic DC generator integrated E-textile for dexterous robotic manipulation
-- Venue: Nature Communications
-- Published: 2025-07-30
-- Type: direct
-- Tags: bioinspired, manipulation
-- Score: 0.7743
-- Core insight: 这篇把滑移触发的自供能 E-textile 触觉系统嵌入机器人手指，实现快速滑移检测和抓取闭环。
-- Problem frame: 灵巧操作需要同时感知法向力、剪切和滑移，但人工触觉系统常难以像人手一样捕捉快速动态接触。
-- First principles: 滑移会产生切向微运动和电荷/力学变化，快速适应通道对动态变化敏感，慢适应通道负责持续法向载荷，两者互补。
-- Mechanism: 系统将动态直流发生器集成进可拉伸电子织物，并与法向力传感器协同，模拟快适应和慢适应机械感受器。
-- Boundary advanced: 它把触觉从静态压力读数推进到动态滑移闭环，让机器人手指能在接触失稳前调整抓取。
-- Old problem: 普通触觉皮肤对滑移响应慢或只给出局部压力图，难以在物体即将滑落时提供低延迟反馈。
-- Why it works: 滑移本身驱动电信号，减少外部供能和复杂读出；与法向力组合后，系统能区分握紧不足和真实接触变化。
-- True novelty: 新意在于 slip-actuated 自供能触觉与机器人手指结构/控制闭环的一体化，而不是单独展示材料传感。
-- Evidence: Nature Communications 正式论文；摘要明确报告动态 DC generator E-textile、机械感受器仿生、机器人手指和滑移/抓取监测。
-
-## 4. A collective intelligence model for swarm robotics applications
-- Venue: Nature Communications
-- Published: 2025-07-17
-- Type: direct
-- Tags: aquatic_robot, swarm_robot
-- Score: 0.8726
-- Core insight: 这篇把群智能模型做成可用于真实多机器人控制的协作逻辑，而不只是计算优化算法。
-- Problem frame: 群智能算法很多，但实际机器人群体通常规模小、通信有限、参数难调，导致理论方法难落地。
-- First principles: 多机器人协作本质上是局部信息下的分布式状态收敛；若模型同时具备优化搜索和共识控制性质，就能驱动实体机器人群。
-- Mechanism: 作者融合元启发式优化和共识理论，提出 Swarm Cooperation Model，既可作为虚拟优化器，也可作为 vehicle controller。
-- Boundary advanced: 边界从仿真优化函数推进到 AUV 群体在复杂海洋环境中的污染源定位控制。
-- Old problem: 许多 swarm 方法依赖大量 agent 或高维参数调参，在小规模真实机器人系统中不稳。
-- Why it works: 共识结构增强小群体可靠性，优化项提供目标搜索方向，使系统能在有限个体数量下保持可控协作。
-- True novelty: 新意在于把 swarm intelligence 设计为低参数、可控制器化的协作模型，并给出海洋 AUV 应用概念验证。
-- Evidence: Nature Communications 正式论文；摘要报告 33 个 landscape 中 22 个达到更高或相当成功率，并展示 AUV 污染源定位控制。
-
-## 5. Model-based reinforcement learning for ultrasound-driven autonomous microrobots
-- Venue: Nature Machine Intelligence
-- Published: 2025-06-26
-- Type: direct
-- Tags: micro_robot
-- Score: 0.7073
-- Core insight: 这篇用 model-based RL 控制超声驱动微机器人，核心是用 imagined environments 提升少数据物理系统中的学习效率。
-- Problem frame: 微机器人控制动作空间高、物理实验慢、环境差异大，传统 RL 在真实系统中样本效率和泛化都不足。
-- First principles: 微尺度推进受流体、声场和边界条件强耦合影响；若模型能预测局部转移，就可以在内部想象中扩展经验而不消耗真实实验。
-- Mechanism: 系统从图像反馈中学习动力学模型和控制策略，在仿真预训练后迁移到超声驱动微机器人，实现非侵入式 AI 控制。
-- Boundary advanced: 边界从人工/经典控制推进到可自适应的微机器人强化学习控制，尤其适合高维声场驱动。
-- Old problem: 超声微机器人对人工操作者要求高，经典控制难处理复杂环境，纯 model-free RL 又太耗真实样本。
-- Why it works: 模型式 RL 把有限真实数据转化为大量想象轨迹，减少物理试错；图像闭环提供可观测状态，支持快速策略更新。
-- True novelty: 新意在于把 sample-efficient model-based RL 实装到超声驱动自治微机器人，而不是只做宏观机器人仿真。
-- Evidence: Nature Machine Intelligence 正式论文；摘要给出 ultrasound-driven microrobot、model-based RL、imagined environments 和 sim-to-real 转换。
-
-## 6. Light-driven plasmonic microrobot for nanoparticle manipulation
-- Venue: Nature Communications
-- Published: 2025-03-15
-- Type: transferable
-- Tags: micro_robot
-- Score: 0.5088
-- Core insight: 这篇把光驱动 plasmonic microdrone 加上可移动纳米镊子，使其从运动平台变成能搬运单纳米颗粒的微机器人。
-- Problem frame: 传统光镊能困住纳米颗粒，但通常固定在光场/基底上；微型游动平台又缺少精细操作端执行器。
-- First principles: 局域等离激元近场可产生纳米尺度 trapping 势阱；若势阱和微型推进器同体移动，就能实现移动式单颗粒操作。
-- Mechanism: 作者把 resonant cross-antenna nano-tweezer 集成到 light-driven microdrone，用圆偏振光同时控制马达和稳定捕获纳米颗粒。
-- Boundary advanced: 边界从微尺度移动推进到微/纳操作，把水相环境中的单纳米颗粒运输和递送纳入机器人能力。
-- Old problem: 固定 plasmonic nano-tweezers 缺少机动性，移动微机器人又难以在纳米尺度稳定抓取目标。
-- Why it works: 等离激元热点提供强局域捕获，光驱平台提供二维机动，二者组合让捕获势阱随机器人移动。
-- True novelty: 真正新意在于移动式 plasmonic nano-tweezer 微机器人，而非单独的光驱运动或固定纳米捕获。
-- Evidence: Nature Communications 正式论文；摘要报告 all-optical transport/delivery、70 nm fluorescent nanodiamond trapping 和 microdrone platform。
-
-## 7. Preserving and combining knowledge in robotic lifelong reinforcement learning
-- Venue: Nature Machine Intelligence
-- Published: 2025-02-05
+- Published: 2026-05-29
 - Type: transferable
 - Tags: none
-- Score: 0.5588
-- Core insight: 这篇提出机器人 lifelong reinforcement learning 框架，让机器人能保存、组合并复用任务知识，而不是每个任务重新学。
-- Problem frame: 现有机器人 RL 往往在窄任务上有效，但面对连续任务流会遗忘旧知识，也难以把旧技能组合成长时程行为。
-- First principles: 长期智能需要把经验组织成可检索的知识结构；新任务若能映射到已有知识空间，就可以减少探索并组合技能。
-- Mechanism: 框架构建受 Bayesian non-parametric 启发的 knowledge space，并加入语言 embedding 提升任务语义理解，在连续一次性投喂任务中积累知识。
-- Boundary advanced: 边界从单任务 RL 推进到真实 embodied agent 的持续学习和知识组合。
-- Old problem: 机器人持续学习常受灾难性遗忘、任务表示不清和长时程组合能力不足制约。
-- Why it works: 非参数知识空间允许随任务增长扩展表示，语言 embedding 提供语义索引，策略可重用已有模块而不是重头探索。
-- True novelty: 新意在于把知识保存、语义任务理解和真实机器人长时程任务组合放进一个 lifelong RL 框架。
-- Evidence: Nature Machine Intelligence 正式论文；摘要报告 continuous stream of one-time feeding tasks 和 real-world long-horizon tasks。
+- Score: 0.605
+- Core insight: RDGen 的核心是把强化学习策略从“最终控制器”改造成可规模化生产高质量机器人示范轨迹的生成器。
+- Problem frame: VLA 模型需要大量干净轨迹，但真实遥操作昂贵、慢且难覆盖长尾物体和任务变体。
+- First principles: 示范数据的价值不只在动作标签，而在状态-目标-动作之间的因果一致性；若仿真策略能稳定完成任务，再经实机筛选，轨迹就可作为训练 VLA 的结构化经验。
+- Mechanism: 系统用 VLM 解析任务对象，用 Grounding DINO 定位对象，再把仿真中训练的 RL 策略迁移到真实机器人，收集成功 rollout 作为下游 VLA 训练数据。
+- Boundary advanced: 它把机器人学习的数据瓶颈从人工遥操作推进到自动示范生成，为大规模 VLA 数据闭环提供了一条工程化路径。
+- Old problem: 过去 VLA 训练常被人类遥操作数据规模和质量限制，RL 又通常只被看作部署策略而非数据生产机制。
+- Why it works: RL 在仿真中可低成本探索并形成可执行策略，实机成功筛选过滤 sim-to-real 偏差，视觉语言解析保证轨迹与任务语义对齐。
+- True novelty: 新意不在单个 RL 或检测模块，而在把 VLM grounding、sim-to-real RL 和示范蒸馏串成可扩展的数据工厂。
+- Evidence: arXiv 预印本；摘要报告任务解析、对象定位、仿真 RL、实机 rollout 收集和用于 VLA 训练的高质量示范生成流程。
 
-## 8. Sensing expectation enables simultaneous proprioception and contact detection in an intelligent soft continuum robot
-- Venue: Nature Communications
-- Published: 2024-11-18
+## 2. Learning Controlled Separation of Small Objects Between Two Fingers with a Tactile Skin
+- Venue: arXiv
+- Published: 2026-05-29
 - Type: direct
-- Tags: soft_robot, continuum
-- Score: 0.4934
-- Core insight: 这篇用 expected-actual perception-action loop 让软连续体机器人同时做本体感知和接触检测。
-- Problem frame: 软机器人形变来源复杂，内部驱动和外部接触会混在一起，使机器人难以判断自己形状和是否碰到环境。
-- First principles: 若机器人能预测自身动作导致的期望形变，那么实际形变与期望形变的残差就编码外部接触。
-- Mechanism: 系统在每个感知循环中匹配 expected shape 与 actual shape，在传感软连续体机器人上实现形状估计、接触检测和接触方向感知。
-- Boundary advanced: 边界从被动软体传感推进到预测式主动感知，使软体机器人能在无视觉环境中分辨内部动作和外界扰动。
-- Old problem: 软机器人传感器读数高度耦合，单看形变很难判断是自己动了、被碰了，还是两者同时发生。
-- Why it works: 预测模型提供动作生成的基线，实际-期望差异自然成为外部接触观测，降低多源形变混叠。
-- True novelty: 新意在于把大脑式高层预测模型落实到软连续体机器人的本体-接触联合感知。
-- Evidence: Nature Communications 正式论文；摘要报告 1.4% 形状估计误差、0.4 s 接触检测、低于 10 度接触方向误差。
+- Tags: manipulation
+- Score: 0.55
+- Core insight: 这篇把“小物体控量分离”定义成纯触觉操作任务，证明低分辨率触觉皮肤也能支持细粒度数量控制。
+- Problem frame: 机器人从一堆小颗粒中抓取后，如何只留下指定数量，是视觉容易遮挡、力觉信号微弱、动作结果离散的难题。
+- First principles: 颗粒在两指间的接触分布会改变局部压力图；即使看不见物体，空间触觉模式也包含剩余数量和分离状态的信息。
+- Mechanism: 作者在仿真中用稀疏奖励训练策略，输入来自 fingertip tactile skin 的空间触觉读数，动作目标是逐步丢掉多余小颗粒直到达到指定数量。
+- Boundary advanced: 它把触觉操作从识别接触/滑移推进到对微小物体集合的闭环数量调节。
+- Old problem: 传统抓取多假设单物体和可见目标，对颗粒、小件、遮挡下的 in-hand sorting 支持很弱。
+- Why it works: 小颗粒数量变化会在触觉阵列上产生可学习的空间模式，RL 可以通过反复试错学习哪些微动作会减少接触数量而不完全丢失目标。
+- True novelty: 新意在于提出 controlled separation 这一具体操作能力，并把它做成无需视觉的触觉闭环策略。
+- Evidence: arXiv 预印本；摘要报告 6 mm 小颗粒、纯触觉输入、仿真 RL、传感器分辨率消融和真实系统讨论。
 
-## 9. Wing-strain-based flight control of flapping-wing drones through reinforcement learning
+## 3. Haptic Sorter: A Unified Planning Framework for Online Shape Estimation and Real-Time Pose Inference
+- Venue: arXiv
+- Published: 2026-05-29
+- Type: transferable
+- Tags: none
+- Score: 0.5425
+- Core insight: Haptic Sorter 把触觉探索、形状估计、位姿推断和操作规划放进同一个几何模型框架。
+- Problem frame: 许多操作规划默认已知物体形状和位姿，但真实场景中遮挡、视角限制和传感噪声会让几何状态持续不确定。
+- First principles: 接触点是物体边界的局部约束；主动选择下一次触碰位置，可以最大化几何信息增益并同步更新操作模型。
+- Mechanism: 系统用 Bayesian Optimization 引导触觉探索，用 superellipse 近似物体边界，用 manipulation potential 编码几何交互，并通过在线 ODE 基于触觉反馈更新位姿。
+- Boundary advanced: 它把触觉从被动状态估计推进到服务于实时规划的信息采集动作。
+- Old problem: 以往触觉感知、建模和规划常分开处理，导致形状估计慢、位姿更新滞后、规划不利用接触不确定性。
+- Why it works: BO 让有限触碰集中在最有信息的位置，几何势场把形状模型转化为可规划的交互约束，ODE 更新让位姿估计跟随实际接触变化。
+- True novelty: 真正新意是统一 haptic perception 和 manipulation planning，而不是只做一个触觉分类器或离线形状重建。
+- Evidence: arXiv 预印本；摘要报告 2D sorting task、多几何物体验证、在线形状估计和实时位姿推断。
+
+## 4. Multimodal tactile sensing fused with vision for dexterous robotic housekeeping
+- Venue: Nature Communications
+- Published: 2024-08-11
+- Type: direct
+- Tags: manipulation
+- Score: 0.6047
+- Core insight: 这篇把压力、温度、材料热属性、纹理和滑移整合进柔性触觉传感器，并与视觉融合用于家务机器人决策。
+- Problem frame: 家庭机器人需要抓易碎、湿滑、材质差异大的物体，单一压力图无法支持可靠抓取和物体理解。
+- First principles: 接触不仅有力学量，还包含热传导、表面纹理和微滑移；这些模态共同约束物体材质和抓取稳定性。
+- Mechanism: 薄膜热敏电阻柔性触觉器件输出多模态信号，包含 4 ms 快速滑移感知和 0.05 mm/s 高灵敏滑移阈值，并与视觉从底层感知到决策层融合。
+- Boundary advanced: 它把机器人 tactile-visual fusion 从演示级感知推进到面向家务操作的多模态闭环。
+- Old problem: 传统触觉皮肤响应慢、模态少，视觉又看不到接触状态，家务抓取容易压碎或滑落物体。
+- Why it works: 视觉给全局语义和几何，触觉给接触后的局部物理状态；滑移和热属性信号能快速触发抓力调整与材质判断。
+- True novelty: 新意在于把多种触觉物理量和视觉决策架构一起落实到 dexterous housekeeping，而非单独展示一个传感器指标。
+- Evidence: Nature Communications 正式论文；摘要报告多模态柔性触觉、超快滑移检测、触觉-视觉融合架构和机器人家务任务。
+
+## 5. Bionic e-skin with precise multi-directional droplet sliding sensing for enhanced robotic perception
+- Venue: Nature Communications
+- Published: 2024-07-17
+- Type: transferable
+- Tags: none
+- Score: 0.5114
+- Core insight: 这篇用自供能仿生电子皮肤精确感知液滴二维滑动方向和行为，使机器人能对液体环境做实时反馈。
+- Problem frame: 液滴、湿表面和流动液体会改变机器人接触状态，但常规电子皮肤难以像人类皮肤一样捕捉滑动方向和动态过程。
+- First principles: 液滴在表面滑动会改变接触电荷分布；若电极网络具备方向敏感几何，动态液滴轨迹可被编码为电信号序列。
+- Mechanism: 作者构建共层交错电极网络和跨接结构，利用摩擦电效应把液滴滑动转为可视化电信号，并用于方向警告和闭环控制。
+- Boundary advanced: 它把电子皮肤从固体接触/压力感知扩展到液体动态环境感知。
+- Old problem: 机器人在湿润、滴落或流体环境中常只能检测到“有液体”，难判断流向、速度和风险。
+- Why it works: 交错电极把二维轨迹分解成有时序的电荷响应，自供能读出降低了复杂供电和封装负担。
+- True novelty: 新意在于针对 liquid sliding 的二维方向感知和实时反馈，而不是普通湿度或压力传感。
+- Evidence: Nature Communications 正式论文；摘要报告 self-powered bionic droplet e-skin、二维滑动感知、实时可视反馈、流向预警和闭环控制。
+
+## 6. Learning robust autonomous navigation and locomotion for wheeled-legged robots
+- Venue: Science Robotics
+- Published: 2024-04-24
+- Type: direct
+- Tags: locomotion
+- Score: 0.6529
+- Core insight: 这篇构建了轮腿机器人从粗糙地形运动控制到城市级导航的完整层级系统。
+- Problem frame: 轮腿机器人要在城市环境中既能高效滚动，又能越障行走，还要绕开动态障碍并执行长距离路径规划。
+- First principles: 运动能力和导航决策不能分离：局部规划必须知道身体当前可通过哪些地形，底层控制也要服务于全局路径目标。
+- Mechanism: 系统结合 model-free RL 和 privileged learning 训练自适应 locomotion controller，再与 mobility-aware local planner 和城市级 large-scale planner 层级耦合。
+- Boundary advanced: 它从单一越障控制推进到轮腿机器人自主城市导航的系统集成。
+- Old problem: 很多轮腿研究只展示局部运动技能，缺少与复杂动态环境导航、长距离路径规划的一体化。
+- Why it works: RL 控制器提供跨地形稳定运动，局部导航利用机动性约束选择可执行路径，全局规划把任务尺度扩大到城市环境。
+- True novelty: 新意在于控制、局部规划和全局导航的紧耦合，而不只是一个更强的步态策略。
+- Evidence: Science Robotics 正式论文；摘要报告轮腿机器人、RL locomotion、privileged learning、局部导航和大尺度城市路径规划。
+
+## 7. Computational design of ultra-robust strain sensors for soft robot perception and autonomy
+- Venue: Nature Communications
+- Published: 2024-02-22
+- Type: direct
+- Tags: soft_robot
+- Score: 0.5173
+- Core insight: 这篇用可编程裂纹阵列和微褶皱结构，把软机器人应变传感器变成可建模、可调参且长期鲁棒的设计对象。
+- Problem frame: 软机器人传感器常受大变形、动态驱动、疲劳和噪声影响，制造后性能不可预测且难长期稳定。
+- First principles: 导电裂纹网络的电阻响应由裂纹几何和开合动力学决定；若微结构可控，传感曲线就可由物理模型预测。
+- Mechanism: 作者设计 programmed crack array within micro-crumples，使传感性能可调并可物理建模，在高应变、循环加载和动态频率下保持响应，再结合机器智能进行轨迹和地形感知。
+- Boundary advanced: 它把软机器人传感从经验材料试错推进到计算设计和模型预测制造。
+- Old problem: 以往柔性应变传感器经常指标漂亮但批间差异大、长期漂移、在真实软体运动中难校准。
+- Why it works: 可控裂纹几何把随机材料破坏转化为可设计的导电路径变化，微褶皱提供大变形缓冲和灵敏度调节。
+- True novelty: 真正新意是用计算结构设计支配传感器裂纹演化，并把它接到软机器人自治感知任务。
+- Evidence: Nature Communications 正式论文；摘要报告 50% 噪声干扰、100000 次循环、0-23 Hz 动态响应、轨迹预测小于 4% 误差。
+
+## 8. A retrofit sensing strategy for soft fluidic robots
+- Venue: Nature Communications
+- Published: 2024-01-15
+- Type: direct
+- Tags: soft_robot, manipulation
+- Score: 0.4523
+- Core insight: 这篇提出无需重做结构的 retrofit sensing：通过测量驱动软流体执行器所需的流体输入反推形变和接触状态。
+- Problem frame: 给软流体机器人嵌入独立传感器会增加制造复杂度、降低鲁棒性，还难以改造已有执行器。
+- First principles: 软执行器与环境交互时，同样的形变目标会需要不同压力/流量输入；驱动输入本身包含执行器状态和外界约束信息。
+- Mechanism: 作者把激活软执行器所需的 fluidic input 与变形状态建立关系，用同一策略 retrofitting 到多种气动软执行器和夹爪，实现尺寸、形状、粗糙度、刚度触觉感知。
+- Boundary advanced: 它把软机器人感知从额外传感器集成推进到利用执行系统自身信号的低改造方案。
+- Old problem: 传统软体传感往往需要在设计阶段嵌入传感材料，已有软体机器人很难后装感知能力。
+- Why it works: 流体驱动回路是软体结构和环境力学的共同通道；输入变化可作为形变和接触负载的代理观测。
+- True novelty: 新意在于后装式、跨执行器的 sensing strategy，而不是某个单一软体传感器材料。
+- Evidence: Nature Communications 正式论文；摘要报告 tactile sensing of size, shape, surface roughness and stiffness，并展示多种已有气动执行器/夹爪改造和闭环鲁棒性。
+
+## 9. Bioinspired soft robots for deep-sea exploration
+- Venue: Nature Communications
+- Published: 2023-11-04
+- Type: direct
+- Tags: soft_robot, bioinspired, aquatic_robot
+- Score: 0.4428
+- Core insight: 这篇综述/视角把深海生物的耐压、推进和感知策略转化为深海软机器人的设计框架。
+- Problem frame: 深海高压、低温、黑暗和复杂地形让传统刚性水下机器人需要沉重耐压壳体，限制机动性和小型化。
+- First principles: 深海生命不靠刚性抗压壳，而靠压力适应形态、柔顺材料和分布式感知在极端环境中生存。
+- Mechanism: 文章从 abyssal life 出发，总结深海软机器人的驱动、感知、供能和耐压设计策略，强调仿生柔顺结构在探索和作业中的优势。
+- Boundary advanced: 它把软机器人讨论从实验室水槽推进到深海极端环境机器人系统设计。
+- Old problem: 水下机器人长期依赖刚性耐压容器和传统推进器，难以做到轻量、贴近生物、适应复杂深海接触。
+- Why it works: 柔顺结构可把外部压力从破坏性载荷转化为可适应边界条件，仿生推进和感知能减少对笨重机械系统的依赖。
+- True novelty: 作为 Perspective，新意在于系统化组织深海软机器人设计原则，而不是提出单一器件。
+- Evidence: Nature Communications 正式论文；摘要聚焦 bioinspired deep-sea soft robots，覆盖 actuation、sensing、power、pressure resilience 等方向。
+
+## 10. Hybrid hierarchical learning for solving complex sequential tasks using the robotic manipulation network ROMAN
 - Venue: Nature Machine Intelligence
-- Published: 2024-09-20
-- Type: direct
-- Tags: flapping_wing
-- Score: 0.5482
-- Core insight: 这篇把扑翼无人机的翼应变当作飞行感知信号，用 RL 从机翼受力中推断姿态和风场并完成控制。
-- Problem frame: 小型扑翼飞行器难以携带丰富惯性/风速传感器，传统控制也难以利用机翼本身的气动反馈。
-- First principles: 机翼应变是气动力和姿态扰动的直接机械投影；如果能从应变模式反推出状态，就能把结构变成传感器。
-- Mechanism: 作者验证翼应变包含姿态角、风向和风速信息，并训练基于翼应变的强化学习飞行控制器，减少对加速度计/陀螺仪依赖。
-- Boundary advanced: 边界从外置传感飞控推进到结构感知飞控，接近昆虫 campaniform sensilla 的生物飞行机制。
-- Old problem: 扑翼无人机的控制常把机翼当执行器，忽视翼面受力中包含的高带宽环境信息。
-- Why it works: 气动扰动首先改变翼结构应变，信号比机身惯性滞后更小；RL 可学习非线性气动-结构-控制映射。
-- True novelty: 真正新意是 wing-strain-based sensing 与飞行控制闭环结合，而不是单独做应变估计或普通 RL 飞控。
-- Evidence: Nature Machine Intelligence 正式论文；全文摘要报告翼应变可推断 attitude、wind direction、wind velocity，并用于 flapping drone 控制。
-
-## 10. Electrohydraulic musculoskeletal robotic leg for agile, adaptive, yet energy-efficient locomotion
-- Venue: Nature Communications
-- Published: 2024-09-09
-- Type: direct
-- Tags: bioinspired, locomotion
-- Score: 0.5468
-- Core insight: 这篇提出电液人工肌肉驱动的肌骨机器人腿，用柔顺可调结构实现敏捷、适应和低能耗跳跃。
-- Problem frame: 传统腿式机器人多依赖刚性电机和复杂传感驱动，能耗高、对非结构地形适应性不足。
-- First principles: 动物腿的效率来自肌腱-肌肉弹性储能和可调刚度；若人工肌肉能提供柔顺驱动和自感知，控制负担会下降。
-- Mechanism: 系统用拮抗电液人工肌肉构成肌骨腿，通过可调刚度和电容自感知，在不同地形上实现开放环力控跳跃。
-- Boundary advanced: 边界从刚性电机腿推进到肌骨式软驱动腿，兼顾能量效率、地形适应和障碍检测。
-- Old problem: 刚性驱动腿在复杂地形上需要高频感知和精密控制，能耗与机械冲击都较高。
-- Why it works: 电液肌肉提供高功率密度和柔顺性，拮抗结构存储/释放弹性能量，电容自感知又把接触信息内嵌进执行器。
-- True novelty: 新意在于电液肌骨腿的系统级展示，而非单个软执行器材料性能。
-- Evidence: Nature Communications 正式论文；摘要报告 5 Hz 以上步态、40% 腿高跳跃、草地/沙地/砾石/岩石适应和 0.73 低运输成本。
+- Published: 2023-09-07
+- Type: transferable
+- Tags: none
+- Score: 0.4702
+- Core insight: ROMAN 用混合层级学习把复杂长时程操作拆成可重组子技能，并通过中央网络协调执行。
+- Problem frame: 机器人 manipulation 在短任务上进展快，但多步骤、长时程、失败可恢复的顺序任务仍难以稳定完成。
+- First principles: 长任务可分解为子目标和局部技能；若系统能根据上下文选择并串联专门化策略，就能降低端到端学习的状态-动作复杂度。
+- Mechanism: ROMAN 结合行为克隆、模仿学习和强化学习，由中央 manipulation network 调度多个负责可重组子任务的神经网络，生成正确顺序动作并处理失败恢复。
+- Boundary advanced: 它把机器人操作从单技能策略推进到多技能组合和长时程任务执行。
+- Old problem: 端到端策略面对长序列任务容易样本低效、错误累积，传统任务规划又缺少对真实操作不确定性的适应。
+- Why it works: 层级结构减少每个子策略要覆盖的状态空间，中央协调器负责顺序和恢复，使学习模块与任务结构对齐。
+- True novelty: 新意在于把 BC、IL、RL 与可重组子技能网络集成为一个长时程 manipulation 系统。
+- Evidence: Nature Machine Intelligence 正式论文；摘要报告 robotic manipulation network ROMAN、复杂顺序任务、多技能组合和鲁棒失败恢复。
