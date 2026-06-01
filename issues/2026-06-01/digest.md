@@ -128,21 +128,21 @@
 - True novelty: 新意在于后装式、跨执行器的 sensing strategy，而不是某个单一软体传感器材料。
 - Evidence: Nature Communications 正式论文；摘要报告 tactile sensing of size, shape, surface roughness and stiffness，并展示多种已有气动执行器/夹爪改造和闭环鲁棒性。
 
-## 9. Bioinspired soft robots for deep-sea exploration
-- Venue: Nature Communications
-- Published: 2023-11-04
-- Type: direct
-- Tags: soft_robot, bioinspired, aquatic_robot
-- Score: 0.4428
-- Core insight: 这篇综述/视角把深海生物的耐压、推进和感知策略转化为深海软机器人的设计框架。
-- Problem frame: 深海高压、低温、黑暗和复杂地形让传统刚性水下机器人需要沉重耐压壳体，限制机动性和小型化。
-- First principles: 深海生命不靠刚性抗压壳，而靠压力适应形态、柔顺材料和分布式感知在极端环境中生存。
-- Mechanism: 文章从 abyssal life 出发，总结深海软机器人的驱动、感知、供能和耐压设计策略，强调仿生柔顺结构在探索和作业中的优势。
-- Boundary advanced: 它把软机器人讨论从实验室水槽推进到深海极端环境机器人系统设计。
-- Old problem: 水下机器人长期依赖刚性耐压容器和传统推进器，难以做到轻量、贴近生物、适应复杂深海接触。
-- Why it works: 柔顺结构可把外部压力从破坏性载荷转化为可适应边界条件，仿生推进和感知能减少对笨重机械系统的依赖。
-- True novelty: 作为 Perspective，新意在于系统化组织深海软机器人设计原则，而不是提出单一器件。
-- Evidence: Nature Communications 正式论文；摘要聚焦 bioinspired deep-sea soft robots，覆盖 actuation、sensing、power、pressure resilience 等方向。
+## 9. Extreme dynamic symmetry enables omnidirectional and multifunctional robots
+- Venue: Science Robotics
+- Published: 2026-05-20
+- Type: transferable
+- Tags: none
+- Score: 0.64
+- Core insight: Argus 的核心不是“多装几条腿”，而是把机器人设计目标从几何对称推进到动力学对称：让任意方向的质心加速度能力尽量均匀。
+- Problem frame: 移动机器人常在某些方向很强、某些方向很弱，导致全向运动、抗损伤和多任务切换需要复杂控制补偿。
+- First principles: 机器人可达加速度由质量分布、接触点、执行器方向和力矩约束共同决定；如果这些能力在空间方向上近似各向同性，控制器就不必为方向偏置付出额外代价。
+- Mechanism: 论文提出 dynamic symmetry 与 dynamic isotropy 指标，先在超过 1000 种模拟形态中验证高动力学对称带来轨迹跟踪、鲁棒性、韧性和能效提升，再构建 Argus 球形机器人家族；其中 20 条可伸缩腿的硬件把接触和推进能力分布到接近全向。
+- Boundary advanced: 它把机器人形态设计从“长得对称”推进到“动力能力对称”，让机械结构本身承担一部分全向运动和容错控制。
+- Old problem: 传统多足或轮式机器人往往依赖特定前进方向，横向、斜向、翻滚、受损后的运动能力明显下降。
+- Why it works: 当执行器和接触点在球形结构上高密度、近均匀分布时，任意目标方向都能找到相近质量的力生成组合；控制问题从方向依赖变成近似同质的加速度选择。
+- True novelty: 真正新意是提出可量化的 dynamic isotropy 设计原则，并用 Argus 20-leg 硬件证明这种原则能转化为全向、多功能和高韧性机器人能力。
+- Evidence: Science Robotics 正式论文；摘要报告超过 1000 种模拟形态、高 dynamic isotropy 改善 tracking、task success、robustness、resiliency 和 energy efficiency，并展示 Argus 机器人家族及 20-leg 硬件。
 
 ## 10. Hybrid hierarchical learning for solving complex sequential tasks using the robotic manipulation network ROMAN
 - Venue: Nature Machine Intelligence
