@@ -1,0 +1,281 @@
+[
+  {
+    "paper_id": "arxiv:2606.07118v1",
+    "title": "QuadVerse: An Integrated Framework Aligning Visual-Physical Reality for Quadruped Simulation",
+    "authors": [
+      "Yuxiang Chen",
+      "Yuanhao Wang",
+      "Ziheng Zhang",
+      "Meng Zhang",
+      "Yu Liu",
+      "Yufei Jia",
+      "Tiancai Wang",
+      "Erjin Zhou",
+      "Jin Xie"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-06-05",
+    "source": "arxiv",
+    "doi": null,
+    "url": "http://arxiv.org/abs/2606.07118v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.07118v1",
+    "robot_type_tags": [
+      "locomotion"
+    ],
+    "paper_type": "direct",
+    "score": 0.63,
+    "abstract": "Simulation is central to robot learning, yet the sim-to-real gap remains a major bottleneck.Existing approaches often tackle visual or dynamic gaps separately, overlooking how these individual mismatches accumulate and propagate throughout the robot's state evolution.In this paper, we introduce QuadVerse, an integrated framework that uses reconstructed scenes as a calibration substrate for aligning visual perception, physical interaction, and actuator dynamics.From captured RGB videos, we reconstruct geometry-constrained 3D Gaussian Splatting (3DGS) scenes that support batched photorealistic ego-view rendering and collision-ready semantic mesh extraction. The meshes further enable contact calibration by initializing spatially varying friction priors and refining them through trajectory-based posterior search.To address remaining actuator discrepancies, QuadVerse trains a residual dynamics compensator by replaying real-world trajectories on the contact-calibrated terrain, reducing the entanglement between terrain-induced contact errors and actuator non-idealities.Experiments show that QuadVerse improves reconstruction quality and locomotion tracking over relevant baselines.Leveraging this foundation, we demonstrate robust zero-shot visual-navigation policy deployment without task-specific real-world rollouts.",
+    "key_figure_path": "output/figures/arxiv_2606_07118v1_p1_i4.png",
+    "key_figure_caption": "Cached key figure"
+  },
+  {
+    "paper_id": "arxiv:2606.07386v1",
+    "title": "Spline Policy: A Structured Representation for Robot Policies",
+    "authors": [
+      "Mengze Tian",
+      "Yiming Li",
+      "Sichao Liu",
+      "Auke Ijspeert",
+      "Sylvain Calinon"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-06-05",
+    "source": "arxiv",
+    "doi": null,
+    "url": "http://arxiv.org/abs/2606.07386v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.07386v1",
+    "robot_type_tags": [
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.575,
+    "abstract": "Modern imitation-learning policies for robot manipulation often represent actions as fixed-resolution action chunks, which are simple and effective but expose limited geometric and temporal structure before execution. This paper studies Spline Policy (SP), a structured representation that replaces action chunks with spline parameters while keeping the policy backbone unchanged. The predicted spline can be decoded as a compact continuous trajectory, queried at different temporal resolutions, constrained or edited in parameter space, and passed to downstream controllers. For quadratic spline outputs, the same representation can also be converted into a state-dependent vector field through an analytical distance-field construction. Under the regularity and projection assumptions of this construction, the induced dynamics do not increase the distance to the generated spline, yielding a principled local corrective mechanism around the predicted motion. The spline output further supports uncertainty propagation from observations to spline parameters, trajectories, and flow fields, and can be combined with classical control mechanisms such as null-space collision avoidance without retraining the policy backbone. We instantiate SP with diffusion, flow-matching, transformer-based, and vision-language-action backbones. Experiments in low-dimensional motion learning, simulated manipulation under matched backbones, dexterous manipulation, and real-robot case studies show that SP remains compatible with modern policy learners while exposing useful motion-structure properties, including compact decoding, temporal resampling, local correction around predicted motions, uncertainty evaluation, and controller compatibility.",
+    "key_figure_path": "output/figures/arxiv_2606_07386v1_p2_i0.png",
+    "key_figure_caption": "Cached key figure"
+  },
+  {
+    "paper_id": "arxiv:2606.07233v1",
+    "title": "Does Appearance Help? A Systematic Study of Image-Based Re-Identification in Online 3D Multi-Pedestrian Tracking",
+    "authors": [
+      "Eduardo Borges",
+      "Luís Garrote",
+      "Urbano J. Nunes"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-06-05",
+    "source": "arxiv",
+    "doi": null,
+    "url": "http://arxiv.org/abs/2606.07233v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.07233v1",
+    "robot_type_tags": [
+      "mobile_robot"
+    ],
+    "paper_type": "direct",
+    "score": 0.4875,
+    "abstract": "LiDAR-based 3D Multi-Object Tracking (MOT) typically relies solely on geometric information, which is often insufficient to distinguish between targets during prolonged occlusions or in crowded human-populated environments. While integrating RGB-based Re-Identification (ReID) offers a theoretical solution for preserving identity context, existing approaches often rely on computationally expensive parallel detectors that hinder real-time robot responsiveness. This work presents a systematic study of image-based ReID in online 3D MOT, utilizing a lightweight projection-based framework to decouple geometric and appearance modeling for mobile robots. A comprehensive analysis of feature extraction architectures is conducted, employing lightweight CNNs and Vision Transformers, and evaluating various multi-modal data association strategies to balance computational latency with robust tracking. Experiments on the Pedestrian class of the KITTI dataset reveal that naive linear fusion, of appearance and motion costs, degrades performance due to visual noise. Conversely, a cascaded matching strategy successfully recovers occluded tracks without compromising overall precision, effectively preventing identity switches to maintain human-robot interaction continuity. We show that lightweight architectures can offer an optimal trade-off between the low latency required for safe navigation and the discriminative power needed for social awareness.",
+    "key_figure_path": "output/figures/arxiv_2606_07233v1_p1_i23.png",
+    "key_figure_caption": "Cached key figure"
+  },
+  {
+    "paper_id": "crossref:10.1126/scirobotics.aec1481",
+    "title": "RAPTOR: A foundation policy for quadrotor control",
+    "authors": [
+      "Jonas Eschmann",
+      "Dario Albani",
+      "Giuseppe Loianno"
+    ],
+    "venue": "Science Robotics",
+    "published_at": "2026-05-13",
+    "source": "crossref",
+    "doi": "10.1126/scirobotics.aec1481",
+    "url": "https://doi.org/10.1126/scirobotics.aec1481",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/scirobotics.aec1481",
+    "robot_type_tags": [
+      "drone"
+    ],
+    "paper_type": "direct",
+    "score": 0.6025,
+    "abstract": "Humans are remarkably data efficient when adapting to previously unseen conditions, like driving a new car. In contrast, modern robotic control systems, like neural network policies trained using reinforcement learning (RL), are highly specialized for single environments. Because of this overfitting, they are known to break down even under small differences like the simulation-to-reality gap and require system identification and retraining for even minimal changes to the system. Here, we present RAPTOR, a method for training a highly adaptive foundation policy for quadrotor control. Our method enables training a single, end-to-end neural network policy to control a wide variety of quadrotors. We tested 10 different real quadrotors, from 32 grams to 2.4 kilograms, that also differed in motor type (brushed versus brushless), frame type (soft versus rigid), propeller type (two, three, or four blades), and flight controller (PX4, Betaflight, Crazyflie, M5StampFly). We found that a tiny, three-layer policy with only 2084 parameters was sufficient for zero-shot adaptation to a wide variety of platforms. The adaptation through in-context learning was made possible by using a recurrence in the hidden layer. The policy was trained through our proposed meta-imitation learning algorithm, where we sampled 1000 quadrotors and trained a teacher policy for each of them using RL. The 1000 teachers were distilled into a single, adaptive student policy. We found that within milliseconds, the resulting foundation policy adapted zero-shot to unseen quadrotors. We tested the capabilities of the foundation policy under numerous conditions (trajectory tracking, indoor/outdoor, wind disturbance, poking, and different propellers).",
+    "key_figure_path": "output/figures/crossref_10_1126_scirobotics_aec1481_arxiv_p2_i10.png",
+    "key_figure_caption": "Cached key figure"
+  },
+  {
+    "paper_id": "crossref:10.1038/s44460-026-00046-y",
+    "title": "Mapping capability-centric agentic simulations for SLAMs on quadruped robots",
+    "authors": [
+      "Yanyi Li",
+      "Akram Akbar",
+      "Chun Liu",
+      "Yunze Wu",
+      "Honghao Wang",
+      "Jing Guo",
+      "Zhijian Guo"
+    ],
+    "venue": "Nature Sensors",
+    "published_at": "2026-04-01",
+    "source": "crossref",
+    "doi": "10.1038/s44460-026-00046-y",
+    "url": "https://doi.org/10.1038/s44460-026-00046-y",
+    "pdf_url": "https://www.nature.com/articles/s44460-026-00046-y.pdf",
+    "robot_type_tags": [
+      "locomotion"
+    ],
+    "paper_type": "transferable",
+    "score": 0.605,
+    "abstract": "",
+    "key_figure_path": "output/figures/crossref_10_1038_s44460-026-00046-y_p4_i0.png",
+    "key_figure_caption": "Cached key figure"
+  },
+  {
+    "paper_id": "openalex:W4413362511",
+    "title": "Precise and dexterous robotic manipulation via human-in-the-loop reinforcement learning",
+    "authors": [
+      "Jianlan Luo",
+      "Charles Xu",
+      "Jeffrey Wu",
+      "Sergey Levine"
+    ],
+    "venue": "Science Robotics",
+    "published_at": "2025-08-20",
+    "source": "openalex",
+    "doi": "https://doi.org/10.1126/scirobotics.ads5033",
+    "url": "https://openalex.org/W4413362511",
+    "pdf_url": "",
+    "robot_type_tags": [
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.8728,
+    "abstract": "Robotic manipulation remains one of the most difficult challenges in robotics, with approaches ranging from classical model-based control to modern imitation learning. Although these methods have enabled substantial progress, they often require extensive manual design, struggle with performance, and demand large-scale data collection. These limitations hinder their real-world deployment at scale, where reliability, speed, and robustness are essential. Reinforcement learning (RL) offers a powerful alternative by enabling robots to autonomously acquire complex manipulation skills through interaction. However, realizing the full potential of RL in the real world remains challenging because of issues of sample efficiency and safety. We present a human-in-the-loop, vision-based RL system that achieved strong performance on a wide range of dexterous manipulation tasks, including precise assembly, dynamic manipulation, and dual-arm coordination. These tasks reflect realistic industrial tolerances, with small but critical variations in initial object placements that demand sophisticated reactive control. Our method integrates demonstrations, human corrections, sample-efficient RL algorithms, and system-level design to directly learn RL policies in the real world. Within 1 to 2.5 hours of real-world training, our approach outperformed other baselines by improving task success by 2×, achieving near-perfect success rates, and executing 1.8× faster on average. Through extensive experiments and analysis, our results suggest that RL can learn a wide range of complex vision-based manipulation policies directly in the real world within practical training times. We hope that this work will inspire a new generation of learned robotic manipulation techniques, benefiting both industrial applications and research advancements.",
+    "key_figure_path": "output/figures/openalex_W4413362511_arxiv_p1_i0.png",
+    "key_figure_caption": "Cached key figure"
+  },
+  {
+    "paper_id": "openalex:W4388339531",
+    "title": "Bioinspired soft robots for deep-sea exploration",
+    "authors": [
+      "Guorui Li",
+      "Tuck‐Whye Wong",
+      "Benjamin Shih",
+      "Chunyu Guo",
+      "Luwen Wang",
+      "Jiaqi Liu",
+      "Tao Wang",
+      "Xiaobo Liu",
+      "Jiayao Yan",
+      "Baosheng Wu",
+      "Fajun Yu",
+      "Yunsai Chen",
+      "Yiming Liang",
+      "Yaoting Xue",
+      "Chengjun Wang",
+      "Shunping He",
+      "Li Wen",
+      "Michael T. Tolley",
+      "A‐Man Zhang",
+      "Cecilia Laschi",
+      "Tiefeng Li"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2023-11-04",
+    "source": "openalex",
+    "doi": "https://doi.org/10.1038/s41467-023-42882-3",
+    "url": "https://openalex.org/W4388339531",
+    "pdf_url": "https://www.nature.com/articles/s41467-023-42882-3.pdf",
+    "robot_type_tags": [
+      "soft_robot",
+      "bioinspired",
+      "aquatic_robot"
+    ],
+    "paper_type": "direct",
+    "score": 0.4419,
+    "abstract": "The deep ocean, Earth's untouched expanse, presents immense challenges for exploration due to its extreme pressure, temperature, and darkness. Unlike traditional marine robots that require specialized metallic vessels for protection, deep-sea species thrive without such cumbersome pressure-resistant designs. Their pressure-adaptive forms, unique propulsion methods, and advanced senses have inspired innovation in designing lightweight, compact soft machines. This perspective addresses challenges, recent strides, and design strategies for bioinspired deep-sea soft robots. Drawing from abyssal life, it explores the actuation, sensing, power, and pressure resilience of multifunctional deep-sea soft robots, offering game-changing solutions for profound exploration and operation in harsh conditions.",
+    "key_figure_path": "output/figures/openalex_W4388339531_p2_i0.png",
+    "key_figure_caption": "Cached key figure"
+  },
+  {
+    "paper_id": "openalex:W4385424581",
+    "title": "A multifunctional soft robotic shape display with high-speed actuation, sensing, and control",
+    "authors": [
+      "Brian K. Johnson",
+      "Mantas Naris",
+      "Vani Sundaram",
+      "Angella Volchko",
+      "Kevin Ly",
+      "Shane K. Mitchell",
+      "Eric Acome",
+      "Nicholas Kellaris",
+      "Christoph Keplinger",
+      "Nikolaus Correll",
+      "J. Sean Humbert",
+      "Mark E. Rentschler"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2023-07-31",
+    "source": "openalex",
+    "doi": "https://doi.org/10.1038/s41467-023-39842-2",
+    "url": "https://openalex.org/W4385424581",
+    "pdf_url": "https://www.nature.com/articles/s41467-023-39842-2.pdf",
+    "robot_type_tags": [
+      "soft_robot"
+    ],
+    "paper_type": "direct",
+    "score": 0.4893,
+    "abstract": "Shape displays which actively manipulate surface geometry are an expanding robotics domain with applications to haptics, manufacturing, aerodynamics, and more. However, existing displays often lack high-fidelity shape morphing, high-speed deformation, and embedded state sensing, limiting their potential uses. Here, we demonstrate a multifunctional soft shape display driven by a 10 × 10 array of scalable cellular units which combine high-speed electrohydraulic soft actuation, magnetic-based sensing, and control circuitry. We report high-performance reversible shape morphing up to 50 Hz, sensing of surface deformations with 0.1 mm sensitivity and external forces with 50 mN sensitivity in each cell, which we demonstrate across a multitude of applications including user interaction, image display, sensing of object mass, and dynamic manipulation of solids and liquids. This work showcases the rich multifunctionality and high-performance capabilities that arise from tightly-integrating large numbers of electrohydraulic actuators, soft sensors, and controllers at a previously undemonstrated scale in soft robotics.",
+    "key_figure_path": "output/figures/openalex_W4385424581_p2_i5.png",
+    "key_figure_caption": "Cached key figure"
+  },
+  {
+    "paper_id": "openalex:W4383067765",
+    "title": "A soft, self-sensing tensile valve for perceptive soft robots",
+    "authors": [
+      "Jun Kyu Choe",
+      "Junsoo Kim",
+      "Hyeonseo Song",
+      "Joonbum Bae",
+      "Jiyun Kim"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2023-07-04",
+    "source": "openalex",
+    "doi": "https://doi.org/10.1038/s41467-023-39691-z",
+    "url": "https://openalex.org/W4383067765",
+    "pdf_url": "https://www.nature.com/articles/s41467-023-39691-z.pdf",
+    "robot_type_tags": [
+      "soft_robot",
+      "hard_to_instrument",
+      "mobile_robot"
+    ],
+    "paper_type": "direct",
+    "score": 0.4258,
+    "abstract": "Soft inflatable robots are a promising paradigm for applications that benefit from their inherent safety and adaptability. However, for perception, complex connections of rigid electronics both in hardware and software remain the mainstay. Although recent efforts have created soft analogs of individual rigid components, the integration of sensing and control systems is challenging to achieve without compromising the complete softness, form factor, or capabilities. Here, we report a soft self-sensing tensile valve that integrates the functional capabilities of sensors and control valves to directly transform applied tensile strain into distinctive steady-state output pressure states using only a single, constant pressure source. By harnessing a unique mechanism, \"helical pinching\", we derive physical sharing of both sensing and control valve structures, achieving all-in-one integration in a compact form factor. We demonstrate programmability and applicability of our platform, illustrating a pathway towards fully soft, electronics-free, untethered, and autonomous robotic systems.",
+    "key_figure_path": "output/figures/openalex_W4383067765_p2_i9.png",
+    "key_figure_caption": "Cached key figure"
+  },
+  {
+    "paper_id": "openalex:W4381889666",
+    "title": "Ultracompact single-nanowire-morphed grippers driven by vectorial Lorentz forces for dexterous robotic manipulations",
+    "authors": [
+      "Yan Jiang",
+      "Ying Zhang",
+      "Zongguang Liu",
+      "Junzhuan Wang",
+      "Jun Xu",
+      "Linwei Yu"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2023-06-24",
+    "source": "openalex",
+    "doi": "https://doi.org/10.1038/s41467-023-39524-z",
+    "url": "https://openalex.org/W4381889666",
+    "pdf_url": "https://www.nature.com/articles/s41467-023-39524-z.pdf",
+    "robot_type_tags": [
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.547,
+    "abstract": "Ultracompact and soft pairwise grippers, capable of swift large-amplitude multi-dimensional maneuvering, are widely needed for high-precision manipulation, assembly and treatment of microscale objects. In this work, we demonstrate the simplest construction of such robotic structures, shaped via a single-nanowire-morphing and powered by geometry-tailored Lorentz vectorial forces. This has been accomplished via a designable folding growth of ultralong and ultrathin silicon NWs into single and nested omega-ring structures, which can then be suspended upon electrode frames and coated with silver metal layer to carry a passing current along geometry-tailored pathway. Within a magnetic field, the grippers can be driven by the Lorentz forces to demonstrate swift large-amplitude maneuvers of grasping, flapping and twisting of microscale objects, as well as high-frequency or even resonant vibrations to overcome sticky van de Waals forces in microscale for a reliable releasing of carried payloads. More sophisticated and functional teamwork of mutual alignment, precise passing and selective light-emitting-diode unit testing and installation were also successfully accomplished via pairwise gripper collaborations. This single-nanowire-morphing strategy provides an ideal platform to rapidly design, construct and prototype a wide range of advanced ultracompact nanorobotic, mechanical sensing and biological manipulation functionalities.",
+    "key_figure_path": "output/figures/openalex_W4381889666_p3_i6.png",
+    "key_figure_caption": "Cached key figure"
+  }
+]
