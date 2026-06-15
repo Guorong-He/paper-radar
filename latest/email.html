@@ -71,25 +71,25 @@
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#08 · arXiv / preprint · arXiv · 2026-06-10</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Cross-Modal Benchmarking for Robotic Perception in Natural Environments</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对野外移动机器人受限于纹理重复、光照变化和地形尺度，核心约束是 RGB 语义先验无法稳定恢复可导航的三维几何，论文通过顺序 RGB、半稠密深度、表面法线、6DoF 位姿和稠密 lidar 子图构造 WildCross，使模型必须同时满足地点连续性和度量深度一致性，并验证47.6 万余帧 RGB 序列，并提供半稠密深度、表面法线、6DoF 位姿和 lidar 子图，用于扩展深度估计实验。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#08 · arXiv / preprint · arXiv · 2026-06-11</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">An Attention-based Model for Robust Forecasting with Missing Modality</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对真实机器人常遇到相机、触觉、轨迹或状态流缺失，瓶颈不是融合更多模态，而是在训练和推理阶段都能承受模态不齐，论文通过方法把多模态预测建模为 CVAE，并用 transformer attention 把不同模态编码成固定维度表征，使缺失输入也能通过条件生成恢复稳健表示，并验证在五个多模态数据集、两个 robot learning 任务上评估。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#09 · arXiv / preprint · arXiv · 2026-06-10</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Action-Effect Memory Pretraining for Robot Manipulation</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对机器人操作常处于部分可观测状态，论文通过框架交错编码视觉和动作特征，用 masked modeling 从不完整历史恢复缺失内容，并验证摘要称在仿真与真实设置中均提升 Diffusion Policy 和 Flow Policy。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#09 · arXiv / preprint · arXiv · 2026-06-11</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Efficient Domain-Adaptive Policy Learning via Kernel Representation with Application to Quadrotor Control under Non-Stationary Disturbances</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对四旋翼控制的难点不是只学一个平均动力学，而是在部署中持续遇到随时间变化的扰动，策略必须快速识别当前环境域，论文通过方法用随机傅里叶特征构造可微 kernel 近似，离线随机采样系数和带宽生成多样扰动，再在实机上用在线最小二乘更新 kernel 参数，并验证RTX 4090 上约 50 秒离线训练，并在 Crazyflie 硬件轨迹跟踪中测试空气动力、风、地效和载荷波动。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
                 <div style="font-size:12px;color:#667085;margin-bottom:6px;">#10 · arXiv / preprint · arXiv · 2026-06-10</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Bridging the Morphology Gap: Adapting VLA Models to Dexterous Manipulation via Intent-Conditioned Fine-Tuning</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对灵巧操作的瓶颈是形态差异：平行夹爪预训练模型有空间推理能力，但其动作空间无法直接覆盖多指手的高维接触流形，论文通过第一阶段用参数高效微调让 VLA 预测手臂轨迹和连续抓取意图，第二阶段冻结空间骨干，用意图条件扩散头生成多指关节动作，并验证在多阶段、接触丰富的仿真灵巧操作 benchmark 上，以较少示范显著优于单体微调基线。</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Cross-Modal Benchmarking for Robotic Perception in Natural Environments</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对野外移动机器人受限于纹理重复、光照变化和地形尺度，核心约束是 RGB 语义先验无法稳定恢复可导航的三维几何，论文通过顺序 RGB、半稠密深度、表面法线、6DoF 位姿和稠密 lidar 子图构造 WildCross，使模型必须同时满足地点连续性和度量深度一致性，并验证47.6 万余帧 RGB 序列，并提供半稠密深度、表面法线、6DoF 位姿和 lidar 子图，用于扩展深度估计实验。</div>
               </td>
             </tr>
             

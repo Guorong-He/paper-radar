@@ -1,6 +1,38 @@
 # Paper Radar Digest
 
-## 1. Cross-Modal Benchmarking for Robotic Perception in Natural Environments
+## 1. An Attention-based Model for Robust Forecasting with Missing Modality
+- Venue: arXiv
+- Published: 2026-06-11
+- Type: direct
+- Tags: manipulation
+- Score: 0.78
+- Core insight: 这篇工作的核心是把缺失模态从异常输入处理改写为机器人多模态表征学习的常态约束，让策略在传感器不完整时仍能形成统一状态估计。
+- Problem frame: 真实机器人常遇到相机、触觉、轨迹或状态流缺失，瓶颈不是融合更多模态，而是在训练和推理阶段都能承受模态不齐。
+- First principles: 多模态控制需要估计一个共享隐状态；当部分观测缺失时，模型必须用可用模态近似后验，而不是依赖固定输入维度。
+- Mechanism: 方法把多模态预测建模为 CVAE，并用 transformer attention 把不同模态编码成固定维度表征，使缺失输入也能通过条件生成恢复稳健表示。
+- Boundary advanced: 它把机器人多模态学习从完整传感器假设推进到缺失模态鲁棒性，适合传感器遮挡、掉线或异步的部署场景。
+- Old problem: 以往多模态融合模型通常假设训练和推理时模态齐全，导致实际机器人系统中一个传感器失效就出现表征崩溃。
+- Why it works: attention 提供跨模态可变输入接口，CVAE 的条件隐变量学习让模型从可观测模态推断缺失信息，因此保持统一表征。
+- True novelty: 新意在于同时处理训练和推理阶段的缺失模态，并把方法落到 robot manipulation forecasting 等机器人任务，而不是只做通用多模态补全。
+- Evidence: arXiv 预印本；摘要报告在五个多模态数据集、两个 robot learning 任务上评估，包括 human trajectory prediction 和 robot manipulation forecasting，优于既有融合方法。
+
+## 2. Efficient Domain-Adaptive Policy Learning via Kernel Representation with Application to Quadrotor Control under Non-Stationary Disturbances
+- Venue: arXiv
+- Published: 2026-06-11
+- Type: direct
+- Tags: drone
+- Score: 0.505
+- Core insight: 这篇把四旋翼 sim-to-real 的核心约束放在非平稳扰动建模上，用可在线更新的 kernel 表征让策略快速适配风、地效和载荷变化。
+- Problem frame: 四旋翼控制的难点不是只学一个平均动力学，而是在部署中持续遇到随时间变化的扰动，策略必须快速识别当前环境域。
+- First principles: 如果未知扰动可用低维函数族近似，控制策略就能在离线阶段见到足够多的扰动形状，并在在线阶段估计当前函数参数。
+- Mechanism: 方法用随机傅里叶特征构造可微 kernel 近似，离线随机采样系数和带宽生成多样扰动，再在实机上用在线最小二乘更新 kernel 参数。
+- Boundary advanced: 它把 domain-adaptive policy learning 推向实时四旋翼部署，在非平稳风扰、地效和载荷变化下仍能跟踪轨迹。
+- Old problem: 传统 sim-to-real 域随机化常覆盖固定分布，对部署时变化的扰动响应慢；纯在线学习又难在飞行器上承受训练成本。
+- Why it works: kernel 表征在表达力和估计效率之间折中，离线可微仿真提供丰富扰动先验，在线最小二乘则快速把先验调到当前飞行状态。
+- True novelty: 新意在于把扰动域本身作为可学习 kernel 表征，并展示离线 50 秒训练与 Crazyflie 硬件在线适配的组合。
+- Evidence: arXiv 预印本；摘要报告 RTX 4090 上约 50 秒离线训练，并在 Crazyflie 硬件轨迹跟踪中测试空气动力、风、地效和载荷波动。
+
+## 3. Cross-Modal Benchmarking for Robotic Perception in Natural Environments
 - Venue: arXiv
 - Published: 2026-06-10
 - Type: direct
@@ -15,38 +47,6 @@
 - Why it works: 跨模态标注把外观相似但几何不同、几何连续但纹理变化的样本区分开，使地点识别和深度估计的失败模式更容易被量化。
 - True novelty: 新意在于把大规模自然环境序列与 lidar 子图、位姿和表面法线对齐，用于同时评估 place recognition 与 metric depth，而不是只发布图像分类式数据。
 - Evidence: arXiv 预印本；摘要报告 47.6 万余帧 RGB 序列，并提供半稠密深度、表面法线、6DoF 位姿和 lidar 子图，用于扩展深度估计实验。
-
-## 2. Action-Effect Memory Pretraining for Robot Manipulation
-- Venue: arXiv
-- Published: 2026-06-10
-- Type: direct
-- Tags: manipulation
-- Score: 0.5225
-- Core insight: AEM 认为操作表征的关键不是更强单帧视觉编码，而是把动作历史压缩成能预测后续接触状态的时序记忆。
-- Problem frame: 机器人操作常处于部分可观测状态，单张图像看不到遮挡、接触滞后和刚发生的动作效果，约束是当前观测不足以决定下一步控制。
-- First principles: 控制策略需要估计隐状态；如果动作会改变物体和接触关系，表征学习就应建模 action-conditioned state evolution，而不是只做静态视觉重建。
-- Mechanism: 框架交错编码视觉和动作特征，用 masked modeling 从不完整历史恢复缺失内容，再用 Mamba 输出紧凑历史向量供 Diffusion Policy 或 Flow Policy 控制。
-- Boundary advanced: 它把机器人预训练从图像语义迁移推进到动作效果记忆，在不显著增加推理负担的情况下改善非马尔可夫和杂乱场景操作。
-- Old problem: 以往预训练常偏向单帧视觉，或者直接堆叠多帧，既难捕捉动作因果，也增加延迟和计算成本。
-- Why it works: 动作与视觉历史共同约束隐状态，masked recovery 迫使编码器学习哪些过去动作解释了当前接触和物体位置，因此下游策略获得更稳定上下文。
-- True novelty: 新意在于把 action-effect memory 作为预训练目标，并保持单向量时序瓶颈，使历史建模能直接嵌入现有扩散/流策略。
-- Evidence: arXiv 预印本；摘要称在仿真与真实设置中均提升 Diffusion Policy 和 Flow Policy，在干净、杂乱、随机和非马尔可夫任务上优于单帧预训练与帧堆叠消融。
-
-## 3. Bridging the Morphology Gap: Adapting VLA Models to Dexterous Manipulation via Intent-Conditioned Fine-Tuning
-- Venue: arXiv
-- Published: 2026-06-10
-- Type: direct
-- Tags: manipulation
-- Score: 0.4425
-- Core insight: InDex 把低自由度夹爪 VLA 的语义先验转译成高自由度灵巧手的意图条件，而不是直接让原模型学习复杂关节动作。
-- Problem frame: 灵巧操作的瓶颈是形态差异：平行夹爪预训练模型有空间推理能力，但其动作空间无法直接覆盖多指手的高维接触流形。
-- First principles: 跨形态迁移要保留共享的任务语义和空间目标，同时把具体执行自由度交给形态专属解码器；否则小数据微调会破坏原有表征。
-- Mechanism: 第一阶段用参数高效微调让 VLA 预测手臂轨迹和连续抓取意图，第二阶段冻结空间骨干，用意图条件扩散头生成多指关节动作。
-- Boundary advanced: 它把 VLA 从低自由度夹爪迁移到接触丰富的灵巧手任务，并强调少量示范下保持空间泛化。
-- Old problem: 端到端关节微调容易灾难性遗忘，且灵巧手数据稀缺会导致动作流形塌缩，难以复用既有 VLA 能力。
-- Why it works: 虚拟抓取意图提供低维中介变量，既继承平行夹爪模型的宏观目标，又给扩散解码器留下生成细粒度手指协同的空间。
-- True novelty: 新意在于把一自由度抓取输出重新解释为连续意图代理，并用两阶段解耦结构完成跨形态语义继承。
-- Evidence: arXiv 预印本；摘要报告在多阶段、接触丰富的仿真灵巧操作 benchmark 上，以较少示范显著优于单体微调基线。
 
 ## 4. A careful examination of large behavior models for multitask dexterous manipulation
 - Venue: Science Robotics
@@ -69,7 +69,7 @@
 - Published: 2025-11-12
 - Type: direct
 - Tags: manipulation
-- Score: 0.758
+- Score: 0.7579
 - Core insight: MT3 的核心洞见是日常操作可被拆成对齐与交互两类可检索片段，机器人因此能用极少示范组合出大量任务。
 - Problem frame: 模仿学习的基本约束是每个任务的数据成本；单体行为克隆把所有轨迹当成一个连续映射，导致少示范时泛化差。
 - First principles: 许多操作共享到达、对齐、接触和释放等子结构；如果能在这些结构层面检索相似经验，样本复杂度会低于逐任务学习完整策略。
@@ -85,7 +85,7 @@
 - Published: 2025-10-29
 - Type: direct
 - Tags: hard_to_instrument, drone
-- Score: 0.7562
+- Score: 0.7561
 - Core insight: 这篇工作说明多无人机吊运的敏捷性瓶颈在整体系动力学耦合，而不是单机控制器性能；在线全身轨迹规划能显著释放负载机动能力。
 - Problem frame: 缆绳吊运系统受限于无人机、缆绳和负载之间的耦合动力学，传统级联控制为保证稳定性牺牲速度和加速度。
 - First principles: 负载姿态和缆绳张力是系统状态的一部分；如果规划器忽略它们，控制器只能事后补偿摆动，无法安全利用系统全部动态能力。
@@ -101,7 +101,7 @@
 - Published: 2023-09-15
 - Type: direct
 - Tags: bioinspired
-- Score: 0.4346
+- Score: 0.4344
 - Core insight: 这项 Nature Communications 工作把视觉和触觉融合下沉到类神经器件层面，用 MoS2 memtransistor 与 triboelectric 触觉传感器复现多感官神经元的关键响应规律。
 - Problem frame: 多模态机器人感知的约束不只是算法融合，而是传感到计算链路的能耗、延迟和弱信号可靠性。
 - First principles: 当单模态线索弱时，神经系统通过跨模态收敛提高响应概率；硬件若能在器件层完成这种非线性整合，可减少后端计算负担。
@@ -117,7 +117,7 @@
 - Published: 2023-07-31
 - Type: direct
 - Tags: soft_robot
-- Score: 0.4885
+- Score: 0.4884
 - Core insight: 这项软体 shape display 说明当执行、传感和控制被单元化集成后，软体表面不只是变形输出器，也能成为可闭环的触觉与物体交互平台。
 - Problem frame: 可变形表面的基本 trade-off 是大面积阵列、高速形变、高精度状态感知和可控性很难同时满足。
 - First principles: 闭环形态控制需要每个执行单元既能施力又能测量自身位移和外力；否则软体系统只能开环展示形状，难以稳定操作物体。
@@ -133,7 +133,7 @@
 - Published: 2023-07-04
 - Type: direct
 - Tags: soft_robot, hard_to_instrument, mobile_robot
-- Score: 0.425
+- Score: 0.4249
 - Core insight: 自感知 tensile valve 的关键是把应变检测和气动控制阀变成同一个软结构，让软体机器人用压力状态直接表达身体受力。
 - Problem frame: 软体充气机器人的感知瓶颈是刚性电子和复杂布线会破坏柔顺性、体积和自治性。
 - First principles: 如果机械形变能直接调制流体阻抗，传感信号就可以在气压域产生；控制系统无需先把形变转成电子信号再驱动阀门。
@@ -149,7 +149,7 @@
 - Published: 2023-06-24
 - Type: direct
 - Tags: manipulation
-- Score: 0.5462
+- Score: 0.5461
 - Core insight: 单纳米线形变夹爪展示了微尺度操作可以依赖几何定制的 Lorentz 力，而不是复杂多部件传动，从而在极小结构中获得抓取、拍动和扭转自由度。
 - Problem frame: 微纳操作的约束是结构越小，装配复杂传动、克服范德华粘附和实现可靠释放就越困难。
 - First principles: 通电导体在磁场中受 Lorentz 力；如果电流路径和折叠几何被设计好，力方向可转化为多维可控形变。
