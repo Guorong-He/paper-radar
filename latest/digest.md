@@ -1,161 +1,161 @@
 # Paper Radar Digest
 
-## 1. Bounding Boxes as Goals: Language-Conditioned Grasping via Neuro-Symbolic Planning
+## 1. Cross-Modal Benchmarking for Robotic Perception in Natural Environments
 - Venue: arXiv
-- Published: 2026-06-11
+- Published: 2026-06-10
 - Type: direct
-- Tags: manipulation
-- Score: 0.5675
-- Core insight: GRASP 把语言抓取目标从“生成动作”改写为“生成可检验的符号目标”，再用检测框把抽象空间词落到真实桌面几何中。
-- Problem frame: 开放词表桌面抓取的瓶颈不是只理解句子，而是把“上层架子、旁边、目标物”这类语言关系稳定绑定到当前场景里的可执行状态。
-- First principles: 机器人执行需要低维、可验证的目标约束；语言模型擅长语义组合，视觉检测提供物体边界，符号规划则把二者变成动作前提和目标状态。
-- Mechanism: 框架用预训练 VLM 解析自然语言，生成 neuro-symbolic goal states，再通过 bounding-box pipeline grounding 到场景物体和空间关系，最后交给规划与控制模块执行。
-- Boundary advanced: 它把无微调的语言条件抓取推进到更抽象的空间指令，避免为每个新任务重新收集示范。
-- Old problem: 过去许多 TAMP/VLA 方法要么依赖固定颜色、坐标和模板，要么需要大量任务示范，开放词表和实时适配都受限。
-- Why it works: 符号目标减少了语言输出的自由度，检测框提供可落地的几何锚点，使规划器能检查目标是否满足，而不是盲目执行一串生成动作。
-- True novelty: 新意在于把 VLM 的语义推理限制在目标构造层，并用 bounding boxes 作为规划目标接口，而不是直接让模型端到端预测动作。
-- Evidence: arXiv 预印本；摘要报告 90 次真实机器人试验、三档难度下总体成功率 73.3%，且无需任务特定训练。
+- Tags: mobile_robot
+- Score: 0.7325
+- Core insight: WildCross 把自然环境机器人感知的难点从单帧识别改写为跨模态几何一致性问题，暴露了城市数据训练的视觉基础模型在野外深度和地点识别上的系统性失配。
+- Problem frame: 野外移动机器人受限于纹理重复、光照变化和地形尺度，核心约束是 RGB 语义先验无法稳定恢复可导航的三维几何。
+- First principles: 可靠导航需要把视觉外观、激光几何、姿态轨迹和表面法线放到同一坐标约束中；单一模态越弱，跨模态校验越关键。
+- Mechanism: 论文用顺序 RGB、半稠密深度、表面法线、6DoF 位姿和稠密 lidar 子图构造 WildCross，使模型必须同时满足地点连续性和度量深度一致性。
+- Boundary advanced: 它推进的不是某个模型精度，而是给野外机器人感知提供了大规模、可复现实验场，能检验基础模型离真实 field robotics 还差在哪里。
+- Old problem: 过去自然场景数据集常缺少同步几何真值，导致机器人视觉模型在城市 benchmark 上表现好，却难判断其野外部署风险。
+- Why it works: 跨模态标注把外观相似但几何不同、几何连续但纹理变化的样本区分开，使地点识别和深度估计的失败模式更容易被量化。
+- True novelty: 新意在于把大规模自然环境序列与 lidar 子图、位姿和表面法线对齐，用于同时评估 place recognition 与 metric depth，而不是只发布图像分类式数据。
+- Evidence: arXiv 预印本；摘要报告 47.6 万余帧 RGB 序列，并提供半稠密深度、表面法线、6DoF 位姿和 lidar 子图，用于扩展深度估计实验。
 
-## 2. SPARC: Reliable Spatial Annotations from Robot Demonstrations at Scale
+## 2. Action-Effect Memory Pretraining for Robot Manipulation
 - Venue: arXiv
-- Published: 2026-06-11
-- Type: transferable
-- Tags: none
-- Score: 0.56
-- Core insight: SPARC 的核心是给大规模机器人示范自动标注补上可靠性校准，让数据能被筛选而不是被盲信或整批丢弃。
-- Problem frame: 具身基础模型需要大量空间标注，但自动检测的置信度并不等于标注正确性，噪声会直接污染 grounding、规划和分层任务学习。
-- First principles: 机器人示范具有时间连续性和交互结构；如果一个框、轨迹或阶段标签真的正确，它应当在动作前后、物体接触和任务阶段之间保持一致。
-- Mechanism: SPARC 利用机器人任务的时空结构生成 bounding boxes、物体轨迹和 manipulation phase labels，并为每个标注估计可靠性分数；IA-Bench 则专门评估交互物体位置 grounding。
-- Boundary advanced: 它把自动标注从“能批量生成”推进到“能按风险使用”，更适合训练 grounded robot policies 和 embodied foundation models。
-- Old problem: 传统自动标注管线缺少可信质量信号，研究者只能在高噪声数据和低覆盖数据之间取舍。
-- Why it works: 可靠性分数不是孤立看检测器 confidence，而是利用任务时序和交互一致性，因此更贴近机器人数据真正关心的 annotation correctness。
-- True novelty: 新意在于把标注质量显式建模为风险校准问题，并提出面向机器人交互 grounding 的 IA-Bench。
-- Evidence: arXiv 预印本；摘要称在 1.7k 人工标注示范上，相比 detection-only baseline 提高定位精度，并在高精度工作点保留三倍样本。
-
-## 3. See Selectively, Act Adaptively: Dual-Level Structural Decomposition for Bimanual Robot Manipulation
-- Venue: arXiv
-- Published: 2026-06-11
+- Published: 2026-06-10
 - Type: direct
 - Tags: manipulation
 - Score: 0.5225
-- Core insight: 这篇指出双臂 VLA 的关键不是简单加大模型，而是同时分解“看哪里”和“两只手如何协同”。
-- Problem frame: 双臂操作中，任务阶段会改变哪路相机最重要，两臂关系也会在独立、协同和约束耦合之间切换，单一路径表示容易把这些结构混在一起。
-- First principles: 有效控制需要把可观测信息与动作耦合结构对齐；视觉路由解决信息选择，动作 MoE 解决协同模式切换。
-- Mechanism: View-Selective Visual Router 动态调节腕部视角贡献，Interaction-Aware Action MoE 把动作生成拆成协调路径和单臂路径，使策略按任务阶段选择不同结构。
-- Boundary advanced: 它把双臂 VLA 从单一共享表征推进到结构化视觉选择和动作分解，增强长时程真实任务鲁棒性。
-- Old problem: 以往 monolithic VLA 对所有视觉输入和双臂交互使用同一表示，容易在遮挡、阶段切换或协作动作中失败。
-- Why it works: 任务相关视角被放大，无关视角被弱化；动作专家则把不同协同模式隔离开，减少一个策略同时拟合互相冲突动力学的负担。
-- True novelty: 真正新意是把双臂操作中的两个结构先验显式写进 VLA：视觉相关性分解和双臂交互分解。
-- Evidence: arXiv 预印本；摘要报告在 RoboTwin 2.0 六个仿真任务和三个真实长时程任务中，相比 monolithic baseline 成功率分别提升 27.7% 和 43.3%。
+- Core insight: AEM 认为操作表征的关键不是更强单帧视觉编码，而是把动作历史压缩成能预测后续接触状态的时序记忆。
+- Problem frame: 机器人操作常处于部分可观测状态，单张图像看不到遮挡、接触滞后和刚发生的动作效果，约束是当前观测不足以决定下一步控制。
+- First principles: 控制策略需要估计隐状态；如果动作会改变物体和接触关系，表征学习就应建模 action-conditioned state evolution，而不是只做静态视觉重建。
+- Mechanism: 框架交错编码视觉和动作特征，用 masked modeling 从不完整历史恢复缺失内容，再用 Mamba 输出紧凑历史向量供 Diffusion Policy 或 Flow Policy 控制。
+- Boundary advanced: 它把机器人预训练从图像语义迁移推进到动作效果记忆，在不显著增加推理负担的情况下改善非马尔可夫和杂乱场景操作。
+- Old problem: 以往预训练常偏向单帧视觉，或者直接堆叠多帧，既难捕捉动作因果，也增加延迟和计算成本。
+- Why it works: 动作与视觉历史共同约束隐状态，masked recovery 迫使编码器学习哪些过去动作解释了当前接触和物体位置，因此下游策略获得更稳定上下文。
+- True novelty: 新意在于把 action-effect memory 作为预训练目标，并保持单向量时序瓶颈，使历史建模能直接嵌入现有扩散/流策略。
+- Evidence: arXiv 预印本；摘要称在仿真与真实设置中均提升 Diffusion Policy 和 Flow Policy，在干净、杂乱、随机和非马尔可夫任务上优于单帧预训练与帧堆叠消融。
 
-## 4. Precise aggressive aerial maneuvers with sensorimotor policies
-- Venue: Science Robotics
+## 3. Bridging the Morphology Gap: Adapting VLA Models to Dexterous Manipulation via Intent-Conditioned Fine-Tuning
+- Venue: arXiv
 - Published: 2026-06-10
 - Type: direct
-- Tags: drone
-- Score: 0.79
-- Core insight: 这篇把高速穿越窄缝从精确建图和规划问题，推进为由机载视觉与本体感觉直接闭环的 sensorimotor policy 问题。
-- Problem frame: 轻量无人机的极限机动受限于传感负载、反应时延和 SE(3) 姿态约束；穿越窄缝需要瞬时倾斜机身并在极小 clearance 下保持控制。
-- First principles: 高速机动时，感知、姿态和控制必须在同一个低延迟闭环中耦合；如果先完整估计环境再规划，时间和误差预算都会被吃掉。
-- Mechanism: 作者用模型规划轨迹初始化受限解空间，再通过强化学习和端到端策略蒸馏，把机载视觉和 proprioception 映射到低层控制命令，并用 sim-to-real 设计上真机。
-- Boundary advanced: 它把四旋翼窄缝穿越推进到 5 cm clearance、最高 90° 倾斜姿态，并能对未训练的动态缝隙做反应式 servo。
-- Old problem: 传统方法通常需要预知缝隙位置姿态、依赖较重的状态估计，或只能处理更宽松、更慢的穿越条件。
-- Why it works: 模型规划给 RL 一个可探索的可行流形，策略蒸馏降低部署复杂度，视觉和本体感觉的直接闭环减少了中间表示误差。
-- True novelty: 新意在于把模型规划的可行性和 model-free policy 的反应速度结合，用 sensorimotor policy 完成接近机体极限的窄缝机动。
-- Evidence: Science Robotics；摘要报告实机四旋翼在 5 cm clearance 窄缝、90° 倾斜姿态和连续窄缝轨道上高重复性通过，并能响应移动缝隙。
+- Tags: manipulation
+- Score: 0.4425
+- Core insight: InDex 把低自由度夹爪 VLA 的语义先验转译成高自由度灵巧手的意图条件，而不是直接让原模型学习复杂关节动作。
+- Problem frame: 灵巧操作的瓶颈是形态差异：平行夹爪预训练模型有空间推理能力，但其动作空间无法直接覆盖多指手的高维接触流形。
+- First principles: 跨形态迁移要保留共享的任务语义和空间目标，同时把具体执行自由度交给形态专属解码器；否则小数据微调会破坏原有表征。
+- Mechanism: 第一阶段用参数高效微调让 VLA 预测手臂轨迹和连续抓取意图，第二阶段冻结空间骨干，用意图条件扩散头生成多指关节动作。
+- Boundary advanced: 它把 VLA 从低自由度夹爪迁移到接触丰富的灵巧手任务，并强调少量示范下保持空间泛化。
+- Old problem: 端到端关节微调容易灾难性遗忘，且灵巧手数据稀缺会导致动作流形塌缩，难以复用既有 VLA 能力。
+- Why it works: 虚拟抓取意图提供低维中介变量，既继承平行夹爪模型的宏观目标，又给扩散解码器留下生成细粒度手指协同的空间。
+- True novelty: 新意在于把一自由度抓取输出重新解释为连续意图代理，并用两阶段解耦结构完成跨形态语义继承。
+- Evidence: arXiv 预印本；摘要报告在多阶段、接触丰富的仿真灵巧操作 benchmark 上，以较少示范显著优于单体微调基线。
 
-## 5. Peripheral control enabled by distributed sensing in an octopus-inspired soft robotic arm for autonomous underwater grasping
-- Venue: Nature Machine Intelligence
-- Published: 2026-05-12
-- Type: direct
-- Tags: soft_robot, manipulation
-- Score: 0.7275
-- Core insight: 这篇把章鱼腕足的局部感知与分布式控制翻译成软体机械臂架构，使水下抓取不必完全依赖中心化视觉或刚性末端执行器。
-- Problem frame: 软体水下抓取面对形变、接触不确定和流体扰动，难点在于触点很多但可观测性弱，中心控制很难实时理解每个吸盘的接触状态。
-- First principles: 柔性臂的智能应当分布在身体上：局部传感器先发现接触力和方向，局部反射先稳定接触，全局控制只协调任务目标。
-- Mechanism: 每个人工吸盘嵌入 LED 和 phototransistor，通过反射光估计接触力与方向；层级行为控制把吸盘级局部反射和机械臂级全局协调结合，用于自主水下抓取。
-- Boundary advanced: 它把软体机械臂从被动柔顺推进到带嵌入式分布传感和局部控制的自主交互系统。
-- Old problem: 传统软体抓手常缺少可靠分布式触觉，水下环境又让外部视觉和刚性力控不稳定。
-- Why it works: 吸盘传感器直接位于接触界面，能以低漂移读出力和方向；层级控制把局部接触事件转成全局抓取意图，减少中心控制负担。
-- True novelty: 新意在于把 optoelectronic sucker sensing 与 behaviour-based hierarchical control 集成到章鱼启发软体臂中，而不是只做单点传感器或单个软抓手。
-- Evidence: Nature Machine Intelligence；摘要报告 0-2 N 范围约 400 mV N-1 灵敏度、方向误差小于 18°，并在干湿环境和自主水下抓取中验证。
-
-## 6. Object-centric task representation and transfer using diffused orientation fields
+## 4. A careful examination of large behavior models for multitask dexterous manipulation
 - Venue: Science Robotics
-- Published: 2026-04-22
-- Type: transferable
-- Tags: none
-- Score: 0.5775
-- Core insight: 这篇用 diffused orientation fields 给曲面物体建立平滑局部参考系，让机器人任务可以跨不同曲率和拓扑迁移。
-- Problem frame: 曲面没有统一全局坐标系，覆盖、切割、剥离这类接触任务里的“沿着、朝向、绕过”会随位置和几何变化，导致任务表示难迁移。
-- First principles: 任务方向不是物体外部的固定向量，而是附着在表面几何上的局部场；只要这个场连续且由少量关键点约束，就能跨形状保持任务语义。
-- Mechanism: 方法用由偏微分方程控制的扩散过程，从原始点云和关键点在线计算平滑局部参考框架，再用这些 orientation fields 表达和迁移物体中心任务。
-- Boundary advanced: 它把机器人任务迁移从平面或刚性参考系扩展到曲面、拓扑变化和关键点扰动下的连续物理交互。
-- Old problem: 过去 object-centric task representation 对曲面物体常需要手工坐标、密集对应或任务特定重定义，难以泛化到真实物体族。
-- Why it works: 扩散场把少量关键点约束传播到整个曲面，形成连续方向参考；机器人只需建立稀疏对应，就能恢复任务局部方向。
-- True novelty: 新意在于用几何扩散场作为任务表示，而不是把任务绑定到全局坐标、单个姿态或离散接触点。
-- Evidence: Science Robotics；摘要报告在几何、拓扑和关键点扰动下评估，并展示覆盖、切割、剥离等连续物理交互任务迁移。
+- Published: 2026-04-15
+- Type: direct
+- Tags: manipulation
+- Score: 0.745
+- Core insight: 这项 Science Robotics 工作把大型行为模型的价值从概念热度拉回受控实证：多任务预训练确实提升灵巧操作的成功率、鲁棒性和新任务教学效率。
+- Problem frame: 机器人基础模型的约束不是模型能否生成动作，而是其真实世界收益是否能在随机、盲测和统计置信下区别于单任务策略。
+- First principles: 多任务数据应当提供共享的接触、物体和动作先验；但只有在同一评估协议中控制任务、随机性和样本量，才能判断这些先验是否真的迁移。
+- Mechanism: 作者扩展 diffusion policy 范式，构建包含仿真与真实机器人的数据语料，并用盲随机试验和统计分析比较多任务大行为模型与单任务基线。
+- Boundary advanced: 它把多任务灵巧操作从展示式结果推进到可置信评估，说明规模和多样性提升会带来可预测性能增长，但也保留能力边界判断。
+- Old problem: 过去机器人 foundation model 报告常缺少严谨实机对照，难区分规模收益、任务选择偏差和演示效果。
+- Why it works: 多任务预训练让策略共享跨物体和跨动作的接触经验，新任务只需少量数据即可借用这些先验，而 diffusion policy 维持连续动作分布的表达能力。
+- True novelty: 真正新意在于评估框架和统计严谨性，而不只是又训练一个大模型；它给大型行为模型建立了可复验的实机判断标准。
+- Evidence: Science Robotics 正式论文；摘要报告仿真与真实机器人盲随机试验，多任务预训练相对单任务基线更成功、更鲁棒，并用更少数据学习复杂新任务。
 
-## 7. Birdlike broadband neuromorphic visual sensor arrays for fusion imaging
+## 5. Learning a thousand tasks in a day
+- Venue: Science Robotics
+- Published: 2025-11-12
+- Type: direct
+- Tags: manipulation
+- Score: 0.758
+- Core insight: MT3 的核心洞见是日常操作可被拆成对齐与交互两类可检索片段，机器人因此能用极少示范组合出大量任务。
+- Problem frame: 模仿学习的基本约束是每个任务的数据成本；单体行为克隆把所有轨迹当成一个连续映射，导致少示范时泛化差。
+- First principles: 许多操作共享到达、对齐、接触和释放等子结构；如果能在这些结构层面检索相似经验，样本复杂度会低于逐任务学习完整策略。
+- Mechanism: 论文系统比较对齐阶段和交互阶段的设计，提出 Multi-Task Trajectory Transfer，用分解加检索替代单阶段行为克隆。
+- Boundary advanced: 它把少样本日常操作推进到千任务规模，展示一天内教授 1000 个任务的可行性，同时报告不同任务族的限制。
+- Old problem: 传统模仿学习往往每个任务需要数百到数千条示范，面对长尾日常物体和任务时标注成本不可扩展。
+- Why it works: 分阶段降低了动作空间复杂度，检索让新任务从已有相似轨迹中获得局部模板，因此少量示范能覆盖更多物体实例和任务变化。
+- True novelty: 新意在于把任务分解和检索泛化做成可扩展实机方法，并用大规模 rollout 系统验证，而不是只提出一个少样本学习口号。
+- Evidence: Science Robotics 正式论文；摘要报告 3450 次真实 rollout 研究设计选择，MT3 用少至单次示范学习任务，并通过额外 2200 次真实 rollout 展示 1000 个日常任务。
+
+## 6. Agile and cooperative aerial manipulation of a cable-suspended load
+- Venue: Science Robotics
+- Published: 2025-10-29
+- Type: direct
+- Tags: hard_to_instrument, drone
+- Score: 0.7562
+- Core insight: 这篇工作说明多无人机吊运的敏捷性瓶颈在整体系动力学耦合，而不是单机控制器性能；在线全身轨迹规划能显著释放负载机动能力。
+- Problem frame: 缆绳吊运系统受限于无人机、缆绳和负载之间的耦合动力学，传统级联控制为保证稳定性牺牲速度和加速度。
+- First principles: 负载姿态和缆绳张力是系统状态的一部分；如果规划器忽略它们，控制器只能事后补偿摆动，无法安全利用系统全部动态能力。
+- Mechanism: 方法在线求解包含耦合约束的全身 kinodynamic motion planning，并以 receding horizon 给无人机参考轨迹，同时由机载控制器观测和补偿缆绳张力。
+- Boundary advanced: 它把多机吊运从低速搬运推进到高速窄通道等敏捷动作，且不需要在负载上增加传感器。
+- Old problem: 已有 multilifting 控制多依赖级联结构，只能处理低加速度运动，难用于搜救等时间敏感场景。
+- Why it works: 规划阶段显式纳入缆绳张力、负载姿态和无人机约束，控制阶段再闭环补偿不确定性，因此不会把耦合动态留到最后被动处理。
+- True novelty: 新意在于把多无人机加缆绳负载当作统一全身系统在线规划，并在真实高速场景证明其敏捷性和鲁棒性。
+- Evidence: Science Robotics 正式论文；摘要报告真实实验中加速度至少达到现有方法 8 倍，可高速穿越狭窄通道，并对负载不确定性和风扰保持鲁棒。
+
+## 7. A bio-inspired visuotactile neuron for multisensory integration
 - Venue: Nature Communications
-- Published: 2024-09-27
+- Published: 2023-09-15
 - Type: direct
 - Tags: bioinspired
-- Score: 0.4218
-- Core insight: 这篇把仿生视觉传感从单纯成像推向感存算一体：同一柔性阵列同时完成宽谱感知、非易失记忆和低功耗融合成像。
-- Problem frame: 可穿戴或嵌入式视觉系统受限于功耗、柔性集成和后端计算搬运；传统硅视觉芯片很难同时模拟生物视觉的动态响应和低能耗。
-- First principles: 如果光电器件本身能在传感时保存和调制响应，部分视觉预处理就可以在材料与器件层完成，减少传感到计算之间的数据搬运。
-- Mechanism: 作者构建 P3HT/GaAs 纳米线 P-N 结并结合 Schottky 结，实现正负光电导、超过 5 bit 的 in-memory sensing/computing，以及可见光和 UV 两种成像模式的 reservoir computing 融合。
-- Boundary advanced: 它把仿生视觉阵列推进到柔性基底、近零功耗模式和运动/UV 灰度融合成像的器件级集成。
-- Old problem: 传统视觉传感器通常只负责采集，低光、宽谱、记忆和计算依赖外部电路，导致功耗和系统复杂度上升。
-- Why it works: 有机/无机异质结提供可调光电导和记忆效应，阵列级读出把光谱与时间响应转化为可计算状态，reservoir computing 再完成颜色与运动信息识别。
-- True novelty: 新意在于材料、器件和视觉计算协同设计，而不是只改进一个光电探测器指标。
-- Evidence: Nature Communications；摘要报告 5 x 5 阵列、超过 5 bit 存内感算、颜色识别最高 94% 准确率，并实现运动和 UV 灰度信息提取。
+- Score: 0.4346
+- Core insight: 这项 Nature Communications 工作把视觉和触觉融合下沉到类神经器件层面，用 MoS2 memtransistor 与 triboelectric 触觉传感器复现多感官神经元的关键响应规律。
+- Problem frame: 多模态机器人感知的约束不只是算法融合，而是传感到计算链路的能耗、延迟和弱信号可靠性。
+- First principles: 当单模态线索弱时，神经系统通过跨模态收敛提高响应概率；硬件若能在器件层完成这种非线性整合，可减少后端计算负担。
+- Mechanism: 器件把光敏单层 MoS2 memtransistor 与摩擦电触觉传感器耦合，产生超加性响应、逆效应和时间一致性，并进一步编码为概率性脉冲事件。
+- Boundary advanced: 它把 visuotactile fusion 从软件模型推进到固态神经形态元件，为低功耗触觉-视觉前端提供物理实现路线。
+- Old problem: 既有人工感知系统多把视觉和触觉分别采样后再由数字处理器融合，硬件端缺少类似生物多感官神经元的集成机制。
+- Why it works: 弱视觉和触觉信号在同一器件响应中相互调制，时间接近的输入更容易触发脉冲，从物理层模拟了生物多感官增强。
+- True novelty: 新意在于同时展示三种经典多感官整合特征，并把模拟响应接到数字脉冲编码电路，而非只做双传感器并联。
+- Evidence: Nature Communications 正式论文；摘要报告器件复现超加性、逆效应和时间一致性，并实现视觉-触觉信息到脉冲事件的编码。
 
-## 8. Interspecies-chimera machine vision with polarimetry for real-time navigation and anti-glare pattern recognition
+## 8. A multifunctional soft robotic shape display with high-speed actuation, sensing, and control
 - Venue: Nature Communications
-- Published: 2024-08-07
+- Published: 2023-07-31
 - Type: direct
-- Tags: bioinspired, humanoid
-- Score: 0.6026
-- Core insight: 这篇用偏振敏感 memtransistor 把蜜蜂式天光导航和人类式视觉记忆压进同一机器视觉器件。
-- Problem frame: 现有机器视觉多模仿人眼强度成像，缺少偏振信息；而偏振对抗眩光、天光导航和真实图像恢复都很有价值。
-- First principles: 不同物种视觉利用不同物理通道：人类依赖强度与记忆，昆虫利用偏振导航；把这些通道合并，机器视觉可获得更丰富且更低能耗的状态观测。
-- Mechanism: ReS2/GeSe2 范德华异质结构成 optically controlled polarimetry memtransistor，同时提供偏振敏感、非易失性和正/负光电导，用于天光偏振识别、抗眩光和类突触认知任务。
-- Boundary advanced: 它把机器视觉从单一仿人路线推进到跨物种视觉功能融合，特别面向实时导航与抗眩光识别。
-- Old problem: 传统 humanoid machine vision 缺少偏振通道，遇到眩光、低对比或导航线索不足时，需要额外传感或高能耗计算补偿。
-- Why it works: 偏振响应直接编码天光和反射方向信息，非易失与突触特性让器件在传感端保留历史状态，从而降低后端计算负担。
-- True novelty: 新意是 interspecies-chimera vision 的器件实现：在一个光电晶体管中整合人类式记忆和昆虫式偏振导航能力。
-- Evidence: Nature Communications；摘要报告该器件可识别天体偏振用于实时导航，抗眩光识别相比传统 humanoid counterpart 节能一个数量级。
+- Tags: soft_robot
+- Score: 0.4885
+- Core insight: 这项软体 shape display 说明当执行、传感和控制被单元化集成后，软体表面不只是变形输出器，也能成为可闭环的触觉与物体交互平台。
+- Problem frame: 可变形表面的基本 trade-off 是大面积阵列、高速形变、高精度状态感知和可控性很难同时满足。
+- First principles: 闭环形态控制需要每个执行单元既能施力又能测量自身位移和外力；否则软体系统只能开环展示形状，难以稳定操作物体。
+- Mechanism: 论文构建 10×10 可扩展单元阵列，每个单元结合高速 electrohydraulic soft actuation、磁传感和控制电路，实现表面形变与力/位移反馈。
+- Boundary advanced: 它把软体形状显示推进到 50 Hz 可逆形变、0.1 mm 形变感知和 50 mN 外力感知的系统级集成。
+- Old problem: 以往 shape display 往往分辨率、速度、嵌入式感知或控制集成不足，难以从展示界面走向动态操控。
+- Why it works: 阵列化单元把驱动和感知局部闭合，整体表面可通过大量小单元并行产生复杂几何和反馈，从而支持用户交互、质量感知和固液操控。
+- True novelty: 新意在于以前所未有的软体阵列规模紧耦合执行、传感和控制，而不只是提高单个软体执行器性能。
+- Evidence: Nature Communications 正式论文；摘要报告 10×10 阵列、最高 50 Hz 可逆形变、0.1 mm 形变灵敏度和 50 mN 单元外力灵敏度，并展示多类交互与动态操控应用。
 
-## 9. Adaptive tactile interaction transfer via digitally embroidered smart gloves
+## 9. A soft, self-sensing tensile valve for perceptive soft robots
 - Venue: Nature Communications
-- Published: 2024-01-29
-- Type: transferable
-- Tags: none
-- Score: 0.4275
-- Core insight: 这篇把触觉交互从单次记录变成可穿戴、可复制、可自适应转移的闭环人机接口。
-- Problem frame: 触觉信息难以跨时间和空间传递，因为高覆盖传感、可穿戴舒适性、触觉反馈和个体差异校准通常无法同时满足。
-- First principles: 触觉交互需要双向通道：一侧记录力和接触模式，另一侧以人体可感知的振动或压力重放，并根据个体感知差异做闭环优化。
-- Mechanism: 作者用数字刺绣把压阻力传感器和振动触觉执行器嵌入纺织手套，再用机器学习建模个体对触觉反馈的反应并优化反馈参数。
-- Boundary advanced: 它把触觉手套从传感设备推进为可记录、重放、适配并服务机器人遥操作的完整触觉交互系统。
-- Old problem: 过去触觉接口要么覆盖面积小、定制成本高，要么只能采集不能有效反馈，难以支撑技能传递和机器人遥操作。
-- Why it works: 纺织工艺带来可扩展、贴身的传感/执行阵列；个体化模型补偿人对振动触觉的感知差异，使重放触觉更稳定。
-- True novelty: 新意在于用数字刺绣实现可规模化的双向触觉接口，并把自适应触觉反馈用于端到端任务系统。
-- Evidence: Nature Communications；摘要报告手套可记录、再现和转移触觉交互，并展示触觉遮挡缓解、技能引导和响应式机器人遥操作三个系统。
-
-## 10. Embedded shape morphing for morphologically adaptive robots
-- Venue: Nature Communications
-- Published: 2023-09-27
+- Published: 2023-07-04
 - Type: direct
-- Tags: hard_to_instrument, manipulation
-- Score: 0.5613
-- Core insight: 这篇把形态变化的驱动、传感和锁定都嵌入机器人身体，使形态自适应从外部辅助装置变成身体内部能力。
-- Problem frame: 形态可变机器人想适应多任务环境，但传统方案常依赖外部气源、线缆或笨重支撑，无法真正成为可自主部署的身体结构。
-- First principles: 如果形态本身是控制变量，机器人必须在身体内同时具备变形、感知当前形状和保持形状的能力，否则形态变化不能进入闭环控制。
-- Mechanism: 作者提出嵌入式 shape-morphing scheme，把形状驱动、形状感知和锁定机制整合进模块，并在自感知抓手、可变形四足身体和两栖无绳机器人中展示。
-- Boundary advanced: 它把 morphologically adaptive robots 推进到可编程模块库和多机器人形态实例，而不只是单一材料演示。
-- Old problem: 过去形态变化常停留在材料或机构层，缺少机器人级集成，尤其缺少嵌入式感知和形态保持机制。
-- Why it works: 驱动、传感和锁定共同闭合形态控制回路，使机器人能知道自己变成了什么形状，并在任务中维持该形状。
-- True novelty: 真正的新意是把形态变化做成体内嵌入式、可感知、可锁定的通用模块，而不是外部驱动的单次变形。
-- Evidence: Nature Communications；摘要展示自感知变形抓手、可切换行走/爬行/水平攀爬的四足机器人，以及可变肢体两栖无绳机器人。
+- Tags: soft_robot, hard_to_instrument, mobile_robot
+- Score: 0.425
+- Core insight: 自感知 tensile valve 的关键是把应变检测和气动控制阀变成同一个软结构，让软体机器人用压力状态直接表达身体受力。
+- Problem frame: 软体充气机器人的感知瓶颈是刚性电子和复杂布线会破坏柔顺性、体积和自治性。
+- First principles: 如果机械形变能直接调制流体阻抗，传感信号就可以在气压域产生；控制系统无需先把形变转成电子信号再驱动阀门。
+- Mechanism: 论文利用 helical pinching 机制，把外部拉伸映射为不同稳态输出压力，用单一恒压源实现传感与控制阀结构的物理共享。
+- Boundary advanced: 它把软体机器人朝全软、无电子、可编程和潜在无缆自治系统推进，尤其适合难以安装刚性传感器的移动软体平台。
+- Old problem: 软体机器人虽安全适应，但感知和控制常依赖刚性电子、线缆和软件耦合，系统一体化困难。
+- Why it works: 拉伸改变螺旋夹断几何，进而改变流道压力状态；压力既是控制变量也是感知读数，所以结构本身完成感控转换。
+- True novelty: 新意在于传感器和阀门不是两个软元件的组合，而是在同一 tensile valve 中共享结构和功能。
+- Evidence: Nature Communications 正式论文；摘要报告用单一恒压源把拉伸应变转化为可区分稳态压力，并展示平台的可编程性和机器人适用性。
+
+## 10. Ultracompact single-nanowire-morphed grippers driven by vectorial Lorentz forces for dexterous robotic manipulations
+- Venue: Nature Communications
+- Published: 2023-06-24
+- Type: direct
+- Tags: manipulation
+- Score: 0.5462
+- Core insight: 单纳米线形变夹爪展示了微尺度操作可以依赖几何定制的 Lorentz 力，而不是复杂多部件传动，从而在极小结构中获得抓取、拍动和扭转自由度。
+- Problem frame: 微纳操作的约束是结构越小，装配复杂传动、克服范德华粘附和实现可靠释放就越困难。
+- First principles: 通电导体在磁场中受 Lorentz 力；如果电流路径和折叠几何被设计好，力方向可转化为多维可控形变。
+- Mechanism: 论文把超长超薄硅纳米线生长成单层或嵌套 omega 环，悬挂在电极框架上并镀银导电，通过几何定制电流路径在磁场中产生向量 Lorentz 驱动。
+- Boundary advanced: 它把超紧凑软夹爪推进到大幅快速机动、共振释放和协同装配，面向微尺度制造、检测和生物操作。
+- Old problem: 传统微夹爪常需要复杂制造或只能完成有限开合，且释放微小载荷时容易受粘附力困扰。
+- Why it works: 单纳米线折叠同时定义结构柔度和电流路径，磁场中的向量力可直接产生抓取、扭转和振动，高频模式还能克服粘附释放载荷。
+- True novelty: 新意在于用 single-nanowire morphing 快速构造可设计的多维软夹爪，并展示成对协同完成对准、传递和 LED 单元测试安装。
+- Evidence: Nature Communications 正式论文；摘要报告夹爪可抓取、拍动、扭转微尺度物体，并通过高频/共振振动释放载荷，进一步展示协同装配与测试。
