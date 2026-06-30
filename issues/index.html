@@ -97,7 +97,7 @@
     .panel-stat { border-top: 1px solid rgba(244,241,232,.26); padding: 14px 0; }
     .panel-stat strong { display: block; font-size: 30px; line-height: 1; }
     .panel-stat span { display: block; margin-top: 6px; color: #d2c5b4; font-size: 13px; }
-    .panel-note { position: absolute; left: 26px; right: 26px; bottom: 24px; color: #d2c5b4; font-size: 13px; line-height: 1.7; }
+    .panel-note { position: relative; margin-top: 22px; color: #d2c5b4; font-size: 13px; line-height: 1.7; }
     .empty { border: 1px solid var(--line-soft); padding: 24px; color: var(--muted); background: rgba(255,255,255,.18); }
     @media (max-width: 680px) {
       .wrap { width: auto; margin: 0 24px 0 42px; }
@@ -108,7 +108,7 @@
       .archive-stats { grid-template-columns: repeat(3, 1fr); }
       .stat { min-height: 82px; padding: 12px 10px; }
       .archive-layout { grid-template-columns: 1fr; }
-      .archive-panel { display: none; }
+      .archive-panel { display: block; position: relative; top: auto; margin-top: 24px; }
       .issue-head { grid-template-columns: 54px minmax(0, 1fr); }
       .stats { grid-column: 1 / 3; justify-self: start; text-align: left; margin-left: 70px; }
       ol { margin-left: 70px; }
@@ -125,14 +125,14 @@
           <p class="sub">按期汇总已发布的 Paper Radar 永久链接和每期推荐论文，方便回看、检索和避免重复阅读。</p>
         </div>
         <div class="archive-stats">
-          <div class="stat"><strong>9</strong><span>issues</span></div>
-          <div class="stat"><strong>90</strong><span>papers</span></div>
-          <div class="stat"><strong>90</strong><span>figures</span></div>
+          <div class="stat"><strong>10</strong><span>issues</span></div>
+          <div class="stat"><strong>100</strong><span>papers</span></div>
+          <div class="stat"><strong>100</strong><span>figures</span></div>
         </div>
       </section>
       <nav>
-        <a class="primary" href="../latest/">最新一期</a>
-        <a href="../">首页</a>
+        <a class="primary" href="../latest/index.html">最新一期</a>
+        <a href="../index.html">首页</a>
       </nav>
     </div>
   </header>
@@ -140,8 +140,27 @@
     <div class="wrap archive-layout">
       <div><section class="issue">
   <div class="issue-head">
+    <div class="issue-date">06-30</div>
+    <h2 class="issue-title"><a href="2026-06-30/index.html">Paper Radar · 2026-06-30</a></h2>
+    <div class="stats">10 篇 · 10 图 · formal 7</div>
+  </div>
+  <ol>
+    <li><div class="paper-index">01</div><div><div class="paper"><a href="http://arxiv.org/abs/2606.30113v1">SA-VLA: State-aware tokenizer for improving Vision-Language-Action Models&#x27; performance</a></div><div class="meta">arXiv · 2026-06-29</div></div></li>
+<li><div class="paper-index">02</div><div><div class="paper"><a href="http://arxiv.org/abs/2606.27871v1">LocalNav: Distilling Frontier VLMs and Embodied RL for On-Device Object Goal Navigation</a></div><div class="meta">arXiv · 2026-06-26</div></div></li>
+<li><div class="paper-index">03</div><div><div class="paper"><a href="http://arxiv.org/abs/2606.30645v1">VLK: Learning Humanoid Loco-Manipulation from Synthetic Interactions in Reconstructed Scenes</a></div><div class="meta">arXiv · 2026-06-29</div></div></li>
+<li><div class="paper-index">04</div><div><div class="paper"><a href="https://doi.org/10.1126/sciadv.aeg0480">Magnetically levitated metasurface enabling tangible and bidirectional human-machine interaction</a></div><div class="meta">Science Advances · 2026-06-26</div></div></li>
+<li><div class="paper-index">05</div><div><div class="paper"><a href="https://doi.org/10.1038/s42256-026-01252-6">Autonomous navigation of intelligent microrobotic swarms in unknown environments</a></div><div class="meta">Nature Machine Intelligence · 2026-06-22</div></div></li>
+<li><div class="paper-index">06</div><div><div class="paper"><a href="https://doi.org/10.1038/s41928-026-01643-y">A miniaturized ingestible temperature sensor for continuous internal monitoring</a></div><div class="meta">Nature Electronics · 2026-06-15</div></div></li>
+<li><div class="paper-index">07</div><div><div class="paper"><a href="https://doi.org/10.1038/s44460-026-00059-7">Minimal-calibration multimodal wearable sensing for long-duration three-dimensional shoulder kinematics</a></div><div class="meta">Nature Sensors · 2026-04-06</div></div></li>
+<li><div class="paper-index">08</div><div><div class="paper"><a href="https://doi.org/10.1038/s44460-025-00015-x">Body-induced electroluminescence for bio-inspired 3D spatial position perception</a></div><div class="meta">Nature Sensors · 2026-01-27</div></div></li>
+<li><div class="paper-index">09</div><div><div class="paper"><a href="https://openalex.org/W4394674699">Learning agile soccer skills for a bipedal robot with deep reinforcement learning</a></div><div class="meta">Science Robotics · 2024-04-10</div></div></li>
+<li><div class="paper-index">10</div><div><div class="paper"><a href="https://openalex.org/W4390604011">A multimodal magnetoelastic artificial skin for underwater haptic sensing</a></div><div class="meta">Science Advances · 2024-01-05</div></div></li>
+  </ol>
+</section>
+<section class="issue">
+  <div class="issue-head">
     <div class="issue-date">06-21</div>
-    <h2 class="issue-title"><a href="2026-06-21/">Paper Radar · 2026-06-21</a></h2>
+    <h2 class="issue-title"><a href="2026-06-21/index.html">Paper Radar · 2026-06-21</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 7</div>
   </div>
   <ol>
@@ -160,7 +179,7 @@
 <section class="issue">
   <div class="issue-head">
     <div class="issue-date">06-15</div>
-    <h2 class="issue-title"><a href="2026-06-15/">Paper Radar · 2026-06-15</a></h2>
+    <h2 class="issue-title"><a href="2026-06-15/index.html">Paper Radar · 2026-06-15</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 7</div>
   </div>
   <ol>
@@ -179,7 +198,7 @@
 <section class="issue">
   <div class="issue-head">
     <div class="issue-date">06-13</div>
-    <h2 class="issue-title"><a href="2026-06-13/">Paper Radar · 2026-06-13</a></h2>
+    <h2 class="issue-title"><a href="2026-06-13/index.html">Paper Radar · 2026-06-13</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 7</div>
   </div>
   <ol>
@@ -198,7 +217,7 @@
 <section class="issue">
   <div class="issue-head">
     <div class="issue-date">06-08</div>
-    <h2 class="issue-title"><a href="2026-06-08/">Paper Radar · 2026-06-08</a></h2>
+    <h2 class="issue-title"><a href="2026-06-08/index.html">Paper Radar · 2026-06-08</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 7</div>
   </div>
   <ol>
@@ -217,7 +236,7 @@
 <section class="issue">
   <div class="issue-head">
     <div class="issue-date">06-01</div>
-    <h2 class="issue-title"><a href="2026-06-01/">Paper Radar · 2026-06-01</a></h2>
+    <h2 class="issue-title"><a href="2026-06-01/index.html">Paper Radar · 2026-06-01</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 7</div>
   </div>
   <ol>
@@ -236,7 +255,7 @@
 <section class="issue">
   <div class="issue-head">
     <div class="issue-date">05-26</div>
-    <h2 class="issue-title"><a href="2026-05-26/">Paper Radar · 2026-05-26</a></h2>
+    <h2 class="issue-title"><a href="2026-05-26/index.html">Paper Radar · 2026-05-26</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 8</div>
   </div>
   <ol>
@@ -255,7 +274,7 @@
 <section class="issue">
   <div class="issue-head">
     <div class="issue-date">05-23</div>
-    <h2 class="issue-title"><a href="2026-05-23/">Paper Radar · 2026-05-23</a></h2>
+    <h2 class="issue-title"><a href="2026-05-23/index.html">Paper Radar · 2026-05-23</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 7</div>
   </div>
   <ol>
@@ -274,7 +293,7 @@
 <section class="issue">
   <div class="issue-head">
     <div class="issue-date">05-22</div>
-    <h2 class="issue-title"><a href="2026-05-22/">Paper Radar · 2026-05-22</a></h2>
+    <h2 class="issue-title"><a href="2026-05-22/index.html">Paper Radar · 2026-05-22</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 4</div>
   </div>
   <ol>
@@ -293,7 +312,7 @@
 <section class="issue">
   <div class="issue-head">
     <div class="issue-date">05-20</div>
-    <h2 class="issue-title"><a href="2026-05-20/">Paper Radar · 2026-05-20</a></h2>
+    <h2 class="issue-title"><a href="2026-05-20/index.html">Paper Radar · 2026-05-20</a></h2>
     <div class="stats">10 篇 · 10 图 · formal 2</div>
   </div>
   <ol>
@@ -312,9 +331,9 @@
       <aside class="archive-panel">
         <div class="panel-label">Paper Radar · Journal Archive</div>
         <h2 class="panel-title">研究线索<br>时间轴</h2>
-        <div class="panel-stat"><strong>9</strong><span>已归档期数</span></div>
-        <div class="panel-stat"><strong>90</strong><span>累计推荐论文</span></div>
-        <div class="panel-stat"><strong>56</strong><span>正式来源论文</span></div>
+        <div class="panel-stat"><strong>10</strong><span>已归档期数</span></div>
+        <div class="panel-stat"><strong>100</strong><span>累计推荐论文</span></div>
+        <div class="panel-stat"><strong>63</strong><span>正式来源论文</span></div>
         <div class="panel-note">每一期都是独立永久链接，邮件中的旧链接不会被 latest 覆盖。</div>
       </aside>
     </div>
