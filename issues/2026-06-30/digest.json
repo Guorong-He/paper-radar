@@ -1,0 +1,369 @@
+[
+  {
+    "title": "SA-VLA: State-aware tokenizer for improving Vision-Language-Action Models' performance",
+    "authors": [
+      "Tengyue Jiang",
+      "Chunpu Xu",
+      "Jiayue Kang",
+      "Yao Mu"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-06-29",
+    "paper_type": "transferable",
+    "robot_type_tags": [],
+    "score": 0.5675,
+    "url": "http://arxiv.org/abs/2606.30113v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.30113v1",
+    "analysis": {
+      "core_insight": "离散动作码不应对应固定控制原型，而应由当前本体状态把同一枚码展开为一族连续动作。",
+      "problem_frame": "VLA 的动作量化压缩了输出空间，却把关节构型、物体位姿和接触状态不同的动作错误地折叠到同一原型。",
+      "first_principles": "连续控制的条件分布取决于机器人状态；若解码器忽略状态，有限码本必然产生条件混叠和不可消除的重建误差。",
+      "mechanism": "SA-VLA 以交叉注意力或轻量状态适配器注入本体信息，对动作特征逐项调制后再从离散码重建连续控制。",
+      "boundary_advanced": "它在不改动离散 VLA 接口的前提下扩大了有限码本的有效动作支撑域。",
+      "old_problem": "既有动作 tokenizer 常靠扩大码本或提高量化精度缓解压缩损失，却仍把状态相关动作当作固定模板。",
+      "why_it_works": "状态调制把量化误差中可由当前构型解释的部分显式交给解码器，减少了一码多义造成的控制偏差。",
+      "true_novelty": "真正的新意不是更大的码本，而是把动作码从静态原型改造成状态条件化的控制族。",
+      "evidence_summary": "12 个 RoboTwin 任务的平均成功率由最强基线的 0.29 提升至 0.56，三项零样本实机任务由 0.15 提升至 0.33。",
+      "email_summary": "用本体状态调制离散动作解码，SA-VLA 将 RoboTwin 平均成功率从 0.29 提至 0.56，并在零样本实机上由 0.15 提至 0.33。",
+      "importance_reason": "它直指离散 VLA 中经常被模型规模掩盖的动作压缩瓶颈，且改动小、可迁移性强。"
+    }
+  },
+  {
+    "title": "LocalNav: Distilling Frontier VLMs and Embodied RL for On-Device Object Goal Navigation",
+    "authors": [
+      "Nicolas Baumann",
+      "Liam Boyle",
+      "Pu Deng",
+      "Edoardo Ghignone",
+      "Boyang Sun",
+      "Marc Pollefeys",
+      "Luca Benini",
+      "Michele Magno"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-06-26",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "mobile_robot"
+    ],
+    "score": 0.505,
+    "url": "http://arxiv.org/abs/2606.27871v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.27871v1",
+    "analysis": {
+      "core_insight": "云端大模型的导航推理可以被蒸馏为边缘设备上的短链路决策，而无需把开放词汇能力一并丢掉。",
+      "problem_frame": "ObjectNav 需要视觉语言语义推理，但云端 VLM 的算力、网络和生成时延使移动机器人难以闭环部署。",
+      "first_principles": "闭环导航的价值取决于单位时间内可执行的有效决策；推理再聪明，若时延超过环境变化尺度，也会失去控制意义。",
+      "mechanism": "LocalNav 先以场景图组织前沿 VLM 推理，再用 500 条教师轨迹微调 4B 模型，并以 E-RLVR 和生成长度正则压缩输出，最后量化部署到 Jetson。",
+      "boundary_advanced": "它把开放词汇目标导航从依赖云端的语义规划推进到嵌入式 GPU 上的低时延本地执行。",
+      "old_problem": "以往方案常在强云端语义能力与轻量本地反应速度之间二选一。",
+      "why_it_works": "场景图固定了空间语义接口，少量高质量推理轨迹传递策略结构，而长度正则直接削减闭环中无效的语言开销。",
+      "true_novelty": "贡献在于把知识蒸馏、具身强化学习和输出长度优化组合成面向真实时延预算的完整部署路径。",
+      "evidence_summary": "教师在 HM3D OVON 上成功率 39.7%，4B 学生达到 34.5%；生成开销降 72.1%、推理时延降 71.8%，量化后总时延累计下降 82.8%。",
+      "email_summary": "LocalNav 将前沿 VLM 导航蒸馏到 4B 本地模型，以 34.5% 成功率接近教师的 39.7%，并把总推理时延压低 82.8%。",
+      "importance_reason": "它把具身大模型的讨论从参数能力拉回实时闭环，给出了可复用的端侧部署范式。"
+    }
+  },
+  {
+    "title": "VLK: Learning Humanoid Loco-Manipulation from Synthetic Interactions in Reconstructed Scenes",
+    "authors": [
+      "Yen-Jen Wang",
+      "Jiaman Li",
+      "Sirui Chen",
+      "Takara E. Truong",
+      "Pei Xu",
+      "Pieter Abbeel",
+      "Rocky Duan",
+      "Koushil Sreenath",
+      "Angjoo Kanazawa",
+      "Carmelo Sferrazza",
+      "Guanya Shi",
+      "Karen Liu"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-06-29",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "humanoid"
+    ],
+    "score": 0.4875,
+    "url": "http://arxiv.org/abs/2606.30645v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.30645v1",
+    "analysis": {
+      "core_insight": "重建场景中的特权几何可以先生成动作，再反向渲染与动作严格同步的第一视角监督。",
+      "problem_frame": "人形移动操作需要图像、语言和全身运动三元同步数据，但真实采集昂贵且难以覆盖长尾交互。",
+      "first_principles": "视觉策略要学习可执行映射，监督必须同时满足观测一致性、任务语义一致性和机器人运动学可达性。",
+      "mechanism": "VLK 用 3D Gaussian Splatting 重建尺度一致的室内场景，借助特权信息合成导航与交互轨迹，再事后渲染对应的自我视角并训练短时全身轨迹预测器。",
+      "boundary_advanced": "它把合成数据从外观扩增推进为可直接监督人形全身移动操作的视觉—语言—运动学数据。",
+      "old_problem": "既有数据通常只覆盖视频、语言或动作中的两项，且缺少与真实人形运动学兼容的完整轨迹。",
+      "why_it_works": "先在完整三维状态中规划，再渲染局部观测，保证了动作可行性与视觉证据在时间和空间上对齐。",
+      "true_novelty": "核心不是单独使用 3DGS，而是用它构造无人工干预的同步 VLK 监督闭环。",
+      "evidence_summary": "系统自动生成 48,000 条配对轨迹，并在真实 Unitree G1 上完成导航和单物体搬运；摘要未报告统一成功率，证据边界需结合完整实验表解读。",
+      "email_summary": "VLK 在重建场景中自动合成 48,000 条视觉—语言—全身轨迹，并让真实 Unitree G1 完成导航与物体搬运。",
+      "importance_reason": "它针对人形具身学习最稀缺的数据接口，提供了可规模化且物理一致的生成路线。"
+    }
+  },
+  {
+    "title": "Magnetically levitated metasurface enabling tangible and bidirectional human-machine interaction",
+    "authors": [
+      "Gooyoon Chung",
+      "Jeongmin Yoo",
+      "Pei Liu",
+      "Gyuri Shin",
+      "Dongkyu Jeong",
+      "Sunjin Lee",
+      "Jae-Young Yoo",
+      "Sang Min Won",
+      "Dong-Soo Han",
+      "Ji-Hoon Kim",
+      "Wooseok Song",
+      "Raudel Avila",
+      "Yoonseok Park"
+    ],
+    "venue": "Science Advances",
+    "published_at": "2026-06-26",
+    "paper_type": "transferable",
+    "robot_type_tags": [],
+    "score": 0.5775,
+    "url": "https://doi.org/10.1126/sciadv.aeg0480",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/sciadv.aeg0480",
+    "analysis": {
+      "core_insight": "同一片柔性表面可以同时充当可编程形状输出、触觉交互界面和自身形态传感器。",
+      "problem_frame": "机械超表面往往脆弱、响应慢，且难把形变、触摸感知和视觉反馈集成到同一界面。",
+      "first_principles": "双向人机交互要求界面既能稳定施加可控形变，也能观测受力后的真实形态；只有致动与状态估计闭环，表面才不是一次性显示器。",
+      "mechanism": "系统以 6×6 弹性像素阵列配合电磁铁的吸引和排斥驱动，嵌入 IMU 重建表面高度，并用 LED 阵列把形态即时映射为视觉反馈。",
+      "boundary_advanced": "它把软机械超表面推进为可推、拉、捏且能实时回读自身形状的多功能交互体。",
+      "old_problem": "传统方案多在高速形变、机械耐受性和功能集成之间折中，难以承受直接的人体操作。",
+      "why_it_works": "磁力提供无接触双向位移，支撑磁体稳定柔性层，IMU 则把局部倾角转为可校正的全局形面。",
+      "true_novelty": "新意在于将磁悬浮式双向像素、形态自感知与视觉反馈做成一个可闭环编程的表面。",
+      "evidence_summary": "单像素实现约 −5 至 3.5 mm 的总计 8.5 mm 高度调节，36 个像素可协调生成多种连续形态，并展示推、拉、捏、液滴输运和实时形面重建。",
+      "email_summary": "这块 6×6 磁驱软超表面可在 8.5 mm 范围内双向形变，并以 IMU 和 LED 实现可触摸、可回读的双向人机界面。",
+      "importance_reason": "它展示了感知、致动与材料形态在同一物理界面中闭合，适合软体机器人和触觉交互继续延展。"
+    }
+  },
+  {
+    "title": "Autonomous navigation of intelligent microrobotic swarms in unknown environments",
+    "authors": [
+      "Xuanyu An",
+      "Shengming Luo",
+      "Haoyu Zhang",
+      "Qijun Yang",
+      "Yuanbiao Ma",
+      "Bin Wang",
+      "Jiansheng Du",
+      "Qianqian Wang"
+    ],
+    "venue": "Nature Machine Intelligence",
+    "published_at": "2026-06-22",
+    "paper_type": "transferable",
+    "robot_type_tags": [],
+    "score": 0.5175,
+    "url": "https://doi.org/10.1038/s42256-026-01252-6",
+    "pdf_url": "https://www.nature.com/articles/s42256-026-01252-6.pdf",
+    "analysis": {
+      "core_insight": "微机器人群在部分可观测环境中需要记住历史，而不是只对当前显微图像做瞬时避障。",
+      "problem_frame": "磁驱微群缺少个体级传感和独立致动，在未知、动态且可能暂时失明的环境中难以自主导航。",
+      "first_principles": "当观测不能唯一确定环境状态时，控制问题本质上是 POMDP；历史上下文和对模型误差的鲁棒性同样决定策略可执行性。",
+      "mechanism": "Turbo 用时间扩展注意力聚合历史状态，并在环境、感知、致动和动力学四层域随机化中训练，再输出全局磁场控制命令。",
+      "boundary_advanced": "它把微群自主性从静态路径跟随推进到未知环境中的动态避障、失明恢复和任务优先决策。",
+      "old_problem": "既有微群导航多依赖已知地图、连续全局视觉或人工操作者，难覆盖观测中断与动态障碍。",
+      "why_it_works": "记忆补偿了瞬时观测缺失，多层随机化则让策略不依赖单一仿真动力学和视觉噪声模型。",
+      "true_novelty": "关键突破是面向微群物理约束，将长时注意力与跨层 sim-to-real 鲁棒化结合起来。",
+      "evidence_summary": "模型在仿真中与人类操作者对比，并在实物微群上展示动态避障、载荷运输、移动目标跟踪、暂时视觉丢失恢复和悬停；消融表明组合域随机化优于单层随机化。",
+      "email_summary": "Turbo 以历史注意力和四层域随机化控制磁驱微群，在未知环境中完成动态避障、运输、跟踪与视觉中断恢复。",
+      "importance_reason": "它把部分可观测强化学习落到极受限微机器人群，是感知记忆如何转化为物理群体行为的强案例。"
+    }
+  },
+  {
+    "title": "A miniaturized ingestible temperature sensor for continuous internal monitoring",
+    "authors": [
+      "Saransh Sharma",
+      "Yubin Cai",
+      "Injoo Moon",
+      "Zhenming Yang",
+      "Peter Chai",
+      "Niora Fabian",
+      "Kailyn Schmidt",
+      "Alison M. Hayward",
+      "Andrew Pettinari",
+      "Maria Platero",
+      "Benedict Laidlaw",
+      "Ashley Guevara",
+      "Anantha P. Chandrakasan",
+      "Giovanni Traverso"
+    ],
+    "venue": "Nature Electronics",
+    "published_at": "2026-06-15",
+    "paper_type": "transferable",
+    "robot_type_tags": [],
+    "score": 0.5775,
+    "url": "https://doi.org/10.1038/s41928-026-01643-y",
+    "pdf_url": "https://www.nature.com/articles/s41928-026-01643-y.pdf",
+    "analysis": {
+      "core_insight": "通过极低功耗芯片、反向散射通信和胶囊级封装，可以把连续核心体温监测缩到更安全的吞服尺度。",
+      "problem_frame": "现有吞服式传感器体积限制儿科和长期使用，同时还要兼顾无线链路、供电、封装与胃肠通过性。",
+      "first_principles": "可吞服节点的尺寸下限由能量、天线有效孔径、热稳定和生物安全共同约束，任何单项缩小都会把代价转移到其余模块。",
+      "mechanism": "器件集成 1×1 mm、10 nW 芯片，采用 5×5 mm 天线反向散射通信，并以纽扣电池和全封装构成 6 mm 直径、4 mm 高的系统。",
+      "boundary_advanced": "它把连续内部温度监测推进到接近获批渗透泵口服制剂的尺寸，并兼顾多日无线运行。",
+      "old_problem": "传统胶囊电子往往依赖更大的电池和天线，增加滞留风险并限制较小体型人群。",
+      "why_it_works": "纳瓦级前端降低供电需求，反向散射减少主动射频开销，模块共设计避免单纯缩小造成链路失效。",
+      "true_novelty": "新意是围绕吞服安全尺寸完成芯片、天线、供电和封装的系统级协同，而非单个温度元件。",
+      "evidence_summary": "完整器件尺寸为 6×4 mm，并在猪模型中覆盖多日活动监测、炎症导致的胃肠转运变化，以及与血管内器件协同的导航和引导场景。",
+      "email_summary": "一枚 6×4 mm、10 nW 的吞服温度节点通过反向散射实现连续监测，并在猪模型中完成多日与病理条件验证。",
+      "importance_reason": "它体现了极端尺寸约束下感知系统的联合设计，也为体内机器人与医疗器件协同提供了工程基线。"
+    }
+  },
+  {
+    "title": "Minimal-calibration multimodal wearable sensing for long-duration three-dimensional shoulder kinematics",
+    "authors": [
+      "Yichu Jin",
+      "Yu Meng Zhou",
+      "Prabhat Pathak",
+      "Robert J. Wood",
+      "Conor J. Walsh"
+    ],
+    "venue": "Nature Sensors",
+    "published_at": "2026-04-06",
+    "paper_type": "transferable",
+    "robot_type_tags": [],
+    "score": 0.5175,
+    "url": "https://doi.org/10.1038/s44460-026-00059-7",
+    "pdf_url": "https://www.nature.com/articles/s44460-026-00059-7.pdf",
+    "analysis": {
+      "core_insight": "把易漂移的 IMU 与反映局部形变的软应变传感互补融合，可以用极短校准维持小时级三维肩关节追踪。",
+      "problem_frame": "实验室外的肩部运动既受 IMU 漂移影响，又难承受复杂光学标定，长期记录因此不可靠。",
+      "first_principles": "姿态积分提供高频动态但累积低频误差，应变信号缺少绝对姿态却携带身体几何约束；两者的误差谱互补。",
+      "mechanism": "系统将 IMU 和五层电容式软应变传感器嵌入衣物，以轻量学习融合框架从数分钟自由动作校准中估计三自由度关节姿态。",
+      "boundary_advanced": "它把三维肩部运动从短时、重标定实验测量推进到无实验室设备的小时级连续追踪。",
+      "old_problem": "单 IMU 方案会漂移，纯纺织应变方案又对穿戴位置和个体差异敏感，常需繁琐逐人标定。",
+      "why_it_works": "融合模型用软传感器约束长期几何变化、用 IMU 保留快速旋转信息，从而同时压制漂移与形变歧义。",
+      "true_novelty": "贡献是把传感互补性直接转化为极短校准和长时稳定，而不是单纯增加传感器数量。",
+      "evidence_summary": "约 2.5 分钟无约束动作即可校准，超过 1 小时功能活动中各自由度误差均低于 5°；软传感器线性拟合 R²=0.999，并经 1,000 次循环验证。",
+      "email_summary": "IMU 与软应变衣物经约 2.5 分钟校准，可在超过 1 小时活动中把三维肩部误差保持在 5°以内。",
+      "importance_reason": "它为可穿戴人机界面、康复和助力机器人提供了真正可长期使用的身体状态估计接口。"
+    }
+  },
+  {
+    "title": "Body-induced electroluminescence for bio-inspired 3D spatial position perception",
+    "authors": [
+      "Kun Wang",
+      "Shaochong Wu",
+      "Qi Chen",
+      "Jiawen Qiu",
+      "Dengao Li",
+      "Zhiqiang Liu",
+      "Chaoxing Wu"
+    ],
+    "venue": "Nature Sensors",
+    "published_at": "2026-01-27",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "bioinspired"
+    ],
+    "score": 0.48,
+    "url": "https://doi.org/10.1038/s44460-025-00015-x",
+    "pdf_url": "https://www.nature.com/articles/s44460-025-00015-x.pdf",
+    "analysis": {
+      "core_insight": "人体电势对微型发光器件电场的扰动本身就能成为非接触三维位置编码。",
+      "problem_frame": "常规平面位置传感器容易识别横向轨迹，却难同时测量手指离表面的垂直距离。",
+      "first_principles": "接近物体改变器件周围边界条件和载流子激发强度；若光强对距离单调且可重复，发光即可兼作空间传感信号。",
+      "mechanism": "系统利用人体诱导电势调制 LED 的电致发光脉冲，以表面光迹恢复横向位置、以光强变化估计 Z 向距离。",
+      "boundary_advanced": "它让同一光电器件同时承担显示和表面上方三维非接触定位。",
+      "old_problem": "传统电容、雷达或摄像方案通常需要独立读出阵列，且显示与空间输入彼此分离。",
+      "why_it_works": "人体靠近会重塑 LED 内外电场并放大可观测光强差，二维轨迹与高度因此被编码到互补的空间和强度特征中。",
+      "true_novelty": "新意在于把人体引起的电致发光从干扰转化为三维位置感知机制。",
+      "evidence_summary": "器件可同时检测表面接触轨迹和悬空手指位置，并展示非接触键盘、遥控与虚拟现实交互；补充实验给出 Z 向灵敏度、重复轨迹和隔纸操作。",
+      "email_summary": "该器件把人体诱导电势转成发光轨迹与强度，因而能同时感知平面位置和离面高度，并驱动非接触键盘与 VR 交互。",
+      "importance_reason": "它展示了一条不依赖摄像头的轻量三维近场感知路径，适合紧凑型人机界面和机器人表面。"
+    }
+  },
+  {
+    "title": "Learning agile soccer skills for a bipedal robot with deep reinforcement learning",
+    "authors": [
+      "Tuomas Haarnoja",
+      "Ben Moran",
+      "Guy Lever",
+      "Sandy H. Huang",
+      "Dhruva Tirumala",
+      "Jan Humplik",
+      "Markus Wulfmeier",
+      "Saran Tunyasuvunakool",
+      "Noah Siegel",
+      "Roland Hafner",
+      "Michael Bloesch",
+      "Kristian Hartikainen",
+      "Arunkumar Byravan",
+      "Leonard Hasenclever",
+      "Yuval Tassa",
+      "Fereshteh Sadeghi",
+      "Nathan Batchelor",
+      "Federico Casarini",
+      "Stefano Saliceti",
+      "Charles Game",
+      "Neil Sreendra",
+      "Kushal Patel",
+      "Marlon Gwira",
+      "Andrea Huber",
+      "Nicole Hurley",
+      "Francesco Nori",
+      "Raia Hadsell",
+      "Nicolas Heess"
+    ],
+    "venue": "Science Robotics",
+    "published_at": "2024-04-10",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "humanoid"
+    ],
+    "score": 0.6647,
+    "url": "https://openalex.org/W4394674699",
+    "pdf_url": "",
+    "analysis": {
+      "core_insight": "复杂双足足球行为可以由一个在仿真中学习的策略自然组合，而不必把起身、行走、转向和踢球拆成脚本状态机。",
+      "problem_frame": "低成本人形机器人既要快速运动又要抗摔和读懂对手，手工控制器难在接触动力学与战术之间平滑切换。",
+      "first_principles": "运动技能与战术决策共享同一身体动力学；端到端优化能利用任务回报发现人工分层遗漏的过渡动作，但必须约束仿真偏差。",
+      "mechanism": "研究以深度强化学习训练一对一足球策略，并通过高频控制、定向动力学随机化和训练扰动实现零样本实机迁移。",
+      "boundary_advanced": "它把小型双足机器人的强化学习从单技能展示推进到包含预测、拦截和技能切换的对抗性任务。",
+      "old_problem": "传统方案依赖独立步态、起身和踢球控制器，再用脆弱的规则状态机拼接。",
+      "why_it_works": "联合任务回报迫使策略学习技能间的连续过渡，随机化和扰动则覆盖了真实机器人最敏感的动力学偏差。",
+      "true_novelty": "贡献在于将运动控制与足球战术放进同一学习闭环，并以针对性的 sim-to-real 设计保留高速行为。",
+      "evidence_summary": "相对脚本基线，实机行走快 181%、转向快 302%、起身时间减少 63%、踢球快 34%，策略由仿真零样本迁移。",
+      "email_summary": "端到端深度 RL 让低成本双足机器人零样本迁移足球策略，实机行走快 181%、转向快 302%，且能预测和封堵对手。",
+      "importance_reason": "它是学习型全身控制如何跨越仿真并形成任务级行为的清晰标杆。"
+    }
+  },
+  {
+    "title": "A multimodal magnetoelastic artificial skin for underwater haptic sensing",
+    "authors": [
+      "Yihao Zhou",
+      "Xun Zhao",
+      "Jing Xu",
+      "Guorui Chen",
+      "Trinny Tat",
+      "Justin Li",
+      "Jun Chen"
+    ],
+    "venue": "Science Advances",
+    "published_at": "2024-01-05",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "bioinspired",
+      "aquatic_robot"
+    ],
+    "score": 0.6347,
+    "url": "https://openalex.org/W4390604011",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/sciadv.adj8567?download=true",
+    "analysis": {
+      "core_insight": "单个磁弹性 taxel 的多维响应可以像生物群体编码一样联合表达水下物体的接触属性。",
+      "problem_frame": "水下机器人缺少兼具防水、柔顺和多模态分辨力的触觉皮肤，视觉受浑浊和遮挡时尤其脆弱。",
+      "first_principles": "接触对象通过压力、形变、纹理和运动产生耦合时空信号；分散的多模态响应比单一压力幅值含有更高可分信息。",
+      "mechanism": "人工皮肤利用软聚合物的巨磁弹性，在每个 taxel 中复用多种触觉模态，并以类群体编码模式识别海洋生物和垃圾。",
+      "boundary_advanced": "它用结构简单且本征防水的皮肤实现了水下多模态触觉识别。",
+      "old_problem": "传统水下触觉传感器常依赖复杂密封和单模态阵列，维护困难且难区分柔软、形状相近的目标。",
+      "why_it_works": "磁弹性材料把不同接触扰动映射为可并行读取的信号模式，群体编码则利用 taxel 间联合分布提升分类鲁棒性。",
+      "true_novelty": "新意是以单元内多模态磁弹性响应和跨单元群体编码共同构成水下触觉表征。",
+      "evidence_summary": "系统识别 7 类海洋生物与海洋垃圾，分类准确率达到 95%，并保持柔软结构的本征防水性。",
+      "email_summary": "磁弹性水下人工皮肤在单个 taxel 内复用多种触觉模态，以群体编码识别 7 类目标，准确率达到 95%。",
+      "importance_reason": "它补足水下机器人在视觉失效时的近场感知通道，也给多模态触觉编码提供了材料级方案。"
+    }
+  }
+]
