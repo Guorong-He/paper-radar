@@ -2,5 +2,6 @@
   "latest": "latest/",
   "archive": "issues/",
   "current_issue": "issues/2026-07-05/",
-  "issue_date": "2026-07-05"
+  "issue_date": "2026-07-05",
+  "deployment_retry": "2026-07-02T17:18:00+08:00"
 }
