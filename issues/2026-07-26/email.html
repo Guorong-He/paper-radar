@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<body style="margin:0;padding:0;background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#101828;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f5f7fb;padding:32px 16px;">
+    <tr><td align="center">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:720px;background:#ffffff;border-radius:18px;padding:28px 28px 18px;border:1px solid #e4e7ec;">
+        <tr><td>
+          <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#475467;margin-bottom:10px;">Paper Radar · Weekly Digest</div>
+          <div style="font-size:28px;line-height:1.2;font-weight:650;color:#101828;margin-bottom:12px;">具身智能/感知精选 10 篇</div>
+          <div style="font-size:15px;line-height:1.7;color:#344054;margin-bottom:18px;">
+            本期把感知推回机体：从材料编码到全身闭环，能力边界由身体、软件与环境共同决定。
+          </div>
+          <a href="digest.html" style="display:inline-block;background:#0f766e;color:#ffffff;text-decoration:none;padding:12px 16px;border-radius:999px;font-size:14px;font-weight:600;margin-bottom:18px;">打开本期交互网页</a>
+        </td></tr>
+        
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#01 · Tier 1 旗舰正式论文 · Nature Machine Intelligence · 2026-03-16</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">A robot operating system framework for using large language models in embodied AI</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对当前机器人开发仍依赖专家手工把新任务拆成动作和工作流，面对频繁变化的家庭、医疗或服务任务成本很高，论文通过框架解析 LLM 输出为动作序列、行为树或状态机，调用 ROS action/service；新动作可由模仿学习加入库，并用人和环境反馈反思修正，并验证文中在长时程任务、桌面整理和远程监督控制中验证鲁棒性、可扩展性与通用性，并公开代码以支持复现。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#02 · Tier 1 旗舰正式论文 · Science Robotics · 2025-05-28</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Learning coordinated badminton skills for legged manipulators</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对动态运动任务要求感知、全身移动和挥拍的毫秒级协调，而传统方法通常把行走、操作和视觉控制割裂处理，论文通过真实相机数据驱动的感知噪声模型缩小仿真—实机差距；轨迹预测、受约束强化学习和系统辨识共同提供可部署的全身控制，并验证在多种场景中验证球轨迹预测、服务区移动和精准击球，并以人与机器人对打展示动态任务的端到端可行性。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#03 · Tier 1 旗舰正式论文 · Nature Machine Intelligence · 2025-03-17</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Synergy-based robotic quadruped leveraging passivity for natural intelligence and behavioural diversity</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对主流四足依赖全驱动、密集传感和复杂控制，纯被动步行器又因自由度和行为多样性不足而难以实用，论文通过从犬类动捕姿态做 PCA 提取协同，优化滑轮半径、肌腱路由和扭簧刚度，再在协同空间做逆运动学生成主动步态，并验证四个协同可覆盖全腿配置约80%以上的姿态方差；文中展示无电机跑台步态、纯被动越障和主动驱动后的抗扰恢复。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#04 · Tier 2 高质量正式论文 · Nature Communications · 2026-07-15</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Stretchable multimodal deformation sensor with self-mode recognition by a single Hall sensor</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对现有多模态软传感常需布置多个元件，或依赖复杂建模和机器学习，因为单一单调信号难以消除不同形变模式的歧义，论文通过以 NdFeB 颗粒—硅胶复合磁膜、中心三轴霍尔传感器、柔性PCB和软封装构成器件，再通过空间变化的磁化矢量把形变映射为 Bx、By、Bz 模式，并验证展示该器件可用于颈部运动监测、闭环电刺激、气动夹爪水果识别、仿鳐鱼软体机器人控制和仿象鼻复杂运动识别。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#05 · Tier 2 高质量正式论文 · Nature Communications · 2026-06-29</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Underwater Suit-Wearing Cyborg Insect Capable of Hours-Long Diving and Terra-Aqua Travel</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对赛博昆虫节能且善于穿越狭小复杂空间，但其活动范围受宿主呼吸生理和自然栖息环境严格限制，论文通过柔性防水腹部壳兼作氧气储运腔，过氧化氢在催化剂作用下缓释氧气，经导管送至胸部气门，并验证描述微型反应器、柔性壳和气门导管的一体化设计，并报告水下持续呼吸与可控运动最长3小时。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#06 · Tier 2 高质量正式论文 · Nature Communications · 2026-01-30</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Hand-like autonomous flying robot for airborne grasping and interaction</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对传统空中机械臂尺寸大、能耗高且引入力矩耦合，难在狭窄空间同时取得机动性、稳定性和多样抓取能力，论文通过开放C形手掌配合伸缩与扭转关节，以单电机驱动5自由度形变；飞行与变形使用双时间尺度规划，并以在线辨识和自适应飞控补偿扰动，并验证556 g 原型可抓取153 g水瓶并以1.1 m/s跟踪，抓取薄纸的控制误差小于3 cm。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#07 · Tier 2 高质量正式论文 · Nature Communications · 2025-08-28</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Light-driven lattice soft microrobot with multimodal locomotion</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对无系留软体微机器人需要兼具高效驱动、可重构运动和狭窄环境适应性，而传统实心水凝胶响应慢、自由度有限，论文通过调节激光扫描频率、轨迹与功率，依次激发不同区域，产生蠕动、原地旋转和跳跃，并由闭环反馈跟踪路径，并验证文中给出29.38°/s连续原地旋转、15.15 μm/s蠕动，并演示闭环编程运动与受限通道通行。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#08 · Tier 2 高质量正式论文 · Nature Communications · 2024-07-23</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">A droplet robotic system enabled by electret-induced polarization on droplet</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对实验室自动化需要处理微量液体，但现有液滴操控常受液体介电性质限制，且可能损害生化样本活性，论文通过将驻极体产生的空间电场与可编程运动平台耦合，沿预定路径牵引液滴，并以机器人系统完成样本搬运和操作，并验证文中报告最高60 mm/s、5.5 V工作电压、低成本耗材，并完成血清、唾液、尿液锂检测及细胞—细菌模型的自动操作。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#09 · arXiv / preprint · arXiv · 2026-01-06</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">M-SEVIQ: A Multi-band Stereo Event Visual-Inertial Quadruped-based Dataset for Perception under Rapid Motion and Challenging Illumination</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对高速运动会造成帧相机模糊，论文通过在 Unitree Go2 上集成双目事件相机、RGB-D、IMU、RTK和12关节编码器，完成内外参及时间对齐，并验证数据含30余段序列，其中10段室内、20段室外，覆盖不同速度、昼夜、HDR和近红外；论文展示了分割及多任务基准的可行性。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#10 · arXiv / preprint · arXiv · 2025-11-24</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">AutoOdom: Learning Auto-regressive Proprioceptive Odometry for Legged Locomotion</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对EKF等方法依赖接触和运动学模型，纯学习方法又需要大量真机数据且受仿真到现实落差影响，快速动态步态尤为困难，论文通过第一阶段以大规模仿真数据学习基础运动关系，第二阶段用真机轨迹加入IMU加速度并回馈先前预测；模型以短历史窗口实时预测平面增量，并验证在 Booster T1 真机轨迹上。</div>
+              </td>
+            </tr>
+            
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
