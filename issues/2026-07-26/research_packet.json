@@ -1,0 +1,291 @@
+[
+  {
+    "paper_id": "arxiv:2601.02777v1",
+    "title": "M-SEVIQ: A Multi-band Stereo Event Visual-Inertial Quadruped-based Dataset for Perception under Rapid Motion and Challenging Illumination",
+    "authors": [
+      "Jingcheng Cao",
+      "Chaoran Xiong",
+      "Jianmin Song",
+      "Shang Yan",
+      "Jiachen Liu",
+      "Ling Pei"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-01-06",
+    "source": "arxiv",
+    "doi": null,
+    "url": "http://arxiv.org/abs/2601.02777v1",
+    "pdf_url": "https://arxiv.org/pdf/2601.02777v1",
+    "robot_type_tags": [
+      "locomotion"
+    ],
+    "paper_type": "direct",
+    "score": 0.8722,
+    "abstract": "Agile locomotion in legged robots poses significant challenges for visual perception. Traditional frame-based cameras often fail in these scenarios for producing blurred images, particularly under low-light conditions. In contrast, event cameras capture changes in brightness asynchronously, offering low latency, high temporal resolution, and high dynamic range. These advantages make them suitable for robust perception during rapid motion and under challenging illumination. However, existing event camera datasets exhibit limitations in stereo configurations and multi-band sensing domains under various illumination conditions. To address this gap, we present M-SEVIQ, a multi-band stereo event visual and inertial quadruped dataset collected using a Unitree Go2 equipped with stereo event cameras, a frame-based camera, an inertial measurement unit (IMU), and joint encoders. This dataset contains more than 30 real-world sequences captured across different velocity levels, illumination wavelengths, and lighting conditions. In addition, comprehensive calibration data, including intrinsic, extrinsic, and temporal alignments, are provided to facilitate accurate sensor fusion and benchmarking. Our M-SEVIQ can be used to support research in agile robot perception, sensor fusion, semantic segmentation and multi-modal vision in challenging environments.",
+    "key_figure_path": "output/figures/arxiv_2601_02777v1_caption_p3.png",
+    "key_figure_caption": "Fig. 1. Our Quadruped robot for data collection. (a)Side view of the robot"
+  },
+  {
+    "paper_id": "arxiv:2511.18857v1",
+    "title": "AutoOdom: Learning Auto-regressive Proprioceptive Odometry for Legged Locomotion",
+    "authors": [
+      "Changsheng Luo",
+      "Yushi Wang",
+      "Wenhan Cai",
+      "Mingguo Zhao"
+    ],
+    "venue": "arXiv",
+    "published_at": "2025-11-24",
+    "source": "arxiv",
+    "doi": null,
+    "url": "http://arxiv.org/abs/2511.18857v1",
+    "pdf_url": "https://arxiv.org/pdf/2511.18857v1",
+    "robot_type_tags": [
+      "humanoid",
+      "locomotion",
+      "mobile_robot"
+    ],
+    "paper_type": "direct",
+    "score": 0.8666,
+    "abstract": "Accurate proprioceptive odometry is fundamental for legged robot navigation in GPS-denied and visually degraded environments where conventional visual odometry systems fail. Current approaches face critical limitations: analytical filtering methods suffer from modeling uncertainties and cumulative drift, hybrid learning-filtering approaches remain constrained by their analytical components, while pure learning-based methods struggle with simulation-to-reality transfer and demand extensive real-world data collection. This paper introduces AutoOdom, a novel autoregressive proprioceptive odometry system that overcomes these challenges through an innovative two-stage training paradigm. Stage 1 employs large-scale simulation data to learn complex nonlinear dynamics and rapidly changing contact states inherent in legged locomotion, while Stage 2 introduces an autoregressive enhancement mechanism using limited real-world data to effectively bridge the sim-to-real gap. The key innovation lies in our autoregressive training approach, where the model learns from its own predictions to develop resilience against sensor noise and improve robustness in highly dynamic environments. Comprehensive experimental validation on the Booster T1 humanoid robot demonstrates that AutoOdom significantly outperforms state-of-the-art methods across all evaluation metrics, achieving 57.2% improvement in absolute trajectory error, 59.2% improvement in Umeyama-aligned error, and 36.2% improvement in relative pose error compared to the Legolas baseline. Extensive ablation studies provide critical insights into sensor modality selection and temporal modeling, revealing counterintuitive findings about IMU acceleration data and validating our systematic design choices for robust proprioceptive odometry in challenging locomotion scenarios.",
+    "key_figure_path": "output/figures/arxiv_2511_18857v1_caption_p2.png",
+    "key_figure_caption": "Fig. 1. Overview of the AutoOdom system."
+  },
+  {
+    "paper_id": "crossref:10.1038/s42256-025-00988-x",
+    "title": "Synergy-based robotic quadruped leveraging passivity for natural intelligence and behavioural diversity",
+    "authors": [
+      "Francesco Stella",
+      "Mickaël M. Achkar",
+      "Cosimo Della Santina",
+      "Josie Hughes"
+    ],
+    "venue": "Nature Machine Intelligence",
+    "published_at": "2025-03-17",
+    "source": "crossref",
+    "doi": "10.1038/s42256-025-00988-x",
+    "url": "https://doi.org/10.1038/s42256-025-00988-x",
+    "pdf_url": "https://www.nature.com/articles/s42256-025-00988-x.pdf",
+    "robot_type_tags": [
+      "locomotion"
+    ],
+    "paper_type": "direct",
+    "score": 0.6261,
+    "abstract": "Abstract Quadrupedal animals show remarkable capabilities in traversing diverse terrains and display a range of behaviours and gait patterns. Achieving similar performance by exploiting the natural dynamics of the system is a key goal for robotics researchers. Here we show a bioinspired approach to the design of quadrupeds that seeks to exploit the body and the passive properties of the robot while maintaining active controllability on the system through minimal actuation. Utilizing an end-to-end computational design pipeline, neuromechanical couplings recorded in biological quadrupeds are translated into motor synergies, allowing minimal actuation to control the full structure via multijoint compliant mechanical couplings. Using this approach, we develop PAWS, a passive automata with synergies. By leveraging the principles of motor synergies, the design incorporates variable stiffness, anatomical insights and self-organization to simplify control while maximizing its capabilities. The resulting synergy-based quadruped requires only four actuators and exhibits emergent, animal-like dynamical responses, including passive robustness to environmental perturbations and a wide range of actuated behaviours. The finding contributes to the development of machine physical intelligence and provides robots with more efficient and natural-looking robotic locomotion by combining synergistic actuation, compliant body properties and embodied compensatory strategies.",
+    "key_figure_path": "output/figures/crossref_10_1038_s42256-025-00988-x_publisher_fig1.png",
+    "key_figure_caption": "Fig. 1. Publisher-hosted key figure"
+  },
+  {
+    "paper_id": "crossref:10.1038/s41467-026-68967-3",
+    "title": "Hand-like autonomous flying robot for airborne grasping and interaction",
+    "authors": [
+      "Yuze Wu",
+      "Fan Yang",
+      "Rui Jin",
+      "Yuhang Zhong",
+      "Junjie Wang",
+      "Xuankang Wu",
+      "Fei Gao"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2026-01-30",
+    "source": "crossref",
+    "doi": "10.1038/s41467-026-68967-3",
+    "url": "https://doi.org/10.1038/s41467-026-68967-3",
+    "pdf_url": "https://www.nature.com/articles/s41467-026-68967-3.pdf",
+    "robot_type_tags": [
+      "drone",
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.665,
+    "abstract": "Abstract Birds’ extraordinary aerial agility and environmental interaction enable complex tasks such as mid-air hunting, perching, and nest-building, inspiring the development of advanced aerial robots with similar manipulation capabilities. However, existing platforms often face challenges such as large size, heavy payloads, end-effector torque interference, and limited functionality, severely restricting their practical deployment. Drawing inspiration from the biological, structural, and actuation characteristics of human hands, we propose a hand-like robot that integrates flight and grasping, demonstrating the synergistic advantages of compact structure, agile flight, and versatile manipulation. We propose an autonomous framework including efficient mission planning and multi-level adaptive control, enabling the robot to precisely and smoothly perform human-like grasping, opening doors, forest perching, object transport, and interactive tasks. Additionally, the framework supports human-robot collaboration, empowering individuals with mobility impairment to conduct remote transportation and airborne operations. Outdoor tests, which include perching in various scenarios, navigating confined spaces, and transporting payloads across challenging terrain, validate the proposed vehicle’s potential in aerial delivery and manipulation tasks. These results demonstrate emerging possibilities for aerial operation, assistance, and delivery with integrated flight and manipulation abilities.",
+    "key_figure_path": "output/figures/crossref_10_1038_s41467-026-68967-3_publisher_fig1.png",
+    "key_figure_caption": "Fig. 1. Publisher-hosted key figure"
+  },
+  {
+    "paper_id": "openalex:W7168341918",
+    "title": "Stretchable multimodal deformation sensor with self-mode recognition by a single Hall sensor",
+    "authors": [
+      "Chong Zhang",
+      "Chengfeng Pan",
+      "Neng Xia",
+      "Haojin Yang",
+      "Lin Su",
+      "Xin Wang",
+      "Zhongyi Nie",
+      "Kedong Wu",
+      "Lingxiao Zhou",
+      "Mengdi Han",
+      "Carmel Majidi",
+      "Li Zhang"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2026-07-15",
+    "source": "openalex",
+    "doi": "https://doi.org/10.1038/s41467-026-75632-2",
+    "url": "https://openalex.org/W7168341918",
+    "pdf_url": "",
+    "robot_type_tags": [
+      "soft_robot",
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.605,
+    "abstract": "Stretchable sensor technologies capable of tracking multiple deformation modalities have attracted increasing attention due to their potential ability to improve the intelligence of soft robotics, stretchable electronics, and other soft-body systems. Existing multimodal deformation sensors typically require either complicated system integration and sensor layout or complex algorithmic techniques based on computational modeling and machine learning methods. Here, we report a stretchable multimodal deformation sensor that can measure and distinguish the magnitudes and modes of mechanical deformation (stretching, bending, twisting, and pressing) without reliance on complex computation or trained classification/regression models. This sensor relies on the layout of a stretchable magnetic film with a gradually varied magnetization profile and a 3-axis Hall sensor to decode the patterns of spatial change of magnetic flux strength under different deformation modes. We demonstrate the potential of this sensor in wearables and robotics by using it for neck motion monitoring, self-sensing electrical muscular stimulation, intelligent pneumatic gripper for objects classification, control of a stingray-inspired soft robot, and deformation recognition of an artificial elephant trunk.",
+    "key_figure_path": "output/figures/openalex_W7168341918_caption_p20.png",
+    "key_figure_caption": "Figure 1. Illustration of the stretchable multimodal deformation sensor (SMDS). (A)"
+  },
+  {
+    "paper_id": "crossref:10.1038/s41467-024-50520-9",
+    "title": "A droplet robotic system enabled by electret-induced polarization on droplet",
+    "authors": [
+      "Ruotong Zhang",
+      "Chengzhi Zhang",
+      "Xiaoxue Fan",
+      "Christina C. K. Au Yeung",
+      "Huiyanchen Li",
+      "Haisong Lin",
+      "Ho Cheung Shum"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2024-07-23",
+    "source": "crossref",
+    "doi": "10.1038/s41467-024-50520-9",
+    "url": "https://doi.org/10.1038/s41467-024-50520-9",
+    "pdf_url": "https://www.nature.com/articles/s41467-024-50520-9.pdf",
+    "robot_type_tags": [
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.5925,
+    "abstract": "Abstract Robotics for scientific research are evolving from grasping macro-scale solid materials to directly actuating micro-scale liquid samples. However, current liquid actuation mechanisms often restrict operable liquid types or compromise the activity of biochemical samples by introducing interfering mediums. Here, we propose a robotic liquid handling system enabled by a novel droplet actuation mechanism, termed electret-induced polarization on droplet (EPD). EPD enables all-liquid actuation in principle and experimentally exhibits generality for actuating various inorganic/organic liquids with relative permittivity ranging from 2.25 to 84.2 and volume from 500 nL to 1 mL. Moreover, EPD is capable of actuating various biochemical samples without compromising their activities, including various body fluids, living cells, and proteins. A robotic system is also coupled with the EPD mechanism to enable full automation. EPD’s high adaptability with liquid types and biochemical samples thus promotes the automation of liquid-based scientific experiments across multiple disciplines.",
+    "key_figure_path": "output/figures/crossref_10_1038_s41467-024-50520-9_publisher_fig1.png",
+    "key_figure_caption": "Fig. 1. Publisher-hosted key figure"
+  },
+  {
+    "paper_id": "crossref:10.1038/s41467-025-62676-z",
+    "title": "Light-driven lattice soft microrobot with multimodal locomotion",
+    "authors": [
+      "Mingduo Zhang",
+      "Yuncheng Liu",
+      "Chunsan Deng",
+      "Xuhao Fan",
+      "Zexu Zhang",
+      "Shaoxi Shi",
+      "Fayu Chen",
+      "Huace Hu",
+      "Songyan Xue",
+      "Leimin Deng",
+      "Lige Liu",
+      "Tao Sun",
+      "Hui Gao",
+      "Wei Xiong"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2025-08-28",
+    "source": "crossref",
+    "doi": "10.1038/s41467-025-62676-z",
+    "url": "https://doi.org/10.1038/s41467-025-62676-z",
+    "pdf_url": "https://www.nature.com/articles/s41467-025-62676-z.pdf",
+    "robot_type_tags": [
+      "micro_robot",
+      "hard_to_instrument"
+    ],
+    "paper_type": "direct",
+    "score": 0.5851,
+    "abstract": "Abstract Untethered microrobots hold significant promise in fields such as bionics, biomedicine, and micromechanics. However, replicating the diverse movements of natural microorganisms in artificial microrobots presents a considerable challenge. This paper introduces a laser-based approach that utilizes lattice metamaterials to enhance the deformability of hydrogel-based microrobots, resulting in untethered light-driven lattice soft microrobots (LSMR). Constructed from poly(N-isopropylacrylamide)-single-walled carbon nanotubes (PNIPAM-SWNT) hydrogels and a truncated octahedron lattice structure, the LSMR benefits from reduced relative density, which increases flexibility and accelerates light-driven deformation. By employing sequential laser scanning, the LSMR achieves various locomotion modes, including linear peristalsis, in situ rotation, and hopping, through adjustments in scanning frequency, trajectory, and laser power. The LSMR achieves a continuous in situ rotation speed of 29.38°/s, nearly 30 times faster than previous studies, and exhibits a peristaltic locomotion speed of 15.15 μm/s (0.14 body lengths per second). The LSMR can autonomously perform programmed motions under closed-loop feedback control and navigate through narrow openings as small as 75% of its resting width by actively deforming. Compared to a solid microrobot, the lattice microrobot requires only one-sixth of the laser energy to achieve three times the motion speed, under otherwise identical conditions. These advancements mark a significant leap forward in the design and functionality of light-driven soft microrobots, offering promising avenues for future research in biomedicine, bionics, and micromechanical engineering.",
+    "key_figure_path": "output/figures/crossref_10_1038_s41467-025-62676-z_publisher_fig1.png",
+    "key_figure_caption": "Fig. 1. Publisher-hosted key figure"
+  },
+  {
+    "paper_id": "crossref:10.1038/s41467-026-74235-1",
+    "title": "Underwater Suit-Wearing Cyborg Insect Capable of Hours-Long Diving and Terra-Aqua Travel",
+    "authors": [
+      "Zifu FAN",
+      "Kazuki KAI",
+      "Kewei SONG",
+      "Duc Long LE",
+      "Thu Ha TRAN",
+      "Mingyu HAO",
+      "Wei Yang WAN",
+      "Shinjiro UMEZU",
+      "Hirotaka SATO"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2026-06-29",
+    "source": "crossref",
+    "doi": "10.1038/s41467-026-74235-1",
+    "url": "https://doi.org/10.1038/s41467-026-74235-1",
+    "pdf_url": "https://www.nature.com/articles/s41467-026-74235-1.pdf",
+    "robot_type_tags": [],
+    "paper_type": "direct",
+    "score": 0.58,
+    "abstract": "Abstract The fundamental operational range of cyborg insects, which are hybrid robots that combine a living insect with an electronic controller, is inherently restricted to the host’s natural environment. To extend their operational range, we developed a wearable diving suit for terrestrial insects. The suit integrates a miniaturised oxygen generation module with a flexible waterproof shell, enabling continuous oxygen supply and isolation from surrounding water. By fitting a cockroach, which is a terrestrial species, into this diving suit, we allowed it to survive and operate in oxygen-deprived environments such as underwater, transforming it into an amphibious cyborg robot capable of operation across land and water. The suit sustained respiration and locomotion for up to 3 h underwater, establishing amphibious cyborg insects that combine biological adaptability with engineered protection for prolonged exploration in extreme, confined environments.",
+    "key_figure_path": "output/figures/crossref_10_1038_s41467-026-74235-1_publisher_fig1.png",
+    "key_figure_caption": "Fig. 1. Publisher-hosted key figure"
+  },
+  {
+    "paper_id": "crossref:10.1038/s42256-026-01186-z",
+    "title": "A robot operating system framework for using large language models in embodied AI",
+    "authors": [
+      "Christopher E. Mower",
+      "Yuhui Wan",
+      "Hongzhan Yu",
+      "Antoine Grosnit",
+      "Jonas Gonzalez-Billandon",
+      "Matthieu Zimmer",
+      "Puze Liu",
+      "Daniel Palenicek",
+      "Davide Tateo",
+      "Jan Peters",
+      "Kaixian Qu",
+      "Mike Zhang",
+      "Guowei Lan",
+      "Andrei Cramariuc",
+      "Cesar Cadena",
+      "Marco Hutter",
+      "Guangjian Tian",
+      "Yuzhen Zhuang",
+      "Kun Shao",
+      "Xingyue Quan",
+      "Jianye Hao",
+      "Jun Wang",
+      "Haitham Bou-Ammar"
+    ],
+    "venue": "Nature Machine Intelligence",
+    "published_at": "2026-03-16",
+    "source": "crossref",
+    "doi": "10.1038/s42256-026-01186-z",
+    "url": "https://doi.org/10.1038/s42256-026-01186-z",
+    "pdf_url": "https://www.nature.com/articles/s42256-026-01186-z.pdf",
+    "robot_type_tags": [],
+    "paper_type": "direct",
+    "score": 0.58,
+    "abstract": "",
+    "key_figure_path": "output/figures/crossref_10_1038_s42256-026-01186-z_caption_p2.png",
+    "key_figure_caption": "Figure 1: Overview of a typical robotics development workflow."
+  },
+  {
+    "paper_id": "crossref:10.1126/scirobotics.adu3922",
+    "title": "Learning coordinated badminton skills for legged manipulators",
+    "authors": [
+      "Yuntao Ma",
+      "Andrei Cramariuc",
+      "Farbod Farshidian",
+      "Marco Hutter"
+    ],
+    "venue": "Science Robotics",
+    "published_at": "2025-05-28",
+    "source": "crossref",
+    "doi": "10.1126/scirobotics.adu3922",
+    "url": "https://doi.org/10.1126/scirobotics.adu3922",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/scirobotics.adu3922",
+    "robot_type_tags": [],
+    "paper_type": "direct",
+    "score": 0.753,
+    "abstract": "Coordinating the motion between lower and upper limbs and aligning limb control with perception are substantial challenges in robotics, particularly in dynamic environments. To this end, we introduce an approach for enabling legged mobile manipulators to play badminton, a task that requires precise coordination of perception, locomotion, and arm swinging. We propose a unified reinforcement learning–based control policy for whole-body visuomotor skills involving all degrees of freedom to achieve effective shuttlecock tracking and striking. This policy is informed by a perception noise model that uses real-world camera data, allowing for consistent perception error levels between simulation and deployment and encouraging learned active perception behaviors. Our method includes a shuttlecock prediction model and constrained reinforcement learning for robust motion control to enhance deployment readiness. Extensive experimental results in a variety of environments validate the robot’s capability to predict shuttlecock trajectories, navigate the service area effectively, and execute precise strikes against human players, demonstrating the feasibility of using legged mobile manipulators in complex and dynamic sports scenarios.",
+    "key_figure_path": "output/figures/crossref_10_1126_scirobotics_adu3922_caption_p2.png",
+    "key_figure_caption": "Fig. 1.Deployment of the badminton control policy on our legged manipulator.Our system operates entirely on onboard perception and"
+  }
+]
