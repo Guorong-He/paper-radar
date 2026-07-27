@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paper Radar · 2026-07-26</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper:#f4f1e8;
+      --paper-strong:#fbfaf4;
+      --ink:#181410;
+      --ink-soft:#4a4037;
+      --muted:#73695f;
+      --line:#2a2119;
+      --line-soft:rgba(42,33,25,.24);
+      --rule:rgba(42,33,25,.44);
+      --accent:#a93522;
+      --accent-dark:#401d15;
+      --signal:#2d6d65;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      background:
+        linear-gradient(90deg, var(--accent) 0 18px, transparent 18px),
+        repeating-linear-gradient(0deg, rgba(42,33,25,.026), rgba(42,33,25,.026) 1px, transparent 1px, transparent 8px),
+        var(--paper);
+      color:var(--ink);
+      font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",serif;
+    }
+    main {
+      width:min(1150px, calc(100vw - 40px));
+      margin:0 auto;
+      padding:44px 0 78px;
+    }
+    .masthead {
+      display:grid;
+      grid-template-columns:minmax(0, 1.06fr) minmax(280px, .94fr);
+      gap:42px;
+      padding-bottom:26px;
+      border-bottom:2px solid var(--line);
+    }
+    .eyebrow {
+      color:var(--accent);
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:0;
+      text-transform:uppercase;
+    }
+    h1 {
+      max-width:620px;
+      margin:10px 0 16px;
+      font-family:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;
+      font-size:74px;
+      font-weight:700;
+      line-height:.93;
+      letter-spacing:0;
+    }
+    .lede {
+      max-width:680px;
+      color:var(--ink-soft);
+      line-height:1.8;
+      font-size:19px;
+    }
+    .issue-stats {
+      align-self:end;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:10px;
+    }
+    .stat {
+      min-height:104px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.22);
+      padding:18px 15px;
+    }
+    .stat strong {
+      display:block;
+      font-size:34px;
+      line-height:1;
+      font-weight:800;
+    }
+    .stat span {
+      display:block;
+      margin-top:14px;
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:0;
+      text-transform:uppercase;
+    }
+    .issue-meta {
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.7;
+    }
+    .issue-links {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:16px;
+    }
+    .issue-link {
+      color:var(--ink);
+      text-decoration:none;
+      border:1px solid var(--line-soft);
+      background:rgba(255,255,255,.24);
+      padding:8px 10px;
+      font-size:13px;
+    }
+    .issue-link.primary {
+      background:var(--ink);
+      border-color:var(--ink);
+      color:var(--paper-strong);
+    }
+    .layout {
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) 360px;
+      gap:28px;
+      align-items:start;
+      margin-top:26px;
+    }
+    .filters {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:0 0 16px;
+      padding-bottom:14px;
+      border-bottom:1px solid var(--rule);
+    }
+    button.filter {
+      border:1px solid var(--line-soft);
+      background:rgba(255,255,255,.28);
+      color:var(--ink);
+      padding:8px 11px;
+      cursor:pointer;
+      font-size:13px;
+    }
+    button.filter.active {
+      background:var(--ink);
+      border-color:var(--ink);
+      color:var(--paper-strong);
+    }
+    .grid { display:grid; gap:0; }
+    .card {
+      position:relative;
+      display:grid;
+      grid-template-columns:48px minmax(0, 1fr) 70px;
+      gap:12px;
+      border-top:1px solid var(--rule);
+      padding:15px 0;
+      transition:background .16s ease;
+    }
+    .card:hover {
+      background:rgba(255,255,255,.22);
+    }
+    .rank {
+      color:var(--accent);
+      font-family:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;
+      font-size:26px;
+      line-height:1.05;
+    }
+    .paper-main { min-width:0; }
+    .venue {
+      color:var(--muted);
+      font-size:13px;
+      margin:0 0 7px;
+    }
+    h2 {
+      margin:0;
+      font-family:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;
+      font-size:23px;
+      line-height:1.25;
+      letter-spacing:0;
+      overflow-wrap:anywhere;
+    }
+    .score {
+      justify-self:end;
+      align-self:start;
+      border:1px solid var(--accent);
+      color:var(--accent);
+      min-width:44px;
+      padding:5px 7px;
+      text-align:center;
+      font-family:"SF Mono","Menlo",monospace;
+      font-size:12px;
+    }
+    .tags {
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin:12px 0;
+    }
+    .tag {
+      font-size:12px;
+      color:var(--accent-dark);
+      background:rgba(169,53,34,.08);
+      border:1px solid rgba(169,53,34,.2);
+      padding:5px 8px;
+    }
+    .tag.source {
+      color:var(--signal);
+      background:rgba(45,109,101,.09);
+      border-color:rgba(45,109,101,.22);
+    }
+    .insight {
+      max-width:780px;
+      color:var(--ink-soft);
+      line-height:1.76;
+      font-size:16px;
+    }
+    .actions {
+      display:flex;
+      gap:8px;
+      margin-top:13px;
+      flex-wrap:wrap;
+    }
+    .link, .toggle {
+      color:var(--ink);
+      text-decoration:none;
+      border:1px solid var(--line-soft);
+      background:rgba(255,255,255,.24);
+      padding:8px 10px;
+      cursor:pointer;
+      font-size:13px;
+    }
+    .toggle {
+      background:var(--ink);
+      border-color:var(--ink);
+      color:var(--paper-strong);
+    }
+    .details {
+      display:none;
+      grid-column:2 / 4;
+      margin-top:16px;
+      padding:18px 0 2px;
+      border-top:1px solid var(--line-soft);
+      color:var(--muted);
+    }
+    .details.open { display:block; }
+    .detail-layout {
+      display:grid;
+      grid-template-columns:minmax(260px, .78fr) minmax(0, 1fr);
+      gap:20px;
+      align-items:start;
+    }
+    .figure-panel {
+      position:sticky;
+      top:16px;
+    }
+    .analysis-panel {
+      display:grid;
+      gap:8px;
+    }
+    .detail-block {
+      padding:12px 0;
+      border-top:1px solid rgba(42,33,25,.18);
+      color:var(--ink-soft);
+      line-height:1.74;
+      font-size:15px;
+    }
+    .detail-block:first-child { border-top:0; padding-top:0; }
+    .detail-block strong {
+      color:var(--ink);
+      font-weight:800;
+    }
+    .key-figure {
+      margin:0;
+      padding:12px;
+      background:#fff;
+      border:1px solid var(--line);
+    }
+    .figure-label {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      color:var(--accent);
+      font-size:12px;
+      letter-spacing:0;
+      text-transform:uppercase;
+      margin-bottom:10px;
+      font-weight:800;
+    }
+    .figure-label span:last-child {
+      color:var(--muted);
+      letter-spacing:0;
+      text-transform:none;
+      font-weight:400;
+    }
+    .key-figure img {
+      display:block;
+      width:100%;
+      max-height:520px;
+      object-fit:contain;
+      background:#ffffff;
+      border:1px solid rgba(42,33,25,.16);
+    }
+    .key-figure figcaption {
+      margin-top:8px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+      padding:0 2px;
+    }
+    .no-figure {
+      min-height:180px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:var(--muted);
+      border:1px dashed var(--line-soft);
+      padding:22px;
+      background:rgba(255,255,255,.18);
+    }
+    .editorial-panel {
+      position:sticky;
+      top:18px;
+      min-height:520px;
+      background:linear-gradient(180deg, var(--accent-dark), #17130f);
+      color:var(--paper-strong);
+      padding:26px;
+      overflow:hidden;
+    }
+    .editorial-panel::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(145deg, rgba(169,53,34,.5), transparent 38%);
+      pointer-events:none;
+    }
+    .editorial-panel > * { position:relative; }
+    .panel-label {
+      color:#d2c5b4;
+      font-size:12px;
+      letter-spacing:0;
+      text-transform:uppercase;
+    }
+    .panel-title {
+      margin:10px 0 18px;
+      font-family:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;
+      font-size:38px;
+      line-height:1;
+    }
+    .panel-tags {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:34px;
+    }
+    .panel-tag {
+      border:1px solid rgba(244,241,232,.38);
+      color:var(--paper-strong);
+      padding:7px 9px;
+      font-size:13px;
+    }
+    .panel-quote {
+      margin:0;
+      max-width:300px;
+      font-family:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;
+      font-size:20px;
+      line-height:1.7;
+    }
+    .panel-note {
+      position:relative;
+      margin-top:22px;
+      color:#d2c5b4;
+      font-size:13px;
+      line-height:1.7;
+    }
+    @media (max-width:700px) {
+      main { width:auto; margin:0 24px 0 42px; padding-top:28px; }
+      .masthead { grid-template-columns:1fr; gap:20px; }
+      h1 { font-size:40px; line-height:1; }
+      .lede { font-size:16px; }
+      .issue-stats { grid-template-columns:repeat(3, 1fr); }
+      .stat { min-height:82px; padding:12px 10px; }
+      .layout { grid-template-columns:1fr; }
+      .editorial-panel {
+        display:block;
+        position:relative;
+        top:auto;
+        min-height:0;
+        margin-top:24px;
+        padding:22px;
+      }
+      .panel-quote { max-width:none; font-size:18px; }
+      .panel-note { position:relative; }
+      .card { grid-template-columns:40px minmax(0, 1fr); padding-right:64px; }
+      .card h2 { font-size:20px; }
+      .score { position:absolute; right:0; top:16px; }
+      .details { grid-column:1 / 3; }
+      .detail-layout { grid-template-columns:1fr; }
+      .figure-panel { position:static; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="masthead">
+      <div>
+      <div class="eyebrow">Paper Radar · Weekly Digest</div>
+      <h1>具身智能/感知精选</h1>
+      <div class="lede">
+        本期把感知推回机体：从材料编码到全身闭环，能力边界由身体、软件与环境共同决定。
+      </div>
+      <div class="issue-meta">Issue 2026-07-26 · Special platforms, embodied perception, tactile intelligence</div>
+      <nav class="issue-links" aria-label="Paper Radar navigation">
+        <a class="issue-link primary" id="archive-link" href="../index.html">历史推荐</a>
+      </nav>
+      </div>
+      <div class="issue-stats">
+        <div class="stat"><strong>10</strong><span>papers</span></div>
+        <div class="stat"><strong>3</strong><span>tier 1</span></div>
+        <div class="stat"><strong>5</strong><span>tier 2</span></div>
+      </div>
+    </section>
+
+    <section class="layout">
+      <div>
+        <section class="filters" id="filters"></section>
+        <section class="grid" id="paper-grid"></section>
+      </div>
+      <aside class="editorial-panel">
+        <div class="panel-label">Paper Radar · Journal Edition</div>
+        <h2 class="panel-title">本期研究<br>线索</h2>
+        <div class="panel-tags" id="panel-tags"></div>
+        <p class="panel-quote">“真正可部署的具身智能，不是给机器人增加一个模型，而是让感知、形态、动作与环境约束在同一闭环内彼此校正。”</p>
+        <div class="panel-note">10 篇论文 · 3 篇旗舰正式论文 · 5 篇高质量正式论文 · 2 篇 arXiv/preprint；10 篇直接命中，0 篇可迁移。</div>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const papers = [{"title": "A robot operating system framework for using large language models in embodied AI", "authors": ["Christopher E. Mower", "Yuhui Wan", "Hongzhan Yu", "Antoine Grosnit", "Jonas Gonzalez-Billandon", "Matthieu Zimmer", "Puze Liu", "Daniel Palenicek", "Davide Tateo", "Jan Peters", "Kaixian Qu", "Mike Zhang", "Guowei Lan", "Andrei Cramariuc", "Cesar Cadena", "Marco Hutter", "Guangjian Tian", "Yuzhen Zhuang", "Kun Shao", "Xingyue Quan", "Jianye Hao", "Jun Wang", "Haitham Bou-Ammar"], "venue": "Nature Machine Intelligence", "published_at": "2026-03-16", "paper_type": "direct", "source_kind": "official", "robot_type_tags": ["other"], "tier": "tier1", "tier_label": "Tier 1 旗舰正式论文", "score": 0.58, "url": "https://doi.org/10.1038/s42256-026-01186-z", "pdf_url": "https://www.nature.com/articles/s42256-026-01186-z.pdf", "key_figure_path": "figures/crossref_10_1038_s42256-026-01186-z_caption_p2.png", "key_figure_caption": "Figure 1: Overview of a typical robotics development workflow.", "quick_take": "针对当前机器人开发仍依赖专家手工把新任务拆成动作和工作流，面对频繁变化的家庭、医疗或服务任务成本很高，论文通过框架解析 LLM 输出为动作序列、行为树或状态机，调用 ROS action/service；新动作可由模仿学习加入库，并用人和环境反馈反思修正，并验证文中在长时程任务、桌面整理和远程监督控制中验证鲁棒性、可扩展性与通用性，并公开代码以支持复现。", "analysis": {"core_insight": "ROS-LLM 将自然语言任务、LLM推理与 ROS 原子动作库连接，使非专家可通过对话生成并执行机器人行为。", "problem_frame": "当前机器人开发仍依赖专家手工把新任务拆成动作和工作流，面对频繁变化的家庭、医疗或服务任务成本很高。", "first_principles": "把复杂任务表示为带文本说明的原子动作组合；LLM基于上下文选择和编排这些动作，ROS负责确定性执行接口。", "mechanism": "框架解析 LLM 输出为动作序列、行为树或状态机，调用 ROS action/service；新动作可由模仿学习加入库，并用人和环境反馈反思修正。", "boundary_advanced": "它覆盖从自然语言任务描述到部署的闭环，并支持长时程任务、桌面重排和远程监督等不同场景。", "old_problem": "现有 ROS 生态具备模块化能力，却仍要求工程师为每一个新的行为组合设计、调试和部署控制逻辑。", "why_it_works": "LLM负责语义分解和组合，ROS动作库把执行限制在已有可调用能力内，反馈环路则暴露并修正生成计划的失配。", "true_novelty": "其贡献是可复用的 ROS 中间层与三种显式行为表示，并把动作扩展和任务反馈纳入同一工作流，而非单纯用提示词控制机器人。", "evidence_summary": "文中在长时程任务、桌面整理和远程监督控制中验证鲁棒性、可扩展性与通用性，并公开代码以支持复现。", "email_summary": "ROS-LLM 让非专家用对话组合 ROS 技能，并以行为树、状态机、模仿学习和反馈闭环提升可部署性。", "importance_reason": "它提供了将通用语言模型接入成熟机器人软件生态的工程化路径，有望降低具身AI的开发门槛。"}}, {"title": "Learning coordinated badminton skills for legged manipulators", "authors": ["Yuntao Ma", "Andrei Cramariuc", "Farbod Farshidian", "Marco Hutter"], "venue": "Science Robotics", "published_at": "2025-05-28", "paper_type": "direct", "source_kind": "official", "robot_type_tags": ["other"], "tier": "tier1", "tier_label": "Tier 1 旗舰正式论文", "score": 0.753, "url": "https://doi.org/10.1126/scirobotics.adu3922", "pdf_url": "https://www.science.org/doi/pdf/10.1126/scirobotics.adu3922", "key_figure_path": "figures/crossref_10_1126_scirobotics_adu3922_caption_p2.png", "key_figure_caption": "Fig. 1.Deployment of the badminton control policy on our legged manipulator.Our system operates entirely on onboard perception and", "quick_take": "针对动态运动任务要求感知、全身移动和挥拍的毫秒级协调，而传统方法通常把行走、操作和视觉控制割裂处理，论文通过真实相机数据驱动的感知噪声模型缩小仿真—实机差距；轨迹预测、受约束强化学习和系统辨识共同提供可部署的全身控制，并验证在多种场景中验证球轨迹预测、服务区移动和精准击球，并以人与机器人对打展示动态任务的端到端可行性。", "analysis": {"core_insight": "以统一强化学习策略同时控制腿部、机械臂和机载视觉，使四足移动操作机器人能追踪并回击羽毛球。", "problem_frame": "动态运动任务要求感知、全身移动和挥拍的毫秒级协调，而传统方法通常把行走、操作和视觉控制割裂处理。", "first_principles": "通过将全自由度状态与球的时空轨迹纳入同一闭环策略，机器人可用身体运动既扩大可达范围又维持目标在视野内。", "mechanism": "真实相机数据驱动的感知噪声模型缩小仿真—实机差距；轨迹预测、受约束强化学习和系统辨识共同提供可部署的全身控制。", "boundary_advanced": "系统在仅依赖机载感知和计算的条件下，从实验室扩展到机器大厅和户外等多种环境，并可与人对打。", "old_problem": "既有腿式操作常将移动和手臂动作解耦，外部视觉或固定基座的球类系统也难以覆盖真实动态场地。", "why_it_works": "感知噪声建模让策略在训练中面对接近真实的视觉误差，约束学习与系统辨识则降低高速运动中的执行失稳风险。", "true_novelty": "真正的新意是把主动感知、腿—臂全身协调和真实世界部署约束统一进一个端到端强化学习控制器。", "evidence_summary": "论文在多种场景中验证球轨迹预测、服务区移动和精准击球，并以人与机器人对打展示动态任务的端到端可行性。", "email_summary": "统一强化学习把机载视觉、四足移动和挥拍整合起来，让腿式操作机器人在真实场地追球并回击。", "importance_reason": "羽毛球这一高动态基准检验了感知驱动全身移动操作的关键能力，可迁移到更广泛的移动服务和现场作业。"}}, {"title": "Synergy-based robotic quadruped leveraging passivity for natural intelligence and behavioural diversity", "authors": ["Francesco Stella", "Mickaël M. Achkar", "Cosimo Della Santina", "Josie Hughes"], "venue": "Nature Machine Intelligence", "published_at": "2025-03-17", "paper_type": "direct", "source_kind": "official", "robot_type_tags": ["locomotion"], "tier": "tier1", "tier_label": "Tier 1 旗舰正式论文", "score": 0.6261, "url": "https://doi.org/10.1038/s42256-025-00988-x", "pdf_url": "https://www.nature.com/articles/s42256-025-00988-x.pdf", "key_figure_path": "figures/crossref_10_1038_s42256-025-00988-x_publisher_fig1.png", "key_figure_caption": "Fig. 1. Publisher-hosted key figure", "quick_take": "针对主流四足依赖全驱动、密集传感和复杂控制，纯被动步行器又因自由度和行为多样性不足而难以实用，论文通过从犬类动捕姿态做 PCA 提取协同，优化滑轮半径、肌腱路由和扭簧刚度，再在协同空间做逆运动学生成主动步态，并验证四个协同可覆盖全腿配置约80%以上的姿态方差；文中展示无电机跑台步态、纯被动越障和主动驱动后的抗扰恢复。", "analysis": {"core_insight": "PAWS 将犬类运动协同映射为肌腱路由和关节刚度，仅用4个执行器驱动12个关节，并把抗扰与步态的一部分计算交给机体。", "problem_frame": "主流四足依赖全驱动、密集传感和复杂控制，纯被动步行器又因自由度和行为多样性不足而难以实用。", "first_principles": "动物关节运动具有低维协同结构，顺应性和方向性刚度可把外界扰动转化为有利的机械响应，从而减少主动控制维度。", "mechanism": "从犬类动捕姿态做 PCA 提取协同，优化滑轮半径、肌腱路由和扭簧刚度，再在协同空间做逆运动学生成主动步态。", "boundary_advanced": "工作把协同驱动从手和局部肢体扩展到跨前后腿耦合的自由站立四足，并同时展示被动鲁棒性和主动行为多样性。", "old_problem": "全驱动四足把快速抗扰几乎完全交给控制器，而既有被动行走器无法兼顾丰富姿态、步态和环境交互。", "why_it_works": "优化后的肌腱耦合与分布式顺应性使一条腿的扰动能通过身体协调传递，机体可在不依赖快速电机修正时恢复周期运动。", "true_novelty": "真正的新意是用生物动捕共同设计协同、传动与刚度，使协同成为硬件而非仅控制层的降维变量。", "evidence_summary": "四个协同可覆盖全腿配置约80%以上的姿态方差；文中展示无电机跑台步态、纯被动越障和主动驱动后的抗扰恢复。", "email_summary": "PAWS 从犬类动捕提取协同并写入肌腱和弹簧设计，用4台电机实现12关节四足的被动抗扰与主动多步态。", "importance_reason": "它提供了让具身顺应性承担部分实时控制负担的四足设计范式，尤其适合非结构地形和低控制资源平台。"}}, {"title": "Stretchable multimodal deformation sensor with self-mode recognition by a single Hall sensor", "authors": ["Chong Zhang", "Chengfeng Pan", "Neng Xia", "Haojin Yang", "Lin Su", "Xin Wang", "Zhongyi Nie", "Kedong Wu", "Lingxiao Zhou", "Mengdi Han", "Carmel Majidi", "Li Zhang"], "venue": "Nature Communications", "published_at": "2026-07-15", "paper_type": "direct", "source_kind": "official", "robot_type_tags": ["soft_robot", "manipulation"], "tier": "tier2", "tier_label": "Tier 2 高质量正式论文", "score": 0.605, "url": "https://openalex.org/W7168341918", "pdf_url": "", "key_figure_path": "figures/openalex_W7168341918_caption_p20.png", "key_figure_caption": "Figure 1. Illustration of the stretchable multimodal deformation sensor (SMDS). (A)", "quick_take": "针对现有多模态软传感常需布置多个元件，或依赖复杂建模和机器学习，因为单一单调信号难以消除不同形变模式的歧义，论文通过以 NdFeB 颗粒—硅胶复合磁膜、中心三轴霍尔传感器、柔性PCB和软封装构成器件，再通过空间变化的磁化矢量把形变映射为 Bx、By、Bz 模式，并验证展示该器件可用于颈部运动监测、闭环电刺激、气动夹爪水果识别、仿鳐鱼软体机器人控制和仿象鼻复杂运动识别。", "analysis": {"core_insight": "该传感器把空间梯度磁化的可拉伸磁膜与单个三轴霍尔元件结合，让材料本身编码拉伸、弯曲、扭转和按压的模式与幅度。", "problem_frame": "现有多模态软传感常需布置多个元件，或依赖复杂建模和机器学习，因为单一单调信号难以消除不同形变模式的歧义。", "first_principles": "梯度磁化膜在不同形变下会产生不同的三维磁通变化轨迹，三轴分量提供足够的可分辨信息以直接识别形变类别。", "mechanism": "以 NdFeB 颗粒—硅胶复合磁膜、中心三轴霍尔传感器、柔性PCB和软封装构成器件，再通过空间变化的磁化矢量把形变映射为 Bx、By、Bz 模式。", "boundary_advanced": "工作将多模态软体感知从多元件或算法解码推进到单霍尔传感器、材料编码且无需训练分类器的实现。", "old_problem": "用电阻、电容或单一磁信号表达多种形变时，输出自由度不足，难以同时判断模式和幅度。", "why_it_works": "形变改变的不仅是磁场强度，也改变三轴磁场的空间方向组合；预设的非均匀磁化把这种物理差异放大为可区分读数。", "true_novelty": "真正创新在将分类先验写入磁化材料与几何，而不是在后端堆叠传感阵列或学习模型。", "evidence_summary": "论文展示该器件可用于颈部运动监测、闭环电刺激、气动夹爪水果识别、仿鳐鱼软体机器人控制和仿象鼻复杂运动识别。", "email_summary": "研究用一片梯度磁化软膜和一个三轴霍尔元件，免训练地识别拉伸、弯曲、扭转和按压，并已接入多种软体机器人演示。", "importance_reason": "它为软体机器人提供了低布线、低计算且可嵌入的本体感觉路线，特别有利于大形变和多自由度机构。"}}, {"title": "Underwater Suit-Wearing Cyborg Insect Capable of Hours-Long Diving and Terra-Aqua Travel", "authors": ["Zifu FAN", "Kazuki KAI", "Kewei SONG", "Duc Long LE", "Thu Ha TRAN", "Mingyu HAO", "Wei Yang WAN", "Shinjiro UMEZU", "Hirotaka SATO"], "venue": "Nature Communications", "published_at": "2026-06-29", "paper_type": "direct", "source_kind": "official", "robot_type_tags": ["other"], "tier": "tier2", "tier_label": "Tier 2 高质量正式论文", "score": 0.58, "url": "https://doi.org/10.1038/s41467-026-74235-1", "pdf_url": "https://www.nature.com/articles/s41467-026-74235-1.pdf", "key_figure_path": "figures/crossref_10_1038_s41467-026-74235-1_publisher_fig1.png", "key_figure_caption": "Fig. 1. Publisher-hosted key figure", "quick_take": "针对赛博昆虫节能且善于穿越狭小复杂空间，但其活动范围受宿主呼吸生理和自然栖息环境严格限制，论文通过柔性防水腹部壳兼作氧气储运腔，过氧化氢在催化剂作用下缓释氧气，经导管送至胸部气门，并验证描述微型反应器、柔性壳和气门导管的一体化设计，并报告水下持续呼吸与可控运动最长3小时。", "analysis": {"core_insight": "为陆生蟑螂配备可穿戴供氧防水潜水服，使其成为可在陆地与水下运动的两栖赛博昆虫。", "problem_frame": "赛博昆虫节能且善于穿越狭小复杂空间，但其活动范围受宿主呼吸生理和自然栖息环境严格限制。", "first_principles": "陆生昆虫经胸部气门呼吸；只要隔绝进水并持续向气门输送氧气，就可在缺氧水下维持代谢和运动。", "mechanism": "柔性防水腹部壳兼作氧气储运腔，过氧化氢在催化剂作用下缓释氧气，经导管送至胸部气门。", "boundary_advanced": "系统把原本陆生的蟑螂扩展为陆—水连续行动平台，并将水下呼吸与运动时长推进到最长3小时。", "old_problem": "陆生宿主不能从水中获取氧气，短时浸没就会阻断赛博昆虫在积水、洪涝或部分淹没空间中的任务连续性。", "why_it_works": "化学供氧不需要额外电子部件，柔性防水结构隔绝水体并保持气门供氧，使供氧和运动更稳定。", "true_novelty": "创新在于以贴身、低功耗的生命保障接口改写生物宿主的环境边界，而非仅增强远程控制模块。", "evidence_summary": "论文描述微型反应器、柔性壳和气门导管的一体化设计，并报告水下持续呼吸与可控运动最长3小时。", "email_summary": "一套微型供氧防水潜水服把陆生蟑螂变成可长时下潜、陆水通行的赛博机器人。", "importance_reason": "它为低能耗搜救、管道巡检等有积水和狭窄空间的任务提供了利用生物运动能力的新路线。"}}, {"title": "Hand-like autonomous flying robot for airborne grasping and interaction", "authors": ["Yuze Wu", "Fan Yang", "Rui Jin", "Yuhang Zhong", "Junjie Wang", "Xuankang Wu", "Fei Gao"], "venue": "Nature Communications", "published_at": "2026-01-30", "paper_type": "direct", "source_kind": "official", "robot_type_tags": ["drone", "manipulation"], "tier": "tier2", "tier_label": "Tier 2 高质量正式论文", "score": 0.665, "url": "https://doi.org/10.1038/s41467-026-68967-3", "pdf_url": "https://www.nature.com/articles/s41467-026-68967-3.pdf", "key_figure_path": "figures/crossref_10_1038_s41467-026-68967-3_publisher_fig1.png", "key_figure_caption": "Fig. 1. Publisher-hosted key figure", "quick_take": "针对传统空中机械臂尺寸大、能耗高且引入力矩耦合，难在狭窄空间同时取得机动性、稳定性和多样抓取能力，论文通过开放C形手掌配合伸缩与扭转关节，以单电机驱动5自由度形变；飞行与变形使用双时间尺度规划，并以在线辨识和自适应飞控补偿扰动，并验证556 g 原型可抓取153 g水瓶并以1.1 m/s跟踪，抓取薄纸的控制误差小于3 cm。", "analysis": {"core_insight": "HI-ARM 把五自由度类手可变形末端与四旋翼融合，以单肌腱驱动实现抓取、停栖和空中交互，并用自适应控制处理变形与载荷扰动。", "problem_frame": "传统空中机械臂尺寸大、能耗高且引入力矩耦合，难在狭窄空间同时取得机动性、稳定性和多样抓取能力。", "first_principles": "欠驱动的肌腱—弹簧结构可顺应目标形状，而将飞行轨迹和末端变形解耦，可降低规划变量并把不同时间尺度的控制分开。", "mechanism": "开放C形手掌配合伸缩与扭转关节，以单电机驱动5自由度形变；飞行与变形使用双时间尺度规划，并以在线辨识和自适应飞控补偿扰动。", "boundary_advanced": "它把无人机从观察或附加式抓取推进到成人手掌量级的自主空中抓取、开门、停栖、跨地形运输和人机协作。", "old_problem": "多执行器空中机械臂的重量、转动惯量和气流干扰压缩了续航与可操作空间，简单末端又难应对不同大小和形状的物体。", "why_it_works": "结构在接触时可被动贴合物体，控制器同时估计重心、惯量、外力和外力矩，因此能在变形、负载变化和接触过程中维持轨迹。", "true_novelty": "新意不只是小型抓手，而是将单肌腱欠驱动手、可收缩机体、双时间尺度规划和多层自适应飞控做成一体化空中操作系统。", "evidence_summary": "556 g 原型可抓取153 g水瓶并以1.1 m/s跟踪，抓取薄纸的控制误差小于3 cm；论文还展示停栖、开门、窄缝穿越和室外运输。", "email_summary": "HI-ARM 把单肌腱类手抓取与自适应四旋翼控制整合，展示了抓物、开门、停栖和人机协作的紧凑空中机器人。", "importance_reason": "它缩小了空中机器人从感知到实体交互的工程鸿沟，为巡检、配送、救援和辅助取物提供了可扩展的平台。"}}, {"title": "Light-driven lattice soft microrobot with multimodal locomotion", "authors": ["Mingduo Zhang", "Yuncheng Liu", "Chunsan Deng", "Xuhao Fan", "Zexu Zhang", "Shaoxi Shi", "Fayu Chen", "Huace Hu", "Songyan Xue", "Leimin Deng", "Lige Liu", "Tao Sun", "Hui Gao", "Wei Xiong"], "venue": "Nature Communications", "published_at": "2025-08-28", "paper_type": "direct", "source_kind": "official", "robot_type_tags": ["micro_robot", "hard_to_instrument"], "tier": "tier2", "tier_label": "Tier 2 高质量正式论文", "score": 0.5851, "url": "https://doi.org/10.1038/s41467-025-62676-z", "pdf_url": "https://www.nature.com/articles/s41467-025-62676-z.pdf", "key_figure_path": "figures/crossref_10_1038_s41467-025-62676-z_publisher_fig1.png", "key_figure_caption": "Fig. 1. Publisher-hosted key figure", "quick_take": "针对无系留软体微机器人需要兼具高效驱动、可重构运动和狭窄环境适应性，而传统实心水凝胶响应慢、自由度有限，论文通过调节激光扫描频率、轨迹与功率，依次激发不同区域，产生蠕动、原地旋转和跳跃，并由闭环反馈跟踪路径，并验证文中给出29.38°/s连续原地旋转、15.15 μm/s蠕动，并演示闭环编程运动与受限通道通行。", "analysis": {"core_insight": "用截角八面体晶格降低水凝胶微机器人的相对密度，并以顺序激光扫描把局部变形转为多模态运动。", "problem_frame": "无系留软体微机器人需要兼具高效驱动、可重构运动和狭窄环境适应性，而传统实心水凝胶响应慢、自由度有限。", "first_principles": "PNIPAM-SWNT 水凝胶吸收光热后形变；晶格结构降低材料约束，使局部热致收缩更快、更大并可被空间编程。", "mechanism": "调节激光扫描频率、轨迹与功率，依次激发不同区域，产生蠕动、原地旋转和跳跃，并由闭环反馈跟踪路径。", "boundary_advanced": "相同条件下，晶格机器人用实心版本六分之一的激光能量获得约三倍运动速度，并能挤过静息宽度75%的开口。", "old_problem": "既有软微机器人通常依赖单一预设周期形变，难以同时兼顾能效、运动多样性与复杂地形适应。", "why_it_works": "低密度晶格提升柔顺性和热致形变速度，激光的高空间分辨率则把形变自由度转化为可控的运动模式。", "true_novelty": "关键创新是把超材料晶格与时空可编程光驱动耦合，而非仅替换一种光响应材料。", "evidence_summary": "文中给出29.38°/s连续原地旋转、15.15 μm/s蠕动，并演示闭环编程运动与受限通道通行。", "email_summary": "晶格化水凝胶和顺序激光扫描让软微机器人以更低能量完成蠕动、旋转、跳跃及狭缝穿行。", "importance_reason": "该设计为面向生物医学和微机械的微尺度机器人提供了结构—驱动协同提升能效与适应性的范式。"}}, {"title": "A droplet robotic system enabled by electret-induced polarization on droplet", "authors": ["Ruotong Zhang", "Chengzhi Zhang", "Xiaoxue Fan", "Christina C. K. Au Yeung", "Huiyanchen Li", "Haisong Lin", "Ho Cheung Shum"], "venue": "Nature Communications", "published_at": "2024-07-23", "paper_type": "direct", "source_kind": "official", "robot_type_tags": ["manipulation"], "tier": "tier2", "tier_label": "Tier 2 高质量正式论文", "score": 0.5925, "url": "https://doi.org/10.1038/s41467-024-50520-9", "pdf_url": "https://www.nature.com/articles/s41467-024-50520-9.pdf", "key_figure_path": "figures/crossref_10_1038_s41467-024-50520-9_publisher_fig1.png", "key_figure_caption": "Fig. 1. Publisher-hosted key figure", "quick_take": "针对实验室自动化需要处理微量液体，但现有液滴操控常受液体介电性质限制，且可能损害生化样本活性，论文通过将驻极体产生的空间电场与可编程运动平台耦合，沿预定路径牵引液滴，并以机器人系统完成样本搬运和操作，并验证文中报告最高60 mm/s、5.5 V工作电压、低成本耗材，并完成血清、唾液、尿液锂检测及细胞—细菌模型的自动操作。", "analysis": {"core_insight": "以驻极体诱导液滴极化替代传统高压电润湿，实现对多类液滴的直接、可编程搬运。", "problem_frame": "实验室自动化需要处理微量液体，但现有液滴操控常受液体介电性质限制，且可能损害生化样本活性。", "first_principles": "带准永久电荷的驻极体产生非均匀静电场，使液滴极化并受吸引；该作用不依赖传统导电回路。", "mechanism": "将驻极体产生的空间电场与可编程运动平台耦合，沿预定路径牵引液滴，并以机器人系统完成样本搬运和操作。", "boundary_advanced": "将可操作范围扩展到介电常数 2.25–84.2、500 nL–1 mL 的无机和有机液体，并覆盖血清、唾液、尿液、蛋白和活细胞。", "old_problem": "电润湿对低介电或低导电液体不稳，磁性、声学或热学方法又会引入颗粒、高能量或热损伤。", "why_it_works": "EPD 用内禀静电荷提供牵引，避免高场焦耳热与导电电流；系统将该物理效应与多物理场编程控制结合。", "true_novelty": "新意不只是机械臂自动化，而是提出并实证一种兼容生化样本、原则上可适配全液体类别的液滴极化机制。", "evidence_summary": "文中报告最高60 mm/s、5.5 V工作电压、低成本耗材，并完成血清、唾液、尿液锂检测及细胞—细菌模型的自动操作。", "email_summary": "驻极体驱动的液滴机器人把广泛液体兼容性与生化样本温和处理结合，可服务低成本实验室自动化。", "importance_reason": "它将液滴机器人从特定芯片化学条件推进到更通用的生物、临床和材料实验工作流。"}}, {"title": "M-SEVIQ: A Multi-band Stereo Event Visual-Inertial Quadruped-based Dataset for Perception under Rapid Motion and Challenging Illumination", "authors": ["Jingcheng Cao", "Chaoran Xiong", "Jianmin Song", "Shang Yan", "Jiachen Liu", "Ling Pei"], "venue": "arXiv", "published_at": "2026-01-06", "paper_type": "direct", "source_kind": "preprint", "robot_type_tags": ["locomotion"], "tier": "preprint", "tier_label": "arXiv / preprint", "score": 0.8722, "url": "http://arxiv.org/abs/2601.02777v1", "pdf_url": "https://arxiv.org/pdf/2601.02777v1", "key_figure_path": "figures/arxiv_2601_02777v1_caption_p3.png", "key_figure_caption": "Fig. 1. Our Quadruped robot for data collection. (a)Side view of the robot", "quick_take": "针对高速运动会造成帧相机模糊，论文通过在 Unitree Go2 上集成双目事件相机、RGB-D、IMU、RTK和12关节编码器，完成内外参及时间对齐，并验证数据含30余段序列，其中10段室内、20段室外，覆盖不同速度、昼夜、HDR和近红外；论文展示了分割及多任务基准的可行性。", "analysis": {"core_insight": "将高速四足平台的双目事件、RGB-D、IMU、RTK和关节编码数据同步标定，构成面向快速运动与极端照明的多模态基准。", "problem_frame": "高速运动会造成帧相机模糊，弱光和高动态范围进一步损伤视觉；现有事件数据集缺少四足本体信息、双目配置和多照明条件的联合覆盖。", "first_principles": "事件相机以亮度变化为单位，具备低时延、高时间分辨率和高动态范围；与几何、惯性和运动学信息融合可互补自运动与场景变化的不确定性。", "mechanism": "在 Unitree Go2 上集成双目事件相机、RGB-D、IMU、RTK和12关节编码器，完成内外参及时间对齐，并以 ROS 记录可用于多任务评测的数据。", "boundary_advanced": "从手持、车载或单一视觉事件数据推进到真实敏捷四足的室内外、昼夜、HDR、主动近红外和不同速度联合场景。", "old_problem": "传统视觉和 SLAM 基准难以反映腿式机器人在高速、黑暗、反光及近红外环境中的实际感知鲁棒性。", "why_it_works": "事件传感对运动模糊和亮度饱和更稳健，立体、深度、IMU和关节状态则为时空配准及跨模态补偿提供约束。", "true_novelty": "贡献主要是可同步、可标定的多带双目事件—本体感知四足数据基础设施，而非新的感知模型。", "evidence_summary": "数据含30余段序列，其中10段室内、20段室外，覆盖不同速度、昼夜、HDR和近红外；论文展示了分割及多任务基准的可行性。", "email_summary": "M-SEVIQ 为高速四足感知提供了双目事件、RGB-D、IMU、RTK和关节数据的同步基准，专攻弱光和高速模糊。", "importance_reason": "它补齐了事件视觉从无人机和车辆到腿式机器人真实部署的数据缺口，可支持定位、融合与语义感知的可重复比较。"}}, {"title": "AutoOdom: Learning Auto-regressive Proprioceptive Odometry for Legged Locomotion", "authors": ["Changsheng Luo", "Yushi Wang", "Wenhan Cai", "Mingguo Zhao"], "venue": "arXiv", "published_at": "2025-11-24", "paper_type": "direct", "source_kind": "preprint", "robot_type_tags": ["humanoid", "locomotion", "mobile_robot"], "tier": "preprint", "tier_label": "arXiv / preprint", "score": 0.8666, "url": "http://arxiv.org/abs/2511.18857v1", "pdf_url": "https://arxiv.org/pdf/2511.18857v1", "key_figure_path": "figures/arxiv_2511_18857v1_caption_p2.png", "key_figure_caption": "Fig. 1. Overview of the AutoOdom system.", "quick_take": "针对EKF等方法依赖接触和运动学模型，纯学习方法又需要大量真机数据且受仿真到现实落差影响，快速动态步态尤为困难，论文通过第一阶段以大规模仿真数据学习基础运动关系，第二阶段用真机轨迹加入IMU加速度并回馈先前预测；模型以短历史窗口实时预测平面增量，并验证在 Booster T1 真机轨迹上。", "analysis": {"core_insight": "AutoOdom 以仿真预训练加少量真实数据自回归增强，从本体传感中学习闭环腿式里程计，并显式适应累计误差。", "problem_frame": "EKF等方法依赖接触和运动学模型，纯学习方法又需要大量真机数据且受仿真到现实落差影响，快速动态步态尤为困难。", "first_principles": "关节、指令、陀螺仪和动作历史包含运动与接触动力学；用模型自身预测替代真实历史位置，能在训练中暴露并学习补偿误差累积。", "mechanism": "第一阶段以大规模仿真数据学习基础运动关系，第二阶段用真机轨迹加入IMU加速度并回馈先前预测；模型以短历史窗口实时预测平面增量。", "boundary_advanced": "它把仅依赖仿真或解析滤波的本体里程计推进到有限真机数据即可闭环部署的高动态腿式场景。", "old_problem": "解析滤波受建模误差和调参限制，纯仿真学习不能直接承担真实传感噪声和长期漂移。", "why_it_works": "分阶段训练先获得大规模运动覆盖，再由真机加速度和自回归输入校正现实噪声与误差传播；低时延网络满足在线性。", "true_novelty": "新意是针对里程计误差累积的仿真—真实两阶段自回归训练配方，而非单纯替换网络骨干。", "evidence_summary": "在 Booster T1 真机轨迹上，完整模型相对 Legolas 的 ATEo、ATEu和RPE分别改善57.2%、59.2%和36.2%；消融显示自回归和阶段化传感配置均重要。", "email_summary": "AutoOdom 用仿真预训练和真机自回归微调，把纯本体腿式里程计的长期误差显著压低。", "importance_reason": "它为GPS缺失、视觉退化条件下的实时状态估计提供了较低真机数据成本的路线，可直接服务腿式导航和SLAM。"}}];
+    const tagLabels = {
+      all: "全部",
+      soft_robot: "软体",
+      flapping_wing: "扑翼",
+      micro_robot: "微型",
+      bioinspired: "仿生",
+      continuum: "连续体",
+      manipulation: "操作",
+      aquatic_robot: "水下",
+      swarm_robot: "群体",
+      locomotion: "运动",
+      hard_to_instrument: "难布设",
+      other: "其他"
+    };
+    const sourceLabels = {
+      official: "正式发表",
+      preprint: "预印本"
+    };
+    const tierLabels = {
+      tier1: "Tier 1 旗舰正式论文",
+      tier2: "Tier 2 高质量正式论文",
+      preprint: "arXiv / preprint",
+      other: "其他"
+    };
+    const filtersEl = document.getElementById("filters");
+    const gridEl = document.getElementById("paper-grid");
+    const panelTagsEl = document.getElementById("panel-tags");
+    const archiveLink = document.getElementById("archive-link");
+    const tags = ["all", ...new Set(papers.flatMap(p => p.robot_type_tags))];
+    let active = "all";
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[char]));
+    }
+
+    function renderFilters() {
+      filtersEl.innerHTML = tags.map(tag => `
+        <button class="filter ${tag === active ? "active" : ""}" data-tag="${tag}">
+          ${escapeHtml(tagLabels[tag] || tag)}
+        </button>
+      `).join("");
+      filtersEl.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("click", () => {
+          active = btn.dataset.tag;
+          renderFilters();
+          renderCards();
+        });
+      });
+    }
+
+    function configureNavigation() {
+      const isPermanentIssue = /\/issues\/\d{4}-\d{2}-\d{2}\/(?:index\.html)?$/.test(window.location.pathname);
+      archiveLink.href = "../index.html";
+    }
+
+    function renderPanelTags() {
+      panelTagsEl.innerHTML = tags
+        .filter(tag => tag !== "all")
+        .slice(0, 8)
+        .map(tag => `<span class="panel-tag">${escapeHtml(tagLabels[tag] || tag)}</span>`)
+        .join("");
+    }
+
+    function renderCards() {
+      const visible = papers
+        .map((paper, originalIdx) => ({ ...paper, originalIdx }))
+        .filter(p => active === "all" || p.robot_type_tags.includes(active));
+      gridEl.innerHTML = visible.map((paper) => `
+        <article class="card">
+          <div class="rank">${String(paper.originalIdx + 1).padStart(2, "0")}</div>
+          <div class="paper-main">
+            <div class="venue">${escapeHtml(tierLabels[paper.tier] || paper.tier_label || paper.tier)} · ${escapeHtml(paper.venue)} · ${escapeHtml(paper.published_at)} · ${paper.paper_type === "direct" ? "直接命中" : "可迁移"}</div>
+            <h2>${escapeHtml(paper.title)}</h2>
+            <div class="tags">
+              <span class="tag source">${escapeHtml(sourceLabels[paper.source_kind] || paper.source_kind)}</span>
+              ${paper.robot_type_tags.map(tag => `<span class="tag">${escapeHtml(tagLabels[tag] || tag)}</span>`).join("")}
+            </div>
+            <div class="insight">${escapeHtml(paper.quick_take || paper.analysis.core_insight)}</div>
+            <div class="actions">
+              <button class="toggle">展开深读</button>
+              ${paper.url ? `<a class="link" href="${escapeHtml(paper.url)}" target="_blank" rel="noreferrer">原文</a>` : ""}
+              ${paper.pdf_url ? `<a class="link" href="${escapeHtml(paper.pdf_url)}" target="_blank" rel="noreferrer">PDF</a>` : ""}
+            </div>
+          </div>
+          <div class="score">${Math.round(paper.score * 100)}</div>
+          <div class="details">
+            <div class="detail-layout">
+              <aside class="figure-panel">
+                ${paper.key_figure_path ? `
+                  <figure class="key-figure">
+                    <div class="figure-label"><span>Key Figure</span><span>用于快速抓核心机制</span></div>
+                    <img src="${escapeHtml(paper.key_figure_path)}" alt="key figure">
+                    <figcaption>${escapeHtml(paper.key_figure_caption || "关键图")}</figcaption>
+                  </figure>
+                ` : `
+                  <div class="no-figure">暂无可抽取关键图<br>通常是正式出版页面未开放 PDF 或文本层不可检索。</div>
+                `}
+              </aside>
+              <div class="analysis-panel">
+                <div class="detail-block"><strong>问题重述：</strong>${escapeHtml(paper.analysis.problem_frame)}</div>
+                <div class="detail-block"><strong>第一性原理：</strong>${escapeHtml(paper.analysis.first_principles)}</div>
+                <div class="detail-block"><strong>生效机制：</strong>${escapeHtml(paper.analysis.mechanism)}</div>
+                <div class="detail-block"><strong>推进的边界：</strong>${escapeHtml(paper.analysis.boundary_advanced)}</div>
+                <div class="detail-block"><strong>解决的老问题：</strong>${escapeHtml(paper.analysis.old_problem)}</div>
+                <div class="detail-block"><strong>为什么成立：</strong>${escapeHtml(paper.analysis.why_it_works)}</div>
+                <div class="detail-block"><strong>真正新意：</strong>${escapeHtml(paper.analysis.true_novelty)}</div>
+                <div class="detail-block"><strong>证据：</strong>${escapeHtml(paper.analysis.evidence_summary)}</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join("");
+      gridEl.querySelectorAll(".toggle").forEach(button => {
+        button.addEventListener("click", () => {
+          const details = button.closest(".card").querySelector(".details");
+          details.classList.toggle("open");
+          button.textContent = details.classList.contains("open") ? "收起" : "展开深读";
+        });
+      });
+    }
+
+    configureNavigation();
+    renderPanelTags();
+    renderFilters();
+    renderCards();
+  </script>
+</body>
+</html>
