@@ -1,0 +1,21 @@
+{
+  "name": "paper-radar",
+  "version": "0.1.0",
+  "description": "Prepare, recover, validate, render, and publish a weekly embodied-perception research radar.",
+  "author": {
+    "name": "Guorong-He",
+    "url": "https://github.com/Guorong-He"
+  },
+  "homepage": "https://guorong-he.github.io/paper-radar/",
+  "repository": "https://github.com/Guorong-He/paper-radar",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Paper Radar",
+    "shortDescription": "Run and recover a weekly research radar.",
+    "longDescription": "Paper Radar prepares, quality-checks, renders, and publishes a ten-paper weekly embodied-perception digest with resumable state and strict evidence gates.",
+    "developerName": "Guorong-He",
+    "category": "Education",
+    "capabilities": [],
+    "defaultPrompt": "Use Paper Radar to prepare or resume this week's embodied-perception digest."
+  }
+}

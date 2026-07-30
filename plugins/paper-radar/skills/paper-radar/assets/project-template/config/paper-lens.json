@@ -1,0 +1,5 @@
+{
+  "library_root": "site/papers",
+  "index": "site/papers/index.html",
+  "notes": "Paper Lens pages are saved as <library_root>/<paper-id>/index.html. If this folder moves, update library_root or place a .paper-lens-root marker in the new folder."
+}

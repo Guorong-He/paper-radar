@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paper Radar"
+  short_description: "Run and recover the Paper Radar weekly workflow"
+  default_prompt: "Use $paper-radar to prepare or resume this week's embodied-perception digest safely."
