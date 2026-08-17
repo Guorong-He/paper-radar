@@ -1,161 +1,161 @@
 # Paper Radar Digest
 
-## 1. Printed sensing human-machine interface with individualized adaptive machine learning
+## 1. Ultrasoft hydrogel immune millirobot with multimodal locomotion
 - Venue: Science Advances
-- Published: 2025-09-12
-- Type: direct
-- Tags: soft_robot
-- Score: 0.7711
-- Core insight: 把八通道 sEMG 个体适配、可印刷多模态触觉和皮肤电刺激闭合成同一人机回路，使机器人既能理解动作意图，也能把接触材料信息反馈给人。
-- Problem frame: 现有软体人机界面同时受跨用户与重复佩戴后的 sEMG 分布漂移、机器人材料感知模态不足以及低成本系统集成困难限制。
-- First principles: LMN 先重加权八通道信号以对齐标准数据分布，再以少量个体数据微调 InceptionTime，而热导率与电导率提供互补物性观测以消除单模态歧义。
-- Mechanism: 系统用直写与激光加工制造 sEMG/刺激电子皮肤及压力、温度、热导率和电导率阵列，再由 LMN+InceptionTime 解码手势、紧凑 CNN 识别物体并触发反馈刺激。
-- Boundary advanced: 它把 0.1 秒延迟下 98.33% 的手势分类、20 类材料识别和单名截肢者验证推进到一套可控制软体手并返回触觉编码的集成原型。
-- Old problem: 过去的工作通常分别解决肌电控制、软体机器人感知或触觉反馈，却很少同时处理重复佩戴校准、物理多模态识别与双向交互。
-- Why it works: 多尺度时序卷积捕获不同持续时间的肌电模式，LMN 与迁移学习校正个体差异，而热导与电导的联合输入将材料准确率从仅热导的 63.99% 提升到 98.03%。
-- True novelty: 真正的新意主要是全印刷双向系统的工程整合及面向重复佩戴的轻量适配，而 LMN、InceptionTime、CNN 和各类传感机制本身并非全新算法。
-- Evidence: 论文报告 14 手势预训练准确率 98.07%、不同参与者少量校准后超过 93%、20 类共 3000 个样本经嵌套五折验证达到 98.03%，且预处理消融分别造成 1.83、0.96 和 6.13 个百分点下降；但物体识别仍是离线结果，人体样本仅 9 名加 1 名截肢者，且截肢实验正文称每手势 50 次、图注却称 20 次。
-
-## 2. Hierarchical laser-programmed soft actuators for designing bionic robots with freeform morphing shapes
-- Venue: Science Advances
-- Published: 2026-06-12
+- Published: 2025-12-05
 - Type: direct
 - Tags: soft_robot, manipulation
+- Score: 0.7803
+- Core insight: 把磁驱动腿与承载 NK 细胞的超软水凝胶核心分开，使毫米机器人既能换步态越障，又能贴合肿瘤并留下细胞。
+- Problem frame: 实体瘤细胞治疗受限于局部细胞富集，小型递送器又必须在柔软、湿润、有障碍的环境中运动并保护细胞。
+- First principles: 磁矩与外场的力矩提供不依赖细胞舱形变的推进；柔顺水凝胶增大接触面积，离子和 pH 响应将局部化学环境转为形变。
+- Mechanism: FePt 磁颗粒置于星形腿部，NK92-MI 细胞置于中央水凝胶；时变磁场切换翻滚、爬行、波动和双足行走，环境响应实现覆盖和抓取。
+- Boundary advanced: 四种步态在 1.73–7.62 mm/s 范围内工作，可覆盖三维肿瘤模型并在四天内完成体外杀伤；小鼠模型中载细胞组在 15 天内抑制肿瘤生长。
+- Old problem: 既有磁性微型递送器常只有单一运动模式或只验证载药，难同时处理复杂地形、柔软病灶贴合和活细胞局部维持。
+- Why it works: 模块化隔离避免推进材料占用细胞空间，磁场负责姿态与步态，水凝胶负责顺应和细胞—病灶接触，三种功能不再互相排斥。
+- True novelty: 新意不在单独的磁驱或 NK 治疗，而在于把多步态超软机器人作为活细胞的可贴合、可降解局部递送器。
+- Evidence: 论文给出四类步态、三维肿瘤模型四天杀伤，以及三组各 5 只裸鼠的 15 天 IVIS、肿瘤重量和组织读数；但为皮下异种移植、短观察期，且依赖手术植入和外部磁场。
+
+## 2. A photo-mechanically inactive tough gel exhibits multimodal, light-guided underwater navigation
+- Venue: Science Advances
+- Published: 2025-05-30
+- Type: direct
+- Tags: soft_robot, aquatic_robot
+- Score: 0.6955
+- Core insight: TG-BOT 不靠材料本身光致弯曲，而在周围液体中建立热流和界面张力梯度，因此坚韧而光机械惰性的凝胶也能自主导航。
+- Problem frame: 传统光驱软体机器人将感知、驱动和形变绑在同一响应材料上，材料因而柔弱易疲劳，难兼顾抗压抗拉与复杂运动。
+- First principles: 吸光产生局部温度场；浮力、热对流和热毛细力把温度不均匀转为方向性流体力，高缠结网络只承担结构完整性。
+- Mechanism: 高缠结 rGO–PAM 水凝胶以内腔气泡调节密度，光热—流体耦合驱动上升、跳跃和穿越狭缝；在水面再由热 Marangoni 对流转向。
+- Boundary advanced: 4 sun 照射下最高上升速度约 1.27 cm/s，可越障、脱离陷阱并穿过 1.5 cm 宽 S 形管；85% 压缩时应力约 9.62 MPa。
+- Old problem: 既有光致机器人多依赖光敏水凝胶或液晶弹性体反复局部形变，响应慢、耐久受限，基体强化又会损害驱动。
+- Why it works: 推进力由液体对流和界面张力而非凝胶反复充当肌肉产生；rGO 吸光、高缠结网络抗冲击、气泡仅调密度。
+- True novelty: 真正创新是将光导向行为迁移至光热—流体耦合，使非光机械材料获得光导航能力。
+- Evidence: 有力学对照、流场和速度测试，并演示窄管、陷阱、障碍与水面机动；但均在受控水槽、较强照明和预设几何中完成，长周期耐久和实际载荷未量化。
+
+## 3. Self-reconfigurable robotic fish swarms: Collective achievement of diverse locomotion and challenging aquatic tasks
+- Venue: Science Advances
+- Published: 2026-01-09
+- Type: direct
+- Tags: aquatic_robot
+- Score: 0.8024
+- Core insight: 把群体连接形态当作可切换推进机构，而不是固定编队，使鱼形单元能在速度、能耗、转向、浅水爬行和搬运间主动重配。
+- Problem frame: 单体机器人鱼的身体拓扑固定，高效巡航、转向、浅水通行与操作任务的受力布局彼此冲突，水动力扰动又使自治拼接困难。
+- First principles: 不同连接方向改变尾鳍推力相位、阻力和地面接触；可逆电永磁连接提供结构传力，使单元在组合后成为鳍、关节或抓取端。
+- Mechanism: 单元含尾鳍振荡和两个侧向转动自由度，并用电永磁体完成对接与通信；系统按侧向、纵向或混合构型执行推进、转向或浅水爬行。
+- Boundary advanced: 侧向 Lat3 构型速度为 134.56 mm/s，比单体高 18.9%；最省能构型 COT 从 1.92 降至 0.51，并展示开闸、抓取、爬行和转运。
+- Old problem: 既有水下群体多依赖固定外形或人工协助连接，能做队形运动却难将重构转化为新的水动力能力和操作能力。
+- Why it works: 侧向并联增加有效推力，纵向连接降低阻力，旋转关节再把鳍置于适合转向或爬行的位置，因此同一硬件可应对不同环境约束。
+- True novelty: 新意不是磁吸连接本身，而是把可连接、可解体的鱼群与多模态鳍驱动和连续任务链结合，使重构成为运动策略。
+- Evidence: 除速度和 COT 对照外，重构实验仅 10 次中成功 6 次，失败为对准误差；户外测试仍由 LoRa 主机下发命令且用安全线约束，尚未形成独立感知闭环。
+
+## 4. A skin-integrated multimodal haptic interface for immersive tactile feedback
+- Venue: Nature Electronics
+- Published: 2023-11-30
+- Type: direct
+- Tags: none
+- Score: 0.4738
+- Core insight: 机械、电触觉和热触觉分别选择性刺激不同皮肤受体，再在空间阵列上协同编码，可把单一振动反馈扩展为材质、温度、滑爽度与受力。
+- Problem frame: 可穿戴触觉的瓶颈不是缺少更强振子，而是皮肤对频率、位移、温度和神经刺激有不同通道；单模态装置无法在轻薄贴肤中同时覆盖它们。
+- First principles: 热流决定冷热感，机械形变与高频振动覆盖深层机械感受，电刺激可激活浅层神经；分配给不同受体可避免单一执行器的带宽与幅值矛盾。
+- Mechanism: 每个单元组合机械执行器、两对热电颗粒和一对柔性电极，16 个单元独立无线控制；机械与电触觉编码纹理和压力，20–45°C 热调制复现热感。
+- Boundary advanced: 装置在 0–250 Hz 触觉频段内协同机械与电刺激，并在腕、臂、手掌的研究中再现细/粗糙度、滑爽度、温度和力感；九类纹理识别增益为 11%–45%。
+- Old problem: 既有手套和贴肤反馈多局限于振动或单一温度通道，频率和位移被谐振耦合，难表达静压、微纹理和材料热属性。
+- Why it works: 机械执行器在约 200 Hz 附近提供较大位移和力，电刺激补足低频与脉冲压力，热电层提供独立热流，用户获得多种接触线索。
+- True novelty: 核心创新是以皮肤受体选择性为组织原则的三模态贴肤阵列及其编码，而不是单个器件的性能纪录。
+- Evidence: 有器件力学/热学曲线及多组用户实验，单项样本从 6 到 45 次独立测试不等，并显示多模态优于单模态；硬度仍需更多压力单元，长期佩戴、功耗和大规模交互验证有限。
+
+## 5. Efficient Real-World Online Reinforcement Learning for Robot Manipulation via Centralized Training and Critic Decomposition
+- Venue: arXiv
+- Published: 2026-08-10
+- Type: direct
+- Tags: humanoid, manipulation
+- Score: 0.86
+- Core insight: 将连续机械臂控制和离散夹爪控制分为两个演员，但训练时共享按任务和抓取拆分的集中式评论家，可降低混合动作的非平稳信用分配问题。
+- Problem frame: 真实在线强化学习受昂贵人类纠错、稀疏回报和连续位姿/离散抓取耦合限制；单一策略难处理离散边界，独立策略又互相造成环境漂移。
+- First principles: 联合 Q 函数可观察两类动作的相互后果；任务回报和势函数式抓取回报分头估计，将噪声 RGB 下难学的长时程价值回归拆成子目标。
+- Mechanism: RLPD 混合离线示范、在线经验和人工干预；CTDE 让 6-DoF 位姿演员与三值夹爪演员各自执行、共享多头集中式 critic，异步学习器周期性下发策略。
+- Boundary advanced: 约 2.5 小时真实训练中，网球放置从 60% 提至 80%，香蕉从 60% 至 90%，锅复位从 0% 至 55%；模拟 G1 方块搬运从 25% 至 95%。
+- Old problem: 过去真实在线 RL 常在很小随机化范围内把混合动作塞进一个策略，或分别训练动作分支，因而在视觉噪声、宽工作区和抓取接触下不稳定。
+- Why it works: 集中评论家以全局信息评估臂—夹爪协作，去除部分非平稳性；抓取这一早期中间事件为稀疏任务回报提供可学习的价值梯度。
+- True novelty: 贡献在于将 CTDE、混合奖励架构和离散夹爪分布的损失重写组合为现实机器人训练配方，而非新的 SAC 范式。
+- Evidence: 四个任务平均成功率从 40% 升至 75%，评价通常为 20 回合；但系统依赖人工示范/干预、手工环境重置和定制柔顺夹爪，真实任务数少，G1 最大提升来自模拟。
+
+## 6. RF-HOI: Recognize Human-Object Interaction with Radio Frequency Signals
+- Venue: arXiv
+- Published: 2026-07-31
+- Type: direct
+- Tags: wireless_sensing
+- Score: 0.86
+- Core insight: RF-HOI 让毫米波雷达负责人的细粒度动作、RFID 标签负责目标身份，再用合成 RF 预训练弥补真实数据稀缺，从而无相机识别人—物交互。
+- Problem frame: 视觉 HOI 在暗光和隐私敏感场景失效或不可用，而单一 RF 模态有可观测性缺口：毫米波能看见动作却难区分物体，RFID 知道标签却难还原动作。
+- First principles: 雷达回波时频变化编码相对运动，标签相位变化和身份编码目标；动作与物体分别预测后融合，保留两种传感器的互补性。
+- Mechanism: 毫米波谱图、RFID 相位差及标签关联信息输入融合网络，以动作与物体双分支输出 HOI；基于带标注动作网格的模拟器生成多模态 RF 数据，再以少量真实样本微调。
+- Boundary advanced: 在不见若干动作—物体组合的设置中，HOI 准确率为 81.25%，平均比基线高 7.84 个百分点；只给 20 个已见布置时优势为 14.48 个百分点。
+- Old problem: 先前无线感知常将人体动作与对象识别分开做，或需要针对场地、朝向和物品的大量真实标注，难扩展到组合式 HOI。
+- Why it works: 毫米波单独动作准确率可超过 90% 但六类物体识别接近随机的约 17%，RFID 则相反；融合与合成预训练补上观测和数据覆盖。
+- True novelty: 真正新意是面向 HOI 的 RF 双模态可观测性分工和可控合成数据管线，而不只是拼接雷达与 RFID 特征。
+- Evidence: 论文使用商用设备，评估不同距离、朝向、环境、用户和未见组合/物品，并以七类动作、六个候选物体定义严格 HOI 正确率；但需要在对象贴 RFID 标签，真实采集与模拟分布有限。
+
+## 7. Musculoskeletal actuators with programmable morphology and tunable dynamics
+- Venue: Science Advances
+- Published: 2026-07-31
+- Type: direct
+- Tags: soft_robot, hard_to_instrument, dea_soft_robot, humanoid, locomotion
 - Score: 0.73
-- Core insight: 通过同时编程激光能量和扫描方向，可以在同一片 LIG 软执行器内写入弯曲、定向卷曲、刚性支撑和柔性连接四种运动基元，再像搭积木一样组合自由形变机器人。
-- Problem frame: 传统刺激响应执行器往往在制造简洁性与三维运动复杂度之间二选一，难以用统一工艺快速获得局部可配置的多模态形变。
-- First principles: 激光能量改变局部石墨烯电阻与焦耳热，从而控制曲率，而扫描方向形成软硬微条纹并改变弯曲模量，使热驱动力和力学约束可分别编码。
-- Mechanism: 作者在 PI 纸上激光生成 LIG、覆以 Kapton 与 PDMS，并用离焦能量控制局部电阻、用 −90° 至 90° 扫描角控制各向异性，再通过有限元辅助组合四类运动单元。
-- Boundary advanced: 该方法把均匀弯折扩展到多关节折叠、定向螺旋、承载平面及软连接，并构造可抓取多种形状、穿越狭缝、转向爬行、除冰和修复电路的原型。
-- Old problem: 以往热驱软机器人通常只能重复单一曲率或依赖复杂多材料装配、外加铰链和表面棘爪，形态设计难直接映射到制造参数。
-- Why it works: 高电阻区域在同一电流下升温更高，而扫描角又使弯曲模量由 103.4 降至 33.4 MPa并改变电阻，因此局部热应变能沿预设最小约束方向转化为指定运动。
-- True novelty: 核心创新不是新的焦耳热材料，而是用一套数字激光工艺同时写入材料异质性和结构层级，并建立可组合的四基元形变语言。
-- Evidence: 执行器在 60 mA 下完成 100 次可逆循环，80 mA 时不同片阻产生 1.40 对 0.66 cm⁻¹ 曲率，支撑结构可托起自身重量 9.1 倍的 6.8 g 负载，爬虫速度达 36.5 mm/min且能在 26 分钟融化 21 g 冰块；但驱动温度可达 194–272°C、耐久主要仅验证 100 次，机器人依赖外接电源和脚本化演示且多用泡沫目标。
+- Core insight: 把可锁定形态的骨架模块与可调刚度、可调共振的肌肉模块串联，可在厘米尺度上分别编程机器人长成什么形状和以什么动力学方式运动。
+- Problem frame: 小型可变形机器人必须在形态转换、快速推进、载荷与无系缆供电间取舍；同一种软执行器很难独立决定几何构型和谐振响应。
+- First principles: 梁的共振频率与弯曲刚度相关，电热软化 SMP 调节肌肉等效刚度，DEA 提供高频形变；LCE 驱动骨架变形、SMP 锁定形态。
+- Mechanism: 肌肉由多层 PDMS 介电弹性体、SMP 和柔性电极组成，骨架由 LCE 与 SMP 复合层组成；调节加热电压改变频率、振幅和力，骨架按序变形并锁止。
+- Boundary advanced: SMP 模量可由 25°C 的约 1824 MPa 降至 60°C 的 2.42 MPa；四足构型最快达 3.0 BL/s，6.4 g 蜜袋鼯式机器人可陆行 1.1 BL/s、载 3.6 g、游动并滑翔。
+- Old problem: 现有微型可变形机器人多用伺服或多套执行器，或依赖固定动力学的 DEA/HASEL，既难小型化，也难在变形后保持高效运动。
+- Why it works: 骨架先决定力臂和身体姿态，肌肉再以匹配刚度共振；可逆软化让同一模块在高速与承载模式间切换。
+- True novelty: 贡献是用同一串联人工肌骨结构实现形态与动力学双可编程，并落实到可变四足—类人和无系缆多模态机器人。
+- Evidence: 有组件频率/力/刚度测试、动物式动作和多机器人演示；但驱动仍需约 5 kV、板载升压达约 9.5 kV，电热调刚度耗能且有延迟，绝缘和长期可靠性仍待改进。
 
-## 3. Ionic weaving network enables mechanically robust smart hydrogels with anti-swelling and anti-freezing capabilities
-- Venue: Nature Communications
-- Published: 2026-07-29
+## 8. Magnetic field–enhanced vertical integration enables embodied intelligence in untethered soft robots
+- Venue: Science Advances
+- Published: 2025-09-10
 - Type: direct
-- Tags: soft_robot
-- Score: 0.605
-- Core insight: 先用受限干燥预排列聚合物链，再引入金属离子把链段均匀编织成动态三维配位网络，可同时提升水凝胶的强韧性、环境耐受性和本征传感/驱动能力。
-- Problem frame: 传统水凝胶常在强度、韧性、抗溶胀、抗冻与离子传导之间相互牺牲，复杂驱动结构还往往依赖外置传感器才能形成反馈。
-- First principles: 均匀而高密度的拓扑约束既能通过大量配位键同步解离来分散应力，也能限制链段和水分子迁移，从而抑制溶胀与结冰并保留可逆离子导电响应。
-- Mechanism: 作者固定 P(AM-co-AA) 水凝胶四边实施受限干燥使链段致密重排，再浸入 FeCl3 形成均匀 Fe3+ 配位网络，并以未经受限干燥而直接浸盐的 MCH 作为关键对照。
-- Boundary advanced: 优化 IWH 同时达到 9.2 MPa 强度、18.2 MPa 模量和 57.4 MJ m⁻3 韧性，一周水中溶胀率仅 0.5%，并在 −196°C 保持结构完整且支持水下应变感知。
-- Old problem: 以往金属配位水凝胶容易形成离子团簇和结构异质性，导致应力集中、吸水膨胀、低温脆裂及脱水后性能不可逆下降。
-- Why it works: SAXS、WAXS、XPS 和 SEM 显示受限干燥消除了传统 MCH 中的氢键/金属团簇并形成致密均匀网络，使 400% 应变下耗散能达 23.2 MJ m⁻3且阻尼能力超过 80%。
-- True novelty: 真正的新意是把链段预组织置于离子配位之前，以制造均匀拓扑编织而非事后强化，并将该网络的力学、抗环境和离子功能用于自感知形状记忆与 4D 打印。
-- Evidence: 相较原始水凝胶和 MCH，IWH 的断裂能为 9.8 kJ m⁻2、冲击力降低 33%、浸水 40 天仍保持尺寸且在多次干燥复水后维持性能，并通过更换三种单体和三种金属离子展示策略普适性；但作者明确未直接研究温度依赖的配位动力学，现有全文又在 3D/4D 打印结果段中途截断，因此相关时空编程指标无法核验。
+- Tags: soft_robot, hard_to_instrument
+- Score: 0.709
+- Core insight: 磁性软执行器产生的同一磁场既驱动机器人，又改善柔性 Zn–MnO₂ 电池的离子沉积和正极稳定性，使能量、驱动、传感沿厚度方向共用身体面积。
+- Problem frame: 软体机器人需在有限面积容纳能源、传感和通信，但反复弯折损伤电化学电池，平铺模块和刚性线路又会牺牲柔顺性。
+- First principles: 作者认为 j×B 诱导的磁流体效应使 Zn²⁺ 分布更均匀、抑制枝晶，并通过磁场相关的 Mn–O 电子结构稳定正极；垂直堆叠减少平面占地。
+- Mechanism: 仿蝠鲼机器人将磁性弹性体执行器、覆盖主体 44.9% 的串联柔性 Zn–MnO₂ 电池和优化柔性混合电路叠层集成，以六轴惯性与温度数据经数字孪生支持避障、校正和监测。
+- Boundary advanced: 连续形变下，磁增强电池 200 次后容量保持率由 31.3% 提至 57.3%；优化线路将弯曲刚度控制在约 0.348 N/mm，而未优化刚板为 1.97 N/mm。
+- Old problem: 过去软机器人常把电池、执行器和电子元件横向并排，或只强调柔性电池本身，难同时解决面积不足、弯折衰减和刚度失配。
+- Why it works: 磁场双重用途使磁通不再只是控制信号；更均匀的 Zn 沉积和稳定的 MnO₂ 提高供电寿命，柔性电路与垂直布局避免刚板破坏鳍的弯曲。
+- True novelty: 新意是将磁驱动和磁电化学增强作为同一物理资源，并以执行器—电池—传感器的系统垂直集成验证。
+- Evidence: 电池、形变和有限元证据相互对应，2000 次硬币电池测试为 87.8% 对 76.7%；但 135° 大弯角下 200 次保持率仍降至 33.5%，避障和校正依赖外部磁线圈、BLE 与数字孪生。
 
-## 4. Skin-mimicking biogel-based iontronic sensor with hierarchical bionic coupling for dexterous tactile e-skin
-- Venue: Nature Communications
-- Published: 2026-05-26
-- Type: direct
-- Tags: none
-- Score: 0.58
-- Core insight: 同时仿生真皮的材料组成、乳突微结构和分层受力方式，可让离子电子皮肤兼得轻触灵敏度、兆帕级宽量程及可贴合机械手的阵列稳定性。
-- Problem frame: 现有电子皮肤多只复制表面纹理或采用简单离子膜，未把天然皮肤的成分、层级结构、力学顺应性和多通道触觉功能统一设计。
-- First principles: 明胶、乳酸钠和蒙脱土分别提供类胶原骨架、保湿离子环境及增强交联/载流离子，而仿真皮乳突在受压时逐级扩大接触面积并形成电双层电容。
-- Mechanism: 作者以 20 wt% 乳酸钠和 0.5 wt% 蒙脱土制备 GSM biogel，用 5000 号砂纸模板形成微结构，再以 PDMS 隔离岛、PET 固定片和蛇形 Ag/TPU 电极构建 19 通道手形阵列。
-- Boundary advanced: 传感器覆盖 20 Pa 至 2000 kPa，在低压区灵敏度达 466.3 kPa⁻¹且响应/恢复为 48/57 ms，并把该性能扩展到 0.2–1.2 mm 厚的柔性机械手电子皮肤。
-- Old problem: 高灵敏离子传感器通常量程有限、阵列拉伸时易应力集中和离子串扰，而且器件级指标很少继续验证到灵巧抓取与物体状态判断。
-- Why it works: 蒙脱土提高载流离子密度，乳突尖端到侧壁再到体压缩的三级接触过程产生分段灵敏响应，而隔离 biogel 与电气隔离把串扰抑制比从共享结构的 10.75 dB 提升到系统级 56.48–62.40 dB。
-- True novelty: 核心创新是材料仿生、微结构接触力学和异质封装的层级耦合及其手形阵列化，而用于果实成熟度分类的随机森林本身不是方法创新。
-- Evidence: 明胶到 GS 再到 GSM 的拉伸强度由 46.95 kPa、0.73 MPa增至 1.88 MPa，模量由 11.41 kPa、0.20 MPa增至 1.40 MPa，244 个桃样本中随机森林交叉验证得分 0.9692且 55 个外部样本准确率 100%；但材料实验多为 n=3、阵列电极仅验证 50 次 10% 拉伸，外部样本是否跨果园和批次独立未说明。
-
-## 5. Predictive Training with Latent Imagination for Visual Quadruped Navigation
-- Venue: arXiv
-- Published: 2026-07-20
-- Type: direct
-- Tags: locomotion
-- Score: 0.875
-- Core insight: 只在训练期要求导航策略的循环隐状态预测下一隐状态，就能把动态障碍的短期演化编码进反应式控制器，而部署时删除预测分支并保持零额外推理开销。
-- Problem frame: 反应式腿足导航看到的是障碍当前状态，往往来不及规避移动目标，而完整世界模型的在线生成、滚动或规划又会增加机载计算负担。
-- First principles: 若循环隐状态是控制所需的充分统计量，一步潜变量预测会迫使它保留速度与未来碰撞相关信息，而 SIGReg 的方差与去相关约束可阻止所有隐状态坍缩为常数。
-- Mechanism: 方法在深度、机体状态和显式障碍特征融合的 LSTM-SRU 策略上添加 JEPA 式 MLP 预测器，以动作条件预测下一 512 维隐状态，并联合 RL、预测损失和 SIGReg 训练后移除辅助分支。
-- Boundary advanced: 它在不改变部署控制器结构的前提下，将动态障碍任务成功率从反应式 SRU 的 86.0% 提升到 96.2%，碰撞率从 14.0% 降至 3.8%。
-- Old problem: 既有局部导航要么依靠短时记忆被动估计运动，要么在推理期持续调用世界模型，因此预测能力和实时部署成本长期绑定。
-- Why it works: 预测损失把下一时刻场景结构直接变成控制记忆的训练信号，而无 SIGReg 时成功率反降至 86.0%且碰撞率升至 12.1%，说明防坍缩约束是增益成立的必要条件。
-- True novelty: 真正的新意是把 JEPA 式预测与 SIGReg 施加到策略自身的确定性循环状态并严格限定为训练期辅助目标，而非提出新的 SRU、强化学习算法或在线世界模型。
-- Evidence: 在相同 SRU 骨干和训练预算下，完整 MLP 版本静态导航成功率为 94.4%而无预测为 90.7%，动态任务经 107 个 episode 测得 96.2% 成功和 3.8% 碰撞，并在 Unitree Go2 上展示零样本室内外规避；但跨方法比较的传感器和动作空间并不等价，结果无多随机种子或置信区间，真实机器人仅有定性序列且未报告试验次数，成功半径 2 m也较宽。
-
-## 6. GaRLILEO: Gravity-aligned Radar-Leg-Inertial Enhanced Odometry
-- Venue: arXiv
-- Published: 2025-11-17
-- Type: direct
-- Tags: locomotion
-- Score: 0.8648
-- Core insight: GaRLILEO 用雷达多普勒与腿部运动学构建连续时间自速度样条，并通过速度感知的局部重力样条约束横滚和俯仰，从源头抑制四足机器人垂直漂移。
-- Problem frame: 传统腿—惯性里程计会受触地冲击、打滑和振动影响，而视觉或激光方案又可能在稀疏、重复或退化场景失效，核心瓶颈是姿态误差被放大为持续的 z 轴漂移。
-- First principles: 雷达多普勒和腿部运动学都能直接观测本体速度，因此可绕开 IMU 加速度的双重积分，再利用速度变化与加速度之间的关系估计模长应为 9.81 m/s² 的重力方向。
-- Mechanism: 系统在增量因子图中联合优化雷达—腿速度 B 样条、位姿与局部重力样条，并以软 S² 模长约束稳定重力方向，同时用连续时间表示对齐不同频率传感器并滤除冲击尖峰。
-- Boundary advanced: 它把无相机、无激光且无需点云配准的雷达—腿—IMU 里程计推进到楼梯、坡道、打滑地面和室内外切换等强垂直运动场景。
-- Old problem: 以往方法依赖地面或几何配准、离散时间同步和由位姿反推重力，既容易受环境退化影响，也会把 IMU 偏置、时间错位与接触冲击反馈进姿态估计。
-- Why it works: 雷达在地面非静止或足端打滑时补偿腿速，腿部运动学在雷达回波稀疏时提供高频速度，而连续时间重力估计把这种互补速度转化为稳定的横滚和俯仰观测。
-- True novelty: 真正的新意不是简单增加雷达，而是把 IMU 从速度估计中解耦，并在连续时间雷达—腿速度基础上引入可安全施加 9.81 m/s² 模长的软 S² 重力因子。
-- Evidence: 在 Spot 采集的 12 条真实序列上，Downstair 的 APEz 为 0.530 m、Co-RaL 为 6.096 m，去掉重力因子时 Quad 的垂直误差由 2.14 m 增至 6.90 m；但所有序列均静止初始化，速度偏置在 Downstair、Upstair 和两条 MoCap 序列反而降低水平精度。
-
-## 7. A self-powered hydrogel electronic skin with decoupled multimodal sensing for closed-loop human-machine interactions
-- Venue: Nature Communications
-- Published: 2026-02-12
-- Type: direct
-- Tags: none
-- Score: 0.58
-- Core insight: 该工作在单一 PVA 水凝胶中并行利用热电化学、压电离子和浓度扩散三种机制，再用局部注意力 LSTM 按时间动力学解耦温度、脉搏压力与汗液 Na⁺ 信号。
-- Problem frame: 现有多模态电子皮肤通常堆叠多个传感器、供电与电路模块，导致结构笨重和输出串扰，而单材料方案又常因不同刺激共用电流通道而难以准确分离。
-- First principles: 温差改变 Fe²⁺/Fe³⁺ 氧化还原平衡，形变通过阴阳离子迁移率差产生瞬态极化，汗液浓度梯度则驱动扩散与 Soret 迁移，因此三类刺激可由不同幅值和时间尺度的电流响应识别。
-- Mechanism: 顺序溶剂置换形成兼具结晶域、链缠结与 Fe³⁺ 配位的柔软网络，棱柱尖端集中应力并放大压电离子输出，三层 LSTM 加局部注意力和三层全连接网络再实时分离复合信号。
-- Boundary advanced: 它把单材料自发电感知从单一刺激扩展到温度、动脉脉搏和汗液电解质同步监测，并集成为支持手势控机、机器人触觉回传和安全告警的闭环腕带。
-- Old problem: 过去的集成电子皮肤往往以不同材料和独立器件分别测量各模态，不仅制造与封装复杂，而且异步响应、冗余输出和外部供电限制了长期穿戴与闭环交互。
-- Why it works: 棱柱结构把微小压力转化为强瞬态电流，而温度和浓度主要形成较慢的稳态响应，使时间模型能够分离机制；实验也显示 2–8 kPa 压力增量基本不受温度或 Na⁺ 变化影响。
-- True novelty: 核心创新是材料、微结构与时序计算的协同设计：同一离子水凝胶既承担三种自发电换能机制，又通过其不同动力学而非额外传感器实现软件解耦。
-- Evidence: 水凝胶实现超过 830% 拉伸和约 300 kPa 模量，棱柱结构使输出由 0.7 增至 100 μA且压力响应约 37 ms，500 次循环后无显著衰减；3000 个测试时间步中温度和压力平均绝对误差低于 2%，但较弱的 Na⁺ 信号误差仍达 30%，且汗液实验主要使用 NaCl 模拟液、系统级续航与受试者规模未明确量化。
-
-## 8. A process-centric manipulation taxonomy for the organization, classification and synthesis of tactile robot skills
-- Venue: Nature Machine Intelligence
-- Published: 2025-06-23
-- Type: direct
-- Tags: manipulation
-- Score: 0.5755
-- Core insight: 该工作把专家给出的工艺规格逐级映射为可执行触觉技能，以形式化分类和最小参数策略连接制造知识、控制器与学习过程。
-- Problem frame: 机器人操控长期缺少类似人类职业培训的系统课程，而端到端策略难以同时满足接触任务所需的可解释约束、可靠性、样本效率和跨工艺扩展。
-- First principles: 若将任务明确表示为对象、前置条件、失败与成功条件以及工序转换，就能先排除不满足物理要求的策略，再在最小可行策略空间内优化运动、力和阻抗参数。
-- Mechanism: 四级分类依次按期望力演化、空间关系与边界条件、工序操作和参数复杂度筛选策略，随后由 GGTWreP 的状态机、运动—力策略、统一力—阻抗控制器和学习层共同执行。
-- Boundary advanced: 它把触觉技能从单项手工编程推进到覆盖插入、切割、弯折、滑动和机构操作等 28 类真实制造技能的可复用工艺库。
-- Old problem: 传统方案要么为每个任务重复设计控制逻辑，要么直接从传感输入学习电机输出，前者扩展成本高，后者搜索空间大且难以显式编码接触力、安全条件和成功判据。
-- Why it works: 工艺知识预先缩小了策略与参数搜索空间，同类技能可复用相同策略而只需重新优化少量参数，并由状态边界和力—阻抗控制提供运行时安全约束。
-- True novelty: 真正的新意不是单纯列举任务类别，而是提出从形式化工艺描述到唯一参数化触觉策略的可执行合成过程，使分类法直接参与控制和学习。
-- Evidence: 作者在同一 Franka 七自由度机械臂和二指刚性夹爪上对每项技能运行 50 次、总计约 6000 个回合，多数任务扰动鲁棒率为 94%–100%，八步且公差小于 0.1 mm 的工业组件装配连续 50 次成功率为 100%；但滑屏接触力矩鲁棒率仅 66%，且范围尚不含软物体、双臂、夹持滑移或跨机器人验证。
-
-## 9. Type II mechanoreceptors and cuneate spiking neuronal network enable touch localization on a large-area e-skin
-- Venue: Nature Machine Intelligence
-- Published: 2025-08-04
-- Type: direct
-- Tags: none
-- Score: 0.556
-- Core insight: 该工作用 21 个光纤布拉格光栅和两层仿生脉冲网络，把稀疏的大感受野触觉信号转换为体表定位能力，并通过无监督突触可塑性逼近人类前臂的触觉分辨率。
-- Problem frame: 大面积电子皮肤常依赖密集传感器与监督学习，却没有复现生物触觉兼具毫秒级时间编码、重叠感受野和低级神经核空间整合的机制。
-- First principles: 持续应变和变化率分别对应慢适应与快适应 II 型传入神经元，而多个重叠感受野的时序脉冲在楔束核样拓扑中汇聚后，可用放电位置、数量和潜伏期共同编码接触位置与强度。
-- Mechanism: 每个 FBG 驱动四个 SAII 和两个 FAII Izhikevich 神经元形成 126 个初级传入单元，再连接到 1036 个带兴奋—抑制连接的楔束核神经元，并以钙依赖突触规则学习后通过脉冲质心定位。
-- Boundary advanced: 它首次在前臂尺度软电子皮肤上把 II 型机械感受器、楔束核拓扑和神经可塑性结合起来，并在未额外训练的情况下完成两点辨别。
-- Old problem: 既有 FBG 电子皮肤虽可借助监督深度网络定位触碰，却没有利用初级传入神经元的时序编码与第二级神经核的空间组织，因此仿生性、泛化机制和事件驱动效率不足。
-- Why it works: 重叠感受野让单次接触激活具有位置特异性的神经群，钙依赖学习强化与局部楔束核活动同步的通路，而 SAII 与 FAII 分别保存强度和瞬态信息。
-- True novelty: 核心创新是把真实软皮肤的稀疏光纤传感、仿生初级脉冲编码和可塑楔束核模型组成端到端神经形态触觉通路，而非仅用 SNN 替换传统分类器。
-- Evidence: 在 1846 个机器人压痕点和四折验证中，学习使全表面中位定位误差由 36.26 mm 降至 14.11 mm，中心半径不超过 45 mm 区域低于 10 mm，10 ms 窗口误差 14.36 mm 与 2 s 的 14.05 mm 无显著差异，两点阈值为 42.25 mm；但边缘误差较大、21 个物理传感器远少于生物密度、增益靠经验设定且笨重光学解调器尚未适合可穿戴部署。
-
-## 10. Reaching the limit in autonomous racing: Optimal control versus reinforcement learning
+## 9. SONIC: Supersizing motion tracking for natural humanoid whole-body control
 - Venue: Science Robotics
-- Published: 2023-09-13
+- Published: 2026-08-12
 - Type: direct
-- Tags: drone, mobile_robot
-- Score: 0.7554
-- Core insight: 无人机竞速中 RL 胜过最优控制的关键并非优化器更强，而是它能直接优化穿门进度这一任务目标，避免参考轨迹限制控制器可表达的鲁棒行为。
-- Problem frame: 传统最优控制把最短时间竞速拆成离线规划和在线跟踪，当气动、延迟或电池变化使真实状态偏离参考轨迹时，满推力下几乎没有剩余控制裕度。
-- First principles: 优化目标决定哪些状态被视为有价值：轨迹跟踪奖励贴近预定时空状态，而穿门进度奖励安全、有效地接近下一道门，因此后者允许控制器在扰动后重新选择可行路径。
-- Mechanism: 两层各 256 单元的 PPO 策略以速度、姿态和未来两道门角点为输入，输出归一化推力与三轴角速度，并通过随机化阻力、推力映射和系统延迟完成零样本仿真到现实迁移。
-- Boundary advanced: 它把端到端任务级策略推到 0.52 kg、推重比 12 的真实竞速无人机物理极限，实现 108 km/h 峰值速度和 12.58 g 峰值加速度。
-- Old problem: 轨迹跟踪和轮廓控制依赖近似动力学、参考路径及人工权重调节，为避免模型失配通常必须降低推力上限或牺牲圈速。
-- Why it works: 穿门进度价值函数对门中心附近状态赋高值、对门边缘风险状态赋低值，配合域随机化后可在电池压降、气动误差和延迟变化下自主调整，而不必追回已不可行的时间轨迹。
-- True novelty: 真正贡献是通过控制变量实验把优化方法与优化目标分离，证明同一目标下 RL 的跟踪误差反而高于 MPC，而同一 RL 优化器换成任务级目标后才获得鲁棒优势。
-- Evidence: 50 个随机初始状态下，真实感模型中的轨迹跟踪、轮廓控制和 RL 成功率分别为 0%、20% 和 100%；同一跟踪目标下 MPC 与 RL 在真实感模型均失败且损失分别为 71.26 和 313.08，而穿门目标以 5.07 s 完赛且漏门为零，真实高性能机另完成 15 圈全成功；但系统依赖 36 台 Vicon 相机提供 400 Hz 近乎完美状态，人类对比还存在更低机器延迟优势。
+- Tags: humanoid
+- Score: 0.79
+- Core insight: SONIC 证明人形的密集动作跟踪监督可随数据、模型和算力扩展，把大量自然动作压缩为可复用的全身运动先验。
+- Problem frame: 人形控制若按技能手工设计奖励，每新增一种动作就要重新定义目标；全身平衡、手脚协同和现实扰动使窄任务策略难泛化。
+- First principles: 动作捕捉为每时刻全身状态提供密集目标，避开稀疏奖励；更大数据多样性和模型容量覆盖更多动作流形，再由物理仿真约束为可执行控制。
+- Mechanism: 700 小时、超过 1 亿帧动作捕捉用于运动跟踪，网络扩展至 42M 参数、约 21k GPU 小时训练；统一 token 空间把规划、VR 遥操作和 VLA 指令接到同一策略。
+- Boundary advanced: 最大模型在未见内容上为 99.6% 跟踪成功和 23.8 mm MPJPE-L，小模型为 98.0% 和 27.7 mm；实机 124 段动作中成功 123 段，速度跟踪生存率为 98.5%。
+- Old problem: 传统人形策略通常是小网络、少量 GPU、单一技能和手工奖励的组合，迁移到导航、遥操作或全身操作需要重新训练。
+- Why it works: 跟踪提供比成功/失败更密的纠错信号，海量多样动作提供共享先验，模型扩展提升未见动作表示；新指令只需映射进已学运动空间。
+- True novelty: 贡献不是单纯做大网络，而是选择可扩展的运动跟踪作为人形 foundation task，并实证数据、参数和计算三轴均改善物理控制。
+- Evidence: 论文有规模曲线、多个跟踪器比较、外部扰动、实机 124 段动作和 VLA/VR 演示；但基线的数据和重定向管线不完全一致，实机多为每段一次试验，长期安全与能耗未系统处理。
+
+## 10. Milliwatt ultrasound for navigation in visually degraded environments on palm-sized aerial robots
+- Venue: Science Robotics
+- Published: 2026-03-25
+- Type: direct
+- Tags: hard_to_instrument, drone
+- Score: 0.87
+- Core insight: Saranga 以物理隔噪和长时间窗超声去噪，将被桨叶噪声淹没的微弱回波变成可用于避障的方向信息，使掌上无人机在视觉退化时仍能低功耗导航。
+- Problem frame: 小型飞行器在载荷、功耗和桨叶噪声极强时缺少可靠障碍观测；相机和 LiDAR 又在雾、雪、暗光和透明物上失效。
+- First principles: 超声不依赖可见光但双程传播使信号迅速衰减；物理屏蔽先降低桨噪，双声纳耳间时差与约 0.82 s 历史让网络从 −4.9 dB 信噪比中恢复障碍方位。
+- Mechanism: PeARBat160 用两枚低功耗超声 chirp 传感器、物理噪声盾和 Saranga 去噪网络，在板载 Coral 上以约 16 Hz 输出障碍位置，再由局部规划器生成横向规避。
+- Boundary advanced: 传感功耗约 1.2 mW，在浓雾中 20 次成功 18 次、在人造落雪中 20 次成功 15 次，并处理透明薄膜；1、1.5、2 m/s 时成功率为 100%、81.82%、72.73%。
+- Old problem: 既有小型飞行超声方案多只能检测—停车或随机转弯，难在桨噪、复杂障碍和视觉退化时给出可用方向；高性能雷达/LiDAR 又超出小机能耗预算。
+- Why it works: 噪声盾先改善物理信噪比，网络利用连续回波而非单帧阈值恢复微弱结构，双传感器保留方位差，因此规划器可定向绕障而非盲目刹停。
+- True novelty: 创新在于将气动噪声控制、低功耗超声表示学习和真实飞行闭环共同设计，单独使用声纳或深度网络不足以解释其可行性。
+- Evidence: 同场对照中 BatDeck 17 次仅完成 1 次，本方法完成 13 次；但薄杆和树枝常要小于 40 cm 才被看见，密集障碍下侧移会撞上身后物体，风扰和反应式规划仍会失败。
