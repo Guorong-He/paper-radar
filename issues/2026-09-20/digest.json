@@ -1,33 +1,35 @@
 [
   {
-    "title": "Visual route following for tiny autonomous robots",
+    "title": "Agile perceptive multiskill locomotion for quadrupedal robots in the wild",
     "authors": [
-      "Tom van Dijk",
-      "Christophe De Wagter",
-      "Guido de Croon"
+      "Jun-Gill Kang",
+      "Jaehyun Park",
+      "Tae-Gyu Song",
+      "Joon-Ha Kim",
+      "Seungwoo Hong",
+      "Hae-Won Park"
     ],
     "venue": "Science Robotics",
-    "published_at": "2024-07-17",
+    "published_at": "2026-07-15",
     "paper_type": "direct",
     "robot_type_tags": [
-      "drone",
-      "mobile_robot"
+      "locomotion"
     ],
-    "score": 0.7093,
-    "url": "https://doi.org/10.1126/scirobotics.adk0310",
-    "pdf_url": "https://repository.tudelft.nl/file/File_d5f876aa-a0fe-40c9-85d5-44247b926d01",
+    "score": 0.7475,
+    "url": "https://doi.org/10.1126/scirobotics.adz7397",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/scirobotics.adz7397",
     "analysis": {
-      "core_insight": "把里程计负责的短程移动与视觉负责的周期纠偏结合，56 克无人机也能用极少存储重复飞行长路线。",
-      "problem_frame": "微型飞行器需要自主返航，却难以承受完整视觉地图的计算、存储和载荷。问题是保存多少视觉信息才足够约束漂移。",
-      "first_principles": "视觉归巢只在参考图像附近的吸引域内有效；只要里程计能把无人机带入下一个吸引域，就不必沿途密集存图。",
-      "mechanism": "将全景图垂直平均并压缩为低频傅里叶系数，记录稀疏视图及里程关系；返程交替执行里程导航与图像差异驱动的归巢。",
-      "boundary_advanced": "在 56 克平台实现最长约 100 米的已教路线跟随，路线表示低于每米 20 字节。适用边界仍是沿原路返回，尚不支持任意地点间规划与完整避障。",
-      "old_problem": "高精度地图可支持灵活规划，却挤占微型机器人的资源；单用里程计则在长距离飞行中持续积累误差。",
-      "why_it_works": "两类信息的误差特性互补：里程计跨越视觉信息稀疏区，视觉参照周期性重置累计误差。图像间距由导航误差允许的范围决定。",
-      "true_novelty": "贡献在于用里程误差约束参照图像的间距，并把图像压缩、归巢与飞行控制集成到微型硬件；不是新的通用 SLAM。",
-      "evidence_summary": "独立归巢试验中 9 次有 8 次进入目标附近约 0.5 米；5 米里程段横向均方根误差约 13 厘米。往返对照显示视觉重校准可抑制漂移积累。",
-      "email_summary": "56 克无人机以稀疏全景记忆和里程计完成长路线复飞，提示微型自主导航可以先围绕任务所需的信息量设计。",
-      "importance_reason": "与微型无人机和仿生导航高度相关。值得借鉴的是按误差预算配置感知与记忆的系统设计，而非单纯追求地图精度。"
+      "core_insight": "用简化二维动力学生成的运动先验，支持四足机器人依靠机载感知连续选择步态并高速越障。",
+      "problem_frame": "多种步态、障碍技能与远近地形感知通常分开训练，切换时容易失稳；高质量三维技能数据的成本也很高。",
+      "first_principles": "不同运动共享受力与时序结构。先学会这些可复用结构，再学习地形条件下的修正，比从零探索全部动作空间更有效。",
+      "mechanism": "二维轨迹优化生成跑步数据，预训练统一潜空间与力矩解码器；强化学习输出潜动作及辅助修正，再把深度图和稀疏远程激光信息蒸馏进感知表征。",
+      "boundary_advanced": "展示室内障碍与野外场景下的自主小跑／跳跃步态切换，跌落机动瞬时峰值约 6 米每秒。侧向移动、急转和更多步态仍未充分覆盖。",
+      "old_problem": "逐技能控制器增加工程调试量；只用近距深度感知则在高速运动中留给调整的时间不足。",
+      "why_it_works": "冻结的运动解码器保留可行力矩结构，辅助动作补偿三维地形差异；远近感知融合让策略更早获知落脚环境。",
+      "true_novelty": "贡献是从低成本二维运动数据到三维感知多技能控制的完整迁移链，并在真实机载系统验证。",
+      "evidence_summary": "实机覆盖楼梯、栏杆、踏石、缝隙与林地。作者明确指出 6 米每秒是跌落机动瞬时峰值；高速冲击曾导致激光测量失常，需要机械减振。",
+      "email_summary": "二维运动先验支撑四足机器人的三维高速越障；算法迁移与传感器抗冲击设计共同决定真实表现。",
+      "importance_reason": "适合关注感知—运动耦合与样本效率的研究。其部署经验表明，可靠传感硬件是高速策略能力的一部分。"
     }
   },
   {
@@ -70,36 +72,34 @@
     }
   },
   {
-    "title": "Agile perceptive multiskill locomotion for quadrupedal robots in the wild",
+    "title": "Visual route following for tiny autonomous robots",
     "authors": [
-      "Jun-Gill Kang",
-      "Jaehyun Park",
-      "Tae-Gyu Song",
-      "Joon-Ha Kim",
-      "Seungwoo Hong",
-      "Hae-Won Park"
+      "Tom van Dijk",
+      "Christophe De Wagter",
+      "Guido de Croon"
     ],
     "venue": "Science Robotics",
-    "published_at": "2026-07-15",
+    "published_at": "2024-07-17",
     "paper_type": "direct",
     "robot_type_tags": [
-      "locomotion"
+      "drone",
+      "mobile_robot"
     ],
-    "score": 0.7475,
-    "url": "https://doi.org/10.1126/scirobotics.adz7397",
-    "pdf_url": "https://www.science.org/doi/pdf/10.1126/scirobotics.adz7397",
+    "score": 0.7093,
+    "url": "https://doi.org/10.1126/scirobotics.adk0310",
+    "pdf_url": "https://repository.tudelft.nl/file/File_d5f876aa-a0fe-40c9-85d5-44247b926d01",
     "analysis": {
-      "core_insight": "用简化二维动力学生成的运动先验，支持四足机器人依靠机载感知连续选择步态并高速越障。",
-      "problem_frame": "多种步态、障碍技能与远近地形感知通常分开训练，切换时容易失稳；高质量三维技能数据的成本也很高。",
-      "first_principles": "不同运动共享受力与时序结构。先学会这些可复用结构，再学习地形条件下的修正，比从零探索全部动作空间更有效。",
-      "mechanism": "二维轨迹优化生成跑步数据，预训练统一潜空间与力矩解码器；强化学习输出潜动作及辅助修正，再把深度图和稀疏远程激光信息蒸馏进感知表征。",
-      "boundary_advanced": "展示室内障碍与野外场景下的自主小跑／跳跃步态切换，跌落机动瞬时峰值约 6 米每秒。侧向移动、急转和更多步态仍未充分覆盖。",
-      "old_problem": "逐技能控制器增加工程调试量；只用近距深度感知则在高速运动中留给调整的时间不足。",
-      "why_it_works": "冻结的运动解码器保留可行力矩结构，辅助动作补偿三维地形差异；远近感知融合让策略更早获知落脚环境。",
-      "true_novelty": "贡献是从低成本二维运动数据到三维感知多技能控制的完整迁移链，并在真实机载系统验证。",
-      "evidence_summary": "实机覆盖楼梯、栏杆、踏石、缝隙与林地。作者明确指出 6 米每秒是跌落机动瞬时峰值；高速冲击曾导致激光测量失常，需要机械减振。",
-      "email_summary": "二维运动先验支撑四足机器人的三维高速越障；算法迁移与传感器抗冲击设计共同决定真实表现。",
-      "importance_reason": "适合关注感知—运动耦合与样本效率的研究。其部署经验表明，可靠传感硬件是高速策略能力的一部分。"
+      "core_insight": "把里程计负责的短程移动与视觉负责的周期纠偏结合，56 克无人机也能用极少存储重复飞行长路线。",
+      "problem_frame": "微型飞行器需要自主返航，却难以承受完整视觉地图的计算、存储和载荷。问题是保存多少视觉信息才足够约束漂移。",
+      "first_principles": "视觉归巢只在参考图像附近的吸引域内有效；只要里程计能把无人机带入下一个吸引域，就不必沿途密集存图。",
+      "mechanism": "将全景图垂直平均并压缩为低频傅里叶系数，记录稀疏视图及里程关系；返程交替执行里程导航与图像差异驱动的归巢。",
+      "boundary_advanced": "在 56 克平台实现最长约 100 米的已教路线跟随，路线表示低于每米 20 字节。适用边界仍是沿原路返回，尚不支持任意地点间规划与完整避障。",
+      "old_problem": "高精度地图可支持灵活规划，却挤占微型机器人的资源；单用里程计则在长距离飞行中持续积累误差。",
+      "why_it_works": "两类信息的误差特性互补：里程计跨越视觉信息稀疏区，视觉参照周期性重置累计误差。图像间距由导航误差允许的范围决定。",
+      "true_novelty": "贡献在于用里程误差约束参照图像的间距，并把图像压缩、归巢与飞行控制集成到微型硬件；不是新的通用 SLAM。",
+      "evidence_summary": "独立归巢试验中 9 次有 8 次进入目标附近约 0.5 米；5 米里程段横向均方根误差约 13 厘米。往返对照显示视觉重校准可抑制漂移积累。",
+      "email_summary": "56 克无人机以稀疏全景记忆和里程计完成长路线复飞，提示微型自主导航可以先围绕任务所需的信息量设计。",
+      "importance_reason": "与微型无人机和仿生导航高度相关。值得借鉴的是按误差预算配置感知与记忆的系统设计，而非单纯追求地图精度。"
     }
   },
   {
@@ -207,114 +207,6 @@
     }
   },
   {
-    "title": "A high-dexterity soft neuroprosthetic hand for daily activities",
-    "authors": [
-      "Ningbin Zhang",
-      "Xinyu Yang",
-      "Zheng Zong",
-      "Yang Yu",
-      "Yi Zhao",
-      "Rong Bian",
-      "Chengru Jiang",
-      "Fengjie Shen",
-      "Xiangyang Zhu",
-      "Guoying Gu"
-    ],
-    "venue": "Nature Communications",
-    "published_at": "2026-07-04",
-    "paper_type": "direct",
-    "robot_type_tags": [
-      "manipulation"
-    ],
-    "score": 0.6225,
-    "url": "https://doi.org/10.1038/s41467-026-75105-6",
-    "pdf_url": "https://www.nature.com/articles/s41467-026-75105-6.pdf",
-    "analysis": {
-      "core_insight": "通过软硬结合的拇指—手掌结构增加机械灵巧性，再用双通道肌电切换动作模式，让截肢者执行更细致的日常操作。",
-      "problem_frame": "假手常停留在基本抓握；增加机械自由度后，少量稳定肌电通道又不足以直接控制所有关节。",
-      "first_principles": "可用自由度不等于可用功能。机械结构应产生适合任务的协同动作，而控制接口需要把有限信号转换成可学习的操作单元。",
-      "mechanism": "11 个主动自由度分布于软手指与拇指—手掌组合；以肌电幅值及上升速度识别信号状态，通过改进有限状态机调用抓握和操作模式。",
-      "boundary_advanced": "四名截肢者完成抓握、拧灯泡、使用剪刀等测试。仍有腰部执行装置和佩戴负担，触觉反馈、主动手腕及更大样本人群验证尚待开展。",
-      "old_problem": "刚性高自由度假手复杂且不够柔顺；简单柔性假手虽然适应形状，却难实现掌内操作和连续精细动作。",
-      "why_it_works": "软结构吸收接触误差，拇指对掌增加操作空间；模式化肌电指令减少逐关节控制负担，将机械能力转化为用户能调用的功能。",
-      "true_novelty": "重点是灵巧机械设计与少通道神经接口的共同实现，并用真实截肢者完成操作验证。不是已经恢复完整触觉的闭环仿生手。",
-      "evidence_summary": "四名受试者连续佩戴 12 小时，在四个时点进行指令测试，报告约 95%–100% 的识别表现；箱块测试约 18.7–28.7 块／分钟，仍属于小样本验证。",
-      "email_summary": "11 自由度软假手通过双通道肌电接口支持日常精细操作，研究重点从“能抓”推进到“用户能稳定调用更多动作”。",
-      "importance_reason": "为柔性机械、人体意图感知与控制接口共同设计提供参考；应把小样本可行性与长期临床效果区分。"
-    }
-  },
-  {
-    "title": "Single twistable tendon-driven continuum robots",
-    "authors": [
-      "Jiewen Lai",
-      "Yanjun Liu",
-      "Tian-Ao Ren",
-      "Yan Ma",
-      "Tao Zhang",
-      "Jeremy Yuen-Chun Teoh",
-      "Mark R. Cutkosky",
-      "Hongliang Ren"
-    ],
-    "venue": "Nature Communications",
-    "published_at": "2026-07-04",
-    "paper_type": "direct",
-    "robot_type_tags": [
-      "continuum",
-      "manipulation"
-    ],
-    "score": 0.5425,
-    "url": "https://doi.org/10.1038/s41467-026-74225-3",
-    "pdf_url": "https://www.nature.com/articles/s41467-026-74225-3.pdf",
-    "analysis": {
-      "core_insight": "在同一根偏心腱上同时施加推、拉与扭转，让细径连续体获得可控三维运动，并为中空工作通道腾出空间。",
-      "problem_frame": "传统空间腱驱动往往需要多根腱，导致直径、工作通道和末端力相互制约，也增加装配与张力标定难度。",
-      "first_principles": "驱动输入的数量不必等于腱的数量。同一根腱既能传递轴向力也能传递扭矩，结合非对称开槽结构便可激发不同形变模式。",
-      "mechanism": "单根镍钛腱穿过偏心开槽软管，推拉产生弯曲，扭转改变三维姿态；通过几何与梁模型建立准静态运动学，数值求解逆运动学。",
-      "boundary_advanced": "原型外径 2.0–3.5 毫米，中空比例超过 57%，展示狭窄环境导航与夹持操作；扭转滞后、大弯曲下模型误差及材料适用性仍需改善。",
-      "old_problem": "多腱占据横截面，旋转基座获得空间运动的方案又容易在部分姿态出现较低可操纵性。",
-      "why_it_works": "轴向与扭转输入共同改变末端运动方向，而中空软管保留载荷与工具通道；减少腱数还降低更换机器人末端时的标定负担。",
-      "true_novelty": "贡献是可动态控制的单腱推—拉—扭机制及解析建模，而不是简单减少电机数量；一个腱仍需多个驱动输入。",
-      "evidence_summary": "四种几何原型验证运动模式。论文报告所测试主要姿态的可操纵性提高约三个数量级、扭弯状态保留超过 70% 末端力；增益并非整个工作空间均匀成立。",
-      "email_summary": "单腱推拉扭转连续体兼顾细径与三维动作；“千倍可操纵性”是特定姿态指标，应避免理解为全空间或精度提升千倍。",
-      "importance_reason": "对狭窄空间机器人、柔性操作与器械小型化有参考价值。最值得追踪的是摩擦滞后补偿和受约束环境中的可靠闭环控制。"
-    }
-  },
-  {
-    "title": "Self-powered triboelectric wireless sensor for robotic arm control via enhanced electromagnetic induction",
-    "authors": [
-      "Shanshan An",
-      "Sizhao Liu",
-      "Xiang Zhou",
-      "Gui Li",
-      "Jian Wang",
-      "Tao Zhou",
-      "Aiqi Yang",
-      "Yuhang Zhou",
-      "Xianjie Pu",
-      "Zhong Lin Wang"
-    ],
-    "venue": "Nature Sensors",
-    "published_at": "2026-03-23",
-    "paper_type": "direct",
-    "robot_type_tags": [],
-    "score": 0.4549,
-    "url": "https://doi.org/10.1038/s44460-026-00039-x",
-    "pdf_url": "https://www.nature.com/articles/s44460-026-00039-x.pdf",
-    "analysis": {
-      "core_insight": "把人体动作产生的摩擦电能转换为短促电磁信号，让同一装置承担动作感知与无线发送。",
-      "problem_frame": "可穿戴机器人接口通常分别需要电池、传感器和无线模块；在低频人体动作中，持续通信的能量开销可能超过有效信息的产生速度。",
-      "first_principles": "机械运动既是被测量也是能量来源。将缓慢积累的电荷快速释放，可提高瞬态电流变化率并激发可接收的电磁共振。",
-      "mechanism": "双层三元摩擦电结构提升电输出，柔性机械开关形成脉冲，再经线圈强耦合磁共振无线传输；接收端解析脉冲驱动机器人关节。",
-      "boundary_advanced": "演示手臂运动控制机械臂，主文表征传输距离至 2.2 米，补充实验至 6 米。接收端仍使用示波器和电脑，不能把整个机器人系统称为无源。",
-      "old_problem": "平滑而高阻的摩擦电输出不利于直接无线发射；常规蓝牙方案又需持续供电和额外转换模块。",
-      "why_it_works": "机械开关把缓慢输出压缩为快速变化的脉冲，增强感应信号；仅在动作发生时发送，降低了空闲阶段的传感通信消耗。",
-      "true_novelty": "新意是能量产生、信号调制及动作编码的一体化设计，并以真实机械臂接口验证。",
-      "evidence_summary": "同条件下新结构输出能量分别为两种对照的约 4.5 倍和 2.4 倍。一次屈伸周期报告消耗 4.83 毫焦；蓝牙比较依赖其持续发送的具体实现条件。",
-      "email_summary": "自供能动作传感器以机械开关激发无线脉冲，省去穿戴端独立电源，但接收与机器人控制仍需有源设备。",
-      "importance_reason": "适合关注低功耗具身接口与事件触发感知。后续价值取决于接收设备小型化、姿态变化及多通道干扰下的可靠性。"
-    }
-  },
-  {
     "title": "Skin-interfaced multimodal sensing and tactile feedback system as enhanced human-machine interface for closed-loop drone control",
     "authors": [
       "Chunki Yiu",
@@ -356,6 +248,114 @@
       "evidence_summary": "触觉与刺激测试邀请五名志愿者；优化后的振动分布在相应识别实验中达到约 95%。实际飞行演示支持扰动修正，但不等价于大规模对照验证的通用成功率。",
       "email_summary": "皮肤式触觉与肌肉刺激把无人机状态反馈给操作者，为视觉之外的遥操作感知提供新的接口。",
       "importance_reason": "与无人机人机交互直接相关。可借鉴信息如何分配到触觉和力反馈通道，同时需认真评估用户差异、疲劳与长期佩戴。"
+    }
+  },
+  {
+    "title": "Self-powered triboelectric wireless sensor for robotic arm control via enhanced electromagnetic induction",
+    "authors": [
+      "Shanshan An",
+      "Sizhao Liu",
+      "Xiang Zhou",
+      "Gui Li",
+      "Jian Wang",
+      "Tao Zhou",
+      "Aiqi Yang",
+      "Yuhang Zhou",
+      "Xianjie Pu",
+      "Zhong Lin Wang"
+    ],
+    "venue": "Nature Sensors",
+    "published_at": "2026-03-23",
+    "paper_type": "direct",
+    "robot_type_tags": [],
+    "score": 0.4549,
+    "url": "https://doi.org/10.1038/s44460-026-00039-x",
+    "pdf_url": "https://www.nature.com/articles/s44460-026-00039-x.pdf",
+    "analysis": {
+      "core_insight": "把人体动作产生的摩擦电能转换为短促电磁信号，让同一装置承担动作感知与无线发送。",
+      "problem_frame": "可穿戴机器人接口通常分别需要电池、传感器和无线模块；在低频人体动作中，持续通信的能量开销可能超过有效信息的产生速度。",
+      "first_principles": "机械运动既是被测量也是能量来源。将缓慢积累的电荷快速释放，可提高瞬态电流变化率并激发可接收的电磁共振。",
+      "mechanism": "双层三元摩擦电结构提升电输出，柔性机械开关形成脉冲，再经线圈强耦合磁共振无线传输；接收端解析脉冲驱动机器人关节。",
+      "boundary_advanced": "演示手臂运动控制机械臂，主文表征传输距离至 2.2 米，补充实验至 6 米。接收端仍使用示波器和电脑，不能把整个机器人系统称为无源。",
+      "old_problem": "平滑而高阻的摩擦电输出不利于直接无线发射；常规蓝牙方案又需持续供电和额外转换模块。",
+      "why_it_works": "机械开关把缓慢输出压缩为快速变化的脉冲，增强感应信号；仅在动作发生时发送，降低了空闲阶段的传感通信消耗。",
+      "true_novelty": "新意是能量产生、信号调制及动作编码的一体化设计，并以真实机械臂接口验证。",
+      "evidence_summary": "同条件下新结构输出能量分别为两种对照的约 4.5 倍和 2.4 倍。一次屈伸周期报告消耗 4.83 毫焦；蓝牙比较依赖其持续发送的具体实现条件。",
+      "email_summary": "自供能动作传感器以机械开关激发无线脉冲，省去穿戴端独立电源，但接收与机器人控制仍需有源设备。",
+      "importance_reason": "适合关注低功耗具身接口与事件触发感知。后续价值取决于接收设备小型化、姿态变化及多通道干扰下的可靠性。"
+    }
+  },
+  {
+    "title": "Single twistable tendon-driven continuum robots",
+    "authors": [
+      "Jiewen Lai",
+      "Yanjun Liu",
+      "Tian-Ao Ren",
+      "Yan Ma",
+      "Tao Zhang",
+      "Jeremy Yuen-Chun Teoh",
+      "Mark R. Cutkosky",
+      "Hongliang Ren"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2026-07-04",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "continuum",
+      "manipulation"
+    ],
+    "score": 0.5425,
+    "url": "https://doi.org/10.1038/s41467-026-74225-3",
+    "pdf_url": "https://www.nature.com/articles/s41467-026-74225-3.pdf",
+    "analysis": {
+      "core_insight": "在同一根偏心腱上同时施加推、拉与扭转，让细径连续体获得可控三维运动，并为中空工作通道腾出空间。",
+      "problem_frame": "传统空间腱驱动往往需要多根腱，导致直径、工作通道和末端力相互制约，也增加装配与张力标定难度。",
+      "first_principles": "驱动输入的数量不必等于腱的数量。同一根腱既能传递轴向力也能传递扭矩，结合非对称开槽结构便可激发不同形变模式。",
+      "mechanism": "单根镍钛腱穿过偏心开槽软管，推拉产生弯曲，扭转改变三维姿态；通过几何与梁模型建立准静态运动学，数值求解逆运动学。",
+      "boundary_advanced": "原型外径 2.0–3.5 毫米，中空比例超过 57%，展示狭窄环境导航与夹持操作；扭转滞后、大弯曲下模型误差及材料适用性仍需改善。",
+      "old_problem": "多腱占据横截面，旋转基座获得空间运动的方案又容易在部分姿态出现较低可操纵性。",
+      "why_it_works": "轴向与扭转输入共同改变末端运动方向，而中空软管保留载荷与工具通道；减少腱数还降低更换机器人末端时的标定负担。",
+      "true_novelty": "贡献是可动态控制的单腱推—拉—扭机制及解析建模，而不是简单减少电机数量；一个腱仍需多个驱动输入。",
+      "evidence_summary": "四种几何原型验证运动模式。论文报告所测试主要姿态的可操纵性提高约三个数量级、扭弯状态保留超过 70% 末端力；增益并非整个工作空间均匀成立。",
+      "email_summary": "单腱推拉扭转连续体兼顾细径与三维动作；“千倍可操纵性”是特定姿态指标，应避免理解为全空间或精度提升千倍。",
+      "importance_reason": "对狭窄空间机器人、柔性操作与器械小型化有参考价值。最值得追踪的是摩擦滞后补偿和受约束环境中的可靠闭环控制。"
+    }
+  },
+  {
+    "title": "A high-dexterity soft neuroprosthetic hand for daily activities",
+    "authors": [
+      "Ningbin Zhang",
+      "Xinyu Yang",
+      "Zheng Zong",
+      "Yang Yu",
+      "Yi Zhao",
+      "Rong Bian",
+      "Chengru Jiang",
+      "Fengjie Shen",
+      "Xiangyang Zhu",
+      "Guoying Gu"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2026-07-04",
+    "paper_type": "direct",
+    "robot_type_tags": [
+      "manipulation"
+    ],
+    "score": 0.6225,
+    "url": "https://doi.org/10.1038/s41467-026-75105-6",
+    "pdf_url": "https://www.nature.com/articles/s41467-026-75105-6.pdf",
+    "analysis": {
+      "core_insight": "通过软硬结合的拇指—手掌结构增加机械灵巧性，再用双通道肌电切换动作模式，让截肢者执行更细致的日常操作。",
+      "problem_frame": "假手常停留在基本抓握；增加机械自由度后，少量稳定肌电通道又不足以直接控制所有关节。",
+      "first_principles": "可用自由度不等于可用功能。机械结构应产生适合任务的协同动作，而控制接口需要把有限信号转换成可学习的操作单元。",
+      "mechanism": "11 个主动自由度分布于软手指与拇指—手掌组合；以肌电幅值及上升速度识别信号状态，通过改进有限状态机调用抓握和操作模式。",
+      "boundary_advanced": "四名截肢者完成抓握、拧灯泡、使用剪刀等测试。仍有腰部执行装置和佩戴负担，触觉反馈、主动手腕及更大样本人群验证尚待开展。",
+      "old_problem": "刚性高自由度假手复杂且不够柔顺；简单柔性假手虽然适应形状，却难实现掌内操作和连续精细动作。",
+      "why_it_works": "软结构吸收接触误差，拇指对掌增加操作空间；模式化肌电指令减少逐关节控制负担，将机械能力转化为用户能调用的功能。",
+      "true_novelty": "重点是灵巧机械设计与少通道神经接口的共同实现，并用真实截肢者完成操作验证。不是已经恢复完整触觉的闭环仿生手。",
+      "evidence_summary": "四名受试者连续佩戴 12 小时，在四个时点进行指令测试，报告约 95%–100% 的识别表现；箱块测试约 18.7–28.7 块／分钟，仍属于小样本验证。",
+      "email_summary": "11 自由度软假手通过双通道肌电接口支持日常精细操作，研究重点从“能抓”推进到“用户能稳定调用更多动作”。",
+      "importance_reason": "为柔性机械、人体意图感知与控制接口共同设计提供参考；应把小样本可行性与长期临床效果区分。"
     }
   }
 ]

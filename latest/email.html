@@ -8,88 +8,88 @@
           <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#475467;margin-bottom:10px;">Paper Radar · Weekly Digest</div>
           <div style="font-size:28px;line-height:1.2;font-weight:650;color:#101828;margin-bottom:12px;">具身智能/感知精选 10 篇</div>
           <div style="font-size:15px;line-height:1.7;color:#344054;margin-bottom:18px;">
-            从可迁移的全身技能到接触安全与微型机器人，本期关注机器人如何把感知、形态和学习闭合为可验证的行动。
+            从微型无人机的稀疏视觉记忆，到触觉抓握与人机接口，本期关注感知信息如何真正改变动作。
           </div>
           <a href="digest.html" style="display:inline-block;background:#0f766e;color:#ffffff;text-decoration:none;padding:12px 16px;border-radius:999px;font-size:14px;font-weight:600;margin-bottom:18px;">打开本期交互网页</a>
         </td></tr>
         
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#01 · Tier 1 旗舰正式论文 · Science Robotics · 2026-08-12</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">ZEST: Zero-shot embodied skill transfer for athletic robot control</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对敏捷全身动作同时受高自由度、间歇多点接触、执行器限制和仿真—现实误差影响，论文通过MoCap和视频动作先经运动学重定向到目标机器人，Actor只接收即时本体感知、上一动作和下一时刻参考状态，并验证硬件结果覆盖Atlas的步行、滚翻、匍匐、侧手翻和霹雳舞，G1的视频舞蹈与跳箱、上下箱。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#01 · Tier 1 旗舰正式论文 · Science Robotics · 2026-08-19</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Learning vision-driven reactive soccer skills for humanoid robots</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对踢球需要感知、步态和足端时机紧密协调；若控制器默认位置观测始终可靠，真实相机的短暂失效便会放大成动作错误，论文通过相机检测经俯视投影得到紧凑球状态，配合里程计提供球门位置；虚拟感知模型模拟失真，编码器—解码器和对抗运动先验共同训练统一强化学习策略，并验证实机每位置 10 次试验，前场约 80%–90%、后场约 60%–70% 成功。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#02 · Tier 1 旗舰正式论文 · Science Robotics · 2024-05-29</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Microsaccade-inspired event camera for robotics</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对事件相机仅在亮度变化超过阈值时输出事件，论文通过在事件相机镜头前安装由电机驱动的楔形棱镜和绝对位置反馈模块，棱镜绕光轴旋转以偏转入射光，并验证文章在边缘完整度、事件流均匀性、图像重建、角点跟踪、运动分割和人体姿态估计上给出实验，其限制也明确：额外机械结构降低能效。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#02 · Tier 1 旗舰正式论文 · Science Robotics · 2026-07-15</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Agile perceptive multiskill locomotion for quadrupedal robots in the wild</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对多种步态、障碍技能与远近地形感知通常分开训练，切换时容易失稳；高质量三维技能数据的成本也很高，论文通过二维轨迹优化生成跑步数据，预训练统一潜空间与力矩解码器；强化学习输出潜动作及辅助修正，再把深度图和稀疏远程激光信息蒸馏进感知表征，并验证实机覆盖楼梯、栏杆、踏石、缝隙与林地。作者明确指出 6 米每秒是跌落机动瞬时峰值；高速冲击曾导致激光测量失常，需要机械减振。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#03 · Tier 1 旗舰正式论文 · Science Robotics · 2024-04-17</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Real-world humanoid locomotion with reinforcement learning</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对人形步行面对地形、摩擦、载荷和外扰等部分可观测变化，论文通过先在大规模随机化仿真中训练可见完整状态的教师策略，再用教师模仿与强化学习共同训练只接收观测—动作历史的学生策略，并验证45 kg、约1.6 m的Digit在完全仿真训练后零样本部署到广场、人行道、跑道和草地等室外环境。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#03 · Tier 1 旗舰正式论文 · Science Robotics · 2024-07-17</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Visual route following for tiny autonomous robots</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对微型飞行器需要自主返航，却难以承受完整视觉地图的计算、存储和载荷。问题是保存多少视觉信息才足够约束漂移，论文通过将全景图垂直平均并压缩为低频傅里叶系数，记录稀疏视图及里程关系；返程交替执行里程导航与图像差异驱动的归巢，并验证独立归巢试验中 9 次有 8 次进入目标附近约 0.5 米，5 米里程段横向均方根误差约 13 厘米。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#04 · Tier 2 高质量正式论文 · Nature Communications · 2026-09-16</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Nonlinear spectral modeling and control of soft-robotic muscles from data</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对电液或静电软体肌肉具有顺应性和高性能，论文通过从强迫响应轨迹学习多项式慢流形映射x=g(u)，避免大步阶衰减实验诱发的非代表性滞回，并验证在相同饱和和变化率限制的随机测试轨迹上，逆SSM+PI的RMS跟踪误差为2.38°、最大误差10.41°。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#04 · Tier 2 高质量正式论文 · Nature Communications · 2026-07-04</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">A high-dexterity soft neuroprosthetic hand for daily activities</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对假手常停留在基本抓握；增加机械自由度后，少量稳定肌电通道又不足以直接控制所有关节，论文通过11 个主动自由度分布于软手指与拇指—手掌组合；以肌电幅值及上升速度识别信号状态，通过改进有限状态机调用抓握和操作模式，并验证四名受试者连续佩戴 12 小时，在四个时点进行指令测试。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#05 · Tier 2 高质量正式论文 · Nature Communications · 2026-08-08</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Controlled flight of high-thrust ultralight ion-propelled microrobot with integrated sensing</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对离子风推进没有旋翼或扑翼，论文通过机器人以金属化PET复合结构减重，四组交叉布置的电流体动力离子风推进器提供推力，并验证原型尺寸为37.7 × 37.7 mm、质量36.7 mg，推重比为5:1。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#05 · Tier 2 高质量正式论文 · Nature Communications · 2026-07-04</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Single twistable tendon-driven continuum robots</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对传统空间腱驱动往往需要多根腱，导致直径、工作通道和末端力相互制约，也增加装配与张力标定难度，论文通过单根镍钛腱穿过偏心开槽软管，推拉产生弯曲，扭转改变三维姿态；通过几何与梁模型建立准静态运动学，数值求解逆运动学，并验证四种几何原型验证运动模式，论文报告所测试主要姿态的可操纵性提高约三个数量级、扭弯状态保留超过 70% 末端力。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#06 · Tier 2 高质量正式论文 · Nature Communications · 2025-12-14</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Flexible robotic hand harnesses large deformations for full-coverage human-like multimodal haptic perception</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对现有视觉触觉传感器往往依赖刚性、稳定的光路，论文通过由柔顺Fin Ray指架、多层触觉垫和优化后的多镜光路组成，触觉垫包含PDMS支撑、弹性硅胶、含铝粉反射层、热致变色温度层和遮光层，并验证证据包括仿真与物理覆盖率测试、UR5e上的曲面或易碎物抓取、人机接触控制、触觉分类和遥操作演示，纹理球独立测试中。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#06 · Tier 2 高质量正式论文 · Nature Sensors · 2026-03-23</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Self-powered triboelectric wireless sensor for robotic arm control via enhanced electromagnetic induction</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对可穿戴机器人接口通常分别需要电池、传感器和无线模块，论文通过双层三元摩擦电结构提升电输出，柔性机械开关形成脉冲，再经线圈强耦合磁共振无线传输；接收端解析脉冲驱动机器人关节，并验证同条件下新结构输出能量分别为两种对照的约 4.5 倍和 2.4 倍，一次屈伸周期报告消耗 4.83 毫焦。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#07 · Tier 2 高质量正式论文 · Nature Communications · 2025-07-01</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Chemotactic navigation in robotic swimmers via reset-free hierarchical reinforcement learning</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对微型机器人在黏性流体和体内样环境中既要产生有效游动，论文通过下层PPO学习推进和重定向原语：链状模型形成类似鞭毛横波的运动，环状模型形成类似变形虫的周期形变，并验证流体与化学场由正则化Stokeslet方法、拉普拉斯方程和部分COMSOL数值计算构成，所有结果均为in silico。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#07 · Tier 2 高质量正式论文 · Science Advances · 2025-08-15</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Bioarchitectonics-inspired soft grippers with cutaneous slip perception</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对柔性夹爪贴合物体，但缺少滑移反馈时难以抓稳光滑、易碎且重量未知的对象；固定大力又可能损伤对象，论文通过以应力集中结构放大接触形变，再由裂纹式应变传感器转为电信号；与压力—输出力近线性的打印软夹爪结合，阈值触发气压增量调整，并验证传感响应小于 150 毫秒，鸡蛋提升实验中气压约从 40 升至 60 千帕。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#08 · Tier 2 高质量正式论文 · Nature Communications · 2024-04-29</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Snail-inspired robotic swarms: a hybrid connector drives collective adaptation in unstructured outdoor environments</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对陆地自重构机器人群在受控室内可以依靠自由连接完成组装，论文通过每个模块含铁磁球壳、嵌磁履带和可伸缩真空吸盘，自由模式下履带磁连接允许偏航、滑移和模块间转移，并验证证据包括连接强度、驱动能力对比、污染物影响测试和多种实际地形演示，文章也显示吸盘在杂草或尘土夹入时真空会显著下降。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#08 · Tier 2 高质量正式论文 · Science Advances · 2025-03-28</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Skin-interfaced multimodal sensing and tactile feedback system as enhanced human-machine interface for closed-loop drone control</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对第一人称视觉难完整反映机体姿态与侧后方障碍；手持遥控器也把动作意图与反馈感受分散在不同界面，论文通过皮肤贴合装置采集手势控制无人机，以二维振动阵列编码飞行姿态，并用障碍检测触发的神经肌肉电刺激引导手腕调整；保留第一人称视觉，并验证触觉与刺激测试邀请五名志愿者，优化后的振动分布在相应识别实验中达到约 95%。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#09 · arXiv / preprint · arXiv · 2026-06-30</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">OopsieVerse: A Safety Benchmark with Damage-Aware Simulation for Robot Manipulation</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对家用操作仿真通常只奖励目标达成，论文通过DAMAGESIM在原有POMDP状态上加入逐对象健康变量：机械损伤以接触力相对加速度方向的分量近似冲击与持续载荷，热损伤由温度越过对象阈值计算，并验证五个IL任务每项结果基于30次rollout：例如未过滤的Wipe Countertop策略任务完成率为100%。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#09 · arXiv / preprint · arXiv · 2026-07-28</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Shared Voxel-Map-Based Cooperative Indoor UAV Guidance with a Multi-Agent Soft Actor-Critic Controller</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对单机感知会被遮挡，多机地图又存在延迟和坐标一致性问题。任务是在室内无卫星导航条件下协同绕障到达目标，论文通过融合全向激光与激光惯性里程计形成共享体素地图，裁剪为自身对齐的俯视输入；多智能体 SAC 结合近障信息、目标和邻机状态输出连续控制，并验证仿真联合成功率 90.3%，所实现的 A* 基线为 55.0%。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#10 · arXiv / preprint · arXiv · 2026-06-06</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">SIMPLE: Simulation-Based Policy Learning and Evaluation for Humanoid Loco-manipulation</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对真实人形评测需要频繁复位、人工操作和重型硬件，论文通过MuJoCo负责刚体动力学、接触求解和控制，Isaac Sim同步机器人与环境状态并进行光线追踪渲染，并验证在6个代表任务、3个随机化等级上比较多类VLA、世界动作模型与模仿学习基线，并报告模拟中的模型排序与既有实机报告相近。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#10 · arXiv / preprint · arXiv · 2026-07-13</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Towards Predictive, Aligned, and Scalable Robot Learning</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对外观相似的画面可能对应不同任务阶段，论文通过Lumo-2 先学习视觉变化与动作的潜空间关系，再进行跨模态语义对齐和联合训练；历史动作提供短时上下文，分块自回归减少动作生成步骤，并验证与 π0.5、Fast-WAM 比较了 22 项任务和六类能力，按任务设定 10 种场景布局。</div>
               </td>
             </tr>
             
