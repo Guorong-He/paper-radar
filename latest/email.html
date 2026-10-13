@@ -8,88 +8,88 @@
           <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#475467;margin-bottom:10px;">Paper Radar · Weekly Digest</div>
           <div style="font-size:28px;line-height:1.2;font-weight:650;color:#101828;margin-bottom:12px;">具身智能/感知精选 10 篇</div>
           <div style="font-size:15px;line-height:1.7;color:#344054;margin-bottom:18px;">
-            本期追问同一个问题：具身系统如何把不可靠的物理信号转成可验证的行动？。
+            本期看机器人如何把传感、结构与控制变成可验证的行动能力。
           </div>
           <a href="digest.html" style="display:inline-block;background:#0f766e;color:#ffffff;text-decoration:none;padding:12px 16px;border-radius:999px;font-size:14px;font-weight:600;margin-bottom:18px;">打开本期交互网页</a>
         </td></tr>
         
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#01 · Tier 1 旗舰正式论文 · Science Robotics · 2026-07-22</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Performant robotic manipulation with real-world reinforcement learning</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对遥操作示范昂贵且带有保守偏差；纯模仿有性能上限，直接真机 RL 受样本、安全、分布漂移和扩散多步去噪延迟限制，论文通过先以 RGB/点云遥操作数据训练扩散先验，离线阶段结合 IQL 价值、学习转移模型与 AM-Q/OPE 门控执行逐步 PPO 更新、滚动采样和重训，并验证预设协议下报告八任务合计 1000/1000 试验，离线阶段平均成功率 91.8%。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#01 · Tier 1 旗舰正式论文 · Science Robotics · 2025-05-28</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">High-speed control and navigation for quadrupedal robots on complex and discrete terrain</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对离散复杂地形的长期落脚优化非凸，规划快则不可靠，精确仿真又难实时，论文通过分层规划产生可行落脚序列，生成式目标分布与跟踪器对抗训练，使执行器适应高难落脚，并验证全文记载 Raibo 实机跑墙、跨 1.3 米沟、4 米/秒踏石，并自主通过坡道、楼梯和障碍。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#02 · Tier 1 旗舰正式论文 · Science Robotics · 2026-06-10</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">From ball to rover: Transformable palm-sized rover SORA-Q for autonomous lunar exploration</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对百克级月球车受轮径、功耗、松散月壤、算力和失联限制，传统大车与地面遥控方案难以迁移，论文通过78 mm、228 g 球形机体以轴-键槽解锁和弹簧展开半球轮、相机头和尾撑，偏心轮抬升机身增牵引，并验证2024 年随 SLIM 任务月面运行：约 7 分钟经中继回传 12 张候选中评分最高的 2 张图。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#02 · Tier 1 旗舰正式论文 · Science Robotics · 2024-11-13</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">NeuralFeels with neural fields: Visuotactile perception for in-hand manipulation</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对灵巧手抓持遮挡视觉且物体形状未知，仅视觉跟踪难同时估计位姿和几何，论文通过在线神经场表示物体几何，位姿图联合优化视觉、触觉与本体感觉约束，并验证仿真与实体灵巧手实验中，重遮挡条件下跟踪相对纯视觉最多改善 94%。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#03 · Tier 1 旗舰正式论文 · Science Robotics · 2025-12-10</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Resilient odometry via hierarchical adaptation</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对烟雾、黑暗和长走廊会令多模态传感器同时或方向性退化，论文通过四层依次为特征协方差筛选、方向可观测性分析、因子/引擎选择和学习式 IMU 里程计，ResNet+LSTM 多头 IMU 网络输出速度与协方差，并验证文中 2966 m、46 分钟、13 类退化单次路线末端漂移 0.2 m（0.006%，无回环）。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#03 · Tier 1 旗舰正式论文 · Science Robotics · 2023-12-20</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Lateral flexion of a compliant spine improves motor performance in a bioinspired mouse robot</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对小尺度机器人腿长和驱动受限，刚性躯干使速度与转向能力难同时提高，论文通过仿生鼠 NeRmo 通过柔顺脊柱的侧向屈曲调整姿态和足迹，实现稳定、加速与小半径转弯，并验证Science Robotics 正式全文给出 NeRmo 实机步行、稳定与机动转弯实验。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#04 · Tier 2 高质量正式论文 · Nature Communications · 2026-09-21</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Learning for micro-scale mechano-flow co-manipulation</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对微尺度下表面张力、黏附、范德华力和静电力压过重力，论文通过以 Ansys Fluent 生成界面 CFD 数据，扩展 PointNet 将连续时空流场编码，并验证四口椭圆轨迹在 6/8/10 ml/min 下的欧氏 RMSE 为 0.47/0.85/0.65 mm。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#04 · Tier 2 高质量正式论文 · Science Advances · 2026-09-25</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Unlocking fast robotic locomotor propulsion through dynamic spine-leg synergy</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对小型四足机器人受电机扭矩与能耗限制，单靠更快摆腿难以同时增速和省能，论文通过FLEXOR 的双关节耦合脊柱配合弹性腿，优化脊腿相位并放大有效输出扭矩，并验证Science Advances 正式全文含 FLEXOR 实机、仿真与扩展动力学验证，比较速度和运输成本。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#05 · Tier 2 高质量正式论文 · Nature Communications · 2026-06-02</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">The undulating tripod gait as a model of the locomotion of walking fish</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对以轴向或附肢分类只能描述外观，难解释形态差异很大的鱼为何重复出现相似陆行模式，也难在活体中单独操控形态和相位，论文通过将身体抽象为三个刚段、两个偏航关节和一个左右交替着地的前端刚梁，并验证比较肺鱼、多鳍鱼、鲶鱼、蛇头鱼和杜父鱼后，均见交替支撑及近似保守的两关节相位关系。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#05 · Tier 2 高质量正式论文 · Science Advances · 2026-08-21</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">BeetleBot: An integrated bioinspired soft robot for multimodal sensing and adaptive interaction</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对传统软体机器人常把执行、感知和控制分拆，模块连接反而破坏轻量化与闭环能力，论文通过液晶弹性体电热肌肉驱动腿和夹爪，柔性电路独立控制，视觉/触觉与可穿戴应变贴片提供反馈，并验证正式全文展示实体 BeetleBot 的地形导航、识别与无线手势控制。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#06 · Tier 2 高质量正式论文 · Nature Communications · 2026-03-27</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">A nanoscale robotic cleaner</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对纳米机器人即使能获得单向光推力，论文通过将金纳米棒马达嵌入 920 nm、0.26 pg 的透明二氧化硅圆盘，水平/垂直线偏振负责平移，并验证纳米机器人最高速度达 50 μm/s，展示矩形、EP5 字符和螺旋扫描。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#06 · Tier 2 高质量正式论文 · Science Advances · 2026-08-19</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Evolutionary diversification via modular compliance for self-reconfigurable continuum robots</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对刚性模块功能密度低、对接方向受限，增大模块数并不自然带来丰富行为，论文通过模块结合柔性骨架和双夹爪，几何—拓扑规划把重构拆成抓取/释放和连续弯曲动作，并验证Science Advances 正式全文给出硬件在线重构和多形态运动/操作实验。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#07 · Tier 2 高质量正式论文 · Science Advances · 2025-12-12</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Insect-inspired micro-optical antenna enables ultrasensitive multisensory perception</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对昆虫尺度机器人需要极轻、低功耗且多模态的感知，论文通过表面张力制备约 100 μm、约 1 mg 的环形微纳光纤—聚合物触角，PDMS 膜用于力、气流、温度和声振动，并验证最薄纤维的力灵敏度为 5.7%/nN、估算分辨率 14.1 pN，温度灵敏度 20.6%/°C、分辨率 0.004°C。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#07 · Tier 2 高质量正式论文 · Science Advances · 2026-07-03</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">High-resolution real-time mechanochromic tactile sensors</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对阵列式敏感单元受布线与间距限制，普通视觉触觉虽精细却需耗时重建三维接触图，论文通过软硅胶中嵌入可拉伸的变色 Bragg 反射层，调节层厚以响应压力或应变，并验证正式全文展示指尖、硬币与叶片的拓扑图，约 100 微米分辨率，并给出机器人手指示例。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#08 · Tier 2 高质量正式论文 · Nature Communications · 2025-11-26</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">A bioinspired self-powered optical tactile sensing system with ultrahigh sensitivity and ultralow detection limit</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对电子触觉依赖线路与解码且受 EMI 影响；机械致发光通常需 MPa 级压力、亮度不足，难用于轻触和环境光反馈，论文通过ECOFLEX 介电层和 PDMS/MWCNT 电极构成软 CPS，R-TENG 供交流高压驱动 ZnS ACEL，并验证1 kPa 以下相对亮度灵敏度 22.4 kPa⁻¹、光学检测下限 10 Pa、范围 0.01–100 kPa。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#08 · Tier 2 高质量正式论文 · Science Advances · 2026-05-01</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Twirlbot: Tumbleweed-inspired rolling robot</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对传统全向球形机器人依靠机载电源和复杂控制，增加质量、成本与故障点，论文通过光活性/被动双层条带编织中空球壳，在恒定光照下自阴影导致连续滚动和转向，并验证正式全文展示爬坡、载物、抗踩踏、抗风和形状恢复；作者报告成本低于既有无系绳机的十分之一。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#09 · arXiv / preprint · arXiv · 2026-06-29</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Domain Adaptation with Adaptive Imagination for Visual Reinforcement Learning under Limited Target Data</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对视觉 sim-to-real 的观测分布偏移在目标数据稀缺、又禁止继续目标域交互时会使既有域适配明显失效，论文通过先训练源域状态策略与动力学，再以三分类判别器区分源、目标反演和想象转移，并验证在 5 个 MuJoCo 和 2 个 Gymnasium-Robotics 任务、每项 3 个随机种子上。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#09 · arXiv / preprint · arXiv · 2026-09-29</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">AeroManip-VLA: Scalable Vision-Language-Action Learning for Aerial Manipulation with RL-Generated Demonstrations</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对空中抓取同时改变载荷与飞行动力学，实机示范昂贵，普通地面机械臂数据不能直接迁移，论文通过低层载荷控制稳定飞行，RL 专家与规则组合生成抓取—运输—放置轨迹，事件标签筛除不安全或失败样本，并验证全文给出超过八万条 RL 生成轨迹，并比较模仿学习与 VLA 基线；实验主体在模拟环境。</div>
               </td>
             </tr>
             
             <tr>
               <td style="padding:18px 0;border-top:1px solid #d9dee8;">
-                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#10 · arXiv / preprint · arXiv · 2026-02-13</div>
-                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">TRANS: Terrain-aware Reinforcement Learning for Agile Navigation of Quadruped Robots under Social Interactions</div>
-                <div style="font-size:14px;line-height:1.65;color:#344054;">针对传统高层规划与低层步态分离，容易忽略全身约束和地形；端到端方案又依赖高频、噪声敏感且算力昂贵的外感知，论文通过TRANS-Loco 以特权地形/接触训练 critic、以 10 帧本体感觉训练 actor 的潜变量，并验证500 次仿真测试中，TRANS-Nav 的成功率为 0.972、碰撞率 0.028、超时率 0。</div>
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#10 · arXiv / preprint · arXiv · 2026-05-07</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Toward Visually Realistic Simulation: A Benchmark for Evaluating Robot Manipulation in Simulation</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对低保真渲染改变策略所见的形状和空间线索，导致仿真排名不能可靠代表实机表现，论文通过材质感知分割和检索构建 PBR 资产，再把高保真物体放入抓取、放置和长时任务场景，并验证全文报告超过一千个 3D 资产，以及不同策略的仿真—实机比较；平均相关系数 0.92。</div>
               </td>
             </tr>
             

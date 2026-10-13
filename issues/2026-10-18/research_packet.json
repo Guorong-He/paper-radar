@@ -1,0 +1,289 @@
+[
+  {
+    "paper_id": "arxiv:2609.36915v1",
+    "title": "AeroManip-VLA: Scalable Vision-Language-Action Learning for Aerial Manipulation with RL-Generated Demonstrations",
+    "authors": [
+      "Rui Huang",
+      "Yanlin Mu",
+      "Lidong Li",
+      "Yucong Wang",
+      "Zichen Yan",
+      "Lin Zhao"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-09-29",
+    "source": "arxiv",
+    "doi": null,
+    "url": "http://arxiv.org/abs/2609.36915v1",
+    "pdf_url": "https://arxiv.org/pdf/2609.36915v1",
+    "robot_type_tags": [
+      "drone",
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.86,
+    "abstract": "Aerial manipulators extend robotic manipulation into 3D workspaces that are difficult for ground-based robots to access, creating new opportunities for general-purpose manipulation. However, extending Vision-Language-Action (VLA) models to aerial robots introduces distinct challenges due to the tight coupling between manipulation and flight, continuously changing observations, and safety-critical physical interactions. These challenges demand diverse training data and systematic policy evaluation, yet collecting demonstrations and evaluating policies directly on physical aerial platforms are costly, difficult to scale, and hard to repeat under controlled conditions. We present AeroManip-VLA, a scalable benchmark for aerial VLA data generation and policy evaluation. AeroManip-VLA provides a GPU-accelerated simulation framework with low-level payload-aware flight and manipulation control in massively parallel environments. Building on this framework, we combine reusable reinforcement learning policies with expert task rules to automatically generate demonstrations without human teleoperation across diverse objects, environments, and randomized initial conditions. The generated data include basic skills such as grasping and placing, as well as long-horizon tasks that require both navigation and manipulation. We further introduce automated event labeling and trajectory categorization to filter demonstrations. These mechanisms enable fine-grained analysis of task progress, behavioral outcomes, and safety-related failures. Finally, we evaluate a range of imitation learning and VLA baselines across different task settings, revealing their performance characteristics and failure modes. Together, AeroManip-VLA enables scalable aerial manipulation data generation, structured trajectory analysis, and systematic VLA evaluation in simulation prior to real-world deployment.",
+    "key_figure_path": "figures/arxiv_2609_36915v1_caption_p1_figure1_cropped.png",
+    "key_figure_caption": "Figure 1: Overview of the AeroManip-VLA framework and dataset for aerial manipulation. Project"
+  },
+  {
+    "paper_id": "arxiv:2605.06311v1",
+    "title": "Toward Visually Realistic Simulation: A Benchmark for Evaluating Robot Manipulation in Simulation",
+    "authors": [
+      "Yixin Zhu",
+      "Zixiong Wang",
+      "Jian Yang",
+      "Jin Xie",
+      "Jingyi Yu",
+      "Jiayuan Gu",
+      "Beibei Wang"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-05-07",
+    "source": "arxiv",
+    "doi": null,
+    "url": "http://arxiv.org/abs/2605.06311v1",
+    "pdf_url": "https://arxiv.org/pdf/2605.06311v1",
+    "robot_type_tags": [
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.86,
+    "abstract": "Reliable simulation evaluation of robot manipulation policies serves as a high-fidelity proxy for real-world performance. Although existing benchmarks cover a wide range of task categories, they lack visual realism, creating a large domain gap between simulation and reality. This undermines the reliability of simulation-based evaluation in predicting real-world performance. To mitigate the sim-to-real visual gap, we conduct a systematic analysis to isolate the effects of lighting and material. Our results show that these factors play a critical role in geometric reasoning and spatial grounding, yet are largely overlooked in existing benchmarks. Motivated by the analysis, we propose VISER, a visually realistic benchmark for evaluating robot manipulation in simulation. VISER features a high-fidelity dataset of over 1,000 3D assets with physically-based rendering (PBR) materials, along with 3D scenes created from these assets through curated layouts or generation. To this end, we propose an automated pipeline leveraging Multi-modal Large Language Models (MLLMs) for material-aware part segmentation and material retrieval, enabling scalable generation of physically plausible assets. Building on the high-fidelity 3D asset dataset, we construct diverse evaluation tasks, such as grasping, placing, and long-horizon tasks, enabling scalable and reproducible assessment of Vision-Language-Action (VLA) models. Our benchmark shows a strong correlation between simulation and real-world performance, achieving an average Pearson correlation coefficient of 0.92 across different policies.",
+    "key_figure_path": "figures/arxiv_2605_06311v1_caption_p1_figure1_cropped.png",
+    "key_figure_caption": "Figure 1: We introduceVISER, aVISually realistic benchmark forEvaluatingRobot manipulation"
+  },
+  {
+    "paper_id": "crossref:10.1126/sciadv.aed5603",
+    "title": "Unlocking fast robotic locomotor propulsion through dynamic spine-leg synergy",
+    "authors": [
+      "Ruochao Wang",
+      "Weitao Zhang",
+      "Xiaolong Quan",
+      "Rongjie Du",
+      "Zhenshan Bing",
+      "Gang Wang",
+      "Jian Sun",
+      "Zhiqiang Yu",
+      "Qing Shi"
+    ],
+    "venue": "Science Advances",
+    "published_at": "2026-09-25",
+    "source": "crossref",
+    "doi": "10.1126/sciadv.aed5603",
+    "url": "https://doi.org/10.1126/sciadv.aed5603",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/sciadv.aed5603",
+    "robot_type_tags": [
+      "locomotion"
+    ],
+    "paper_type": "direct",
+    "score": 0.84,
+    "abstract": "Quadrupeds in nature achieve agile locomotion through a rhythmic flexing of the spine in coordination with leg movement. This dynamic synergy enhances their speed and stability, reflecting a kind of physical intelligence encoded in their bodies. However, identifying this spine-leg synergy and embodying it in robotics to enhance locomotor propulsion remains challenging. To address this, we developed FLEXOR (fast legged robot with a flexible spine for optimal running), which uses dual-joint coupled spine and elastic legs to capture dynamic spine-leg synergy in rapid propulsion of small-scale quadrupeds. Through simulation and physical experiments of FLEXOR, we identified an optimal dynamic spine-leg synergy that maximizes locomotor capabilities by aligning the ground reaction force (GRF) for effective forward propulsion. Moreover, the dual-joint coupled spine amplifies the actuator torque, thereby increasing both the GRF magnitude and the propulsive output without additional energy input. By harnessing this synergy and its structural advantage, FLEXOR achieves a substantial increase in speed with a reduced cost of transport, outperforming state-of-the-art quadruped robots with flexible spines. Through an extended dynamics framework and robophysical validation, we further demonstrate that the optimal spine-leg synergy generalizes robustly across diverse spine-leg morphologies and physical scales. This work broadens our understanding of the essence of synergistic locomotion in animals and is potentially applicable for the design and control of embodied intelligence–driven robots.",
+    "key_figure_path": "figures/crossref_10_1126_sciadv_aed5603_caption_p3_figure1_cropped.png",
+    "key_figure_caption": "Fig. 1. Robotic systems for understanding dynamic spine- leg synergy. (A) c omputer- aided design drawing of FleXOR, which is divided into three main parts: front"
+  },
+  {
+    "paper_id": "crossref:10.1126/sciadv.aee5236",
+    "title": "High-resolution real-time mechanochromic tactile sensors",
+    "authors": [
+      "Giacomo Sasso",
+      "Alessandro Pagani",
+      "Aaron M. Duncan",
+      "Gianni Pedrizzetti",
+      "Nicola Pugno",
+      "James J. C. Busfield",
+      "Federico Carpi"
+    ],
+    "venue": "Science Advances",
+    "published_at": "2026-07-03",
+    "source": "crossref",
+    "doi": "10.1126/sciadv.aee5236",
+    "url": "https://doi.org/10.1126/sciadv.aee5236",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/sciadv.aee5236",
+    "robot_type_tags": [
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.7275,
+    "abstract": "High-resolution, real-time tactile sensing is essential for robotic tasks that demand accurate, dynamic detection of contact morphology and pressure distribution, such as grasping and manipulation of delicate, slippery, or irregularly shaped objects. Existing technologies, however, face a fundamental trade-off between spatial resolution and response speed. Taxel-based sensors (e.g., capacitive, resistive, or piezoelectric) operate in real time but are intrinsically limited in resolution by taxel size, spacing, wiring, and cross-talk; even deep learning–based tactile super-resolutions rarely surpass ∼1 millimeter. Finer resolutions can be achieved with vision-based tactile sensors using just a camera, although the computation required to transform raw images into three-dimensional contact maps inherently introduces latency. Here, we present mechanochromic tactile sensors that directly encode mechanical strain into spatially resolved structural colors, enabling vision-based tactile sensing with an unprecedented combination of high resolution, real-time operation, and intrinsic simplicity. The devices consist of a stretchable mechanochromic Bragg reflector embedded between two soft silicone layers, whose thickness can be tailored to precisely map contact pressure or strain. As an example, we present topological maps of a fingertip, a one-penny coin, and a leaf, with ∼100 micrometer resolution. In comparison to the most performing vision-based tactile sensors, this was achieved without requiring any deep learning–based data enhancement and without introducing any computational latency. The straightforward applicability of this mechanochromic strategy to enhance vision-based tactile sensing in a simple yet powerful way underscores its transformative potential for uses as diverse as robotic gripping and handling, tactile product inspection, and enhanced human-robot interaction.",
+    "key_figure_path": "figures/crossref_10_1126_sciadv_aee5236_caption_p2_figure1_cropped.png",
+    "key_figure_caption": "Fig. 1. Mechanochromic tactile sensing: Comparison with state- of- the- art vision- based sensing strategies and example of embodiment in a robotic finger. (A to"
+  },
+  {
+    "paper_id": "crossref:10.1126/sciadv.aeg8849",
+    "title": "BeetleBot: An integrated bioinspired soft robot for multimodal sensing and adaptive interaction",
+    "authors": [
+      "Inho Kim",
+      "Dickson R. Yao",
+      "Shukun Yin",
+      "Phuoc Thanh Tran-Ngoc",
+      "Jihong Min",
+      "Nathan Ng",
+      "Wenzheng Heng",
+      "Jiahong Li",
+      "Behnam Sadri",
+      "Hirotaka Sato",
+      "Sang Ouk Kim",
+      "Wei Gao"
+    ],
+    "venue": "Science Advances",
+    "published_at": "2026-08-21",
+    "source": "crossref",
+    "doi": "10.1126/sciadv.aeg8849",
+    "url": "https://doi.org/10.1126/sciadv.aeg8849",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/sciadv.aeg8849",
+    "robot_type_tags": [
+      "soft_robot",
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.73,
+    "abstract": "Biological organisms exhibit tightly integrated motor functions, sensory input, and control systems that enable adaptive behaviors across diverse environments. Emulating such coordination in robotics remains challenging, as most soft machines compartmentalize actuation, sensing, and control. Here, we present BeetleBot, an adaptive beetle-bioinspired soft robot platform that seamlessly integrates programmable locomotion, object manipulation, sensory feedback, and intuitive human-machine interaction. BeetleBot features electrothermally actuated liquid crystal elastomer muscles embedded in modular leg structures and a soft gripper, with a flexible circuit enabling independent control. A wearable strain-sensing patch supports wireless gesture-based operation, while embedded vision and tactile sensors provide real-time environmental feedback. All functional components are fabricated through scalable additive manufacturing techniques. We demonstrate terrain navigation, object recognition, and gesture-control synchronized bidirectional interaction between the user and the robot. This multifunctional platform emulates the adaptability of living systems and establishes a promising foundation for next-generation intelligent soft robotics.",
+    "key_figure_path": "figures/334bebadbe6b86ed2393565b_figure1_cropped.png",
+    "key_figure_caption": "Fig. 1. BeetleBot: An integrated bioinspired multifunctional soft robotic system. (A) Schematic overview of BeetleBot, a beetle- inspired soft robot that integrates"
+  },
+  {
+    "paper_id": "openalex:W7203787239",
+    "title": "Evolutionary diversification via modular compliance for self-reconfigurable continuum robots",
+    "authors": [
+      "Yilin Cai",
+      "Zhefeng Huang",
+      "Yifan Wang",
+      "Haokai Xu",
+      "Yue Chen"
+    ],
+    "venue": "Science Advances",
+    "published_at": "2026-08-19",
+    "source": "openalex",
+    "doi": "https://doi.org/10.1126/sciadv.aeg9191",
+    "url": "https://openalex.org/W7203787239",
+    "pdf_url": "",
+    "robot_type_tags": [
+      "continuum",
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.8075,
+    "abstract": "Modular self-reconfigurable robots promise adaptability through changes in morphology, yet most existing systems remain limited by low functional density, rigid modules, and constrained docking interfaces that restrict scalable locomotion and manipulation. In contrast, biological organisms achieve rich behavioral diversity through repeated compliant segments combined with flexible articulated body architectures to support locomotion, manipulation, and environmental interaction. Here, we present a modular self-reconfigurable continuum robot that exploits modular compliance as a unifying design principle to enable cross-species bioinspired loco-manipulation within a single platform. Each module integrates a continuum backbone for compliant bending and a pair of grippers for omnidirectional, quasi-freeform docking, achieving high functional density within a compact unit. As a result, a small number of modules can assemble into diverse morphologies capable of distinct capabilities. We further develop a morphology-conditioned gait library covering rolling, undulation, crawling, quadrupedal walking, and multisegment manipulation, organized within an evolutionary diversification tree that explicitly links biological locomotion strategies to corresponding robotic assembly patterns. To enable autonomous transitions between configurations, we introduce a unified geometric-topological representation and a self-reconfiguration planner that decomposes reconfiguration into discrete grasping and releasing actions and continuous deformation actions. Hardware experiments demonstrate online self-reconfiguration, followed by integrated loco-manipulation. Together, these results show that embedding compliance at the module level unifies locomotion, manipulation, and self-reconfiguration within a single robotic platform, suggesting a pathway toward more adaptable machines that exhibit organism-like behaviors across species.",
+    "key_figure_path": "figures/cdc7ddf10777716fc9d5bb9e_figure1_cropped.png",
+    "key_figure_caption": "Fig. 1. Modular compliance as a unifying principle for cross- species bioinspired locomotion and the design of the modular self- reconfigurable continuum robot"
+  },
+  {
+    "paper_id": "crossref:10.1126/sciadv.aeb8948",
+    "title": "Twirlbot: Tumbleweed-inspired rolling robot",
+    "authors": [
+      "Chi Chen",
+      "Zhuo Wang",
+      "Yuchen Wang",
+      "Pengju Shi",
+      "Zixiao Liu",
+      "Muqing Si",
+      "Sidi Duan",
+      "Wenhao Hou",
+      "Ximin He"
+    ],
+    "venue": "Science Advances",
+    "published_at": "2026-05-01",
+    "source": "crossref",
+    "doi": "10.1126/sciadv.aeb8948",
+    "url": "https://doi.org/10.1126/sciadv.aeb8948",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/sciadv.aeb8948",
+    "robot_type_tags": [
+      "hard_to_instrument"
+    ],
+    "paper_type": "direct",
+    "score": 0.7775,
+    "abstract": "Omnidirectional locomotion offers superior adaptability and maneuverability over uni-/bidirectional movement, with spherical structures being ideal due to their zero turning radius and geometric stability on complex terrains. However, existing spherical robots rely on embedded control components and onboard power sources, inevitably increasing design complexity, weight, and cost. Herein, we developed a tumbleweed-inspired rolling robot (Twirlbot) to achieve the hollow spherical architecture by weaving photoactive/passive bilayer strips. The Twirlbot demonstrated autonomous rolling under constant light, enabling multiple functionalities, including omnidirectional locomotion, slope climbing, trampling resistance, cargo transport, self-correction, wind resistance, and adaptation to diverse terrains and environments. These features endowed the Twirlbot with great potential for real-world applications, such as self-sustained seed-sowing, daylight-driven commuting, and autonomous underwater wiring. Notably, the structural design was generalizable to other systems, including commercial materials, enabling substantial cost reduction (less than one-tenth that of existing autonomous untethered robots) and thereby presenting a promising route toward next-generation untethered, self-sustained robotic systems.",
+    "key_figure_path": "figures/crossref_10_1126_sciadv_aeb8948_caption_p2_figure1_cropped.png",
+    "key_figure_caption": "Fig. 1. Fabrication and rolling mechanism of the Twirlbot. (A) t he life cycle of a natural tumbleweed and its rolling movement by harnessing the wind. (B) t he t wirlbot"
+  },
+  {
+    "paper_id": "crossref:10.1126/scirobotics.adl0628",
+    "title": "NeuralFeels with neural fields: Visuotactile perception for in-hand manipulation",
+    "authors": [
+      "Sudharshan Suresh",
+      "Haozhi Qi",
+      "Tingfan Wu",
+      "Taosha Fan",
+      "Luis Pineda",
+      "Mike Lambeta",
+      "Jitendra Malik",
+      "Mrinal Kalakrishnan",
+      "Roberto Calandra",
+      "Michael Kaess",
+      "Joseph Ortiz",
+      "Mustafa Mukadam"
+    ],
+    "venue": "Science Robotics",
+    "published_at": "2024-11-13",
+    "source": "crossref",
+    "doi": "10.1126/scirobotics.adl0628",
+    "url": "https://doi.org/10.1126/scirobotics.adl0628",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/scirobotics.adl0628",
+    "robot_type_tags": [
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.7588,
+    "abstract": "To achieve human-level dexterity, robots must infer spatial awareness from multimodal sensing to reason over contact interactions. During in-hand manipulation of novel objects, such spatial awareness involves estimating the object’s pose and shape. The status quo for in-hand perception primarily uses vision and is restricted to tracking a priori known objects. Moreover, visual occlusion of objects in hand is imminent during manipulation, preventing current systems from pushing beyond tasks without occlusion. We combined vision and touch sensing on a multifingered hand to estimate an object’s pose and shape during in-hand manipulation. Our method, NeuralFeels, encodes object geometry by learning a neural field online and jointly tracks it by optimizing a pose graph problem. We studied multimodal in-hand perception in simulation and the real world, interacting with different objects via a proprioception-driven policy. Our experiments showed final reconstruction F scores of 81% and average pose drifts of 4.7 millimeters, which was further reduced to 2.3 millimeters with known object models. In addition, we observed that, under heavy visual occlusion, we could achieve improvements in tracking up to 94% compared with vision-only methods. Our results demonstrate that touch, at the very least, refines and, at the very best, disambiguates visual estimates during in-hand manipulation. We release our evaluation dataset of 70 experiments, FeelSight, as a step toward benchmarking in this domain. Our neural representation driven by multimodal sensing can serve as a perception backbone toward advancing robot dexterity.",
+    "key_figure_path": "figures/9fefc151a0aa66900c0f569d_figure1_cropped.png",
+    "key_figure_caption": "Fig. 1. Visuotactile perception with NeuralFeels. o ur method estimates the pose and shape of novel objects"
+  },
+  {
+    "paper_id": "crossref:10.1126/scirobotics.adg7165",
+    "title": "Lateral flexion of a compliant spine improves motor performance in a bioinspired mouse robot",
+    "authors": [
+      "Zhenshan Bing",
+      "Alex Rohregger",
+      "Florian Walter",
+      "Yuhong Huang",
+      "Peer Lucas",
+      "Fabrice O. Morin",
+      "Kai Huang",
+      "Alois Knoll"
+    ],
+    "venue": "Science Robotics",
+    "published_at": "2023-12-20",
+    "source": "crossref",
+    "doi": "10.1126/scirobotics.adg7165",
+    "url": "https://doi.org/10.1126/scirobotics.adg7165",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/scirobotics.adg7165",
+    "robot_type_tags": [
+      "bioinspired",
+      "locomotion"
+    ],
+    "paper_type": "direct",
+    "score": 0.7556,
+    "abstract": "A flexible spine is critical to the motion capability of most animals and plays a pivotal role in their agility. Although state-of-the-art legged robots have already achieved very dynamic and agile movement solely relying on their legs, they still exhibit the type of stiff movement that compromises movement efficiency. The integration of a flexible spine thus appears to be a promising approach to improve their agility, especially for small and underactuated quadruped robots that are underpowered because of size limitations. Here, we show that the lateral flexion of a compliant spine can promote both walking speed and maneuver agility for a neurorobotic mouse (NeRmo). We present NeRmo as a biomimetic robotic mouse that mimics the morphology of biological mice and their muscle-tendon actuation system. First, by leveraging the lateral flexion of the compliant spine, NeRmo can greatly increase its static stability in an initially unstable configuration by adjusting its posture. Second, the lateral flexion of the spine can also effectively extend the stride length of a gait and therefore improve the walking speeds of NeRmo. Finally, NeRmo shows agile maneuvers that require both a small turning radius and fast walking speed with the help of the spine. These results advance our understanding of spine-based quadruped locomotion skills and highlight promising design concepts to develop more agile legged robots.",
+    "key_figure_path": "figures/579fcab532693bc1a53e50c6_figure1_cropped.png",
+    "key_figure_caption": "Fig. 1. Snapshots of biological mouse motions and the neurorobotic mouse NeRmo. (A) Walking motion of a biological mouse (image courtesy of M. S. Fischer, insti-"
+  },
+  {
+    "paper_id": "crossref:10.1126/scirobotics.ads6192",
+    "title": "High-speed control and navigation for quadrupedal robots on complex and discrete terrain",
+    "authors": [
+      "Hyeongjun Kim",
+      "Hyunsik Oh",
+      "Jeongsoo Park",
+      "Yunho Kim",
+      "Donghoon Youm",
+      "Moonkyu Jung",
+      "Minho Lee",
+      "Jemin Hwangbo"
+    ],
+    "venue": "Science Robotics",
+    "published_at": "2025-05-28",
+    "source": "crossref",
+    "doi": "10.1126/scirobotics.ads6192",
+    "url": "https://doi.org/10.1126/scirobotics.ads6192",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/scirobotics.ads6192",
+    "robot_type_tags": [
+      "locomotion"
+    ],
+    "paper_type": "direct",
+    "score": 0.6845,
+    "abstract": "High-speed legged navigation in discrete and geometrically complex environments is a challenging task because of the high–degree-of-freedom dynamics and long-horizon, nonconvex nature of the optimization problem. In this work, we propose a hierarchical navigation pipeline for legged robots that can traverse such environments at high speed. The proposed pipeline consists of a planner and tracker module. The planner module finds physically feasible foothold plans by sampling-based optimization with fast sequential filtering using heuristics and a neural network. Subsequently, rollouts are performed in a physics simulation to identify the best foothold plan regarding the engineered cost function and to confirm its physical consistency. This hierarchical planning module is computationally efficient and physically accurate at the same time. The tracker aims to accurately step on the target footholds from the planning module. During the training stage, the foothold target distribution is given by a generative model that is trained competitively with the tracker. This process ensures that the tracker is trained in an environment with the desired difficulty. The resulting tracker can overcome terrains that are more difficult than what the previous methods could manage. We demonstrated our approach using Raibo, our in-house dynamic quadruped robot. The results were dynamic and agile motions: Raibo is capable of running on vertical walls, jumping a 1.3-meter gap, running over stepping stones at 4 meters per second, and autonomously navigating on terrains full of 30° ramps, stairs, and boxes of various sizes.",
+    "key_figure_path": "figures/72e7212142ba0922d4d4f0aa_figure1_cropped.png",
+    "key_figure_caption": "Figure 1: Raibo on various experiment scenarios. Raibo performs extreme parkour maneuvers"
+  }
+]
