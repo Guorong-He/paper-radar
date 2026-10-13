@@ -1,0 +1,256 @@
+[
+  {
+    "paper_id": "arxiv:2602.12724v2",
+    "title": "TRANS: Terrain-aware Reinforcement Learning for Agile Navigation of Quadruped Robots under Social Interactions",
+    "authors": [
+      "Wei Zhu",
+      "Irfan Tito Kurniawan",
+      "Ye Zhao",
+      "Mitsuhiro Hayashibe"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-02-13",
+    "source": "arxiv",
+    "doi": null,
+    "url": "http://arxiv.org/abs/2602.12724v2",
+    "pdf_url": "https://arxiv.org/pdf/2602.12724v2",
+    "robot_type_tags": [
+      "locomotion"
+    ],
+    "paper_type": "direct",
+    "score": 0.8521,
+    "abstract": "This study introduces TRANS: Terrain-aware Reinforcement learning for Agile Navigation under Social interactions, a deep reinforcement learning (DRL) framework for quadrupedal social navigation over unstructured terrains. Conventional quadrupedal navigation typically separates motion planning from locomotion control, neglecting whole-body constraints and terrain awareness. On the other hand, end-to-end methods are more integrated but require high-frequency sensing, which is often noisy and computationally costly. In addition, most existing approaches assume static environments, limiting their use in human-populated settings. To address these limitations, we propose a two-stage training framework with three DRL pipelines. (1) TRANS-Loco employs an asymmetric actor-critic (AC) model for quadrupedal locomotion, enabling traversal of uneven terrains without explicit terrain or contact observations. (2) TRANS-Nav applies a symmetric AC framework for social navigation, directly mapping transformed LiDAR data to ego-agent actions under differential-drive kinematics. (3) A unified pipeline, TRANS, integrates TRANS-Loco and TRANS-Nav, supporting terrain-aware quadrupedal navigation in uneven and socially interactive environments. Comprehensive benchmarks against locomotion and social navigation baselines demonstrate the effectiveness of TRANS. Hardware experiments further confirm its potential for sim-to-real transfer.",
+    "key_figure_path": "figures/2c0be20c61adf4b414bfc0f3.png",
+    "key_figure_caption": "Fig. 1. Terrain-aware navigation of quadruped robots in socially interactive"
+  },
+  {
+    "paper_id": "arxiv:2606.30192v1",
+    "title": "Domain Adaptation with Adaptive Imagination for Visual Reinforcement Learning under Limited Target Data",
+    "authors": [
+      "Hyunwoo Park",
+      "Sang-Hyun Lee"
+    ],
+    "venue": "arXiv",
+    "published_at": "2026-06-29",
+    "source": "arxiv",
+    "doi": null,
+    "url": "http://arxiv.org/abs/2606.30192v1",
+    "pdf_url": "https://arxiv.org/pdf/2606.30192v1",
+    "robot_type_tags": [],
+    "paper_type": "direct",
+    "score": 0.835,
+    "abstract": "Sim-to-real transfer remains a major obstacle for reinforcement learning (RL), especially for vision-based control where image observations exacerbate the state-distribution shift between simulation and the real world. Domain adaptation (DA) is a promising remedy for this challenge. Prior sim-to-real DA works have demonstrated encouraging results, yet these approaches typically assume substantially more target data, which is not available in practice. Indeed, their performance degrades significantly when the target data budget is reduced. To address this challenge, we propose AIDA (Adaptive Imagination for Domain Adaptation), a domain adaptation framework for visual reinforcement learning that addresses sim-to-real transfer under scarce target data without requiring additional interaction with the target environment. Our key idea is adaptive imagination: generating reliable and semantic imagination rollouts to augment limited target data. Specifically, AIDA employs a distribution-shift-aware discriminator that truncates rollouts when imagined transitions drift into low-confidence regions, so that only reliable transitions contribute to the augmentation. On these reliable transitions, AIDA introduces a self-consistency loss that cycles through state -> image observation -> state, penalizing discrepancies between the original and reconstructed states. This provides additional adaptation signals beyond the scarce target data. Our experiments demonstrate that adaptive imagination effectively truncates unreliable rollouts. By enforcing a self-consistency loss on the resulting reliable transitions, AIDA learns semantically meaningful state representations and outperforms baselines across five MuJoCo tasks and two Gymnasium-Robotics tasks.",
+    "key_figure_path": "figures/81f59371166fb8de6921d147.png",
+    "key_figure_caption": "Fig. 1: Overview of AIDA.The framework proceeds in two stages.Stage 1"
+  },
+  {
+    "paper_id": "openalex:W7213903746",
+    "title": "Learning for micro-scale mechano-flow co-manipulation",
+    "authors": [
+      "Yujian An",
+      "Jianxin Yang",
+      "Bingze He",
+      "Yao Guo",
+      "Guang‐Zhong Yang"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2026-09-21",
+    "source": "openalex",
+    "doi": "https://doi.org/10.1038/s41467-026-77746-z",
+    "url": "https://openalex.org/W7213903746",
+    "pdf_url": "https://www.nature.com/articles/s41467-026-77746-z_reference.pdf",
+    "robot_type_tags": [
+      "manipulation"
+    ],
+    "paper_type": "direct",
+    "score": 0.605,
+    "abstract": "Dexterous manipulation is a fundamental yet unresolved topic in robotics, particularly in the realm of micro-manipulation of flexible objects. The complex interplay among external forces, intrinsic material properties, and environmental factors that govern shape deformation presents significant challenges to learning and control. This paper introduces a mechano-flow co-manipulation scheme for flexible micro-objects. It achieves precise handling of floating micro-objects by dynamically adjusting the flow field at the air-liquid interface, enabling simultaneous control of both manipulation and focal planes. A real-time flow prediction framework is proposed based on a reversible neural network, termed FlowNet, achieving bidirectional prediction of input flow and resulting spatio-temporal flow distribution with high accuracy. Through experimental validation, including linear-drive characterization, open-loop trajectory following, and manipulation of different flexible objects, we demonstrate the system’s versatility, precision, and stability. The proposed system offers a promising approach for micro-manipulation through mechano-flow interaction for flexible micro-objects. Flexible micro-object manipulation is hindered by coupled forces, material properties and environmental effects. The authors report mechano-flow co-manipulation using tunable air-liquid interface flows and FlowNet for real-time bidirectional flow prediction, enabling precise, stable control.",
+    "key_figure_path": "figures/11160629fe3a642cf4feeb09.png",
+    "key_figure_caption": "Fig. 1 | Schematic overview of the mechano-ﬂow co-manipulation system and"
+  },
+  {
+    "paper_id": "openalex:W4416724741",
+    "title": "A bioinspired self-powered optical tactile sensing system with ultrahigh sensitivity and ultralow detection limit",
+    "authors": [
+      "Tingting Hou",
+      "Chaojie Chen",
+      "Ru Guo",
+      "Shaoshuai He",
+      "Yunlong Zi"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2025-11-26",
+    "source": "openalex",
+    "doi": "https://doi.org/10.1038/s41467-025-66792-8",
+    "url": "https://openalex.org/W4416724741",
+    "pdf_url": "https://www.nature.com/articles/s41467-025-66792-8_reference.pdf",
+    "robot_type_tags": [],
+    "paper_type": "direct",
+    "score": 0.6393,
+    "abstract": "Abstract High-sensitivity tactile perception is vital for precise robotic operations in human-machine interactions (HMI). Currently, state-of-the-art tactile perception relies on electrical sensors which demand complex circuits and decoding components, leading to increased energy consumption and susceptibility to electromagnetic interference. Hence, the utilization of human-perceptible signals, such as visible light, as the transmission medium is necessary. Inspired by the mechano-electro-optical transduction mechanism in dinoflagellate bioluminescence, here we propose a self-powered optical tactile sensing system (SOTS) for converting the electrical signal of pressure sensing into visible luminescent intensity, thereby enabling the wireless transmission and visualization of tactile information. The proposed SOTS features an ultrahigh sensitivity (22.4 kPa −1 ) and an ultralow detection limit (10 Pa) in optical tactile sensing with the ultra-wide dynamic range across 5 orders of magnitude (0.01-100 kPa), opening promising avenues for ultrasensitive feedback and intuitive understanding of haptic perception in future HMI.",
+    "key_figure_path": "figures/3adbf76836e961072a966387.png",
+    "key_figure_caption": "Fig. 1. Schematic illustration of the biomimetic SOTS. a The illustration explains 494"
+  },
+  {
+    "paper_id": "crossref:10.1038/s41467-026-73111-2",
+    "title": "The undulating tripod gait as a model of the locomotion of walking fish",
+    "authors": [
+      "Michael Ishida",
+      "Fidji Berio",
+      "Theodora Po",
+      "Narges Khadem Hosseini",
+      "Neil H. Shubin",
+      "Valentina Di Santo",
+      "Fumiya Iida"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2026-06-02",
+    "source": "crossref",
+    "doi": "10.1038/s41467-026-73111-2",
+    "url": "https://doi.org/10.1038/s41467-026-73111-2",
+    "pdf_url": "https://www.nature.com/articles/s41467-026-73111-2.pdf",
+    "robot_type_tags": [],
+    "paper_type": "direct",
+    "score": 0.5975,
+    "abstract": "Abstract A large subset of fishes capable of terrestrial walking exhibit strikingly similar gaits despite spanning across the phylogenetic space and having substantial differences in morphology. This recurrent pattern suggests the existence of shared mechanical principles underlying locomotor convergence. To investigate these principles, we analyze a common strategy we term the “undulating tripod gait” , a coordinated pattern of axial body undulation coupled with alternating anterior contact with the ground. In this work, we model the undulating tripod gait by approximating a fish’s axial undulation as three rigid segments rotating with respect to each other and representing the anterior contact as a rigid beam that alternates the contact with the surface on the left and right sides of the body. Here, we focus on the grey bichir, Polypterus senegalus , as a specific exemplar of the undulating tripod gait. We perform high-speed kinematic analyses of terrestrial locomotion to identify baseline gait parameters, which we then validate as broadly representative by comparing them to those of other distantly related walking fishes. Using these parameters, we simulate the model to explore how variations in morphology and joint kinematics influence forward progression, revealing that peak locomotor performance emerges under conditions closely matching those observed in P. senegalus . Finally, we translate the model into a physical robot, demonstrating that the same simple coordination of axial undulation and anterior contact produces effective forward locomotion in the real world. By capturing core mechanical features shared across morphologically diverse species, this framework advances our understanding of terrestrial walking in fishes and offers a mechanistic lens through which to examine the evolutionary origins of locomotion in early vertebrates.",
+    "key_figure_path": "figures/9c628da3c3159b797298e1f4.png",
+    "key_figure_caption": "Fig. 1 | Undulating tripod gait, as a result of convergent evolution, is reported"
+  },
+  {
+    "paper_id": "crossref:10.1126/scirobotics.aec8039",
+    "title": "From ball to rover: Transformable palm-sized rover SORA-Q for autonomous lunar exploration",
+    "authors": [
+      "D. Hirano",
+      "M. Inazawa",
+      "M. Sutoh",
+      "M. Nagata",
+      "Y. Yoneda",
+      "K. Watanabe",
+      "H. Sawada",
+      "G. Sakoda",
+      "S. Abe",
+      "S. Homma"
+    ],
+    "venue": "Science Robotics",
+    "published_at": "2026-06-10",
+    "source": "crossref",
+    "doi": "10.1126/scirobotics.aec8039",
+    "url": "https://doi.org/10.1126/scirobotics.aec8039",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/scirobotics.aec8039",
+    "robot_type_tags": [
+      "hard_to_instrument",
+      "space_robot"
+    ],
+    "paper_type": "direct",
+    "score": 0.7875,
+    "abstract": "Robotic technologies are expected to drive substantial advancements in planetary exploration and resource prospecting by performing a variety of tasks in extraterrestrial environments. In particular, miniature robots are ideally suited for integration into spacecraft with strict payload limitations, providing a cost-effective solution. However, the pursuit of autonomous exploration using these miniature robots presents challenges owing to constraints in computational power and battery capacity and reduced locomotion performance owing to their small size. Here, we introduce a two-wheeled centimeter-scale rover, designated Lunar Excursion Vehicle 2 (LEV-2), also known as SORA-Q (named after the Japanese words for space and sphere), which transforms into a wheeled configuration from a compact spherical form, enabling efficient traversal of soft lunar terrains. On 19 January 2024 (universal time coordinated), LEV-2 was deployed from a Japanese lunar lander, Smart Lander for Investigating Moon (SLIM), immediately before its landing on the lunar surface. After a lunar landing, the palm-sized rover accomplished autonomous lunar exploration by navigating around the SLIM lander, capturing images of both the SLIM lander and its environment and transmitting selected images through wireless communication on the lunar surface without reliance on ground-based teleoperation. This study details the system design of LEV-2 and presents the results of its in situ lunar activities, highlighting the efficacy of the proposed technologies necessary for mission implementation. Furthermore, we discuss the technical challenges encountered during the mission, including operational constraints and partial data loss, as well as the lessons learned for future exploration missions using small-scale space robots.",
+    "key_figure_path": "figures/0548fac13586d2e19cceafc9.png",
+    "key_figure_caption": "Fig. 1. Photograph of the transformable palm- sized rover. t he ball- shaped rover expands cameras, wheels, and a tail stabilizer for efficiently traversing soft terrains"
+  },
+  {
+    "paper_id": "crossref:10.1038/s41467-026-70685-9",
+    "title": "A nanoscale robotic cleaner",
+    "authors": [
+      "Jin Qin",
+      "Carsten Büchner",
+      "Xiaofei Wu",
+      "Bert Hecht"
+    ],
+    "venue": "Nature Communications",
+    "published_at": "2026-03-27",
+    "source": "crossref",
+    "doi": "10.1038/s41467-026-70685-9",
+    "url": "https://doi.org/10.1038/s41467-026-70685-9",
+    "pdf_url": "https://www.nature.com/articles/s41467-026-70685-9.pdf",
+    "robot_type_tags": [],
+    "paper_type": "direct",
+    "score": 0.5751,
+    "abstract": "Abstract Photon-recoil–based actuation enables maneuvering of micro- and nanoscale objects without beam steering or tight focusing, mitigating system complexity and photodamage. Recent light-driven microdrones achieved full control in two dimensions using multiple laser fields; however, for many applications, sacrificing degrees of freedom allows substantial miniaturization and improved propulsion efficiency. Here, we demonstrate sub-micrometer nanorobots actuated by a plasmonic directional antenna that simultaneously provides propulsion force and orientation control. The nanorobots reach propulsion speeds up to 50 μm/s, with their motion direction intrinsically locked perpendicular to the linear polarization axis. Circularly polarized light pulses lift the resulting twofold orientational degeneracy through spin–momentum transfer. Using opto-thermophoretic forces, nanorobots efficiently capture, transport, reversibly assemble, and release bacteria. By sequencing linear and circular polarization states, they execute complex, high-precision trajectories to systematically sweep defined regions, functioning as light-driven robotic cleaners. This work expands the capabilities of nanorobots for biological manipulation and high-speed, localized sensing.",
+    "key_figure_path": "figures/f0b96b2b475be56749144fb0.png",
+    "key_figure_caption": "Fig. 1 | Micro- and nanorobot design and actuation concept. aSchematic of the"
+  },
+  {
+    "paper_id": "crossref:10.1126/scirobotics.aed6267",
+    "title": "Performant robotic manipulation with real-world reinforcement learning",
+    "authors": [
+      "Kun Lei",
+      "Huanyu Li",
+      "Dongjie Yu",
+      "Zhenyu Wei",
+      "Lingxiao Guo",
+      "Zhennan Jiang",
+      "Ziyu Wang",
+      "Shiyu Liang",
+      "Huazhe Xu"
+    ],
+    "venue": "Science Robotics",
+    "published_at": "2026-07-22",
+    "source": "crossref",
+    "doi": "10.1126/scirobotics.aed6267",
+    "url": "https://doi.org/10.1126/scirobotics.aed6267",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/scirobotics.aed6267",
+    "robot_type_tags": [],
+    "paper_type": "direct",
+    "score": 0.72,
+    "abstract": "Real-world robotic manipulation in homes and factories demands reliability, efficiency, and robustness that approach or surpass skilled human operators. We present a real-world reinforcement learning (RL) framework, RL-100, for achieving complete task success under a predefined evaluation protocol built on diffusion visuomotor policies. RL-100 unifies imitation and RL under a single clipped proximal policy optimization surrogate objective applied in the denoising process, yielding conservative, stable improvements across offline and online stages. To meet deployment latency, a lightweight consistency distillation compresses multistep diffusion into a one-step controller for high-frequency control. The framework is task, embodiment, and representation agnostic and supports both single-action and action-chunking control. We evaluated RL-100 on eight diverse real-robot tasks, from pushing and bowling to pouring, cloth folding, unscrewing, multistage juicing, and long-horizon box folding. Under our predefined protocol, RL-100 achieved 100% success in the evaluated trials (1000 of 1000 episodes), including up to 250 of 250 consecutive trials on one task. It matched or surpassed expert teleoperators in time to completion. Without retraining, a single policy attained ∼90% zero-shot success under environmental and dynamics shifts, adapted in a few-shot regime to substantial task variations (86.7%), and remained robust to human perturbations (about 96%). Our juicing robot served customers continuously for about 7 hours without failure when deployed zero-shot in a shopping mall. These results suggest a potential path to deployable robot learning by starting from human priors, aligning training objectives with human-grounded metrics, and reliably extending performance beyond human demonstrations.",
+    "key_figure_path": "figures/ba509f1f46c6b8c399decd97.png",
+    "key_figure_caption": "Fig. 1. Real-robot snapshots illustrating the diversity of our task suite. (A) Dynamic Push-T; (B) Agile Bowling; (C) Pouring. (D) Dynamic Unscrewing with a dexterous hand; (E) Dual-arm Folding; (F) Orange Juicing - Placing, (G) Orange Juicing - Removal; and (H) Box"
+  },
+  {
+    "paper_id": "crossref:10.1126/scirobotics.adv1818",
+    "title": "Resilient odometry via hierarchical adaptation",
+    "authors": [
+      "Shibo Zhao",
+      "Sifan Zhou",
+      "Yuchen Zhang",
+      "Ji Zhang",
+      "Chen Wang",
+      "Wenshan Wang",
+      "Sebastian Scherer"
+    ],
+    "venue": "Science Robotics",
+    "published_at": "2025-12-10",
+    "source": "crossref",
+    "doi": "10.1126/scirobotics.adv1818",
+    "url": "https://doi.org/10.1126/scirobotics.adv1818",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/scirobotics.adv1818",
+    "robot_type_tags": [
+      "locomotion"
+    ],
+    "paper_type": "direct",
+    "score": 0.6486,
+    "abstract": "Resilient and robust odometry is crucial for autonomous systems operating in complex and dynamic environments. Existing odometry systems often struggle with severe sensory degradations and extreme conditions such as smoke, sandstorms, snow, or low-light conditions, threatening both the safety and functionality of robots. To address these challenges, we present Super Odometry, a sensor fusion framework that dynamically adapts to varying levels of environmental degradation. Super Odometry uses a hierarchical structure to integrate four core modules from lower-level to higher-level adaptability, including adaptive feature selection, adaptive state direction selection, adaptive engine selection, and a learning-based inertial odometry. The inertial odometry, trained on more than 100 hours of heterogeneous robotic platforms, captures comprehensive motion dynamics. Super Odometry elevates the inertial measurement unit to equal importance with camera and light detection and ranging (LiDAR) systems in the sensor fusion framework, providing a reliable fallback when exteroceptive sensors fail. Super Odometry has been validated across 200 kilometers and 800 operational hours on a fleet of aerial, wheeled, and legged robots and under diverse sensor configurations, environmental degradation, and aggressive motion profiles. It marks an important step toward safe and long-term robotic autonomy in all-degraded environments.",
+    "key_figure_path": "figures/f1b8854f78009621c4cbaba8.png",
+    "key_figure_caption": "Fig. 1.Hierarchical Adaptation on Sensor Fusion in Robots.We propose a hierarchical adaptation strategy that initiates"
+  },
+  {
+    "paper_id": "crossref:10.1126/sciadv.aec4252",
+    "title": "Insect-inspired micro-optical antenna enables ultrasensitive multisensory perception",
+    "authors": [
+      "Xitao Tu",
+      "Chen Qian",
+      "Tao Feng",
+      "Yuqi Zhen",
+      "Bowen Cui",
+      "Tiefeng Li",
+      "Limin Tong",
+      "Lei Zhang"
+    ],
+    "venue": "Science Advances",
+    "published_at": "2025-12-12",
+    "source": "crossref",
+    "doi": "10.1126/sciadv.aec4252",
+    "url": "https://doi.org/10.1126/sciadv.aec4252",
+    "pdf_url": "https://www.science.org/doi/pdf/10.1126/sciadv.aec4252",
+    "robot_type_tags": [
+      "flapping_wing",
+      "drone",
+      "mobile_robot"
+    ],
+    "paper_type": "direct",
+    "score": 0.7114,
+    "abstract": "Insects have evolved highly optimized antennae with ultrasensitive tactile, auditory, and olfactory senses. Although imitating insect antennae offers a promising route to achieving advanced sensing abilities, developing a micro-sized artificial antenna with ultrasensitive multisensory perception and integrable with robotic systems remains challenging. Here, we report a bioinspired micro-optical antenna (MOA) comparable to biological antennae in both architecture and functionality, leveraging an optical micro/nanofiber (MNF) encapsulated within a functionalized polymer film for both sensing and signal transmission. By measuring the radiation or absorption of MNF-guided light induced by external stimuli, the MOA achieves ultrasensitive, fast-response, and low-power tactile, auditory, and olfactory sensing. We further demonstrate a lightweight (~0.1 grams) MOA module mounted on a flapping-wing aerial robot and an insect-like ground robot, enabling robotic multisensory perception and autonomous operation. This work may pave the way for miniaturized versatile sensing systems that could be configured for a broad spectrum of technological applications.",
+    "key_figure_path": "figures/crossref_10_1126_sciadv_aec4252_caption_p3.png",
+    "key_figure_caption": "Fig. 1. Bioinspired design and fabrication of an MOA. (A) Schematic illustration of a butterfly featuring an antenna sensory system. The antenna detects multisensory"
+  }
+]

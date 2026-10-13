@@ -1,161 +1,161 @@
 # Paper Radar Digest
 
-## 1. Panoramic Multimodal Semantic Occupancy Prediction for Quadruped Robots
+## 1. TRANS: Terrain-aware Reinforcement Learning for Agile Navigation of Quadruped Robots under Social Interactions
 - Venue: arXiv
-- Published: 2026-03-13
+- Published: 2026-02-13
 - Type: direct
 - Tags: locomotion
-- Score: 0.8567
-- Core insight: 四足全景占据预测的关键不是简单叠加更多相机，而是先补偿步态导致的视角抖动，再让 LiDAR 保持几何主导、热成像和偏振提供条件化语义补充。
-- Problem frame: 车载多视角占据模型假定较稳定的视点；四足平台同时面对低机位、俯仰滚转、全景畸变、遮挡和弱光，单 RGB 难以稳定恢复三维可通行空间。
-- First principles: LiDAR 提供可靠三维几何坐标，RGB、热像和偏振提供互补语义；多模态融合应增强而非覆盖几何锚点。
-- Mechanism: VoxelHound 将各模态编码并投影到 BEV；垂直抖动补偿从图像特征估计位移并以网格采样校正，多模态提示融合以 LiDAR BEV 为 query，将各图像模态压缩为 prompt 后残差调制几何特征。
-- Boundary advanced: 论文提供真实 Go2 采集的 PanoMMOcc：54 段全景 RGB、热像、偏振和 LiDAR 同步序列，覆盖六类户外场景；其中 42 段构成带 12 类语义占据标注的基准。
-- Old problem: 既有占据基准主要服务汽车，多数四足方法是全景 RGB-only；直接拼接异构特征会让语义噪声破坏空间几何一致性。
-- Why it works: 抖动补偿先减少图像到 BEV 变换的步态失配；提示融合不让图像特征直接替换 LiDAR，而是按场景需要选择性调制 LiDAR 表征。
-- True novelty: 贡献不只是网络模块，而是把真实四足、360°全景、热像、偏振与 LiDAR 的语义占据数据集和相应融合基线一起建立起来。
-- Evidence: 在 PanoMMOcc 上，完整 RGB+LiDAR+热像+偏振模型为 23.34 mIoU，超过 EFFOcc-T 的 19.18 和 MonoScene 的 8.94；去掉抖动补偿/提示融合的基线为 22.74，二者同时加入为 23.34。夜间 mIoU 降至 18.68，极暗且远距离区域受 LiDAR 稀疏限制。
+- Score: 0.8521
+- Core insight: TRANS先分别学会无显式地形图的四足运动与社会导航，再以低层身体潜变量把二者融合为适应崎岖地面和行人的统一策略。
+- Problem frame: 传统高层规划与低层步态分离，容易忽略全身约束和地形；端到端方案又依赖高频、噪声敏感且算力昂贵的外感知。
+- First principles: 地形和接触信息可由本体感觉历史隐式推断；把历史 LiDAR 重投影到当前机体坐标系可消去自运动、凸显行人与障碍的相对动态。
+- Mechanism: TRANS-Loco 以特权地形/接触训练 critic、以 10 帧本体感觉训练 actor 的潜变量；TRANS-Nav 以 6 帧变换 LiDAR、目标和前一动作训练 SAC；最终冻结步态模块、拼接低层潜变量并从导航权重暖启动联合微调。
+- Boundary advanced: 从忽略四足执行约束的社会导航，推进到把地形、接触和速度估计隐式送入高层决策的统一策略。
+- Old problem: 原始 LiDAR 把机器人自运动与行人运动混在一起；高层 CoM 规划与低层执行脱节，且模型式方法常假定行人恒速或需要精确状态。
+- Why it works: 变换 LiDAR 形成稳定的相对运动表征，非对称训练让部署 actor 不依赖显式地形图；暖启动、速度阈值和转向平滑项减少卡滞、原地转向与跌倒。
+- True novelty: 核心贡献是变换 LiDAR 社会导航、特权训练的地形潜变量和两阶段统一训练的系统级耦合，而非宣称单一 RL 组件本身全新。
+- Evidence: 500 次仿真测试中，TRANS-Nav 的成功率为 0.972、碰撞率 0.028、超时率 0；统一 TRANS 为 0.976、0.024、0。实机 Go2 测试为平地 3/3、崎岖地 4/5、坡地 3/3、楼梯 6/10 成功。
 
-## 2. Learning Task-Invariant Properties via Dreamer: Enabling Efficient Policy Transfer for Quadruped Robots
+## 2. Domain Adaptation with Adaptive Imagination for Visual Reinforcement Learning under Limited Target Data
 - Venue: arXiv
-- Published: 2026-04-03
-- Type: direct
-- Tags: locomotion
-- Score: 0.8595
-- Core insight: 把接触稳定、地形净空等跨任务且抗动力学变化的属性设为世界模型的显式预测目标，可使四足策略比仅重建观测时更少依赖仿真的特定动力学。
-- Problem frame: 仿真训练的策略会把可变的质量、摩擦和地形细节误当作决策依据；少量真实数据微调又容易让已学表征漂移或遗忘。
-- First principles: 真正应跨场景保留的是任务成功所需的物理不变量，而非全部原始状态；用模拟器的特权信息定义这些不变量，再让只见常规观测的世界模型预测它们。
-- Mechanism: LLM 依据任务描述和特权状态构造任务不变量；Dreamer 的隐状态以附加预测损失学习它们。部署时冻结策略，以仿真—真实混合回放、冻结循环模块和参考模型余弦正则化校准世界模型。
-- Boundary advanced: 工作把四足 sim-to-real 从参数随机化后的直接迁移，推进到可用少量真实轨迹稳定适应，并覆盖阶梯、攀爬、倾斜、匍匐和质量/速度变化。
-- Old problem: 现有世界模型与域适应方法常只压低重建误差或直接预测全部特权状态，既可能保留对动力学细节的依赖，也会在小样本微调时发生表征坍塌。
-- Why it works: 任务不变量将学习压力集中在与成功相关、对动力学扰动较稳健的变量；混合回放维持原分布，参考模型约束新旧隐状态方向一致，从而避免只拟合少量实机数据。
-- True novelty: 新意是把 LLM 生成的任务不变量作为世界模型内部的辅助监督，并将其与冻结策略下的稳定世界模型适应组合，而非让 LLM 直接生成动作或奖励。
-- Evidence: 八个仿真迁移任务平均提升 28.1%。实机 Unitree Go2 每项 10 次试验中，完整方法在阶梯、52 cm 攀爬、倾斜、25 cm 匍匐的成功率为 100%、100%、80%、100%，WMP 基线为 100%、10%、40%、70%；实验还施加了 2 kg 偏置载荷。
-
-## 3. How robot dogs see the unseeable: Improving visual interpretability via peering for exploratory robots
-- Venue: Science Robotics
-- Published: 2026-09-16
+- Published: 2026-06-29
 - Type: direct
 - Tags: none
-- Score: 0.845
-- Core insight: 面对枝叶等部分遮挡，主动横移相机并进行光学合成孔径积分，比强行从遮挡多视图重建三维更直接：它让近景遮挡失焦、背景在合焦面上累积。
-- Problem frame: 机器人常用小光圈固定焦距以保证大景深，却因此把遮挡物和背景都拍清；多视图重建又依赖跨帧稳定特征，随机遮挡恰好破坏这一前提。
-- First principles: 横向位移产生视差；将不同位姿的图像投影并平均到指定合成焦平面，等价于扩大光学孔径，使焦面外遮挡在积分后被模糊。
-- Mechanism: ANYmal 在数厘米范围内执行旋转、横移或对角 peering，利用本体状态估计相机位姿；GPU 将图像投影到平面、圆柱或球形焦面并平均，必要时再用植被或深度线索掩蔽遮挡像素。
-- Boundary advanced: 系统将主动感知从运动视差深度估计推进到遮挡抑制，支持 RGB 和近红外等波段，且可由已有相机和运动能力实现。
-- Old problem: SfM、NeRF、VGGT、Depth Anything v3 等在实验中主要重建前景遮挡物，无法可靠恢复随机被遮挡的背景。
-- Why it works: 该方法不要求同一背景特征在每帧可见；只要背景会在不同视角透过部分空隙出现，其投影就会在焦面累积，而近景遮挡难以共焦。
-- True novelty: 新意是将昆虫侧向 peering 与可实时的光学合成孔径联系起来，并把产出的低遮挡图像作为多模态视觉模型推理的前处理，而不是让模型猜补遮挡部分。
-- Evidence: 11 cm 轨迹上的 300 张 RGB 图像，合成孔径积分在 1080² 分辨率下约需 17 ms；同一数据上 SfM/NeRF 约需 5–6 小时、VGGT/DA3 约需 7–15 分钟且未恢复背景。语言视觉模型的结果是定性示例，未给出大规模识别统计。
+- Score: 0.835
+- Core insight: AIDA在源域低维状态、目标域像素观测且仅有少量离线目标轨迹时，用按状态截断的“想象”轨迹补足适配监督。
+- Problem frame: 视觉 sim-to-real 的观测分布偏移在目标数据稀缺、又禁止继续目标域交互时会使既有域适配明显失效。
+- First principles: 冻结的源域动力学和策略可从目标图像反演的状态生成未来状态，但滚动越长，模型误差和脱离目标流形的风险越高。
+- Mechanism: 先训练源域状态策略与动力学；再以三分类判别器区分源、目标反演和想象转移，低于目标相似度阈值即停止滚动，并在保留的状态上施加 state→image→state 自一致损失。
+- Boundary advanced: 将仅依赖真实少量样本或固定长度想象的适配，推进为面向策略可达状态、逐状态决定长度的多步合成监督。
+- Old problem: 固定想象长度要么数据增益太少，要么把偏离流形的伪转移送入训练；二分类判别器还会把双域之外状态误判为中等可信。
+- Why it works: 显式的 imagined 类别识别 OOD 滚动，门控剔除低可信样本；余下轨迹提供与当前策略相关的密集视觉—状态约束。
+- True novelty: 关键不是单独使用世界模型，而是把三分类可靠性门控与策略条件的多步自一致监督组合到低数据跨模态适配中。
+- Evidence: 在 5 个 MuJoCo 和 2 个 Gymnasium-Robotics 任务、每项 3 个随机种子上，AIDA 在 7 项中均取得最低状态 RMSE、在 6 项中最高回报比；Hopper 消融显示固定 0/5/10/20 步均不及自适应截断。
 
-## 4. Whisker-based tactile flight for tiny drones
-- Venue: Nature Communications
-- Published: 2026-09-18
-- Type: direct
-- Tags: mobile_robot
-- Score: 0.79
-- Core insight: 对 44.1 g 微型无人机而言，柔性触须不仅是碰撞开关；若能校正气流漂移并从触须弯曲持续估计深度，它可成为黑暗和透明障碍环境中的轻量级近距测距系统。
-- Problem frame: 微型飞行器没有足够载荷、功耗或算力部署可靠视觉/LiDAR，而接触又会施加力矩、气流漂移和触须迟滞，可能使飞行器失稳。
-- First principles: 将触须接触位置转换为基部压力模式，再把瞬时传感估计与飞行运动模型融合；结构朝向应把接触力矩由难补偿的偏航转为较易控制的俯仰分量。
-- Mechanism: 双触须各使用三枚气压计；45°前向布置降低偏航不稳。在线漂移补偿仅在无接触段更新，MLP 预测接触深度，卡尔曼滤波器结合过程模型输出稳定的左右深度和墙面方向，再驱动壁面跟随与 GPIS 探索。
-- Boundary advanced: 作者在 192 KB RAM 的 MCU 上实现了从触觉处理、避障、沿墙、表面跟随到受限空间探索的完整机载链条，算法实际占用约 34 KB。
-- Old problem: 已有微型接触导航多为二值 bumper 或间歇撞击；单纯温度校正或带通滤波会留下假接触，飞行中也难靠静态力—形变标定获得距离。
-- Why it works: 连续接触深度给控制器留出 60–100 mm 的安全距离；混合模型把气流、摩擦、振动和滞后从单次传感器估计中分离，角点惩罚避免探索朝凹角撞入。
-- True novelty: 创新在于把克级触须硬件、在线漂移补偿、毫米级触觉测距和全机载的飞行/探索行为连成闭环，而不是只演示单次接触检测。
-- Evidence: 在线漂移补偿的自由飞行假阳性率为 0%，带通滤波和一次起飞校准分别为 38.24% 和 12.23%。完整 MLP+KF 在白板上的左右触须 MAE 为 4.23/4.72 mm，在玻璃上为 5.91/5.38 mm；两种三面玻璃墙设置各完成 5/5 次目标抵达。
-
-## 5. Self-regulated reversal deformation and locomotion of structurally homogenous hydrogels subjected to constant light illumination
-- Venue: Nature Communications
-- Published: 2024-02-24
-- Type: direct
-- Tags: soft_robot
-- Score: 0.5036
-- Core insight: 均质水凝胶也能在恒定光照下自行反向变形：只要把两种光致异构速率不同、总电荷变化方向相反的 spiropyran 共聚到同一网络中，就可把分子级电荷先降后升放大为先收缩后膨胀。
-- Problem frame: 水凝胶要获得双向形变通常依赖预制的层状/梯度结构，或需要不断切换光场；两者都把智能性放在外部结构和操控上。
-- First principles: 网络总电荷下降会降低亲水性并排水收缩，随后总电荷上升会吸水膨胀；单侧光的时间穿透差则把这一体积序列转化为厚度方向的应变梯度反转。
-- Mechanism: 快速异构的 MCH1 与慢速异构的 MCH2 在恒光下依次改变电荷，均质网络经历正—中性—负的总电荷状态；薄膜上下层受光时序不同而先正弯、后负弯，O 形环则因重心先左后右移动而自动反向滚动。
-- Boundary advanced: 论文从单一单调的光弯曲，推进到恒定单侧 450 nm 光照下的双向弯曲、鱼尾/花瓣等临时形态及无需人工换向的反向滚动。
-- Old problem: 单组分光响应水凝胶在同一刺激下通常只会单调弯曲再变平；双向动作常需异质层、空间不均匀刺激或人为时序切换。
-- Why it works: 混合后两组分不是简单叠加，而是彼此中和/改变总净电荷；光在厚度中的延迟使上下层进入同一分子状态的时间错开，从而产生反向曲率。
-- True novelty: 核心新意是利用共存分子的异步、相反电荷动力学来编程非单调运动，形态本身在制备时保持均质。
-- Evidence: 单组分 MCH1/MCH2 对照分别单调膨胀/收缩，混合网络则先收缩后膨胀；MCH(1+2)、MCH(3+2) 等组合都复现双向弯曲，混合比例、pH、接枝密度和光强均可调。星形样品完成八次循环且未见明显衰减，但每轮需在酸性水中避光约 8 小时完全复位。
-
-## 6. Outplaying elite table tennis players with an autonomous robot
-- Venue: Nature
-- Published: 2026-04-22
-- Type: direct
-- Tags: mobile_robot
-- Score: 0.8875
-- Core insight: 要在高水平乒乓球中赢球，关键不是单独提高击球器速度，而是把低延迟三维位置和旋转观测、带噪声 sim-to-real 策略及硬安全轨迹生成压缩到同一反应闭环。
-- Problem frame: 职业级来球速度超过 20 m/s、旋转可达约 1,000 rad/s，回合间隔常低于 0.5 s；机器人既必须估对球，又必须在极短时间内生成不碰桌、不自碰的全身轨迹。
-- First principles: 控制所需的是球的状态及其不确定度，而不是高分辨率图像本身；将学习策略的抽象动作投影到受硬约束的轨迹空间，可把快速反应与安全性解耦。
-- Mechanism: 九台 APS 相机以 200 Hz 三角化球位置，三个事件相机云台系统估计旋转；SAC 策略在仿真中由真实状态 critic 与带噪历史观测 actor 非对称训练，输出的 32 ms 目标经优化形成 1 kHz 安全片段，并始终预计算安全复位轨迹。
-- Boundary advanced: Ace 在未简化球台、器材和击球空间的条件下，完成了与精英及职业选手的实战；其结果超过过去只面对发球机、限定区域或忽略旋转的乒乓机器人。
-- Old problem: 先前方法常手工规定击球点、来球轨迹、接触状态或动作模板，难同时覆盖高速旋转、对手变化和机器人全工作空间的碰撞约束。
-- Why it works: APS 提供低延迟位置，事件视觉补足高速旋转；策略库在不同出球技能间切换，约束优化和 reset trajectory 将探索性策略输出变成可执行且始终存在退路的机器人动作。
-- True novelty: 真正新意是感知、sim-to-real RL、全尺寸八自由度硬件和实时安全轨迹的系统集成，而非单一视觉模型或单一击球控制器。
-- Evidence: 对五名精英选手，Ace 赢下 3/5 场、13 局中的 7 局；对两名职业选手则输掉两场，仅赢 7 局中的 1 局。它对不超过 14 m/s 来球保持稳定回球，对不超过 450 rad/s 的旋转回球率超过 75%；网球擦网后 49 ms 已与无擦网反事实轨迹分叉并成功回击。
-
-## 7. Cyborg insect factory: automatic assembly for insect-computer hybrid robot via vision-guided robotic arm manipulation of custom bipolar electrodes
-- Venue: Nature Communications
-- Published: 2025-07-28
-- Type: direct
-- Tags: none
-- Score: 0.5468
-- Core insight: 昆虫混合机器人的瓶颈不只是能否刺激转向，而是能否稳定、快速、按个体尺寸定位地装配；将电极、视觉分割、夹具与机械臂共同设计，能把高技能手术转为可复制流程。
-- Problem frame: 蟑螂个体形状和尺寸变化大、组织柔软而脆弱，人工植入约需 15 分钟且强依赖操作者；装配误差会直接转化为控制不对称和部署不可扩展。
-- First principles: 要规模化，先选择对电极植入和视觉定位都更友好的组织界面，再用几何基准点而非固定坐标适配个体差异。
-- Mechanism: 带微针和挂钩的双极电极植入前胸背板—中胸之间的节间膜；夹具抬起背板暴露膜，TransUNet 分割前胸背板并求后缘中点，UR3e 按安全俯仰角把带微控制器的背包植入、挂扣和释放。
-- Boundary advanced: 该系统把单只组装缩至 68 秒，并使自动装配后的昆虫保持与人工装配相近的转向、减速和多体覆盖能力。
-- Old problem: 天线和腹部虽然可用于刺激，但太细小、脆弱或难自动植入；手工安装不仅慢，也让刺激电极位置随操作者变化。
-- Why it works: 节间膜较易暴露，电极的低阻抗和自锁挂钩改善刺激与固定；视觉基准点补偿个体平移和尺寸差异，夹具和受限安装角减少碰撞。
-- True novelty: 贡献是从电极材料/刺激位点到视觉引导装配、再到混合机器人性能的端到端制造验证，而非只将机械臂用于昆虫固定。
-- Evidence: TransUNet 分割取得 mIoU 0.9326、mDSC 0.9650。5.0–5.5 cm 与 5.5–6.0 cm 个体的装配成功率为 80.0%/86.7%，但最大组别仅 13.0%。五只自动装配样本的平均转向角为 70.9°/79.5°，速度由 6.3 降至 2.0 cm/s；四只在障碍户外地形中 10 分 31 秒覆盖 80.25%。
-
-## 8. A self-organizing robotic aggregate using solid and liquid-like collective states
-- Venue: Science Robotics
-- Published: 2024-01-24
-- Type: direct
-- Tags: swarm_robot
-- Score: 0.622
-- Core insight: 由可拆装的刚性模块组成的聚集体，若把磁耦合、摩擦和局部电机反馈共同设计，就能在不重连拓扑的情况下切换为液体般可塑、固体般弹性或自振荡的形态材料。
-- Problem frame: 模块机器人常因刚性锁定而难连续变形，软体机器人又难建模和扩展，普通群体则缺少整体刚度；三者之间需要一种可调的集体力学状态。
-- First principles: 整体柔顺性不必来自软单元，而可来自松耦合、摩擦阈值和局部反馈；改变每个模块的有效阻尼、偏置和位置刚度即可改变聚集体的等效本构行为。
-- Mechanism: 每个齿轮状单元以一个主动旋转磁体驱动、一个自由磁体与邻居耦合；开环偏置使其像主动液体一样不可逆重排，编码器闭环则形成粘塑性/弹性/自振荡固态，并可经纯机械耦合自组织步态。
-- Boundary advanced: Granulobots 演示了自装配、形态重排、分离再组合、越障和多种去中心化步态，连接了模块机器人、主动颗粒物质和软体机器人的能力边界。
-- Old problem: 传统模块化系统通常要断开—移动—重新连接才能改形；群体机器人则多为低密度、流体式集合，难获得可保持的整体刚度。
-- Why it works: 磁力提供可传递扭矩且允许过载脱开，摩擦在无功率时维持结构；局部 PD 参数决定单元的负载响应，环境机械反馈因此可在无显式通信下协调全体。
-- True novelty: 新意不是某个特定 gait，而是证明同一最小单元和控制律可以连续生成主动液体、粘塑固体和自振固体等集体状态。
-- Evidence: 论文给出单元自装配、形态重排和脱离的实机演示；对 8–10 单元闭链测得液体般的近似应变无关响应、粘塑滞回和自振弹性响应，并以 8 单元相位驱动越障、6/8 单元自组织与 leader-follower gait 展示运动。未报告统一的地形成功率基准。
-
-## 9. Leveraging design for collective phototaxis in morphological swarm robotics
-- Venue: Nature Communications
-- Published: 2026-09-16
-- Type: direct
-- Tags: wearable_robot, swarm_robot
-- Score: 0.6675
-- Core insight: 在不能靠单个机器人停驻完成任务的条件下，群体能否聚到光区取决于碰撞后的身体转向方式；恰当的反自对齐形态会通过碰撞降速触发类似 MIPS 的集体聚集。
-- Problem frame: 群体形态通常被视作控制的辅助，但当任务依赖拥挤、碰撞和局部速度变化时，形态与控制策略不可分开优化。
-- First principles: 若局部密度升高会进一步降低有效速度，就会形成正反馈：慢区更易积累个体、积累又产生更多碰撞；形态决定碰撞是让个体散开还是继续卡在一起。
-- Mechanism: 64 个 Kilobot 加装不同三脚外骨骼；aligner 受力后沿力方向重定向，fronter 则逆向重定向。两者在暗区运行、进入亮区后有效速度约降为三分之一，fronter 的碰撞会形成并维持聚集核。
-- Boundary advanced: 论文证明形态能改变群体完成同一光趋性任务的机制：从边界处停驻形成墙，变成依赖非零有效速度与碰撞诱发相分离的集体通路。
-- Old problem: 此前允许停下的 stop-and-run 任务中，单体也可完成光趋性，难以区分形态究竟改善的是单体行为还是集体现象。
-- Why it works: fronter 碰撞后趋向接触点，局部速度显著降低，亮区中稍高的初始密度足以成为聚集核；aligner 则在碰撞后趋同并逃散，不能建立同样的正反馈。
-- True novelty: 创新是用真实机器人把主动物质中的相分离/自对齐理论转化为可设计的群体机器人形态参数，并展示过强的同一参数反而会失败。
-- Evidence: 四次独立实机运行中，fronter 在光区的稳态占比约为 0.4，而 aligner 约为 0.16，接近独立随机探索的预期。仿真扫过自对齐强度后只在负自对齐的窄甜点区成功；过强负自对齐会在暗区形成微团，强正自对齐会形成集体同向运动。
-
-## 10. A foldable small-scale soft electromagnetic robot for multimodal navigation in confined and unstructured environments
+## 3. Learning for micro-scale mechano-flow co-manipulation
 - Venue: Nature Communications
 - Published: 2026-09-21
 - Type: direct
-- Tags: soft_robot
-- Score: 0.6675
-- Core insight: 同一套六辐软电磁形态可通过驱动时序在站立与卧倒之间切换，使高速滚动、步行、爬行、转向、跳跃和水下运动不必依赖额外的重构机构。
-- Problem frame: 小型软体机器人通常在速度、可折叠体积、地形适应和多模态运动之间互相牺牲，尤其难同时应对胃褶皱、黏液和狭窄开口。
-- First principles: 柔顺结构可将洛伦兹力做功同时储为应变能与动能；六辐形态在近圆滚动、低接触面积、可折叠和多模块独立驱动之间取得折中。
-- Mechanism: 六个嵌入液态金属通道的弹性体模块在静态磁场中受独立电流驱动；PWM 顺序决定弯曲、扭转和模块配对方式，进而产生两种姿态和多种运动模式。
-- Boundary advanced: 该系统把一个 3.84 g 软机器人推进到九种运动/姿态组合，可折叠后以原体积 21% 通过狭窄空间，再在水中释放展开。
-- Old problem: 现有高速滚动软体机器人常只有单一运动模式，爬行、游动与跳跃装置又通常为各自独立的专用设计，难在不规则环境中快速转换。
-- Why it works: 站立姿态用于高速滚动和步行，卧倒姿态用于六向爬行和原地旋转；软模块的快速变形降低启动时间，辐条滚动又减少黏性表面的接触面积。
-- True novelty: 贡献不只是报告高速度，而是在同一静态磁场和六模块结构下，实证了形态切换、折叠释放、陆水两栖和多种复杂表面通行。
-- Evidence: 峰值滚动为 818 mm/s（26 body lengths/s），但 60 Hz 单一高频驱动连续成功率仅 10%；混合驱动将成功率提高到 80%、速度 698 mm/s。机器人可从 31.5 mm 直径折到 14.5 mm，通过 26 mm 高通道；还演示了凝胶、黏性液体、3D 胃模型及离体猪胃内导航与释药。
+- Tags: manipulation
+- Score: 0.605
+- Core insight: 将气液界面的可编程水流作为操控柔性微物体的无形手：FlowNet 从 CFD 学习快速预测和反推时空流场，以多入口叠加形成轨迹和流体吸引子。
+- Problem frame: 微尺度下表面张力、黏附、范德华力和静电力压过重力，薄软物易被夹爪损伤；水面流速难逐点量化，CFD 太慢，难以实时将流量/时长映射为位姿控制。
+- First principles: 水面使浮物竖直方向近似力平衡、平面扰动受抑，操控可降为二维；入口流量和时长决定界面速度矢量场，物体经剪切、拖曳与表面张力耦合运动。
+- Mechanism: 以 Ansys Fluent 生成界面 CFD 数据；扩展 PointNet 将连续时空流场编码，D 分支按任意坐标预测下一时刻速度，F 分支反推输入流量；再变换并线性叠加单入口预测场，驱动浮萍和柔性神经电极。
+- Boundary advanced: 把非接触微操从“吹动微粒”推进到定量多入口轨迹跟踪、亚毫米稳定极限环及薄带状神经电极的位移/姿态控制。
+- Old problem: 传统微夹爪会挤压脆弱对象，外场方案常需材料掺杂或表面改性；自由形变微结构又缺少将目标流场快速转为执行输入的模型。
+- Why it works: 界面提供二维约束，流体吸引子给出径向恢复力；连续隐式场代替逐轮 CFD，兼顾局部高分辨率查询与反向流量估计，使预设流场可驱动轻质、近似被动示踪物。
+- True novelty: 亮点不是水流驱动本身，而是把 CFD、连续坐标矢量场预测和输入反演接为双向学习控制层，再以单入口场变换/叠加构建多入口操控。
+- Evidence: 四口椭圆轨迹在 6/8/10 ml/min 下的欧氏 RMSE 为 0.47/0.85/0.65 mm，径向 RMSE 为 0.56/1.06/0.70 mm；速度幅值容差 0.4 mm/s 时 FlowNet 准确率逾 90%，5 次迭代全场预测约 12.2 ms。指标来自仿真训练与开放环、纯水容器实验。
+
+## 4. A bioinspired self-powered optical tactile sensing system with ultrahigh sensitivity and ultralow detection limit
+- Venue: Nature Communications
+- Published: 2025-11-26
+- Type: direct
+- Tags: none
+- Score: 0.6393
+- Core insight: 以电容分压把微小压力转换为亮度，而非直接依赖机械发光；R-TENG 驱动 ACEL，实现自供能、抗电磁干扰的可视触觉输出。
+- Problem frame: 电子触觉依赖线路与解码且受 EMI 影响；机械致发光通常需 MPa 级压力、亮度不足，难用于轻触和环境光反馈。
+- First principles: 压力使软电容传感器电容上升，提升 ACEL 分得的电压；ACEL 电场激发荧光体热电子并发光，光信号规避电学传输干扰。
+- Mechanism: ECOFLEX 介电层和 PDMS/MWCNT 电极构成软 CPS，R-TENG 供交流高压驱动 ZnS ACEL；压力升高即亮度增强，3×3 cm、200 μm 光单元降低无载基线；CCD 以工作/参考光单元比值校正漂移。
+- Boundary advanced: 将轻触压力推进到可直接看见的光学读出，并在遥操作机器人手上演示易碎物抓取。
+- Old problem: 单独 CPS 电测受 EMI 限制，文中检测阈值约 5 kPa；ACEL 本身缺触觉输入且常依赖外部供电。
+- Why it works: 阻抗匹配和近零亮度基线放大相对变化，光传输提升低压信噪比，参考单元缓解动态亮度漂移。
+- True novelty: 并非复刻夜光藻化学，而是以 CPS–TENG–ACEL 的机电光系统模拟其转导链，将自供能光输出与 10 Pa 级检测结合。
+- Evidence: 作者报告 1 kPa 以下相对亮度灵敏度 22.4 kPa⁻¹、光学检测下限 10 Pa、范围 0.01–100 kPa；响应/恢复为 67/80 ms，CPS 压缩 1200 次稳定，ACEL 弯折 1500 次后保留逾 95% 亮度，并演示遥操作抓蛋。
+
+## 5. The undulating tripod gait as a model of the locomotion of walking fish
+- Venue: Nature Communications
+- Published: 2026-06-02
+- Type: direct
+- Tags: none
+- Score: 0.5975
+- Core insight: 作者把多种步行鱼的趋同陆行策略归约为“三段轴向波动＋左右交替前端支撑”的最小力学模板，并用仿真和实体机器人验证其可行性。
+- Problem frame: 以轴向或附肢分类只能描述外观，难解释形态差异很大的鱼为何重复出现相似陆行模式，也难在活体中单独操控形态和相位。
+- First principles: 交替前端支撑提供枢轴，后部轴向弯曲通过摩擦和重力产生地面反作用力；频率、弯曲幅值和支撑—躯干相位共同决定速度与方向。
+- Mechanism: 将身体抽象为三个刚段、两个偏航关节和一个左右交替着地的前端刚梁；以灰多鳍鱼的 2:4:5 段长、θ2 幅值 1.5 rad/相位 π/2、θ3 幅值 2.1 rad/相位 π 驱动仿真与三段实体机器人。
+- Boundary advanced: 从物种特异的运动学描述推进到能系统改变频率、相位、幅值、体段比例和摩擦条件的可预测力学模型。
+- Old problem: 单看身体形态或鳍的运动无法分离支撑、后部推进和摩擦的因果作用，也无法检验反事实的身体比例与步态参数。
+- Why it works: 当前端支撑交替固定时，恰当相位的头、尾摆动让身体绕支点前移；三段结构保留了必要的推进几何，而适度滑移避免刚性支撑导致翻滚。
+- True novelty: 贡献不只是造一台鱼形机器人，而是提出并检验 undulating tripod gait 这一跨类群的最小机械解释框架。
+- Evidence: 比较肺鱼、多鳍鱼、鲶鱼、蛇头鱼和杜父鱼后，均见交替支撑及近似保守的两关节相位关系。仿真中实测多鳍鱼参数给出最高前进速度；两段模型的最高速度仅为三段模型的 6.1%。实体机器人也在相同参数附近最快，并揭示摩擦过高会翻滚、过低会打滑。
+
+## 6. From ball to rover: Transformable palm-sized rover SORA-Q for autonomous lunar exploration
+- Venue: Science Robotics
+- Published: 2026-06-10
+- Type: direct
+- Tags: hard_to_instrument, space_robot
+- Score: 0.7875
+- Core insight: 将收纳/展开、软土行走、低带宽自主任务整合为仅两电机的微型月面系统，并完成真实月面演示。
+- Problem frame: 百克级月球车受轮径、功耗、松散月壤、算力和失联限制，传统大车与地面遥控方案难以迁移。
+- First principles: 缩小轮径会降低越障与牵引；松散月壤使中心转轮易陷；链路只容少量图像，故机构、自治与信息筛选必须协同设计。
+- Mechanism: 78 mm、228 g 球形机体以轴-键槽解锁和弹簧展开半球轮、相机头和尾撑；偏心轮抬升机身增牵引，两个轮电机复用为展开、差速转向和行驶；FSM 闭环相机定位、选图及 IMU/编码器故障恢复。
+- Boundary advanced: 把玩具式变形机构、低功耗控制、视觉定位、任务导向选图和中继通信贯通为可飞行的月面系统。
+- Old problem: 既有可展开车常需额外执行器，纯被动扩轮依赖地形；微型车又常假设持续通信和较高计算资源。
+- Why it works: 展开后结构固定且不依赖地表；偏心轮改善软土脱困；视觉检测同时服务相对定位与带宽受限下的图像评分；状态机覆盖可预见异常。
+- True novelty: 亮点是同一轮电机兼顾变形和运动，并在真实月面以任务闭环验证极小型车的无遥控自治，而非提出通用导航模型。
+- Evidence: 2024 年随 SLIM 任务月面运行：约 7 分钟经中继回传 12 张候选中评分最高的 2 张图；约 108 分钟内执行 240 次着陆器检测并记录两次姿态异常后的恢复；平地约 24 m 里程为轮地模型估计，非直接测量。
+
+## 7. A nanoscale robotic cleaner
+- Venue: Nature Communications
+- Published: 2026-03-27
+- Type: direct
+- Tags: none
+- Score: 0.5751
+- Core insight: 单个等离激元定向天线在同一亚微米机器人上同时产生光子反冲推进和线偏振自定向，从而以偏振序列完成可编程扫描与细菌清扫。
+- Problem frame: 纳米机器人即使能获得单向光推力，也会被布朗旋转破坏航向；多光束主动稳定或紧聚焦捕获又会增加系统复杂度和光损伤风险。
+- First principles: 非对称散射传递线动量产生推力；各向异性金纳米棒在线偏振下产生与 sin(2θ) 相关的回复力矩；局部温度梯度可经热泳吸引细菌。
+- Mechanism: 将金纳米棒马达嵌入 920 nm、0.26 pg 的透明二氧化硅圆盘；水平/垂直线偏振负责平移，短圆偏振脉冲借自旋—动量转移选定转向；近场捕获和长程热泳共同收集、运输并在关光后释放细菌。
+- Boundary advanced: 以牺牲任意连续转向为代价，从多场主动控制的微型光驱动器推进到单马达、亚微米、被动航向锁定的二维扫描器。
+- Old problem: 定向散射自身不能抑制布朗旋转；光镊通常需要高强度局部焦点且一次主要操纵单个细菌。
+- Why it works: 同一结构把最大推力方向与稳定取向耦合，高速缩短布朗扰动积累时间；温和局部加热形成远程热泳势阱以提高批量收集吞吐。
+- True novelty: 真正的新意是将推进、被动取向锁定和离散偏振编程共设计进一个亚微米等离激元马达，而非单独的光推力或细菌捕获。
+- Evidence: 纳米机器人最高速度达 50 μm/s，展示矩形、EP5 字符和螺旋扫描；可携带数百倍自身质量的细菌负载，收集、运输并可逆释放混合细菌。作者估算局部升温低于 10 K，所用强度约低于传统细菌光镊两个数量级。
+
+## 8. Performant robotic manipulation with real-world reinforcement learning
+- Venue: Science Robotics
+- Published: 2026-07-22
+- Type: direct
+- Tags: none
+- Score: 0.72
+- Core insight: 将扩散视觉运动策略视为可后训练的行为先验：统一保守 PPO 目标贯穿离线与真机在线强化学习，并以一致性蒸馏将多步生成压缩为一步高频控制。
+- Problem frame: 遥操作示范昂贵且带有保守偏差；纯模仿有性能上限，直接真机 RL 受样本、安全、分布漂移和扩散多步去噪延迟限制。
+- First principles: 一条环境动作由多个去噪步骤生成，可视作两层 MDP 并将环境级优势分配给各去噪步骤；在行为先验附近做裁剪更新可换取真机稳定改进。
+- Mechanism: 先以 RGB/点云遥操作数据训练扩散先验；离线阶段结合 IQL 价值、学习转移模型与 AM-Q/OPE 门控执行逐步 PPO 更新、滚动采样和重训；末段真机 GAE 更新，再把 10 步 DDIM 蒸馏为一步控制器。
+- Boundary advanced: 将真机 RL 扩展到刚体、流体/颗粒、柔性布料、精密旋拧、双臂折盒和服务型榨汁等八类任务，并同时检查成功率、时间、扰动与持续运行。
+- Old problem: 既有方法要么受示范策略束缚，要么只在最终动作层做 RL 并在离线/在线切换时失稳；多步扩散策略难高频部署。
+- Why it works: 示范把探索锚定在可行动作流形，OPE 门控的裁剪更新抑制离线价值外推，滚动数据增多有效行为；逐步信用分配优化扩散链，一步蒸馏解决推理时延。
+- True novelty: 不只是在机器人上微调 RL，而是在扩散采样链中定义统一 PPO 比率与优势、连续约束离线到在线后训练，并把部署频率纳入同一训练链。
+- Evidence: 作者预设协议下报告八任务合计 1000/1000 试验；离线阶段平均成功率 91.8%，对比 DP3 为 67.8%；零样本变换平均 90.0%、扰动平均 96.0%，商场榨汁零样本连续约 7 小时无失败。证据来自自建受控任务和协议，不能等同开放世界泛化。
+
+## 9. Resilient odometry via hierarchical adaptation
+- Venue: Science Robotics
+- Published: 2025-12-10
+- Type: direct
+- Tags: locomotion
+- Score: 0.6486
+- Core insight: 传感器融合不应恒定相加，而应按退化程度、状态方向和因子质量逐级重构，并将学习式 IMU 作为与相机、LiDAR 并列的后备估计器。
+- Problem frame: 烟雾、黑暗和长走廊会令多模态传感器同时或方向性退化；固定参数、全量融合的高斯噪声假设失效，造成错误关联、漂移和高计算代价。
+- First principles: 不同退化损失不同状态约束，须保留可靠特征和轴向信息；外感知正常时可监督 IMU，外感知失效时 IMU 应提供运动先验和状态估计。
+- Mechanism: 四层依次为特征协方差筛选、方向可观测性分析、因子/引擎选择和学习式 IMU 里程计；ResNet+LSTM 多头 IMU 网络输出速度与协方差，LoRA 在线适配，和因子图进行双向、按轴软融合。
+- Boundary advanced: 从单模态鲁棒性扩展到烟雾等完全退化，并在空中、轮式、腿式和手持平台上验证。
+- Old problem: 以往融合常把 IMU 仅当预积分，并假定冗余观测平均后会更准；多传感器异常时该假设反而放大污染量测。
+- Why it works: 在弱可观测轴上引入互补模态、持续低贡献时排除失效因子；轻量修正优先、复杂回退后置，平时保有效率，极端时由已校正 IMU 接管。
+- True novelty: 新意在自监督、双向的分层重构，而非单一里程计网络：因子图给 IMU 免费姿态监督，IMU 再以不确定性加权的运动先验反哺融合。
+- Evidence: 文中 2966 m、46 分钟、13 类退化单次路线末端漂移 0.2 m（0.006%，无回环）；668 m 走廊以最高 5 m/s 运行；600 秒传感器遮挡最大 ATE 为 0.184 m；SubT-MRS 实时平均 ATE 为 0.271，作者称较次优低 54%。
+
+## 10. Insect-inspired micro-optical antenna enables ultrasensitive multisensory perception
+- Venue: Science Advances
+- Published: 2025-12-12
+- Type: direct
+- Tags: flapping_wing, drone, mobile_robot
+- Score: 0.7114
+- Core insight: 一根包覆功能聚合物膜的微纳光纤同时充当感受器和信号传输线，以波长与频率维度解耦触觉、听觉和嗅觉。
+- Problem frame: 昆虫尺度机器人需要极轻、低功耗且多模态的感知，但电子微型化常带来电阻、RC 延迟、噪声和串扰，现有仿触角器件也难兼顾集成。
+- First principles: 微纳光纤的大倏逝场会把弯曲转为辐射损耗、把化学吸收转为谱损耗；柔性悬臂与功能膜分别放大机械刺激和选择性化学响应。
+- Mechanism: 表面张力制备约 100 μm、约 1 mg 的环形微纳光纤—聚合物触角；PDMS 膜用于力、气流、温度和声振动，Nafion-BTB 膜以吸收变化检测氨，850 nm 机械通道与 650 nm 化学通道配合频域分析实现解耦。
+- Boundary advanced: 从分立、电子式或单模态微传感器，推进到单一光学结构的同时多感知及机器人闭环控制。
+- Old problem: 微型多传感系统通常需要多器件、多线路和复杂标定，既难承载于扑翼平台，也易在多刺激同时出现时串扰。
+- Why it works: 光纤低损耗、抗电磁干扰；不同刺激占据不同的光学损耗机制、波长或频率，因此可由同一输出谱分离。
+- True novelty: 将光纤的传感和传输角色合一，并把材料选择、谱分离和飞行/地面机器人动作闭环整合为可工作的“人工触角”。
+- Evidence: 最薄纤维的力灵敏度为 5.7%/nN、估算分辨率 14.1 pN；温度灵敏度 20.6%/°C、分辨率 0.004°C；声学覆盖 10 Hz 至 10 MHz；氨检出限 28 ppb、响应 80 ms。单器件同时检测 8 μN、9 Hz 与 60 ppm 氨，并驱动蝴蝶机器人起飞或在氨阈值触发后制动降落。

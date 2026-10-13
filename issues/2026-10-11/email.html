@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<body style="margin:0;padding:0;background:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#101828;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f5f7fb;padding:32px 16px;">
+    <tr><td align="center">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:720px;background:#ffffff;border-radius:18px;padding:28px 28px 18px;border:1px solid #e4e7ec;">
+        <tr><td>
+          <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#475467;margin-bottom:10px;">Paper Radar · Weekly Digest</div>
+          <div style="font-size:28px;line-height:1.2;font-weight:650;color:#101828;margin-bottom:12px;">具身智能/感知精选 10 篇</div>
+          <div style="font-size:15px;line-height:1.7;color:#344054;margin-bottom:18px;">
+            本期追问同一个问题：具身系统如何把不可靠的物理信号转成可验证的行动？。
+          </div>
+          <a href="digest.html" style="display:inline-block;background:#0f766e;color:#ffffff;text-decoration:none;padding:12px 16px;border-radius:999px;font-size:14px;font-weight:600;margin-bottom:18px;">打开本期交互网页</a>
+        </td></tr>
+        
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#01 · Tier 1 旗舰正式论文 · Science Robotics · 2026-07-22</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Performant robotic manipulation with real-world reinforcement learning</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对遥操作示范昂贵且带有保守偏差；纯模仿有性能上限，直接真机 RL 受样本、安全、分布漂移和扩散多步去噪延迟限制，论文通过先以 RGB/点云遥操作数据训练扩散先验，离线阶段结合 IQL 价值、学习转移模型与 AM-Q/OPE 门控执行逐步 PPO 更新、滚动采样和重训，并验证预设协议下报告八任务合计 1000/1000 试验，离线阶段平均成功率 91.8%。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#02 · Tier 1 旗舰正式论文 · Science Robotics · 2026-06-10</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">From ball to rover: Transformable palm-sized rover SORA-Q for autonomous lunar exploration</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对百克级月球车受轮径、功耗、松散月壤、算力和失联限制，传统大车与地面遥控方案难以迁移，论文通过78 mm、228 g 球形机体以轴-键槽解锁和弹簧展开半球轮、相机头和尾撑，偏心轮抬升机身增牵引，并验证2024 年随 SLIM 任务月面运行：约 7 分钟经中继回传 12 张候选中评分最高的 2 张图。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#03 · Tier 1 旗舰正式论文 · Science Robotics · 2025-12-10</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Resilient odometry via hierarchical adaptation</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对烟雾、黑暗和长走廊会令多模态传感器同时或方向性退化，论文通过四层依次为特征协方差筛选、方向可观测性分析、因子/引擎选择和学习式 IMU 里程计，ResNet+LSTM 多头 IMU 网络输出速度与协方差，并验证文中 2966 m、46 分钟、13 类退化单次路线末端漂移 0.2 m（0.006%，无回环）。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#04 · Tier 2 高质量正式论文 · Nature Communications · 2026-09-21</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Learning for micro-scale mechano-flow co-manipulation</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对微尺度下表面张力、黏附、范德华力和静电力压过重力，论文通过以 Ansys Fluent 生成界面 CFD 数据，扩展 PointNet 将连续时空流场编码，并验证四口椭圆轨迹在 6/8/10 ml/min 下的欧氏 RMSE 为 0.47/0.85/0.65 mm。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#05 · Tier 2 高质量正式论文 · Nature Communications · 2026-06-02</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">The undulating tripod gait as a model of the locomotion of walking fish</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对以轴向或附肢分类只能描述外观，难解释形态差异很大的鱼为何重复出现相似陆行模式，也难在活体中单独操控形态和相位，论文通过将身体抽象为三个刚段、两个偏航关节和一个左右交替着地的前端刚梁，并验证比较肺鱼、多鳍鱼、鲶鱼、蛇头鱼和杜父鱼后，均见交替支撑及近似保守的两关节相位关系。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#06 · Tier 2 高质量正式论文 · Nature Communications · 2026-03-27</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">A nanoscale robotic cleaner</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对纳米机器人即使能获得单向光推力，论文通过将金纳米棒马达嵌入 920 nm、0.26 pg 的透明二氧化硅圆盘，水平/垂直线偏振负责平移，并验证纳米机器人最高速度达 50 μm/s，展示矩形、EP5 字符和螺旋扫描。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#07 · Tier 2 高质量正式论文 · Science Advances · 2025-12-12</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Insect-inspired micro-optical antenna enables ultrasensitive multisensory perception</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对昆虫尺度机器人需要极轻、低功耗且多模态的感知，论文通过表面张力制备约 100 μm、约 1 mg 的环形微纳光纤—聚合物触角，PDMS 膜用于力、气流、温度和声振动，并验证最薄纤维的力灵敏度为 5.7%/nN、估算分辨率 14.1 pN，温度灵敏度 20.6%/°C、分辨率 0.004°C。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#08 · Tier 2 高质量正式论文 · Nature Communications · 2025-11-26</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">A bioinspired self-powered optical tactile sensing system with ultrahigh sensitivity and ultralow detection limit</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对电子触觉依赖线路与解码且受 EMI 影响；机械致发光通常需 MPa 级压力、亮度不足，难用于轻触和环境光反馈，论文通过ECOFLEX 介电层和 PDMS/MWCNT 电极构成软 CPS，R-TENG 供交流高压驱动 ZnS ACEL，并验证1 kPa 以下相对亮度灵敏度 22.4 kPa⁻¹、光学检测下限 10 Pa、范围 0.01–100 kPa。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#09 · arXiv / preprint · arXiv · 2026-06-29</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">Domain Adaptation with Adaptive Imagination for Visual Reinforcement Learning under Limited Target Data</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对视觉 sim-to-real 的观测分布偏移在目标数据稀缺、又禁止继续目标域交互时会使既有域适配明显失效，论文通过先训练源域状态策略与动力学，再以三分类判别器区分源、目标反演和想象转移，并验证在 5 个 MuJoCo 和 2 个 Gymnasium-Robotics 任务、每项 3 个随机种子上。</div>
+              </td>
+            </tr>
+            
+            <tr>
+              <td style="padding:18px 0;border-top:1px solid #d9dee8;">
+                <div style="font-size:12px;color:#667085;margin-bottom:6px;">#10 · arXiv / preprint · arXiv · 2026-02-13</div>
+                <div style="font-size:18px;line-height:1.35;font-weight:600;color:#101828;margin-bottom:8px;">TRANS: Terrain-aware Reinforcement Learning for Agile Navigation of Quadruped Robots under Social Interactions</div>
+                <div style="font-size:14px;line-height:1.65;color:#344054;">针对传统高层规划与低层步态分离，容易忽略全身约束和地形；端到端方案又依赖高频、噪声敏感且算力昂贵的外感知，论文通过TRANS-Loco 以特权地形/接触训练 critic、以 10 帧本体感觉训练 actor 的潜变量，并验证500 次仿真测试中，TRANS-Nav 的成功率为 0.972、碰撞率 0.028、超时率 0。</div>
+              </td>
+            </tr>
+            
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
